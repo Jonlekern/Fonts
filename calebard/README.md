@@ -36,7 +36,9 @@ Le logo fleur du studio est inclus dans toutes les polices :
 | Caractère | Code | Version |
 | --- | --- | --- |
 | ❀ | U+2740 | Fleur normale |
-| ✿ | U+273F | Fleur bold |
+| ✿ | U+273F | Fleur bold 1 |
+| ❁ | U+2741 | Fleur bold 2 |
+| ✾ | U+273E | Fleur bold 3 |
 
 À taper par copier-coller ou depuis le visualiseur de caractères.
 
