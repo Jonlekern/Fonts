@@ -1,36 +1,38 @@
-# Calebard
+# LaFleurStudio — Fonts
 
-Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, par **LaFleurStudio**.
+Les polices de **LaFleurStudio**, libres et gratuites.
 
-Page de présentation : [`index.html`](index.html) (à activer avec GitHub Pages : *Settings → Pages → Deploy from a branch → main / root*).
+Site : **https://jonlekern.github.io/Fonts/**
 
-## Fichiers
+## Polices
 
-| Dossier | Contenu |
-| --- | --- |
-| `calebard/Calebard.zip` | Les 11 graisses en TTF + licence |
-| `calebard/ttf/` | Polices à installer (Mac, Windows, logiciels) |
-| `calebard/woff2/` | Polices pour le web |
-| `source/` | Scripts Python qui ont servi à fabriquer la famille |
-| `assets/` | Images de la page et logo LAFLEURSTUDIO (SVG) |
+| Police | Style | Graisses | Licence | Liens |
+| --- | --- | --- | --- | --- |
+| **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
 
-## Graisses
+## Organisation
 
-| Nom | Poids |
-| --- | --- |
-| Hairline | 100 |
-| Thin | 200 |
-| Light | 300 |
-| Regular | 400 |
-| Medium | 500 |
-| Bold | 600 |
-| Extra Bold | 700 |
-| Super Bold | 800 |
-| Black | 900 |
-| Extra Black | 1000 |
-| Extreme Black | 1100 (déclarée en 1000, le maximum du format) |
+```
+index.html              Catalogue des polices (page d'accueil du site)
+shared/
+  site.css              Styles communs à toutes les pages
+  specimen.js           Spécimen commun : graisses, testeur, caractères
+calebard/               Un dossier par police
+  index.html            Page de la police
+  README.md             Graisses, fichiers, licence
+  OFL.txt               Licence de la police
+  Calebard.zip          Toutes les graisses en TTF + licence
+  fonts/ttf/            Polices à installer
+  fonts/woff2/          Polices pour le web
+  images/               Images de la page
+  source/               Scripts de fabrication
+```
 
-## Licence
+## Ajouter une police
 
-Calebard est une version modifiée d'[Anybody](https://github.com/Etcetera-Type-Co/Anybody) (Etcetera Type Co.), distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
-Utilisation libre, y compris commerciale. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
+1. Créer un dossier en minuscules à la racine (ex. `nouvelle-police/`) avec la même organisation que `calebard/`.
+2. Copier `calebard/index.html` comme modèle : adapter les `@font-face`, l'objet `window.SPECIMEN` (nom, graisses, texte d'exemple) et les textes.
+3. Ajouter une carte dans `index.html` (racine) et une ligne dans le tableau ci-dessus.
+4. Mettre la licence de la police dans son dossier.
+
+Chaque police garde sa propre licence. Les pages utilisent les fichiers WOFF2 de leur dossier.
