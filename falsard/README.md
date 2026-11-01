@@ -1,6 +1,6 @@
 # Falsard
 
-Capitale techno écrasée en haut et lourde en bas, en **10 graisses** nommées comme des tailles de t-shirt, du **XXXS** au **XXXXL**, par **LaFleurStudio**.
+Display géométrique d'inspiration techno, au centre de gravité bas : haut compressé, bas épaissi, largeur généreuse. **10 graisses** en tailles de t-shirt, du **XXXS** au **XXXXL**, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/falsard/**
 
@@ -23,7 +23,7 @@ Page : **https://jonlekern.github.io/Fonts/falsard/**
 
 1. Lignes de construction calées sur le S : le haut des lettres est compressé de 50 %, le bas épaissi de 20 %.
 2. Élargie à 110 % sans déformer : les traits verticaux gardent leur épaisseur d'origine.
-3. Le S (et s, Š, š, $) sans tête ni queue.
+3. Le S (et s, Š, š, $) sans tête ni queue, et les têtes et queues du 2, du 3 et du 5 coupées aussi.
 4. Les minuscules suivent la même recette, avec des lignes calées sur le petit s.
 5. Prolongée sous 400 (XXXS, XXS) et au-dessus de 900 (XXXL, XXXXL).
 6. © ® ™ dessinés avec les lettres de Falsard.
