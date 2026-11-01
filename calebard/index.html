@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calebard</title>
+<meta name="description" content="Calebard, sans-serif super étendue en 11 graisses, du Hairline à l'Extreme Black. Licence libre SIL OFL. Par LaFleurStudio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@150,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Calebard";font-weight:100;font-display:swap;src:url(fonts/woff2/Calebard-Hairline.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:200;font-display:swap;src:url(fonts/woff2/Calebard-Thin.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:300;font-display:swap;src:url(fonts/woff2/Calebard-Light.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:400;font-display:swap;src:url(fonts/woff2/Calebard-Regular.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:500;font-display:swap;src:url(fonts/woff2/Calebard-Medium.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:600;font-display:swap;src:url(fonts/woff2/Calebard-Bold.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:700;font-display:swap;src:url(fonts/woff2/Calebard-ExtraBold.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:800;font-display:swap;src:url(fonts/woff2/Calebard-SuperBold.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:900;font-display:swap;src:url(fonts/woff2/Calebard-Black.woff2) format("woff2")}
+@font-face{font-family:"Calebard";font-weight:1000;font-display:swap;src:url(fonts/woff2/Calebard-ExtraBlack.woff2) format("woff2")}
+@font-face{font-family:"Calebard Extreme";font-weight:1000;font-display:swap;src:url(fonts/woff2/Calebard-ExtremeBlack.woff2) format("woff2")}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">CALEBARD</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">CALEBARD</h1>
+      <div class="lede">
+        <p><strong>Une sans-serif super étendue</strong>, taillée pour les titres, les logos et l'affiche. Des lettres larges, posées, avec un petit côté pub de voiture de sport des années 70.</p>
+        <p><strong>11 graisses</strong>, du Hairline, fin comme un cheveu, jusqu'à l'Extreme Black. Toutes étirées à 130 %, avec des épaisseurs rééquilibrées à la main.</p>
+      </div>
+      <div class="facts">
+        <span>11 graisses</span><span>785 glyphes</span><span>Latin étendu</span><span>Licence libre SIL OFL 1.1</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">De 100 à 1100. Au-delà du Black, l'Extra Black et l'Extreme Black ont été poussés plus loin que la police d'origine.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">LaFleurStudio, création graphique</div>
+      </div>
+      <p class="hint">Astuce : l'Extreme Black est déclarée comme une famille à part sur le web (voir « Télécharger »).</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, accents, ponctuation et symboles, dont © ® ™ et les monnaies.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Calebard n'a pas été dessinée de zéro : elle part d'une police libre, transformée étape par étape avec des scripts Python. Voilà le chemin.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Trouver une base libre</h3>
+            <p>Le style visé, c'était celui des sans-serif super étendues. Pour que le résultat soit libre, il fallait partir d'une police elle-même libre.</p>
+            <p>On est donc parti d'<strong>Anybody</strong>, d'Etcetera Type Co., publiée sous licence <strong>SIL OFL</strong> : libre d'utilisation, même commerciale, et modifiable.</p>
+          </div>
+          <div class="demo" aria-label="Anybody poussée à sa largeur maximale">
+            <div class="row"><small>Anybody, largeur 150 (le maximum de la police)</small><span style="font-family:'Anybody',var(--sans);font-stretch:150%;font-weight:400">LAFLEURSTUDIO</span></div>
+            <div class="row"><small>Calebard Regular, étirée à 130 %</small><span style="font-weight:400">LAFLEURSTUDIO</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Étirer à 130 % sans déformer</h3>
+            <p>Anybody s'arrête à 150 de largeur. Pour aller plus loin, il fallait étirer les lettres. Le problème : étirer à 130 % épaissit les traits verticaux de 30 %, mais pas les horizontaux. Les lettres ont l'air déformées.</p>
+            <p>La solution : <strong>prendre les coordonnées horizontales d'une graisse plus fine</strong>, puis étirer. Les verticales retombent pile à leur épaisseur d'origine. Les coordonnées verticales, elles, viennent de la vraie graisse. Pour le Black : verticales à <strong>559</strong> unités contre 560 à l'origine, au lieu de 728 en étirement brut.</p>
+          </div>
+          <figure class="fig"><img src="images/etirement-130.png" alt="Comparaison : référence, étirement brut à 130 % et version corrigée, avec zoom sur RS"><figcaption>Référence, étirement brut, version corrigée.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Construire la famille</h3>
+            <p>La même méthode a été appliquée à chaque graisse, chacune avec sa propre graisse « source » pour les horizontales. Pour le Hairline, il a même fallu prolonger Anybody un poil sous sa graisse minimale.</p>
+            <p>Les noms ont été choisis un par un : Hairline, Thin, Light, Regular, Medium, Bold, Extra Bold, Super Bold, Black.</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Graisse</th><th>Poids</th><th>Source horizontale</th><th>Trait visé</th><th>Étirement brut</th><th>Résultat</th></tr></thead>
+              <tbody id="famtable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Dépasser le Black</h3>
+            <p>Anybody s'arrête à 900. Pour l'<strong>Extra Black</strong> (1000) et l'<strong>Extreme Black</strong> (1100), la police a été prolongée au-delà de sa limite.</p>
+            <p>Plus c'est gras, plus les trous se bouchent. Un script a mesuré les fentes de chaque caractère, puis les lettres fautives ont été corrigées une par une, en affinant seulement leurs horizontales : <strong>43 corrections</strong> pour l'Extra Black, <strong>56</strong> pour l'Extreme Black, plus quelques accents déplacés.</p>
+          </div>
+          <figure class="fig"><img src="images/extra-black-corrections.png" alt="Caractères de l'Extra Black : Black en gris, avant correction en rouge, corrigés en noir"><figcaption>En gris le Black, en rouge l'Extra Black avant correction, en noir après.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Arrondir les coins</h3>
+            <p>Sur les graisses les plus grasses, la fente du 5 débouchait dans son trou avec un coin net, pas très joli. On l'a remplacé par une courbe douce : trois versions testées, la n° 2 retenue.</p>
+            <p>La même règle a ensuite été appliquée aux lettres qui avaient ce coin, <strong>S, 2, 3, 6, 9, ? et C</strong>, sur le Super Bold, le Black, l'Extra Black et l'Extreme Black.</p>
+          </div>
+          <figure class="fig"><img src="images/cinq-options.png" alt="Trois versions du 5 avec les coins arrondis"><figcaption>Les trois versions du 5. La n° 2 a été choisie.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Vérifier, encore</h3>
+            <p>À chaque étape, le résultat a été rendu dans un vrai navigateur et vérifié à l'œil. Les 650 caractères tapables ont été mesurés automatiquement pour repérer ce qui casse.</p>
+            <p>Les scripts sont dans le dossier <a href="https://github.com/Jonlekern/Fonts/tree/main/calebard/source">source</a> du dépôt.</p>
+          </div>
+          <div class="demo">
+            <div class="row"><small>Hairline</small><span class="short" style="font-weight:100">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Regular</small><span class="short" style="font-weight:400">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Black</small><span class="short" style="font-weight:900">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Extreme Black</small><span class="short" style="font-family:'Calebard Extreme';font-weight:1000">Aa Gg Rr 0123</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Calebard.zip" download><b>Calebard.zip</b><span>Les 11 graisses en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/calebard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/calebard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "Calebard"; font-weight: 400;
+  src: url(Calebard-Regular.woff2) format("woff2"); }
+@font-face { font-family: "Calebard"; font-weight: 900;
+  src: url(Calebard-Black.woff2) format("woff2"); }
+/* … une règle par graisse, de 100 (Hairline) à 1000 (Extra Black) */
+
+/* L'Extreme Black est aussi en 1000 : déclare-la à part */
+@font-face { font-family: "Calebard Extreme"; font-weight: 1000;
+  src: url(Calebard-ExtremeBlack.woff2) format("woff2"); }</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Calebard © 2026 LaFleurStudio · version modifiée d'<a href="https://github.com/Etcetera-Type-Co/Anybody">Anybody</a> (Etcetera Type Co.) · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    <span>Construite en Python (fontTools, HarfBuzz, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Calebard",
+  sample: "LAFLEURSTUDIO",
+  styles: [
+    {n:"Hairline",w:100},{n:"Thin",w:200},{n:"Light",w:300},{n:"Regular",w:400},{n:"Medium",w:500},
+    {n:"Bold",w:600},{n:"Extra Bold",w:700},{n:"Super Bold",w:800},{n:"Black",w:900},
+    {n:"Extra Black",w:1000},{n:"Extreme Black",w:1000,label:1100,fam:"Calebard Extreme"}
+  ],
+  testerDefault: 8,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÂÄÇÉÈÊËÎÏÔŒÙÛÜŸàâäçéèêëîïôœùûüÿÆæßẞÑñØøÅå" + ".,:;!?¡¿…‘’“”«»‹›()[]{}/\\|-–—_*•·#%‰&@" + "$€£¥¢₩₹₽+−±×÷=≠<>~^°©®™§¶",
+  glyphChips: [0, 3, 8, 10],
+  glyphDefault: 2
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script>
+// family table (font units; UPM 2000)
+const FAM = [
+  ["Hairline",100,"93,4*",22,29,22],["Thin",200,"169,0",99,129,97],["Light",300,"228,7",149,194,148],
+  ["Regular",400,"339,2",247,321,247],["Medium",500,"377,7",297,386,296],["Bold",600,"427,9",346,450,345],
+  ["Extra Bold",700,"534,4",415,540,414],["Super Bold",800,"637,4",495,644,496],["Black",900,"704,7",560,728,559],
+  ["Extra Black",1000,"764,2",625,"—",625],["Extreme Black",1100,"830,5",690,"—",692]
+];
+document.getElementById("famtable").innerHTML = FAM.map(r =>
+  `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td class="bad">${r[4]}</td><td class="good">${r[5]}</td></tr>`).join("") +
+  `<tr><td colspan="6" style="text-align:left;color:var(--muted)">Épaisseur des traits verticaux en unités (2000 par em). * sous la limite d'Anybody, obtenue par prolongement.</td></tr>`;
+</script>
+</body>
+</html>
