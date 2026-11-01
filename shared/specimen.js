@@ -1,6 +1,6 @@
 /* Spécimen commun : liste des graisses, testeur, grille de caractères.
    Chaque page de police définit window.SPECIMEN avant de charger ce script :
-   { family, sample, styles:[{n,w,label?,fam?}], testerDefault, glyphs, glyphChips:[index], glyphDefault } */
+   { family, sample, styles:[{n,w,label?,fam?}], testerDefault, testerExtra?:[styles en plus dans le testeur], glyphs, glyphChips:[index], glyphDefault } */
 (function () {
   const C = window.SPECIMEN; if (!C) return;
   const fam = s => `'${s.fam || C.family}'`;
@@ -13,8 +13,9 @@
 
   const sel = document.getElementById("tw"), size = document.getElementById("ts"), txt = document.getElementById("tester-text");
   if (sel && size && txt) {
-    sel.innerHTML = C.styles.map((s, i) => `<option value="${i}" ${i === C.testerDefault ? "selected" : ""}>${s.n}</option>`).join("");
-    const apply = () => { const s = C.styles[+sel.value]; txt.style.fontFamily = fam(s); txt.style.fontWeight = s.w; txt.style.fontSize = size.value + "px"; };
+    const TS = C.styles.concat(C.testerExtra || []);
+    sel.innerHTML = TS.map((s, i) => `<option value="${i}" ${i === C.testerDefault ? "selected" : ""}>${s.n}</option>`).join("");
+    const apply = () => { const s = TS[+sel.value]; txt.style.fontFamily = fam(s); txt.style.fontWeight = s.w; txt.style.fontSize = size.value + "px"; };
     size.value = Math.min(56, Math.max(16, Math.round((txt.clientWidth || 340) / 16.5)));
     sel.addEventListener("change", apply); size.addEventListener("input", apply); apply();
   }
