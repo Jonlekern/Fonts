@@ -1,5 +1,5 @@
 """Add the LaFleurStudio flower to Calebard fonts.
-U+2740 ❀ -> 'flower' (logo as drawn) ; U+273F ✿ -> 'flower.bold' (stroke thickened, "Bold 1").
+U+2740 ❀ flower (logo as drawn) ; U+273F ✿ bold 1 ; U+2741 ❁ bold 2 ; U+273E ✾ bold 3 (thicker strokes).
 Both scaled to cap height (1350 units), sitting on the baseline.
 usage: add_flower.py font.ttf [font.ttf ...]   (edits in place)"""
 import sys, os
@@ -14,7 +14,8 @@ from fontTools.pens.areaPen import AreaPen
 
 CAP, SB = 1350, 100
 K = 1350 / 1619
-SHAPES = {"flower": (0x2740, flower(0)), "flower.bold": (0x273F, flower(150 / K - 57))}
+SHAPES = {"flower": (0x2740, flower(0)), "flower.bold": (0x273F, flower(150 / K - 57)),
+          "flower.bold2": (0x2741, flower(250 / K - 57)), "flower.bold3": (0x273E, flower(350 / K - 57))}
 
 def glyph_for(path):
     x0, y0, x1, y1 = path.bounds; s = CAP / (y1 - y0)
