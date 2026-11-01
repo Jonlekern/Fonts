@@ -21,6 +21,13 @@
 @font-face{font-family:"Calebard";font-weight:900;font-display:swap;src:url(fonts/woff2/Calebard-Black.woff2) format("woff2")}
 @font-face{font-family:"Calebard";font-weight:1000;font-display:swap;src:url(fonts/woff2/Calebard-ExtraBlack.woff2) format("woff2")}
 @font-face{font-family:"Calebard Extreme";font-weight:1000;font-display:swap;src:url(fonts/woff2/Calebard-ExtremeBlack.woff2) format("woff2")}
+@font-face{font-family:"Calebard Goofy";font-weight:900;font-display:swap;src:url(fonts/woff2/Calebard-Goofy.woff2) format("woff2")}
+@font-face{font-family:"Calebard Extra Goofy";font-weight:900;font-display:swap;src:url(fonts/woff2/Calebard-ExtraGoofy.woff2) format("woff2")}
+.goofy-row{border-top:1px solid var(--line);padding:22px 0}
+.goofy-row .gname{display:flex;gap:12px;align-items:baseline;margin-bottom:8px}
+.goofy-row .gname b{font-weight:600;font-size:14px}.goofy-row .gname small{color:var(--muted);font-size:13px}
+.goofy-row .big{font-weight:900;white-space:nowrap;overflow:hidden;line-height:1.3;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/17.6)}
+.goofy-row .txt{font-weight:900;font-size:clamp(18px,2.6vw,30px);line-height:1.35;margin-top:6px}
 </style>
 </head>
 <body>
@@ -31,6 +38,7 @@
     <a class="back" href="../">← Toutes les polices</a>
     <ul>
       <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#goofy">Goofy</a></li>
       <li><a href="#testeur">Testeur</a></li>
       <li><a href="#caracteres">Caractères</a></li>
       <li><a href="#fabrication">Comment on l'a faite</a></li>
@@ -49,7 +57,7 @@
         <p><strong>11 graisses</strong>, du Hairline, fin comme un cheveu, jusqu'à l'Extreme Black. Toutes étirées à 130 %, avec des épaisseurs rééquilibrées à la main.</p>
       </div>
       <div class="facts">
-        <span>11 graisses</span><span>785 glyphes</span><span>Latin étendu</span><span>Licence libre SIL OFL 1.1</span>
+        <span>11 graisses</span><span>+ Goofy et Extra Goofy</span><span>785 glyphes</span><span>Latin étendu</span><span>Licence libre SIL OFL 1.1</span>
       </div>
     </div>
   </div>
@@ -59,6 +67,24 @@
       <h2>Les graisses</h2>
       <p class="intro">De 100 à 1100. Au-delà du Black, l'Extra Black et l'Extreme Black ont été poussés plus loin que la police d'origine.</p>
       <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="goofy">
+    <div class="wrap">
+      <h2>Goofy et Extra Goofy</h2>
+      <p class="intro">Deux styles bonus sur la base du Black. Les lettres changent de sens une fois sur deux, toutes seules, pendant que tu tapes, et ça repart à chaque mot.</p>
+      <div class="goofy-row">
+        <div class="gname"><b>Goofy</b><small>penchées à 12°, une fois à droite, une fois à gauche</small></div>
+        <div class="big" style="font-family:'Calebard Goofy'">LAFLEURSTUDIO</div>
+        <div class="txt" style="font-family:'Calebard Goofy'">Lafleurstudio, création graphique</div>
+      </div>
+      <div class="goofy-row">
+        <div class="gname"><b>Extra Goofy</b><small>tournées à 4°, 7° et 10°, dans un sens puis dans l'autre</small></div>
+        <div class="big" style="font-family:'Calebard Extra Goofy'">LAFLEURSTUDIO</div>
+        <div class="txt" style="font-family:'Calebard Extra Goofy'">Lafleurstudio, création graphique</div>
+      </div>
+      <p class="hint">L'alternance passe par les « variantes contextuelles » : actives d'office dans les navigateurs, Figma, Adobe et les apps Mac. Dans Word : Police → Avancé → « Utiliser les variantes contextuelles ». Les ligatures sont désactivées dans ces deux styles.</p>
     </div>
   </section>
 
@@ -169,7 +195,7 @@
       <h2>Télécharger</h2>
       <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Calebard.zip" download><b>Calebard.zip</b><span>Les 11 graisses en TTF + licence</span></a>
+        <a class="card" href="Calebard.zip" download><b>Calebard.zip</b><span>Les 11 graisses, Goofy et Extra Goofy en TTF + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/calebard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/calebard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
       </div>
@@ -204,6 +230,7 @@ window.SPECIMEN = {
     {n:"Extra Black",w:1000},{n:"Extreme Black",w:1000,label:1100,fam:"Calebard Extreme"}
   ],
   testerDefault: 8,
+  testerExtra: [{n:"Goofy",w:900,fam:"Calebard Goofy"},{n:"Extra Goofy",w:900,fam:"Calebard Extra Goofy"}],
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÂÄÇÉÈÊËÎÏÔŒÙÛÜŸàâäçéèêëîïôœùûüÿÆæßẞÑñØøÅå" + ".,:;!?¡¿…‘’“”«»‹›()[]{}/\\|-–—_*•·#%‰&@" + "$€£¥¢₩₹₽+−±×÷=≠<>~^°©®™§¶",
   glyphChips: [0, 3, 8, 10],

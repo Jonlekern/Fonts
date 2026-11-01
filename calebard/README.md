@@ -1,6 +1,6 @@
 # Calebard
 
-Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, par **LaFleurStudio**.
+Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, plus deux styles bonus **Goofy** et **Extra Goofy**, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/calebard/**
 
@@ -20,11 +20,20 @@ Page : **https://jonlekern.github.io/Fonts/calebard/**
 | Extra Black | 1000 | `Calebard-ExtraBlack` |
 | Extreme Black | 1100 (déclarée en 1000, le maximum du format) | `Calebard-ExtremeBlack` |
 
+### Styles bonus (base Black)
+
+| Nom | Effet | Fichier |
+| --- | --- | --- |
+| Goofy | Lettres penchées à 12°, une fois à droite, une fois à gauche | `Calebard-Goofy` |
+| Extra Goofy | Lettres tournées à 4°, 7° et 10°, dans un sens puis dans l'autre | `Calebard-ExtraGoofy` |
+
+L'alternance passe par les variantes contextuelles (`calt`) : actives d'office dans les navigateurs, Figma, Adobe et les apps Mac. Dans Word : Police → Avancé → « Utiliser les variantes contextuelles ».
+
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `Calebard.zip` | Les 11 graisses en TTF + licence |
+| `Calebard.zip` | Les 11 graisses, Goofy et Extra Goofy en TTF + licence |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page et logo LAFLEURSTUDIO (SVG) |

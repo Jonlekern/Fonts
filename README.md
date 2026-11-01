@@ -8,7 +8,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 
 | Police | Style | Graisses | Licence | Liens |
 | --- | --- | --- | --- | --- |
-| **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
+| **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) + Goofy, Extra Goofy | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
 
 ## Organisation
 
@@ -21,7 +21,7 @@ calebard/               Un dossier par police
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police
-  Calebard.zip          Toutes les graisses en TTF + licence
+  Calebard.zip          Toutes les polices en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
   images/               Images de la page
