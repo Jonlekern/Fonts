@@ -15,7 +15,7 @@ def word(text, mode, W=900, bands=CAPS):
         for info, pos in zip(bb.glyph_infos, bb.glyph_positions):
             n = fx.getGlyphOrder()[info.codepoint]
             src = src_of(n, W, wx, k); gp = pathops.Path(); src.draw(MapPen(gp.getPen(), bands, x * k)); gp = clean(gp)
-            if mode == "final" and n in CUT: gp = cut_s(gp, W, CUT[n][0], CUT[n][1], bands)
+            if mode == "final" and n in CUT: gp = cut_stubs(gp, bar_edges(src_of(CUT[n][0], W, wx, k), CUT[n][1]), CUT[n][2], bands)
             out = union(out, gp); x += pos.x_advance
         return out
     for info, pos in zip(buf.glyph_infos, buf.glyph_positions):

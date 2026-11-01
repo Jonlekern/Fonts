@@ -160,40 +160,50 @@ def keep_counters_inside(src, margin):
     holes = pathops.op(holes, inset, pathops.PathOp.INTERSECTION, clockwise=True)
     return pathops.op(outer, holes, pathops.PathOp.DIFFERENCE, clockwise=True)
 
-# ---------------------------------------------------------------- S without head nor tail
-CUT = {"S": ("S", .5), "Scaron": ("S", .5), "s": ("s", .5), "scaron": ("s", .5), "s.sc": ("s.sc", .5), "dollar": ("dollar", .3)}
-def s_bars(W, g, fx):
-    f, _ = inst(W); gs = f.getGlyphSet(); x0, _, x1, _ = ink(f, g); cx = x0 + fx * (x1 - x0)
-    def ins(y):
-        p = PointInsidePen(gs, (cx, y)); gs[g].draw(p); return p.getResult()
+# ---------------------------------------------------------------- S without head nor tail (and 2, 3, 5)
+# glyph -> (glyph whose bars are measured, where to scan the bars across the width, stubs to cut)
+# stubs: LL = tail on the left above the bottom bar, UL / UR = head under the top bar, left / right
+CUT = {"S": ("S", .5, "LL UR"), "Scaron": ("S", .5, "LL UR"), "s": ("s", .5, "LL UR"), "scaron": ("s", .5, "LL UR"),
+       "s.sc": ("s.sc", .5, "LL UR"), "dollar": ("dollar", .3, "LL UR"),
+       "two": ("two", .5, "UL"), "three": ("three", .5, "UL LL"), "five": ("five", .5, "LL")}
+def _inside(path, x, y):
+    p = PointInsidePen(None, (x, y)); path.draw(p); return p.getResult()
+def _edge(path, x, y_in, y_out):
+    """exact y of the boundary between an inside and an outside point (same x)"""
+    for _ in range(40):
+        m = (y_in + y_out) / 2
+        if _inside(path, x, m): y_in = m
+        else: y_out = m
+    return round((y_in + y_out) / 2)
+def bar_edges(src, fx):
+    """exact edges of the three bars (bottom, middle, top), measured on the outline itself"""
+    x0, _, x1, _ = src.bounds; cx = x0 + fx * (x1 - x0)
     runs, st = [], None
-    for y in range(-120, 840):
-        i = ins(y)
+    for y in range(-5, 761):
+        i = _inside(src, cx, y)
         if i and st is None: st = y
         if not i and st is not None: runs.append((st, y - 1)); st = None
-    runs = [r for r in runs if r[1] - r[0] > 20 and r[0] < 700]     # the three bars (not a caron above)
+    runs = [r for r in runs if r[1] - r[0] > 12]
+    if len(runs) < 3: return None
     b, m, t = runs[0], runs[1], runs[2]
-    lo, hi = b[1] - 1, b[1] + 2                 # exact top of the bottom bar
-    for _ in range(40):
-        md = (lo + hi) / 2
-        if ins(md): lo = md
-        else: hi = md
-    yb = round(lo)
-    lo, hi = t[0] - 2, t[0] + 1                 # exact underside of the top bar
-    for _ in range(40):
-        md = (lo + hi) / 2
-        if ins(md): hi = md
-        else: lo = md
-    return yb, round(hi), m
-def cut_s(gp, W, base, fx, bands):
-    x0, _, x1, _ = gp.bounds
-    yb, yt, m = s_bars(W, base, fx)
-    head_lo, head_hi = bands(m[1] + 1) + 1, bands(yt)
-    tail_lo, tail_hi = bands(yb), bands(m[0]) - 1
-    r = runs_at(gp, head_hi - 6, x0, x1); xa = (r[-2][1] + r[-1][0]) / 2 if len(r) >= 2 else (x0 + x1) / 2
-    gp = pathops.op(gp, rect(xa, x1 + 50, head_lo, head_hi), pathops.PathOp.DIFFERENCE, clockwise=True)
-    r = runs_at(gp, tail_lo + 6, x0, x1); xb = (r[0][1] + r[1][0]) / 2 if len(r) >= 2 else (x0 + x1) / 2
-    return pathops.op(gp, rect(x0 - 50, xb, tail_lo, tail_hi), pathops.PathOp.DIFFERENCE, clockwise=True)
+    return (_edge(src, cx, b[1], b[1] + 1.5), _edge(src, cx, m[0], m[0] - 1.5),
+            _edge(src, cx, m[1], m[1] + 1.5), _edge(src, cx, t[0], t[0] - 1.5))
+def cut_stubs(gp, edges, spec, bands):
+    """cut each head / tail pile at the edge of its bar (the bars stay intact)"""
+    if not edges: return gp
+    bt, mb, mt, tb = edges; x0, _, x1, _ = gp.bounds; cx = (x0 + x1) / 2
+    for st in spec.split():
+        lo, hi = (bt, mb) if st[0] == "L" else (mt, tb)
+        ys = bands(lo) + 4 if st[0] == "L" else bands(hi) - 4
+        r = runs_at(gp, ys, x0, x1)
+        if len(r) < 2: continue
+        if st[1] == "L":
+            if (r[0][0] + r[0][1]) / 2 > cx: continue
+            gp = pathops.op(gp, rect(x0 - 50, (r[0][1] + r[1][0]) / 2, bands(lo), bands(hi)), pathops.PathOp.DIFFERENCE, clockwise=True)
+        else:
+            if (r[-1][0] + r[-1][1]) / 2 < cx: continue
+            gp = pathops.op(gp, rect((r[-2][1] + r[-1][0]) / 2, x1 + 50, bands(lo), bands(hi)), pathops.PathOp.DIFFERENCE, clockwise=True)
+    return gp
 
 # ---------------------------------------------------------------- glyphs
 def bands_for(name, uni):
@@ -312,7 +322,9 @@ def build_glyph(name, W, wx, k, bands, wy=None):
     src = src_of(name, wy, wx, k)
     gp = pathops.Path(); src.draw(MapPen(gp.getPen(), bands))
     gp = clean(gp)
-    if name in CUT: gp = cut_s(gp, wy, CUT[name][0], CUT[name][1], bands)
+    if name in CUT:
+        base, fx, spec = CUT[name]
+        gp = cut_stubs(gp, bar_edges(src_of(base, wy, wx, k), fx), spec, bands)
     return gp
 
 def make_glyph(name, W, wx, k, bands, log):
