@@ -1,0 +1,25 @@
+Clebard — fichiers de l'œuvre (GUST Font License)
+
+LICENCE.txt              Notice de licence et liste des modifications
+GUST-FONT-LICENSE.txt    GUST Font License
+lppl.txt                 LaTeX Project Public License 1.3c
+MANIFEST-Clebard.txt     Ce fichier
+README.md                Présentation, graisses, fichiers
+fonts/ttf/Clebard-Demi.ttf
+fonts/ttf/Clebard-Short.ttf
+fonts/ttf/Clebard-Tall.ttf
+fonts/ttf/Clebard-Grande.ttf
+fonts/ttf/Clebard-Venti.ttf
+fonts/ttf/Clebard-Trenta.ttf
+fonts/woff2/Clebard-Demi.woff2
+fonts/woff2/Clebard-Short.woff2
+fonts/woff2/Clebard-Tall.woff2
+fonts/woff2/Clebard-Grande.woff2
+fonts/woff2/Clebard-Venti.woff2
+fonts/woff2/Clebard-Trenta.woff2
+source/build_clebard.py
+source/respace.py
+source/cheat1400b.py
+source/finalize_clebard.py
+source/page_images.py
+source/README.md

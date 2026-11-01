@@ -10,6 +10,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | --- | --- | --- | --- | --- |
 | **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) + Goofy, Extra Goofy | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
 | **Falsard** | Display géométrique d'inspiration techno, au centre de gravité bas | 10 (XXXS → XXXXL) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/falsard/) · [Zip](falsard/Falsard.zip) · [Dossier](falsard/) |
+| **Clebard** | Néo-grotesque suisse en extra-large | 6 (Demi → Trenta) | GUST Font License | [Page](https://jonlekern.github.io/Fonts/clebard/) · [Zip](clebard/Clebard.zip) · [Dossier](clebard/) |
 
 ## Organisation
 
@@ -18,11 +19,12 @@ index.html              Catalogue des polices (page d'accueil du site)
 shared/
   site.css              Styles communs à toutes les pages
   specimen.js           Spécimen commun : graisses, testeur, caractères
-calebard/, falsard/     Un dossier par police
+calebard/, falsard/,    Un dossier par police
+clebard/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police
-  Calebard.zip          Toutes les polices en TTF + licence
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST)
+  Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
   images/               Images de la page

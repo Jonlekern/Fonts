@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clebard</title>
+<meta name="description" content="Clebard, néo-grotesque suisse en extra-large : un chien de race qui a pris du coffre. 6 graisses en tailles de café, du Demi au Trenta. Licence libre GUST. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Clebard";font-weight:400;font-display:swap;src:url(fonts/woff2/Clebard-Demi.woff2) format("woff2")}
+@font-face{font-family:"Clebard";font-weight:600;font-display:swap;src:url(fonts/woff2/Clebard-Short.woff2) format("woff2")}
+@font-face{font-family:"Clebard";font-weight:800;font-display:swap;src:url(fonts/woff2/Clebard-Tall.woff2) format("woff2")}
+@font-face{font-family:"Clebard";font-weight:900;font-display:swap;src:url(fonts/woff2/Clebard-Grande.woff2) format("woff2")}
+@font-face{font-family:"Clebard";font-weight:950;font-display:swap;src:url(fonts/woff2/Clebard-Venti.woff2) format("woff2")}
+@font-face{font-family:"Clebard";font-weight:1000;font-display:swap;src:url(fonts/woff2/Clebard-Trenta.woff2) format("woff2")}
+/* Clebard partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Clebard",var(--sans)}
+.label{font-family:"Clebard",var(--sans);font-weight:600;font-size:12px}
+.brand{font-size:15px;font-weight:1000}
+section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
+.step h3{font-weight:900;font-size:clamp(16px,1.9vw,21px)}
+.card b{font-weight:950;font-size:15px}
+.hero h1{font-family:"Clebard";font-weight:1000;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/7.8);line-height:.95}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/13.8)}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/13.8)}}
+.demo .row span{font-size:calc(100cqw/8)}
+.demo .row span.short{font-size:calc(100cqw/12.2)}
+.glyphs div{font-size:24px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">CLEBARD</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">CLEBARD</h1>
+      <div class="lede">
+        <p><strong>Néo-grotesque suisse en extra-large</strong> : un chien de race qui a pris du coffre.</p>
+        <p><strong>6 graisses en tailles de café</strong>, du Demi au Trenta.</p>
+      </div>
+      <div class="facts">
+        <span>6 graisses</span><span>Demi → Trenta</span><span>Chasse à 140 %</span><span>Latin, grec, vietnamien</span><span>Licence libre GUST</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">De 400 à 1400, nommées comme des tailles de café. Au-delà de 700, la police a été poussée plus loin que le Bold d'origine.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">Le chien qui aboie ne mord pas</div>
+      </div>
+      <p class="hint">Astuce : les 6 tailles sont dans une seule famille « Clebard », de 400 à 1000 (voir « Télécharger »).</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, accents (y compris le vietnamien), grec, ponctuation et symboles.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Clebard n'a pas été dessinée de zéro : elle part d'une police libre, transformée étape par étape avec des scripts Python, et vérifiée à l'œil.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Partir d'un classique suisse, en version libre</h3>
+            <p>Le grand classique suisse des années 1950 a une version libre : <strong>Nimbus Sans L</strong>, dessinée par URW++ puis libérée. La GUST e-foundry l'a retravaillée sous le nom <strong>TeX Gyre Heros</strong>, avec une licence plus souple, la <strong>GUST Font License</strong>. C'est notre base.</p>
+            <p>On en garde l'esprit : le R avec sa jambe qui descend à la verticale, le G avec son éperon, les bouts de courbes coupés à l'horizontale. La licence demande un autre nom : ce sera <strong>Clebard</strong>.</p>
+          </div>
+          <div class="demo" aria-label="Clebard en Short et en Trenta">
+            <div class="row"><small>Short (600)</small><span style="font-weight:600">CLEBARD</span></div>
+            <div class="row"><small>Trenta (1400)</small><span style="font-weight:1000">CLEBARD</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Élargir à 140 % sans déformer</h3>
+            <p>Étirer une police épaissit ses traits verticaux, mais pas les horizontaux : les lettres ont l'air déformées. Étiré brut à 140 %, le fût du H du Bold passe de 150 à <strong>210</strong> unités.</p>
+            <p>La solution : <strong>étirer, puis rentrer les contours à l'horizontale</strong>, d'une ellipse plus large que haute. Les fûts retombent pile à leur épaisseur d'origine, <strong>150</strong>, et les courbes restent rondes.</p>
+          </div>
+          <figure class="fig"><img src="images/elargir.png" alt="CLEBARD en TeX Gyre Heros Bold, étiré brut à 140 %, puis élargi sans déformer"><figcaption>La base, l'étirement brut, puis la version corrigée.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Six graisses, en tailles de café</h3>
+            <p>Chaque graisse part du Regular ou du Bold de Heros. Les contours sont <strong>poussés vers l'extérieur ou rentrés</strong> jusqu'à une épaisseur visée pour les fûts et pour les traits horizontaux, en prolongeant la progression du Regular au Bold jusqu'à 1400. La hauteur des majuscules est ensuite recalée.</p>
+            <p>Les noms sont ceux des tailles de café, du Demi au Trenta.</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Taille</th><th>Graisse</th><th>Déclarée</th><th>Source</th><th>Fût du H</th><th>Trait horizontal</th></tr></thead>
+              <tbody id="famtable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Garder les ouvertures</h3>
+            <p>Au-delà de 1000, les blancs du e, du s, du a, du g, du 3, du 5, du 6, du 9 et du € se bouchent. Pour ces lettres seulement, <strong>les traits horizontaux sont affinés</strong> juste ce qu'il faut pour garder une ouverture lisible.</p>
+            <p>Les points et les accents sont décalés pour ne pas se coller à la lettre, et la croix du ð reste lisible.</p>
+          </div>
+          <figure class="fig"><img src="images/ouvertures.png" alt="seag3 en 1200, les blancs bouchés, puis corrigés"><figcaption>En haut sans correction, en bas la Venti.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>La Trenta, trichée</h3>
+            <p>À 1400, le dessin casse : le s devient un pâté, le € se referme. Là où ça casse, on triche : <strong>on reprend la 1200 et on l'épaissit seulement à l'horizontale</strong>.</p>
+            <p>Résultat : les fûts de la 1400 (<strong>283</strong> unités) avec les ouvertures de la 1200. Partout ailleurs, c'est de la vraie 1400.</p>
+          </div>
+          <figure class="fig"><img src="images/triche.png" alt="sea€5 en 1400 pure, cassé, puis triché"><figcaption>En haut la 1400 pure, en bas la Trenta.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>L'espacement de Calebard</h3>
+            <p>Les approches, lettre par lettre, et le crénage viennent de <a href="../calebard/">Calebard</a>, mis à la taille de Clebard (même hauteur de majuscules). Avec le L–A resserré de LAFLEURSTUDIO.</p>
+            <p>Chaque taille prend l'espacement de la graisse de Calebard la plus proche. Les lettres accentuées sont placées comme leur lettre de base.</p>
+          </div>
+          <figure class="fig"><img src="images/espacement.png" alt="LAFLEURSTUDIO en Calebard, puis en Clebard avant et après l'espacement de Calebard"><figcaption>Calebard, puis Clebard avant et après.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Vérifier, encore</h3>
+            <p>Chaque caractère de chaque taille a été contrôlé automatiquement : trou bouché, ouverture trop fine, morceau perdu (surface comparée à la source), et chaque épaississement est refait en plusieurs passes s'il est faux. C'est ce qui a réparé le 3 et le M de la Demi.</p>
+            <p>Puis tout a été rendu dans un vrai navigateur et vérifié à l'œil. Les scripts sont dans le dossier <a href="https://github.com/Jonlekern/Fonts/tree/main/clebard/source">source</a> du dépôt.</p>
+          </div>
+          <div class="demo">
+            <div class="row"><small>Demi</small><span class="short" style="font-weight:400">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Tall</small><span class="short" style="font-weight:800">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Venti</small><span class="short" style="font-weight:950">Aa Gg Rr 0123</span></div>
+            <div class="row"><small>Trenta</small><span class="short" style="font-weight:1000">Aa Gg Rr 0123</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde les fichiers de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Clebard.zip" download><b>Clebard.zip</b><span>Les 6 tailles en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/clebard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/clebard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "Clebard"; font-weight: 400;
+  src: url(Clebard-Demi.woff2) format("woff2"); }
+@font-face { font-family: "Clebard"; font-weight: 1000;
+  src: url(Clebard-Trenta.woff2) format("woff2"); }
+/* … une règle par taille : Demi 400, Short 600, Tall 800,
+   Grande 900, Venti 950, Trenta 1000 */</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Clebard © 2026 LaFleurStudio · version modifiée de TeX Gyre Heros (B. Jackowski et J. M. Nowacki, GUST e-foundry), d'après Nimbus Sans L d'URW++ · <a href="LICENCE.txt">GUST Font License</a></span>
+    <span>Construite en Python (fontTools, HarfBuzz, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Clebard",
+  sample: "LAFLEURSTUDIO",
+  styles: [
+    {n:"Demi",w:400},{n:"Short",w:600},{n:"Tall",w:800},
+    {n:"Grande",w:900,label:1000},{n:"Venti",w:950,label:1200},{n:"Trenta",w:1000,label:1400}
+  ],
+  testerDefault: 4,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜÝŸŠŽàáâãäåæçèéêëìíîïñòóôõöœùúûüýÿšžß" +
+    "ĂăĐđƠơƯưẠạẤấỆệỘộ" + "ΑΒΓΔΘΛΞΠΣΦΨΩαβγδθλξπσφψω" +
+    ".,:;!?¡¿…'\"‘’“”«»()[]{}/\\|-–—_*•#%&@¶§°" + "$€£¥¢+−×÷=<>~©®™",
+  glyphChips: [0, 2, 4, 5],
+  glyphDefault: 2
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script>
+// tailles (unités : 1000 par em)
+const FAM = [
+  ["Demi",400,400,"Regular",93,82],["Short",600,600,"Regular",131,111],["Tall",800,800,"Bold",169,139],
+  ["Grande",1000,900,"Bold",207,168],["Venti",1200,950,"Bold",245,196],["Trenta",1400,1000,"Bold + Venti",283,225]
+];
+document.getElementById("famtable").innerHTML = FAM.map(r =>
+  `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td class="good">${r[4]}</td><td>${r[5]}</td></tr>`).join("") +
+  `<tr><td colspan="6" style="text-align:left;color:var(--muted)">Épaisseurs en unités (1000 par em). Le format s'arrête à 1000 : Grande, Venti et Trenta sont déclarées entre 900 et 1000.</td></tr>`;
+</script>
+</body>
+</html>
