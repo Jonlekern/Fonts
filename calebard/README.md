@@ -29,6 +29,17 @@ Page : **https://jonlekern.github.io/Fonts/calebard/**
 
 L'alternance passe par les variantes contextuelles (`calt`) : actives d'office dans les navigateurs, Figma, Adobe et les apps Mac. Dans Word : Police → Avancé → « Utiliser les variantes contextuelles ».
 
+## La fleur LaFleurStudio
+
+Le logo fleur du studio est inclus dans toutes les polices :
+
+| Caractère | Code | Version |
+| --- | --- | --- |
+| ❀ | U+2740 | Fleur normale |
+| ✿ | U+273F | Fleur bold |
+
+À taper par copier-coller ou depuis le visualiseur de caractères.
+
 ## Fichiers
 
 | Chemin | Contenu |
