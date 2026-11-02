@@ -45,18 +45,23 @@ def ttglyph(path):
     return pen.glyph()
 
 def notdef():
-    """.notdef de Velvetyne (Jérémy Landes, 2016, SIL OFL 1.1), lu depuis velvetyne-notdef.glif"""
-    from fontTools.ufoLib.glifLib import readGlyphFromString
-    from fontTools.pens.recordingPen import RecordingPen
-    from fontTools.pens.pointPen import PointToSegmentPen
-    class G_: pass
-    rec = RecordingPen(); gl = G_()
-    readGlyphFromString(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'velvetyne-notdef.glif')).read(), gl, PointToSegmentPen(rec))
-    pen = TTGlyphPen(None); rec.replay(pen); g = pen.glyph()
-    a = AreaPen(); rec.replay(a)
-    if a.value > 0:
-        pen = TTGlyphPen(None); rec.replay(ReverseContourPen(pen)); g = pen.glyph()
-    return g, int(getattr(gl, 'width', 1000))
+    """.notdef : un rectangle vide. Version Velvetyne (VELVETYNE=1) : leur .notdef (Jérémy Landes, 2016, SIL OFL 1.1)."""
+    if os.environ.get('VELVETYNE'):
+        from fontTools.ufoLib.glifLib import readGlyphFromString
+        from fontTools.pens.recordingPen import RecordingPen
+        from fontTools.pens.pointPen import PointToSegmentPen
+        class G_: pass
+        rec = RecordingPen(); gl = G_()
+        readGlyphFromString(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'velvetyne-notdef.glif')).read(), gl, PointToSegmentPen(rec))
+        a = AreaPen(); rec.replay(a); pen = TTGlyphPen(None)
+        rec.replay(ReverseContourPen(pen) if a.value > 0 else pen)
+        return pen.glyph(), int(getattr(gl, 'width', 1000))
+    pen = TTGlyphPen(None)
+    for pts in ([(50, 0), (50, 700), (450, 700), (450, 0)], [(100, 50), (400, 50), (400, 650), (100, 650)]):
+        pen.moveTo(pts[0])
+        for p in pts[1:]: pen.lineTo(p)
+        pen.closePath()
+    return pen.glyph(), 500
 
 def style_names(name, weight, italic):
     """Noms « anciens » (1 et 2) : 400 et 700 restent le Regular et le Bold de la famille."""
@@ -70,7 +75,7 @@ def build(name, weight, f, wx, italic, outdir):
     style = f'{name} Italic' if italic else name
     fn = f"{FAMILY_ASCII}-{name.replace(chr(39), '')}{'Italic' if italic else ''}"   # sans apostrophe ni accent
     nd, ndw = notdef()
-    order = ['.notdef']; cmap = {}; glyphs = {'.notdef': nd}; hm = {'.notdef': (ndw, 0)}
+    order = ['.notdef']; cmap = {}; glyphs = {'.notdef': nd}; hm = {'.notdef': (ndw, 0 if ndw == 1000 else 50)}
     ymin, ymax = 0, 0
     for ch in sorted(fl.G, key=lambda c: (len(c) > 1, ord(c[0]) if len(c) == 1 else 0, c)):
         p, w, l, r = fl.G[ch]
@@ -99,7 +104,7 @@ def build(name, weight, f, wx, italic, outdir):
     n1, n2 = style_names(name, weight, italic)
     ps = fn
     fb.setupNameTable({
-        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard". .notdef: Copyright (c) 2016, Jérémy Landes (Velvetyne notdef, SIL Open Font License 1.1).',
+        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard".' + (' .notdef: Copyright (c) 2016, Jérémy Landes (Velvetyne notdef, SIL Open Font License 1.1).' if os.environ.get('VELVETYNE') else ''),
         'familyName': n1, 'styleName': n2,
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
         'fullName': f'{FAMILY} {style}', 'psName': ps,

@@ -40,11 +40,12 @@ Les graisses sont comptées en klingon : *vatlh* veut dire « cent ». Les fichi
 
 ## Caractères
 
-321 caractères : majuscules, minuscules, chiffres, ponctuation et symboles, et tous les accents des langues d'Europe à alphabet latin (le jeu « GF Latin Core » : français, allemand, espagnol, polonais, tchèque, slovaque, hongrois, roumain, turc, letton, lituanien, langues nordiques…), avec Ø Ł Đ Ħ Þ ð ¦ †, les accents seuls et les accents combinants, placés automatiquement sur les lettres. Le caractère « manquant » (.notdef) est celui de Velvetyne, de Jérémy Landes (SIL OFL 1.1).
+321 caractères : majuscules, minuscules, chiffres, ponctuation et symboles, et tous les accents des langues d'Europe à alphabet latin (le jeu « GF Latin Core » : français, allemand, espagnol, polonais, tchèque, slovaque, hongrois, roumain, turc, letton, lituanien, langues nordiques…), avec Ø Ł Đ Ħ Þ ð ¦ †, les accents seuls et les accents combinants, placés automatiquement sur les lettres.
 
 ## Versions
 
-- **1.1.1** : jeu de caractères de Velvetyne complet : monogramme VTF dessiné dans le style de Brécard, ¦ †, accents seuls à hauteur de capitale, et le .notdef de Velvetyne (Jérémy Landes, SIL OFL 1.1).
+- **1.1.2** : retour au .notdef de Brécard, sans monogramme.
+- **1.1.1** : ¦ †, accents seuls à hauteur de capitale.
 - **1.1** : 166 caractères en plus (jeu GF Latin Core), nouveaux accents dessinés dans le style de Brécard (macron, caron, brève, point, rond, double aigu, ogonek, virgule), symboles < > [ ] { } | ~ ^ § ¶ × ÷ ¢ ¥ • ·, placement automatique des accents combinants.
 - **1.0.1** : crénage, de 1 500 à 2 100 paires selon le style (AV, LT, To, P.…). Les lettres accentuées suivent leur lettre de base.
 - **1.0** : première version.
