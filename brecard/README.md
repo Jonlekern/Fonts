@@ -42,6 +42,11 @@ Les graisses sont comptées en klingon : *vatlh* veut dire « cent ». Les fichi
 
 Majuscules, minuscules, chiffres, accents du français, de l'allemand et de l'espagnol (À Â Ä Á Ç É È Ê Ë Í Î Ï Ñ Ó Ô Ö Ú Ù Û Ü Ÿ Œ Æ ẞ et leurs minuscules, ß), ponctuation et symboles (« » „ “ ” ‘ ’ ¡ ¿ … – — & @ # % € $ £ © ® ™ °…).
 
+## Versions
+
+- **1.0.1** : crénage, de 1 500 à 2 100 paires selon le style (AV, LT, To, P.…). Les lettres accentuées suivent leur lettre de base.
+- **1.0** : première version.
+
 ## Fichiers
 
 | Chemin | Contenu |

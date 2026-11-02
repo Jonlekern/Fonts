@@ -28,6 +28,11 @@ Page : **https://jonlekern.github.io/Fonts/falsard/**
 5. Prolongée sous 400 (XXXS, XXS) et au-dessus de 900 (XXXL, XXXXL).
 6. © ® ™ dessinés avec les lettres de Falsard.
 
+## Versions
+
+- **1.0.1** : guillemets « » ‹ ›, petits et posés en bas, et point médian ·. LaFleurStudio noté comme fabricant, les auteurs d'Orbitron restent crédités.
+- **1.0** : première version.
+
 ## Fichiers
 
 | Chemin | Contenu |
