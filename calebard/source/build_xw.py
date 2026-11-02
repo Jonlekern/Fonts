@@ -54,8 +54,13 @@ F["OS/2"].usWeightClass = 1000
 for gname, pts in OVR.get("_final_pts", {}).items():
     gl = F["glyf"][gname]
     for i, (ox, oy, nx, ny) in pts.items():
-        assert tuple(gl.coordinates[int(i)]) == (ox, oy), (gname, i, gl.coordinates[int(i)])
-        gl.coordinates[int(i)] = (nx, ny)
+        if STRETCH == 1.30:
+            assert tuple(gl.coordinates[int(i)]) == (ox, oy), (gname, i, gl.coordinates[int(i)])
+            gl.coordinates[int(i)] = (nx, ny)
+        else:   # même retouche, déplacement mis à l'échelle de la nouvelle largeur
+            cx, cy = gl.coordinates[int(i)]; kr = k / float(os.environ.get("K130", "1.3384"))
+            print("retouche", gname, i, (cx, cy), "à 130 % :", (ox, oy))
+            gl.coordinates[int(i)] = (cx + round((nx - ox) * kr), cy + (ny - oy))
     gl.recalcBounds(F["glyf"])
 F.save(f"{sys.argv[2]}/Calebard-{os.environ.get('XNAME', 'W1000')}.ttf")
 print({"stem_900": stem(900), "stem_1000_target": stem_1000, "stem_result": stem_after,

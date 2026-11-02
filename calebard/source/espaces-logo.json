@@ -1,0 +1,17 @@
+{
+ "_note": "Espaces entre les lettres du logo LAFLEURSTUDIO, en unités (hauteur des capitales = 1350).",
+ "espaces": {
+  "LA": 81.0,
+  "AF": 310.5,
+  "FL": 432.0,
+  "LE": 324.0,
+  "EU": 430.4,
+  "UR": 525.1,
+  "RS": 227.4,
+  "ST": 238.4,
+  "TU": 308.9,
+  "UD": 525.1,
+  "DI": 383.7,
+  "IO": 377.3
+ }
+}

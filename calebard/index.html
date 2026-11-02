@@ -54,10 +54,10 @@
       <h1 style="margin-top:18px">CALEBARD</h1>
       <div class="lede">
         <p><strong>Une sans-serif super étendue</strong>, taillée pour les titres, les logos et l'affiche. Des lettres larges, posées, avec un petit côté pub de voiture de sport des années 70.</p>
-        <p><strong>11 graisses</strong>, du Hairline, fin comme un cheveu, jusqu'à l'Extreme Black. Toutes étirées à 130 %, avec des épaisseurs rééquilibrées à la main.</p>
+        <p><strong>11 graisses</strong>, du Hairline, fin comme un cheveu, jusqu'à l'Extreme Black. Toutes étirées à 120,9 %, avec des épaisseurs rééquilibrées à la main.</p>
       </div>
       <div class="facts">
-        <span>11 graisses</span><span>+ Goofy et Extra Goofy</span><span>785 glyphes</span><span>Latin étendu</span><span>Licence libre SIL OFL 1.1</span>
+        <span>11 graisses</span><span>+ Goofy et Extra Goofy</span><span>785 glyphes</span><span>Latin étendu</span><span>Licence libre SIL OFL 1.1</span><span>Version 1.0.1</span>
       </div>
     </div>
   </div>
@@ -126,17 +126,17 @@
           </div>
           <div class="demo" aria-label="Anybody poussée à sa largeur maximale">
             <div class="row"><small>Anybody, largeur 150 (le maximum de la police)</small><span style="font-family:'Anybody',var(--sans);font-stretch:150%;font-weight:400">LAFLEURSTUDIO</span></div>
-            <div class="row"><small>Calebard Regular, étirée à 130 %</small><span style="font-weight:400">LAFLEURSTUDIO</span></div>
+            <div class="row"><small>Calebard Regular, étirée à 120,9 %</small><span style="font-weight:400">LAFLEURSTUDIO</span></div>
           </div>
         </div>
 
         <div class="step">
           <div>
-            <h3>Étirer à 130 % sans déformer</h3>
-            <p>Anybody s'arrête à 150 de largeur. Pour aller plus loin, il fallait étirer les lettres. Le problème : étirer à 130 % épaissit les traits verticaux de 30 %, mais pas les horizontaux. Les lettres ont l'air déformées.</p>
-            <p>La solution : <strong>prendre les coordonnées horizontales d'une graisse plus fine</strong>, puis étirer. Les verticales retombent pile à leur épaisseur d'origine. Les coordonnées verticales, elles, viennent de la vraie graisse. Pour le Black : verticales à <strong>559</strong> unités contre 560 à l'origine, au lieu de 728 en étirement brut.</p>
+            <h3>Étirer sans déformer</h3>
+            <p>Anybody s'arrête à 150 de largeur. Pour aller plus loin, il fallait étirer les lettres. Le problème : étirer à 120,9 % épaissit les traits verticaux d'environ 21 %, mais pas les horizontaux. Les lettres ont l'air déformées.</p>
+            <p>La solution : <strong>prendre les coordonnées horizontales d'une graisse plus fine</strong>, puis étirer. Les verticales retombent pile à leur épaisseur d'origine. Les coordonnées verticales, elles, viennent de la vraie graisse. Pour le Black : verticales à <strong>559</strong> unités contre 560 à l'origine, au lieu de 677 en étirement brut.</p>
           </div>
-          <figure class="fig"><img src="images/etirement-130.png" alt="Comparaison : référence, étirement brut à 130 % et version corrigée, avec zoom sur RS"><figcaption>Référence, étirement brut, version corrigée.</figcaption></figure>
+          <figure class="fig"><img src="images/etirement-130.png" alt="Comparaison : référence, étirement brut à 130 % et version corrigée, avec zoom sur RS"><figcaption>Référence, étirement brut, version corrigée (exemple à 130 %, la largeur de la première version).</figcaption></figure>
         </div>
 
         <div class="step">
@@ -157,7 +157,7 @@
           <div>
             <h3>Dépasser le Black</h3>
             <p>Anybody s'arrête à 900. Pour l'<strong>Extra Black</strong> (1000) et l'<strong>Extreme Black</strong> (1100), la police a été prolongée au-delà de sa limite.</p>
-            <p>Plus c'est gras, plus les trous se bouchent. Un script a mesuré les fentes de chaque caractère, puis les lettres fautives ont été corrigées une par une, en affinant seulement leurs horizontales : <strong>43 corrections</strong> pour l'Extra Black, <strong>56</strong> pour l'Extreme Black, plus quelques accents déplacés.</p>
+            <p>Plus c'est gras, plus les trous se bouchent. Un script a mesuré les fentes de chaque caractère, puis les lettres fautives ont été corrigées une par une, en affinant seulement leurs horizontales : <strong>44 corrections</strong> pour l'Extra Black, <strong>59</strong> pour l'Extreme Black, plus quelques accents déplacés.</p>
           </div>
           <figure class="fig"><img src="images/extra-black-corrections.png" alt="Caractères de l'Extra Black : Black en gris, avant correction en rouge, corrigés en noir"><figcaption>En gris le Black, en rouge l'Extra Black avant correction, en noir après.</figcaption></figure>
         </div>
@@ -169,6 +169,28 @@
             <p>La même règle a ensuite été appliquée aux lettres qui avaient ce coin, <strong>S, 2, 3, 6, 9, ? et C</strong>, sur le Super Bold, le Black, l'Extra Black et l'Extreme Black.</p>
           </div>
           <figure class="fig"><img src="images/cinq-options.png" alt="Trois versions du 5 avec les coins arrondis"><figcaption>Les trois versions du 5. La n° 2 a été choisie.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Version 1.0.1 : réglée sur le logo</h3>
+            <p>La largeur passe de 130 % à <strong>120,9 %</strong>. Tapé en Black, LAFLEURSTUDIO a maintenant exactement la largeur du logo du studio.</p>
+            <p>L'espace entre deux capitales dépend de la forme de leurs côtés : <strong>6 règles</strong>, en pourcentage de la hauteur des capitales. Les minuscules, les chiffres et les signes suivent dans la même proportion, et les 12 paires de LAFLEURSTUDIO ont un petit réglage en plus.</p>
+            <p>Deux lettres retouchées : le <strong>U</strong> est moins large et la <strong>queue du J</strong> plus courte.</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Côté</th><th>Lettres</th><th>Espace</th></tr></thead>
+              <tbody>
+                <tr><td>Droit</td><td>H, I, M, N, U, gauche du E…</td><td>19 %</td></tr>
+                <tr><td>Bras</td><td>droite du E et du F</td><td>13 %</td></tr>
+                <tr><td>Rond</td><td>O, S, droite du D</td><td>10 %</td></tr>
+                <tr><td>Jambe</td><td>droite du R</td><td>6,5 %</td></tr>
+                <tr><td>Ouvert</td><td>droite du L, T</td><td>5 %</td></tr>
+                <tr><td>Diagonale</td><td>A, V, W, X, Y</td><td>2,5 %</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </div>
@@ -226,10 +248,10 @@ window.SPECIMEN = {
 <script>
 // family table (font units; UPM 2000)
 const FAM = [
-  ["Hairline",100,"93,4*",22,29,22],["Thin",200,"169,0",99,129,97],["Light",300,"228,7",149,194,148],
-  ["Regular",400,"339,2",247,321,247],["Medium",500,"377,7",297,386,296],["Bold",600,"427,9",346,450,345],
-  ["Extra Bold",700,"534,4",415,540,414],["Super Bold",800,"637,4",495,644,496],["Black",900,"704,7",560,728,559],
-  ["Extra Black",1000,"764,2",625,"—",625],["Extreme Black",1100,"830,5",690,"—",692]
+  ["Hairline",100,"95,0*",22,27,22],["Thin",200,"177,8",99,120,99],["Light",300,"246,8",149,180,149],
+  ["Regular",400,"354,9",247,299,247],["Medium",500,"395,8",297,359,297],["Bold",600,"470,9",346,418,345],
+  ["Extra Bold",700,"584,3",415,502,416],["Super Bold",800,"681,1",495,598,496],["Black",900,"748,6",560,677,559],
+  ["Extra Black",1000,"816,7",625,"—",624],["Extreme Black",1100,"895,7",690,"—",692]
 ];
 document.getElementById("famtable").innerHTML = FAM.map(r =>
   `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td class="bad">${r[4]}</td><td class="good">${r[5]}</td></tr>`).join("") +

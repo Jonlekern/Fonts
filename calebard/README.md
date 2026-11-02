@@ -60,6 +60,11 @@ Le logo fleur du studio est inclus dans toutes les polices :
 @font-face { font-family: "Calebard Extreme"; font-weight: 1000; src: url(Calebard-ExtremeBlack.woff2) format("woff2"); }
 ```
 
+## Versions
+
+- **1.0.1** : largeur 120,9 % (LAFLEURSTUDIO tapé en Black a la largeur du logo du studio), espacement des capitales en 6 règles, U moins large, queue du J plus courte.
+- **1.0** : première version, étirée à 130 %.
+
 ## Licence
 
 Calebard est une version modifiée d'[Anybody](https://github.com/Etcetera-Type-Co/Anybody) (Etcetera Type Co.), distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
