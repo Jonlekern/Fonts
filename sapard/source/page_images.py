@@ -54,17 +54,17 @@ def sheet(fn, rows, width=2000, pad=100, maxscale=0.2):
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{y + 20}" viewBox="0 0 {width} {y + 20}"><rect width="100%" height="100%" fill="{BG}"/>{"".join(parts)}</svg>'
     open(os.path.join(OUTD, fn.replace('.png', '.svg')), 'w').write(svg); print(fn, width, y + 20)
 
-# 1. le A en pointe de flèche, du Thin au Black
+# 1. le A en pointe de flèche, de 100 à 900
 sheet('fleche.png', [
-    ('Le A en pointe de flèche · Thin, Regular, ExtraBold, Black',
-     word([('A ', 'Thin'), ('A ', 'Regular'), ('A ', 'ExtraBold'), ('A', 'Black')])),
+    ('Le A en pointe de flèche · 100, 400, 800, 900',
+     word([('A ', 'wavatlh'), ('A ', 'loSvatlh'), ('A ', 'chorghvatlh'), ('A', 'Hutvatlh')])),
 ], maxscale=0.32)
 
 # 2. les règles
 sheet('regles.png', [
-    ('Les ronds en losange', word([('OCGQ08', 'ExtraBold')])),
-    ('Les bouts coupés en biais vers l’intérieur', word([('HUFKN', 'ExtraBold')])),
-    ('Les traits qui finissent seuls, en coin', word([('IT147R', 'ExtraBold')])),
+    ('Les ronds en losange', word([('OCGQ08', 'chorghvatlh')])),
+    ('Les bouts coupés en biais vers l’intérieur', word([('HUFKN', 'chorghvatlh')])),
+    ('Les traits qui finissent seuls, en coin', word([('IT147R', 'chorghvatlh')])),
 ])
 
 # 3. le poids en haut : avant / après
@@ -75,14 +75,14 @@ avant = word_fl('LAFLEURSTUDIO')
 fl.MID = 0.42; fl.set_weight(1.0)
 sheet('poids.png', [
     ('Avant · le milieu au centre, les barres égales', avant),
-    ('Sapard · milieux plus bas, barres du haut plus épaisses', word([('LAFLEURSTUDIO', 'ExtraBold')])),
+    ('Sapard · milieux plus bas, barres du haut plus épaisses', word([('LAFLEURSTUDIO', 'chorghvatlh')])),
 ])
 
 # 4. les minuscules
 sheet('minuscules.png', [
-    ('Les verticales en coin, comme le i', word([('abcdefghijklm', 'ExtraBold')])),
-    ('', word([('nopqrstuvwxyz', 'ExtraBold')])),
-    ('Avec les capitales', word([('LaFleurStudio', 'ExtraBold')])),
+    ('Les verticales en coin, comme le i', word([('abcdefghijklm', 'chorghvatlh')])),
+    ('', word([('nopqrstuvwxyz', 'chorghvatlh')])),
+    ('Avec les capitales', word([('LaFleurStudio', 'chorghvatlh')])),
 ])
 
 # Les PNG sont faits ensuite avec svg2png.js (Chromium) : node svg2png.js <dossier>

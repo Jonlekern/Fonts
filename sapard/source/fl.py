@@ -615,10 +615,10 @@ def set_weight(f, wx=1.0):
             p, w, l, r = G[ch]
             G[ch] = (tf(p, (wx, 0, 0, 1, 0, 0)), w*wx, l*wx, r*wx)
 
-WEIGHTS = [  # nom, poids, épaisseur, élargissement
-    ('Thin', 100, 0.18, 1.0), ('ExtraLight', 200, 0.30, 1.0), ('Light', 300, 0.43, 1.0),
-    ('Regular', 400, 0.56, 1.0), ('Medium', 500, 0.68, 1.0), ('SemiBold', 600, 0.80, 1.0),
-    ('Bold', 700, 0.90, 1.0), ('ExtraBold', 800, 1.00, 1.0), ('Black', 900, 1.18, 1.12),
+WEIGHTS = [  # nom (les centaines en klingon : vatlh = cent), poids, épaisseur, élargissement
+    ("wa'vatlh", 100, 0.18, 1.0), ("cha'vatlh", 200, 0.30, 1.0), ('wejvatlh', 300, 0.43, 1.0),
+    ('loSvatlh', 400, 0.56, 1.0), ('vaghvatlh', 500, 0.68, 1.0), ('javvatlh', 600, 0.80, 1.0),
+    ('Sochvatlh', 700, 0.90, 1.0), ('chorghvatlh', 800, 1.00, 1.0), ('Hutvatlh', 900, 1.18, 1.12),
 ]
 
 # ---------------------------------------------------------------- rendu
