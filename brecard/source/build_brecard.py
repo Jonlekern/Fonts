@@ -45,12 +45,18 @@ def ttglyph(path):
     return pen.glyph()
 
 def notdef():
-    pen = TTGlyphPen(None)
-    for pts in ([(50, 0), (50, 700), (450, 700), (450, 0)], [(100, 50), (400, 50), (400, 650), (100, 650)]):
-        pen.moveTo(pts[0])
-        for p in pts[1:]: pen.lineTo(p)
-        pen.closePath()
-    return pen.glyph()
+    """.notdef de Velvetyne (Jérémy Landes, 2016, SIL OFL 1.1), lu depuis velvetyne-notdef.glif"""
+    from fontTools.ufoLib.glifLib import readGlyphFromString
+    from fontTools.pens.recordingPen import RecordingPen
+    from fontTools.pens.pointPen import PointToSegmentPen
+    class G_: pass
+    rec = RecordingPen(); gl = G_()
+    readGlyphFromString(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'velvetyne-notdef.glif')).read(), gl, PointToSegmentPen(rec))
+    pen = TTGlyphPen(None); rec.replay(pen); g = pen.glyph()
+    a = AreaPen(); rec.replay(a)
+    if a.value > 0:
+        pen = TTGlyphPen(None); rec.replay(ReverseContourPen(pen)); g = pen.glyph()
+    return g, int(getattr(gl, 'width', 1000))
 
 def style_names(name, weight, italic):
     """Noms « anciens » (1 et 2) : 400 et 700 restent le Regular et le Bold de la famille."""
@@ -63,11 +69,12 @@ def build(name, weight, f, wx, italic, outdir):
     shear = ITALIC_ANGLE if italic else 0
     style = f'{name} Italic' if italic else name
     fn = f"{FAMILY_ASCII}-{name.replace(chr(39), '')}{'Italic' if italic else ''}"   # sans apostrophe ni accent
-    order = ['.notdef']; cmap = {}; glyphs = {'.notdef': notdef()}; hm = {'.notdef': (500, 50)}
+    nd, ndw = notdef()
+    order = ['.notdef']; cmap = {}; glyphs = {'.notdef': nd}; hm = {'.notdef': (ndw, 0)}
     ymin, ymax = 0, 0
-    for ch in sorted(fl.G, key=lambda c: (ord(c))):
+    for ch in sorted(fl.G, key=lambda c: (len(c) > 1, ord(c[0]) if len(c) == 1 else 0, c)):
         p, w, l, r = fl.G[ch]
-        gn = gname(ch)
+        gn = gname(ch) if len(ch) == 1 else ch          # VTF : glyphe sans code Unicode
         path = clean(p, l, shear)
         g = ttglyph(path)
         bp = BoundsPen(None); path.draw(bp)
@@ -78,7 +85,8 @@ def build(name, weight, f, wx, italic, outdir):
             hm[gn] = (adv, int(round(x0)))
         else:
             hm[gn] = (adv, 0)
-        order.append(gn); glyphs[gn] = g; cmap[ord(ch)] = gn
+        order.append(gn); glyphs[gn] = g
+        if len(ch) == 1: cmap[ord(ch)] = gn
     cmap[0x00A0] = 'space'
     fb = FontBuilder(1000, isTTF=True)
     fb.setupGlyphOrder(order)
@@ -91,7 +99,7 @@ def build(name, weight, f, wx, italic, outdir):
     n1, n2 = style_names(name, weight, italic)
     ps = fn
     fb.setupNameTable({
-        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard".',
+        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard". .notdef: Copyright (c) 2016, Jérémy Landes (Velvetyne notdef, SIL Open Font License 1.1).',
         'familyName': n1, 'styleName': n2,
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
         'fullName': f'{FAMILY} {style}', 'psName': ps,
