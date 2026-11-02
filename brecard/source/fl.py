@@ -829,6 +829,15 @@ def build_ext():
     add('·', dia(dhw, H*MID, dhw, dhh), 2*dhw, 40, 40)
     p, w, l, r = G[','];  add('‚', p, w, l, r)
     add('•', dia(150*gg, H*MID, 150*gg, 175*gg), 300*gg, 50, 50)
+    # ¦ † (jeu de caractères Velvetyne)
+    add('¦', U(box(0, -160, tv, 230), box(0, 370, tv, H + 90)), tv, 70, 70)
+    wd = 420; cxd = wd/2; hwd = 75*ww()
+    add('†', U(P([(cxd - hwd, H + 40), (cxd + hwd, H + 40), (cxd, -160)]), stroke_bar(0, wd, H*0.66, TM*0.75)), wd, 30, 30)
+    # monogramme VTF (demandé par Velvetyne) : le V, puis le T et le F qui partagent la même barre du haut
+    Vp, Vw = G['V'][0], G['V'][1]; Tp, Tw = G['T'][0], G['T'][1]; Fp, Fw = G['F'][0], G['F'][1]
+    xT = Vw + 30; xF = xT + Tw/2 + 140
+    Wm = xF + Fw
+    add('VTF', U(Vp, mv(Tp, xT), mv(Fp, xF), bar(xT, xF + 10, H - BT, BT)), Wm, 40, 40)
     # ---------------------------------------------------------------- accents seuls (avec chasse) et combinants
     SPACING = {'`': 'grave', '¨': 'dier', '¯': 'macron', '´': 'acute', '¸': 'cedilla', '˘': 'breve', '˙': 'dot', '˚': 'ring',
                '˛': 'ogonek', '˜': 'tilde', '˝': 'dacute', 'ˆ': 'circ', 'ˇ': 'caron'}
@@ -837,6 +846,10 @@ def build_ext():
         if m not in BELOW: mk = mv(mk, 0, up)
         x0, _, x1, _ = mk.bounds
         add(ch, mv(mk, -x0), x1 - x0, 40, 40)
+    for nm, m in (('acute.case', 'acute'), ('grave.case', 'grave'), ('circumflex.case', 'circ'), ('tilde.case', 'tilde'),
+                  ('dieresis.case', 'dier'), ('ring.case', 'ring')):          # accents seuls à hauteur de capitale (jeu Velvetyne)
+        mk = MARKS[m](); x0, _, x1, _ = mk.bounds
+        add(nm, mv(mk, -x0), x1 - x0, 40, 40)
     COMB = {'̀': 'grave', '́': 'acute', '̂': 'circ', '̃': 'tilde', '̄': 'macron', '̆': 'breve',
             '̇': 'dot', '̈': 'dier', '̊': 'ring', '̋': 'dacute', '̌': 'caron', '̦': 'commabelow',
             '̧': 'cedilla', '̨': 'ogonek'}

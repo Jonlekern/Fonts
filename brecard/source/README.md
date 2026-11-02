@@ -6,6 +6,7 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, Pillow) utilisés pour dessi
 | --- | --- |
 | `fl.py` | Le dessin de toutes les lettres, en segments droits, pour n'importe quelle graisse (`set_weight`), y compris les caractères du jeu GF Latin Core (`build_ext`) |
 | `build_brecard.py` | Les 18 fichiers : 9 graisses, chacune en droit et en italique à 16°, noms, métriques, WOFF2 |
+| `velvetyne-notdef.glif` | Le .notdef de Velvetyne (Jérémy Landes, 2016, SIL OFL 1.1), repris tel quel par `build_brecard.py` |
 | `feat_brecard.py` | Fonctions OpenType : crénage (avec `kern_brecard.py`) et placement des accents combinants (`mark`), compilés ensemble |
 | `kern_brecard.py` | Crénage : le blanc entre chaque paire de lettres est mesuré ligne par ligne et les paires trop ouvertes (AV, LT, To, P.…) sont rapprochées, avec un écart minimal ; les lettres accentuées suivent leur lettre de base |
 | `set_version.py` | Numéro de version dans les fichiers |
@@ -17,7 +18,7 @@ Utilisation :
 ```
 python build_brecard.py out          # écrit out/ttf et out/woff2
 for f in out/ttf/*.ttf; do python feat_brecard.py $f $f; done
-python set_version.py 1.100 out/ttf/*.ttf   # puis refaire les WOFF2
+python set_version.py 1.101 out/ttf/*.ttf   # puis refaire les WOFF2
 python page_images.py out/ttf images
 node svg2png.js images
 ```
