@@ -30,7 +30,7 @@ Le format s'arrête à 1000 : Grande, Venti et Trenta sont déclarées entre 900
 
 | Chemin | Contenu |
 | --- | --- |
-| `Clebard.zip` | Les 6 tailles en TTF + licence |
+| `Clebard.zip` | Les 6 tailles en TTF et WOFF2, la licence et les sources (toute l’œuvre listée dans `MANIFEST-Clebard.txt`) |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page |

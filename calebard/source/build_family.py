@@ -181,12 +181,14 @@ def set_names(F, W, style):
     vals = {0: cp + ". Modifications (Calebard) 2026 LaFleurStudio.",
             1: fam1, 2: style if ribbi else "Regular", 3: f"1.000;{FAMILY}-{style}",
             4: f"{FAMILY} {style}", 6: f"{FAMILY}-{style}", 16: FAMILY, 17: style,
-            10: "Calebard is a modified version of Anybody (SIL Open Font License 1.1)."}
-    nm.names = [r for r in nm.names if r.nameID not in (1, 2, 3, 4, 6, 16, 17, 25)]
+            10: "Calebard is a modified version of Anybody (SIL Open Font License 1.1).",
+            8: "LaFleurStudio", 9: "LaFleurStudio, based on Anybody by Tyler Finck (Etcetera Type Co.)", 11: "https://jonlekern.github.io/Fonts/"}
+    nm.names = [r for r in nm.names if r.nameID not in (1, 2, 3, 4, 6, 8, 9, 11, 12, 16, 17, 25)]
     for i, v in vals.items():
         nm.setName(v, i, 3, 1, 0x409); nm.setName(v, i, 1, 0, 0)
     os2 = F["OS/2"]
     os2.usWeightClass, os2.usWidthClass = W, 9
+    os2.achVendID = 'LFST'
     os2.fsSelection &= ~((1 << 0) | (1 << 5) | (1 << 6))
     os2.fsSelection |= (1 << 5) if style == "Bold" else (1 << 6)
     F["head"].macStyle = 1 if style == "Bold" else 0

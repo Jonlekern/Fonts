@@ -32,6 +32,8 @@ Changes made by LaFleurStudio (2026)
   accents moved apart from the letters. In Trenta, the glyphs that would
   close are taken from Venti and thickened horizontally only.
 - Spacing and kerning taken from Calebard (LaFleurStudio).
+- Embedding flag (fsType) set to 0: the fonts can be installed and embedded
+  freely.
 - Outlines converted to TrueType; names, vertical metrics and weight
   classes changed.
 
