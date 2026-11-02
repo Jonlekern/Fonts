@@ -44,7 +44,7 @@ if italic:
 
 REF = sys.argv[7] if len(sys.argv) > 7 else None
 if italic or REF:
-    upright = TTFont(src) if italic else TTFont(REF)
+    upright = TTFont(REF) if REF else TTFont(src)
     # crénage : on garde au moins un petit jour entre les lettres (italique, graisses extrêmes)
     class Flat(BasePen):
         def __init__(s, gs): super().__init__(gs); s.polys = []; s.cur = []
@@ -100,17 +100,17 @@ if metrics:
 os2.version = max(os2.version, 4)
 fs = os2.fsSelection & ~((1 << 0) | (1 << 5) | (1 << 6)) | (1 << 7)
 if italic: fs |= 1
-elif weight == 700: fs |= (1 << 5)
-elif weight == 400: fs |= (1 << 6)
+if weight == 700: fs |= (1 << 5)
+if weight == 400 and not italic: fs |= (1 << 6)
 os2.fsSelection = fs
 os2.usWeightClass = weight
 os2.sCapHeight = glyf['H'].yMax; os2.sxHeight = glyf['x'].yMax
 os2.achVendID = 'LFST'
-f['head'].macStyle = (1 if weight == 700 and not italic else 0) | (2 if italic else 0)
+f['head'].macStyle = (1 if weight == 700 else 0) | (2 if italic else 0)
 f['head'].fontRevision = 1.0
 
 fam = 'Malabard'; full = f'{fam} {style}'; ps = f'{fam}-{style.replace(" ", "")}'
-if style in ('Regular', 'Bold'): n1, n2 = fam, style
+if style in ('Regular', 'Bold', 'Italic', 'Bold Italic'): n1, n2 = fam, style
 elif italic: n1, n2 = f'{fam} {style.replace(" Italic", "")}', 'Italic'
 else: n1, n2 = f'{fam} {style}', 'Regular'
 COPY = ('Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved Font Name "Righteous". '
