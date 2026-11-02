@@ -62,7 +62,7 @@ Le logo fleur du studio est inclus dans toutes les polices :
 
 ## Versions
 
-- **1.0.1** : largeur 120,9 % (LAFLEURSTUDIO tapé en Black a la largeur du logo du studio), espacement des capitales en 6 règles, U moins large, queue du J plus courte.
+- **1.0.1** : largeur 120 % (LAFLEURSTUDIO tapé en Black a la largeur du logo du studio), espacement des capitales en 6 règles, U moins large, queue du J plus courte.
 - **1.0** : première version, étirée à 130 %.
 
 ## Licence

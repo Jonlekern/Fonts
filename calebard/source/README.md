@@ -10,7 +10,7 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `check_1000.py`, `check_all.py` | Mesure des fentes et des trous de chaque caractère, comparaison avec la graisse voisine |
 | `solve_many_x.py`, `solve_topo.py` | Calcul, lettre par lettre, de l'affinage des horizontales pour rouvrir les trous |
 | `overrides-1000.json`, `overrides-1100.json` | Corrections de l'Extra Black et de l'Extreme Black (version 1.0, à 130 %) |
-| `overrides-1000-120.json`, `overrides-1100-120.json` | Les mêmes, complétées pour la version 1.0.1 (120,9 %) |
+| `overrides-1000-120.json`, `overrides-1100-120.json` | Les mêmes, complétées pour la version 1.0.1 (120 %) |
 | `five_black.py` | Retouche du coin du 5 dans le Black |
 | `fix_five.py`, `scan_corners.py`, `fix_corners.py` | Arrondi des coins où une fente débouche dans un trou (5, S, 2, 3, 6, 9, ?, C) |
 | `nudge.py` | Version 1.0.1 : enlève les contours vides et écarte les accents trop collés (Extra Black, Extreme Black) |
