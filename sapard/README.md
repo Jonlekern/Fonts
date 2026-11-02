@@ -60,5 +60,5 @@ Majuscules, minuscules, chiffres, accents du français, de l'allemand et de l'es
 
 ## Licence
 
-Sapard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
-Utilisation libre, y compris commerciale. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
+Sapard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)), avec le nom réservé « Sapard ».
+Utilisation libre, y compris commerciale. La police ne peut pas être vendue seule, et la licence doit l'accompagner. Une version modifiée doit porter un autre nom.
