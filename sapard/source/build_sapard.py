@@ -88,7 +88,7 @@ def build(name, weight, f, wx, italic, outdir):
     n1, n2 = style_names(style, italic)
     ps = f'{FAMILY}-{style.replace(" ", "")}'
     fb.setupNameTable({
-        'copyright': 'Copyright 2026 LaFleurStudio',
+        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Sapard".',
         'familyName': n1, 'styleName': n2,
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
         'fullName': f'{FAMILY} {style}', 'psName': ps,
