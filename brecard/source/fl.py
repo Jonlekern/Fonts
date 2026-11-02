@@ -609,6 +609,7 @@ def set_weight(f, wx=1.0):
     _thick(f/wx)
     build_letters(); build_accents(); build_specials(); build_digits()
     build_lower(); build_lower_accents()
+    build_ext()                      # GF Latin Core : accents, lettres barrées, symboles, accents combinants
     add(' ', Path(), 220, 0, 0)
     if wx != 1.0:
         for ch in list(G):
@@ -647,5 +648,202 @@ def render(text, out, px_h=220, margin=60, track=0, ytop=H+OV, ybot=-OV):
             img = ImageChops.logical_xor(img, m)
         x += w + r + track
     ImageChops.invert(img.convert('L')).resize((Wpx, Hpx), Image.LANCZOS).save(out)
+
+# ---------------------------------------------------------------- GF Latin Core (version 1.1)
+# Accents en plus : macron, caron, brève, point, rond, double aigu, ogonek, virgules (même langage : coins, losanges, pointes)
+def m_macron():
+    t = 15 + 100*WF; y0 = ACC_Y + 60
+    return P([(-200, y0 + t/2), (-150, y0 + t), (150, y0 + t), (200, y0 + t/2), (150, y0), (-150, y0)])
+def m_caron():
+    return tf(m_circ(), (1, 0, 0, -1, 0, 2*ACC_Y + 205))
+def m_breve():
+    t = 15 + 100*WF; top = ACC_Y + 200; k = 85/200; dx = t*1.087
+    outer = P([(-185, top), (-100, ACC_Y), (100, ACC_Y), (185, top)])
+    yi = ACC_Y + t; yt = top + 80
+    inner = P([(-100 - k*t + dx, yi), (100 + k*t - dx, yi), (100 + k*(yt - ACC_Y) - dx, yt), (-100 - k*(yt - ACC_Y) + dx, yt)])
+    return Dif(outer, inner)
+def m_dot():
+    hw, hh = 78*g(), 95*g()
+    return dia(0, ACC_Y + hh, hw, hh)
+def m_ring():
+    h = 230; hw = 130
+    r, _ = kring(0, ACC_Y, ACC_Y + h, hw, ACC_Y + h*0.42, 12 + 70*WF, 9 + 48*WF)
+    return r
+def m_dacute():
+    a = tf(m_acute(), (0.72, 0, 0, 1, 0, 0))
+    return U(mv(a, -95), mv(a, 95))
+def m_ogonek():                       # placé au pied droit (voir compose_x)
+    return P([(-55*g(), 40), (55*g(), 40), (75, -220)])
+def m_commabelow():
+    gg = g(); dw = 170*gg
+    return P([(-dw/2, -45), (dw/2, -45), (-0.30*dw, -265)])
+def m_commaabove():                   # pour ģ : virgule retournée au-dessus
+    gg = g(); dw = 170*gg
+    return P([(dw/2, ACC_Y + 210), (-dw/2, ACC_Y + 210), (0.25*dw, ACC_Y - 10)])
+MARKS.update({'macron': m_macron, 'caron': m_caron, 'breve': m_breve, 'dot': m_dot, 'ring': m_ring,
+              'dacute': m_dacute, 'ogonek': m_ogonek, 'commabelow': m_commabelow, 'commaabove': m_commaabove})
+BELOW = {'cedilla', 'ogonek', 'commabelow'}
+
+def foot_right(p):
+    """x du pied droit : le point d'encre le plus à droite tout en bas"""
+    lows = [(x, y) for c in contours(p) for (x, y) in c if y < 40]
+    return max(x for x, _ in lows) if lows else None
+
+def compose2(new, base, marks, lower=False):
+    p, w, l, r = G[base]; out = p
+    for m in marks:
+        mk = MARKS[m]()
+        dy = 0
+        if m == 'ogonek' and base in ('I', 'i'):     # base en pointe : la queue part du milieu, un peu plus haut
+            x = w/2 + 10; dy = 70
+        elif m == 'ogonek':
+            x = (foot_right(p) or w) - 60*g()
+        else:
+            x = w/2
+        if lower and m not in BELOW: dy = XH + 90 - ACC_Y
+        mk = mv(mk, x, dy)
+        out = U(out, mk)
+    x0, _, x1, _ = out.bounds
+    add(new, out, w, max(l, -x0 + 25), max(r, x1 - w + 25))
+
+# ---------------------------------------------------------------- GF Latin Core : le reste
+ACCENTED = {
+ 'Ã': ('A', ['tilde']), 'Å': ('A', ['ring']), 'Ì': ('I', ['grave']), 'Ò': ('O', ['grave']), 'Õ': ('O', ['tilde']), 'Ý': ('Y', ['acute']),
+ 'Ā': ('A', ['macron']), 'Ă': ('A', ['breve']), 'Ą': ('A', ['ogonek']), 'Ć': ('C', ['acute']), 'Ċ': ('C', ['dot']), 'Č': ('C', ['caron']),
+ 'Ď': ('D', ['caron']), 'Ē': ('E', ['macron']), 'Ė': ('E', ['dot']), 'Ę': ('E', ['ogonek']), 'Ě': ('E', ['caron']),
+ 'Ğ': ('G', ['breve']), 'Ġ': ('G', ['dot']), 'Ģ': ('G', ['commabelow']), 'Ī': ('I', ['macron']), 'Į': ('I', ['ogonek']), 'İ': ('I', ['dot']),
+ 'Ķ': ('K', ['commabelow']), 'Ĺ': ('L', ['acute']), 'Ļ': ('L', ['commabelow']), 'Ń': ('N', ['acute']), 'Ņ': ('N', ['commabelow']),
+ 'Ň': ('N', ['caron']), 'Ő': ('O', ['dacute']), 'Ŕ': ('R', ['acute']), 'Ř': ('R', ['caron']), 'Ś': ('S', ['acute']), 'Ş': ('S', ['cedilla']),
+ 'Š': ('S', ['caron']), 'Ť': ('T', ['caron']), 'Ū': ('U', ['macron']), 'Ů': ('U', ['ring']), 'Ű': ('U', ['dacute']), 'Ų': ('U', ['ogonek']),
+ 'Ŵ': ('W', ['circ']), 'Ŷ': ('Y', ['circ']), 'Ź': ('Z', ['acute']), 'Ż': ('Z', ['dot']), 'Ž': ('Z', ['caron']), 'Ș': ('S', ['commabelow']),
+ 'Ț': ('T', ['commabelow']), 'Ẁ': ('W', ['grave']), 'Ẃ': ('W', ['acute']), 'Ẅ': ('W', ['dier']), 'Ỳ': ('Y', ['grave']),
+}
+ACCENTED_LOW = {
+ 'ã': ('a', ['tilde']), 'å': ('a', ['ring']), 'ì': ('ı', ['grave']), 'ò': ('o', ['grave']), 'õ': ('o', ['tilde']), 'ý': ('y', ['acute']),
+ 'ā': ('a', ['macron']), 'ă': ('a', ['breve']), 'ą': ('a', ['ogonek']), 'ć': ('c', ['acute']), 'ċ': ('c', ['dot']), 'č': ('c', ['caron']),
+ 'ē': ('e', ['macron']), 'ė': ('e', ['dot']), 'ę': ('e', ['ogonek']), 'ě': ('e', ['caron']), 'ğ': ('g', ['breve']), 'ġ': ('g', ['dot']),
+ 'ģ': ('g', ['commaabove']), 'ī': ('ı', ['macron']), 'į': ('i', ['ogonek']), 'ķ': ('k', ['commabelow']), 'ļ': ('l', ['commabelow']),
+ 'ń': ('n', ['acute']), 'ņ': ('n', ['commabelow']), 'ň': ('n', ['caron']), 'ő': ('o', ['dacute']), 'ŕ': ('r', ['acute']), 'ř': ('r', ['caron']),
+ 'ś': ('s', ['acute']), 'ş': ('s', ['cedilla']), 'š': ('s', ['caron']), 'ū': ('u', ['macron']), 'ů': ('u', ['ring']), 'ű': ('u', ['dacute']),
+ 'ų': ('u', ['ogonek']), 'ŵ': ('w', ['circ']), 'ŷ': ('y', ['circ']), 'ź': ('z', ['acute']), 'ż': ('z', ['dot']), 'ž': ('z', ['caron']),
+ 'ș': ('s', ['commabelow']), 'ț': ('t', ['commabelow']), 'ẁ': ('w', ['grave']), 'ẃ': ('w', ['acute']), 'ẅ': ('w', ['dier']), 'ỳ': ('y', ['grave']),
+}
+
+def top_x(p, ymin):
+    """milieu de l'encre au-dessus de ymin (le haut d'un fût)"""
+    xs = [x for c in contours(p) for (x, y) in c if y >= ymin]
+    return (min(xs) + max(xs)) / 2
+
+def stroke_bar(x0, x1, yc, t):           # barre aux bouts en pointe, comme le macron
+    k = min(t/2, (x1 - x0)/4)
+    return P([(x0, yc), (x0 + k, yc + t/2), (x1 - k, yc + t/2), (x1, yc), (x1 - k, yc - t/2), (x0 + k, yc - t/2)])
+
+def caronvert():                      # caron en apostrophe pour ď ľ ť Ľ
+    qw = 150*(0.25 + 0.75*WF)*0.9
+    return wedge(0, qw, H, (0.13*qw, H - 270)), qw
+
+def build_ext():
+    gg = g(); up = XH + 90 - ACC_Y
+    for new, (b, m) in ACCENTED.items(): compose2(new, b, m)
+    for new, (b, m) in ACCENTED_LOW.items(): compose2(new, b, m, lower=True)
+    # ĺ : l'aigu au-dessus du fût
+    p, w, l, r = G['l']; mk = mv(MARKS['acute'](), w/2 + 40)
+    add('ĺ', U(p, mk), w, l, max(r, mk.bounds[2] - w + 25))
+    # ď ľ ť Ľ : caron en apostrophe à droite du fût
+    cv, qw = caronvert()
+    for new, base, xx, top in (('ď', 'd', None, H), ('ľ', 'l', None, H), ('ť', 't', None, H - 40), ('Ľ', 'L', S + 70, H)):
+        p, w, l, r = G[base]
+        if xx is None:
+            xs = [x for c in contours(p) for (x, y) in c if y >= top - 60]
+            xx = max(xs) + 45
+        m = mv(cv, xx, top - H)
+        add(new, U(p, m), w, l, max(r, xx + qw - w + 30))
+    # lettres barrées
+    tB = TM*0.8; tl = TM*0.52*1.1
+    p, w, l, r = G['D']; dbar = stroke_bar(-90, S + 150, H*MID, tB)
+    add('Ð', U(p, dbar), w, l + 90, r); add('Đ', U(p, dbar), w, l + 90, r)
+    p, w, l, r = G['d']; xs = top_x(p, H - 5); yb = (XH + H)/2 + 30
+    add('đ', U(p, stroke_bar(xs - 150, xs + 110, yb, tl)), w, l, max(r, xs + 110 - w + 30))
+    p, w, l, r = G['H']; add('Ħ', U(p, stroke_bar(-70, w + 70, H*0.80, tB*0.85)), w, l + 70, r + 70)
+    p, w, l, r = G['h']; xs = top_x(p, H - 5)
+    add('ħ', U(p, stroke_bar(xs - 130, xs + 150, yb, tl)), w, l + 40, r)
+    sw = 15 + 95*WF
+    p, w, l, r = G['L']; add('Ł', U(p, poly_stroke([(-70, H*0.30), (S + 170, H*0.58)], sw)), w, l + 70, r)
+    p, w, l, r = G['l']; add('ł', U(p, poly_stroke([(w/2 - 150, H*0.40), (w/2 + 150, H*0.64)], sw*0.9)), w, l + 60, r + 60)
+    p, w, l, r = G['O']; add('Ø', U(p, poly_stroke([(-40, -70), (w + 40, H + 70)], sw)), w, l + 30, r + 30)
+    p, w, l, r = G['o']; add('ø', U(p, poly_stroke([(-35, -60), (w + 35, XH + 80)], sw*0.9)), w, l + 25, r + 25)
+    # Þ þ ð
+    p, w, l, r = G['P']
+    add('Þ', U(stem(0, 0, H), X(mv(p, 0, -150), box(S - 1, -200, 3000, H))), w, l, r)
+    pb, wb, lb, rb = G['b']; pp = G['p'][0]
+    add('þ', U(pb, pp), wb, lb, rb)
+    po, wo, lo_, ro = G['o']; sl = S*0.92*0.85
+    eth = U(po, poly_stroke([(wo*0.70, XH*0.62), (wo*0.30, H)], sl), poly_stroke([(wo*0.22, H*0.80), (wo*0.78, H*0.92)], tl))
+    add('ð', eth, wo, lo_, ro)
+    # ȷ : j sans point
+    jw = G['j'][1]; add('ȷ', P([(0, XH), (jw, XH), (jw*0.15, DE)]), jw, 30, 40)
+    # ª º
+    sa = 0.6; yo = H*0.40
+    for new, base in (('ª', 'a'), ('º', 'o')):
+        p, w, l, r = G[base]
+        small = tf(p, (sa, 0, 0, sa, 0, yo))
+        add(new, U(small, stroke_bar(0, w*sa, yo - 70, 12 + 60*WF)), w*sa, 40, 40)
+    # ---------------------------------------------------------------- symboles
+    pc = 300
+    def chev(x0, cy, h, wd, d_in):
+        c = d_in*(h/2)/wd
+        return P([(x0, cy), (x0 + wd, cy + h/2), (x0 + wd, cy + h/2 - c), (x0 + d_in, cy), (x0 + wd, cy - h/2 + c), (x0 + wd, cy - h/2)])
+    lt = chev(0, pc, 460, 400, 40 + 130*WF)
+    add('<', lt, 400, 40, 40); add('>', tf(lt, (-1, 0, 0, 1, 400, 0)), 400, 40, 40)
+    add('^', tf(m_circ(), (1.3, 0, 0, 1.5, 240, 390 - 1.5*ACC_Y)), 480, 30, 30)
+    tv = 15 + 110*WF; add('|', box(0, -160, tv, H + 90), tv, 70, 70)
+    sp = poly_stroke([(-230, pc - 80), (-80, pc + 65), (80, pc - 65), (230, pc + 80)], 10 + 110*WF, 4)
+    add('~', mv(X(sp, box(-200, pc - 200, 200, pc + 200)), 200), 400, 40, 40)
+    p, w, l, r = G['c']; tc = 12 + 75*WF; cx = 0.45*w
+    add('¢', U(p, box(cx - tc/2, -110, cx + tc/2, XH + 130)), w, l, max(r, 20))
+    p, w, l, r = G['Y']; cy_ = w/2; tbY = TM*0.6
+    add('¥', U(p, stroke_bar(cy_ - 190, cy_ + 190, 130, tbY), stroke_bar(cy_ - 190, cy_ + 190, 290, tbY)), w, l, r)
+    plus = G['+'][0]; c45 = math.sqrt(0.5)
+    rot = tf(mv(plus, -220, -pc), (c45, c45, -c45, c45, 0, 0))
+    add('×', mv(rot, 220, pc), 440, 40, 40)
+    minus = box(0, pc - 60*WF, 440, pc + 60*WF)
+    add('−', minus, 440, 40, 40)
+    dd = 70*gg; dh = 85*gg
+    add('÷', U(minus, dia(220, pc + 60*WF + 50 + dh, dd, dh), dia(220, pc - 60*WF - 50 - dh, dd, dh)), 440, 40, 40)
+    Sp = G['S'][0]; ss = 0.6; sw_S = G['S'][1]*ss
+    add('§', U(tf(Sp, (ss, 0, 0, ss, 0, H*0.40)), tf(Sp, (ss, 0, 0, ss, 0, -H*0.12))), sw_S, 40, 40)
+    t1 = S*0.75; t2 = S*0.55; x1 = 210; x2 = x1 + t1 + 70
+    bowl = P([(x1 + 1, H), (x1 + 1, H*0.38), (0, H*0.69), (60, H)])
+    add('¶', U(box(x1, -160, x1 + t1, H), box(x2, -160, x2 + t2, H), box(x1, H - BT*0.7, x2 + t2, H), bowl), x2 + t2, 40, 40)
+    tbk = S*0.85; tbb = TM*0.8; wb_ = 210
+    br = U(box(0, -160, tbk, H + 90), box(0, H + 90 - tbb, wb_, H + 90), box(0, -160, wb_, -160 + tbb))
+    add('[', br, wb_, 50, 20); add(']', tf(br, (-1, 0, 0, 1, wb_, 0)), wb_, 20, 50)
+    sl_ = G['/'][0]; add('\\', tf(sl_, (-1, 0, 0, 1, 440, 0)), 440, 10, 10)
+    add('_', box(0, -160, 500, -160 + TM*0.7), 500, 0, 0)
+    top, bot = H + 90, -160; cyb = (top + bot)/2; wp = 260; thb = 15 + 125*WF
+    brace = poly_stroke([(wp, top - thb/2), (wp*0.45, top - thb/2 - 20), (wp*0.40, cyb + 80), (0, cyb), (wp*0.40, cyb - 80),
+                         (wp*0.45, bot + thb/2 + 20), (wp, bot + thb/2)], thb, 4)
+    brace = X(brace, box(-100, bot, wp, top))
+    add('{', brace, wp, 40, 20); add('}', tf(brace, (-1, 0, 0, 1, wp, 0)), wp, 20, 40)
+    dhw, dhh = 85*gg, 105*gg
+    add('·', dia(dhw, H*MID, dhw, dhh), 2*dhw, 40, 40)
+    p, w, l, r = G[','];  add('‚', p, w, l, r)
+    add('•', dia(150*gg, H*MID, 150*gg, 175*gg), 300*gg, 50, 50)
+    # ---------------------------------------------------------------- accents seuls (avec chasse) et combinants
+    SPACING = {'`': 'grave', '¨': 'dier', '¯': 'macron', '´': 'acute', '¸': 'cedilla', '˘': 'breve', '˙': 'dot', '˚': 'ring',
+               '˛': 'ogonek', '˜': 'tilde', '˝': 'dacute', 'ˆ': 'circ', 'ˇ': 'caron'}
+    for ch, m in SPACING.items():
+        mk = MARKS[m]()
+        if m not in BELOW: mk = mv(mk, 0, up)
+        x0, _, x1, _ = mk.bounds
+        add(ch, mv(mk, -x0), x1 - x0, 40, 40)
+    COMB = {'̀': 'grave', '́': 'acute', '̂': 'circ', '̃': 'tilde', '̄': 'macron', '̆': 'breve',
+            '̇': 'dot', '̈': 'dier', '̊': 'ring', '̋': 'dacute', '̌': 'caron', '̦': 'commabelow',
+            '̧': 'cedilla', '̨': 'ogonek'}
+    for ch, m in COMB.items():
+        mk = MARKS[m]()
+        if m not in BELOW: mk = mv(mk, 0, up)
+        add(ch, mk, 0, 0, 0)
+
 
 set_weight(1.0)
