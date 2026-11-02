@@ -12,6 +12,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Falsard** | Display géométrique d'inspiration techno, au centre de gravité bas | 10 (XXXS → XXXXL) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/falsard/) · [Zip](falsard/Falsard.zip) · [Dossier](falsard/) |
 | **Clebard** | Néo-grotesque suisse en extra-large | 6 (Demi → Trenta) | GUST Font License | [Page](https://jonlekern.github.io/Fonts/clebard/) · [Zip](clebard/Clebard.zip) · [Dossier](clebard/) |
 | **Malabard** | Display de course allongée | 7 (ExtraLight → ExtraBold) + 7 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/malabard/) · [Zip](malabard/Malabard.zip) · [Dossier](malabard/) |
+| **Sapard** | Display en pointes et en losanges, poids en haut | 9 (Thin → Black) + 9 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/sapard/) · [Zip](sapard/Sapard.zip) · [Dossier](sapard/) |
 
 ## Organisation
 
@@ -21,7 +22,8 @@ shared/
   site.css              Styles communs à toutes les pages
   specimen.js           Spécimen commun : graisses, testeur, caractères
 calebard/, falsard/,    Un dossier par police
-clebard/, malabard/
+clebard/, malabard/,
+sapard/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST)
