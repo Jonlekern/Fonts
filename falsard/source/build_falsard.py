@@ -399,11 +399,12 @@ def set_names(f, style, weight):
     vals = {0: 'Copyright 2018 The Orbitron Project Authors (https://github.com/theleagueof/orbitron), with Reserved Font Name: "Orbitron". Modifications (Falsard) 2026 LaFleurStudio.',
             1: f"{fam} {style}", 2: "Regular", 3: f"1.000;{fam}-{ps}", 4: f"{fam} {style}", 5: "Version 1.000",
             6: f"{fam}-{ps}", 10: "Falsard is a modified version of Orbitron (SIL Open Font License 1.1).",
+            8: "LaFleurStudio", 9: "LaFleurStudio, based on Orbitron by Matt McInerney (The League of Moveable Type)", 11: "https://jonlekern.github.io/Fonts/",
             16: fam, 17: style}
-    nm.names = [r for r in nm.names if r.nameID not in vals]
+    nm.names = [r for r in nm.names if r.nameID not in vals and r.nameID != 12]
     for i, v in vals.items():
         nm.setName(v, i, 3, 1, 0x409); nm.setName(v, i, 1, 0, 0)
-    os2 = f["OS/2"]; os2.usWeightClass = weight
+    os2 = f["OS/2"]; os2.usWeightClass = weight; os2.achVendID = 'LFST'
     os2.fsSelection &= ~((1 << 0) | (1 << 5)); os2.fsSelection |= (1 << 6)
     f["head"].macStyle = 0; f["head"].fontRevision = 1.0
 

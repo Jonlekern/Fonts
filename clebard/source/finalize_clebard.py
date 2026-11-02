@@ -49,6 +49,7 @@ os2.fsSelection = (os2.fsSelection | (1 << 7)) & ~((1 << 0) | (1 << 5)) | (1 << 
 os2.usWeightClass = weight
 os2.sCapHeight = glyf['H'].yMax; os2.sxHeight = glyf['x'].yMax
 os2.achVendID = 'LFST'
+os2.fsType = 0                       # installation et intégration libres
 f['head'].macStyle = 0
 
 fam = 'Clebard'; full = f'{fam} {style}'; ps = f'{fam}-{style}'
