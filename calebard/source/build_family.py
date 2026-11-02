@@ -14,10 +14,11 @@ from fontTools.pens.basePen import BasePen
 import uharfbuzz as hb
 
 VF, OUT = sys.argv[1], sys.argv[2]
-FAMILY, TEXT, STRETCH = "Calebard", "LAFLEURSTUDIO", 1.30
+import os
+FAMILY, TEXT, STRETCH = "Calebard", "LAFLEURSTUDIO", float(os.environ.get("STRETCH", "1.209"))
 WEIGHTS = {100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium",
            600: "SemiBold", 700: "Bold", 800: "ExtraBold", 900: "Black"}
-FIXED = {900: (704.7, 1.3342, -172.6)}   # validated logo parameters
+FIXED = {900: (704.7, 1.3342, -172.6)} if STRETCH == 1.30 else {}   # validated logo parameters (130 %)
 
 
 @functools.lru_cache(None)

@@ -1,0 +1,110 @@
+{
+ "AE": 1.183,
+ "B": 1.452,
+ "E": 1.183,
+ "uni018F": 1.371,
+ "G": 1.547,
+ "Eng": 0.542,
+ "Thorn": 0.719,
+ "S": 0.625,
+ "uni1E9E": 0.352,
+ "Tbar": 1.5,
+ "a": 0.517,
+ "ae": 0.361,
+ "eth": 0.0,
+ "dcroat": 0.147,
+ "e": 0.361,
+ "uni0259": 0.5,
+ "f": 0.229,
+ "g": 1.5,
+ "hbar": 0.0,
+ "i": 0.833,
+ "j": 0.833,
+ "s": 0.094,
+ "tbar": 0.451,
+ "ordfeminine": 0.0,
+ "ordmasculine": 1.45,
+ "five": 0.768,
+ "six": 1.276,
+ "eight": 1.671,
+ "nine": 1.092,
+ "zero.zero": 1.012,
+ "five.dnom": 0.281,
+ "question": 0.808,
+ "questiondown": 0.72,
+ "questiondown.case": 0.73,
+ "florin": 0.256,
+ "ampersand": 1.202,
+ "section": 0.696,
+ "uni2116": 0.643,
+ "dollar": 0.237,
+ "dong": 0.0,
+ "Euro": 0.382,
+ "franc": 0.839,
+ "uni20B2": 1.458,
+ "lira": 0.055,
+ "uni20BA": 0.583,
+ "peseta": 0.329,
+ "uni20BD": 0.341,
+ "sterling": 0.906,
+ "yen": 0.395,
+ "percent": 1.425,
+ "perthousand": 0.954,
+ "hookabovecomb": 0.208,
+ "registered": 0.036,
+ "uni20A6": 0.147,
+ "uni20A9": 1.387,
+ "plusminus": 1.062,
+ "_comp": {
+  "edotaccent": {
+   "1": 28
+  },
+  "gdotaccent": {
+   "1": 14
+  },
+  "uni1E61": {
+   "1": 24
+  },
+  "uni1E69": {
+   "2": 24
+  },
+  "uni1E65": {
+   "2": 14
+  },
+  "uni022C": {
+   "2": 60
+  },
+  "uni022D": {
+   "2": 60
+  },
+  "tbar.ss01": {
+   "1": -44
+  },
+  "Ldot": {
+   "1": 40
+  }
+ },
+ "_compx": {
+  "uhorn": {
+   "1": -24
+  },
+  "uni1EE9": {
+   "1": -24
+  },
+  "uni1EF1": {
+   "1": -24
+  },
+  "uni1EEB": {
+   "1": -24
+  },
+  "uni1EED": {
+   "1": -24
+  },
+  "uni1EEF": {
+   "1": -24
+  }
+ },
+ "uni0123": 1.984,
+ "oslash": 1.705,
+ "iogonek": 1.38
+}
