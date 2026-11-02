@@ -1,7 +1,7 @@
 # Police "flèche" — toutes les graisses.
 # Tout est dessiné en segments droits (unités : capitales de 700, y vers le haut).
 # set_weight(f, wx) : f = épaisseur relative (1 = ExtraBold), wx = élargissement (Black).
-import math, pathops
+import math, os, pathops
 from pathops import Path
 from fontTools.pens.transformPen import TransformPen
 
@@ -833,11 +833,12 @@ def build_ext():
     add('¦', U(box(0, -160, tv, 230), box(0, 370, tv, H + 90)), tv, 70, 70)
     wd = 420; cxd = wd/2; hwd = 75*ww()
     add('†', U(P([(cxd - hwd, H + 40), (cxd + hwd, H + 40), (cxd, -160)]), stroke_bar(0, wd, H*0.66, TM*0.75)), wd, 30, 30)
-    # monogramme VTF (demandé par Velvetyne) : le V, puis le T et le F qui partagent la même barre du haut
+    # monogramme VTF (demandé par Velvetyne, version pour eux seulement) : le V, puis le T et le F qui partagent la barre du haut
     Vp, Vw = G['V'][0], G['V'][1]; Tp, Tw = G['T'][0], G['T'][1]; Fp, Fw = G['F'][0], G['F'][1]
     xT = Vw + 30; xF = xT + Tw/2 + 140
     Wm = xF + Fw
-    add('VTF', U(Vp, mv(Tp, xT), mv(Fp, xF), bar(xT, xF + 10, H - BT, BT)), Wm, 40, 40)
+    if os.environ.get('VELVETYNE'):          # seulement dans la version envoyée à Velvetyne
+        add('VTF', U(Vp, mv(Tp, xT), mv(Fp, xF), bar(xT, xF + 10, H - BT, BT)), Wm, 40, 40)
     # ---------------------------------------------------------------- accents seuls (avec chasse) et combinants
     SPACING = {'`': 'grave', '¨': 'dier', '¯': 'macron', '´': 'acute', '¸': 'cedilla', '˘': 'breve', '˙': 'dot', '˚': 'ring',
                '˛': 'ogonek', '˜': 'tilde', '˝': 'dacute', 'ˆ': 'circ', 'ˇ': 'caron'}

@@ -1,5 +1,4 @@
 Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard".
-.notdef glyph: Copyright (c) 2016, Jérémy Landes (Velvetyne notdef, https://github.com/velvetyne/Velvetyne-Notdef), licensed under the SIL Open Font License 1.1.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
