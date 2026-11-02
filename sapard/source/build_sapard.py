@@ -51,15 +51,17 @@ def notdef():
         pen.closePath()
     return pen.glyph()
 
-def style_names(style, italic):
-    if style in ('Regular', 'Bold', 'Italic', 'Bold Italic'): return FAMILY, style
-    if italic: return f'{FAMILY} {style.replace(" Italic", "")}', 'Italic'
-    return f'{FAMILY} {style}', 'Regular'
+def style_names(name, weight, italic):
+    """Noms « anciens » (1 et 2) : 400 et 700 restent le Regular et le Bold de la famille."""
+    if weight == 400: return FAMILY, 'Italic' if italic else 'Regular'
+    if weight == 700: return FAMILY, 'Bold Italic' if italic else 'Bold'
+    return f'{FAMILY} {name}', 'Italic' if italic else 'Regular'
 
 def build(name, weight, f, wx, italic, outdir):
     fl.set_weight(f, wx)
     shear = ITALIC_ANGLE if italic else 0
-    style = (f'{name} Italic' if name != 'Regular' else 'Italic') if italic else name
+    style = f'{name} Italic' if italic else name
+    fn = f"{FAMILY}-{name.replace(chr(39), '')}{'Italic' if italic else ''}"   # sans apostrophe
     order = ['.notdef']; cmap = {}; glyphs = {'.notdef': notdef()}; hm = {'.notdef': (500, 50)}
     ymin, ymax = 0, 0
     for ch in sorted(fl.G, key=lambda c: (ord(c))):
@@ -85,8 +87,8 @@ def build(name, weight, f, wx, italic, outdir):
     run = int(round(math.tan(math.radians(shear))*1000)) if italic else 0
     fb.setupHorizontalHeader(ascent=ASC, descent=DESC, lineGap=0,
                              caretSlopeRise=1000 if italic else 1, caretSlopeRun=run)
-    n1, n2 = style_names(style, italic)
-    ps = f'{FAMILY}-{style.replace(" ", "")}'
+    n1, n2 = style_names(name, weight, italic)
+    ps = fn
     fb.setupNameTable({
         'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Sapard".',
         'familyName': n1, 'styleName': n2,
@@ -111,7 +113,6 @@ def build(name, weight, f, wx, italic, outdir):
     fb.setupPost(italicAngle=-shear if italic else 0, underlinePosition=-120, underlineThickness=50)
     fb.font['head'].macStyle = (1 if weight == 700 else 0) | (2 if italic else 0)
     fb.font['head'].fontRevision = VERSION
-    fn = f'{FAMILY}-{style.replace(" ", "")}'
     os.makedirs(f'{outdir}/ttf', exist_ok=True); os.makedirs(f'{outdir}/woff2', exist_ok=True)
     fb.font.save(f'{outdir}/ttf/{fn}.ttf')
     w2 = TTFont(f'{outdir}/ttf/{fn}.ttf'); w2.flavor = 'woff2'; w2.save(f'{outdir}/woff2/{fn}.woff2')

@@ -17,4 +17,4 @@ python page_images.py out/ttf images
 node svg2png.js images
 ```
 
-Les graisses sont réglées dans `fl.WEIGHTS` : nom, poids, épaisseur (1 = ExtraBold) et élargissement (Black : 112 %).
+Les graisses sont réglées dans `fl.WEIGHTS` : nom en klingon (*vatlh* = cent), poids, épaisseur (1 = chorghvatlh, 800) et élargissement (Hutvatlh, 900 : 112 %).
