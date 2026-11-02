@@ -1,5 +1,6 @@
 """Guillemets « » ‹ › de Falsard, faits à partir de son propre < et > (option 2 : petits, posés en bas).
 Le chevron est réduit à 55 %, son trait regonflé pour garder l'épaisseur d'origine, puis posé sur la ligne de base.
+Contient aussi add_middot() : le point médian ·, le point remonté au milieu du tiret.
 usage : guillemets.py police.ttf sortie.ttf 0.55 base"""
 import sys, math, pathops
 from fontTools.ttLib import TTFont
@@ -49,4 +50,18 @@ def add(f, S, place):
 
 if __name__ == '__main__':
     src, dst, S, place = sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4]
-    f = TTFont(src); add(f, S, place); f.save(dst)
+    f = TTFont(src); add(f, S, place); add_middot(f); f.save(dst)
+
+def add_middot(f):
+    """Point médian · : le point de Falsard, remonté au milieu du tiret."""
+    gs = f.getGlyphSet(); cm = f.getBestCmap(); glyf, hmtx = f['glyf'], f['hmtx']
+    hy = path_of(gs, cm[ord('-')]).bounds; yc = (hy[1] + hy[3]) / 2
+    p = path_of(gs, cm[ord('.')]); x0, y0, x1, y1 = p.bounds
+    q = path_of(gs, cm[ord('.')], (1, 0, 0, 1, 0, round(yc - (y0 + y1) / 2)))
+    a = AreaPen(); q.draw(a); tt = TTGlyphPen(None); q.draw(ReverseContourPen(tt) if a.value > 0 else tt)
+    g = tt.glyph(); name = 'periodcentered'
+    if name not in f.getGlyphOrder(): f.setGlyphOrder(f.getGlyphOrder() + [name])
+    glyf[name] = g; g.recalcBounds(glyf); hmtx[name] = (hmtx[cm[ord('.')]][0], g.xMin)
+    for tb in f['cmap'].tables:
+        if tb.isUnicode(): tb.cmap[0x00B7] = name
+    return f
