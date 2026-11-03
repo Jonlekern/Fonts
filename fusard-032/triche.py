@@ -7,7 +7,7 @@
 # 6. croisement en biais (< 40°) : le trait s'arrête dans l'autre, sans dépasser
 # 7. à partir de 700 : U, panse ronde et fût qui traverse sous la ligne ; u, fond plat qui traverse le fût
 # 8. à partir de 600 : A en Ā, les traits s'arrêtent sous la barre du haut, A étiré jusqu'aux pointes
-# 9. en Black : E et F, croix du haut plus courte et fine
+# 9. à partir de 800 : E et F, croix du haut plus courte et fine
 import sys, os, math
 _ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _ICI)
@@ -195,7 +195,7 @@ def u_gras(ov):
             S((100, X + ov), (100, 0, 110), (xr + ov, 0)), S((xr, X + ov), (xr, -ov))]
 
 def EF_court(G, R):
-    """9. E et F en Black : la croix en bout de barre du haut, raccourcie (60 % en haut, 50 % en bas) et fine."""
+    """9. E et F à partir de 800 : la croix en bout de barre du haut, raccourcie (60 % en haut, 50 % en bas) et fine."""
     f = R['ov'] / 70.0; H = techno.H
     out = {}
     for ch in 'EF':
@@ -212,7 +212,7 @@ def glyphes(R):
     if R.get('poids', 900) >= 700:
         G['U'] = U_gras(R['ov'])
         G['u'] = u_gras(R['ov'] * techno.XH / 1000.0)
-    if R.get('poids', 900) >= 900:
+    if R.get('poids', 900) >= 800:
         G.update(EF_court(G, R))
     out = {}
     for ch, strokes in G.items():
