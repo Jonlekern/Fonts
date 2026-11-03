@@ -1,4 +1,4 @@
-Copyright 2026 The Bussard Project Authors (Jonathan Kern, LaFleurStudio, https://github.com/Jonlekern/Fonts)
+Copyright 2026 Jonathan Kern, LaFleurStudio (https://github.com/Jonlekern/Fonts)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

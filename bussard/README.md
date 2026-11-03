@@ -20,13 +20,13 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 - Tous les chiffres ont la même largeur : les horaires restent alignés.
 - Crénage en points entiers (50 unités), pour que les points restent sur la grille. Les chiffres ne sont pas crénés.
 - Article Google Fonts : [`article/ARTICLE.en_us.html`](article/ARTICLE.en_us.html).
-- Contrôlée avec Fontbakery (profil Google Fonts) : 0 erreur, 0 échec.
+- Jeu de caractères et placement des accents contrôlés avec Fontbakery (profil Google Fonts).
 
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `Bussard.zip` | Les 2 styles en TTF + licence + auteurs |
+| `Bussard.zip` | Les 2 styles en TTF + licence |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 
@@ -39,7 +39,7 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 
 ## Licence
 
-Copyright 2026 The Bussard Project Authors : **Jonathan Kern**, **LaFleurStudio** (voir [`AUTHORS.txt`](AUTHORS.txt)).
+Copyright 2026 **Jonathan Kern**, **LaFleurStudio**.
 
 Bussard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
 Libre et gratuite, y compris pour un usage commercial. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
