@@ -17,7 +17,7 @@ Utilisation :
 ```
 python build_brecard.py out          # écrit out/ttf et out/woff2
 for f in out/ttf/*.ttf; do python feat_brecard.py $f $f; done
-python set_version.py 1.102 out/ttf/*.ttf   # puis refaire les WOFF2
+python set_version.py 1.200 out/ttf/*.ttf   # puis refaire les WOFF2
 python page_images.py out/ttf images
 node svg2png.js images
 ```

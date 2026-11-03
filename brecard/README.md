@@ -44,6 +44,7 @@ Les graisses sont comptées en klingon : *vatlh* veut dire « cent ». Les fichi
 
 ## Versions
 
+- **1.2** : nouvelle licence : usage personnel gratuit, usage commercial sur autorisation de LaFleurStudio.
 - **1.1.2** : retour au .notdef de Brécard, sans monogramme.
 - **1.1.1** : ¦ †, accents seuls à hauteur de capitale.
 - **1.1** : 166 caractères en plus (jeu GF Latin Core), nouveaux accents dessinés dans le style de Brécard (macron, caron, brève, point, rond, double aigu, ogonek, virgule), symboles < > [ ] { } | ~ ^ § ¶ × ÷ ¢ ¥ • ·, placement automatique des accents combinants.
@@ -70,5 +71,8 @@ Les graisses sont comptées en klingon : *vatlh* veut dire « cent ». Les fichi
 
 ## Licence
 
-Brécard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)), avec le nom réservé « Brécard ».
-Utilisation libre, y compris commerciale. La police ne peut pas être vendue seule, et la licence doit l'accompagner. Une version modifiée doit porter un autre nom.
+À partir de la version 1.2 : **usage personnel gratuit, usage commercial sur autorisation** (voir [`LICENCE.txt`](LICENCE.txt)).
+Pour un usage commercial (logo, client, produit vendu, pub, site d'entreprise…), écrire à info@lafleurstudio.ch : chaque projet est étudié, l'autorisation peut être gratuite ou payante.
+Revente, partage des fichiers et modification interdits sans accord écrit.
+
+Les versions jusqu'à 1.1.2 ont été publiées sous SIL Open Font License 1.1 et restent sous cette licence.
