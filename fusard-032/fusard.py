@@ -497,20 +497,23 @@ def build_ponct(ov):
     P[' '] = [dict(p=[np.array([0.0, -9000.0]), np.array([800.0, -9000.0])], caps=["tip", "tip"])]   # espace
     return P
 
-def arobase(ov, a_min):
-    """@ : fenêtre de cathédrale (côtés droits, sommet en ogive, posée sur une barre), le a de Fûsard dedans."""
+def arobase(ov, a_min, k=0.0):
+    """@ : fenêtre de cathédrale (côtés droits, sommet en ogive, posée sur une barre), le a de Fûsard dedans.
+    k (0 en Hairline, 1 en Black) : en gras la fenêtre s'élargit, le a rapetisse, descend un peu et prend
+    un trait de détail, pour que rien ne se bouche."""
     def arc(c, r, t0, t1, n=80):
         return [np.array([c[0] + r * math.cos(t), c[1] + r * math.sin(t)]) for t in np.linspace(t0, t1, n)]
-    cx, top, bot, w = 350.0, 950.0, -150.0, 330.0
+    cx, top, bot, w = 350.0, 950.0, -150.0, 330.0 + 120.0 * k * k
     cy = (top + bot) / 2; h = (top - bot) / 2; a = (h * h - w * w) / (2 * w); rho = a + w
     phi = math.atan2(h, a); d = ov / rho
     cL = (cx + a, cy); cR = (cx - a, cy)
-    xg, xd, yl = cx - w, cx + w, 230.0
+    xg, xd, yl = cx - w, cx + w, 230.0 - 60.0 * k * k
+    sc = 0.75 - 0.10 * k * k; dx = 412 - 243 * sc; xa = dx + 360 * sc     # xa : fût du a
     gauche = dict(p=path(((xg, bot - ov), (xg, cy))) + arc(cL, rho, math.pi, math.pi - phi - d)[1:], caps=['tip', 'tip'])
-    droite = dict(p=path(((500, yl), (xd, yl), (xd, cy))) + arc(cR, rho, 0.0, phi + d)[1:], caps=['T', 'tip'])
+    droite = dict(p=path(((xa, yl), (xd, yl), (xd, cy))) + arc(cR, rho, 0.0, phi + d)[1:], caps=['T', 'tip'])
     pied = S((xg - ov, bot), (xd + 40, bot))
-    sc = 0.75; dx = 500 - 360 * sc
-    dedans = [dict(p=[np.array([x * sc + dx, y * sc + yl]) for x, y in st['p']], caps=st['caps']) for st in a_min]
+    dedans = [dict(p=[np.array([x * sc + dx, y * sc + yl]) for x, y in st['p']], caps=st['caps'], detail=k > 0)
+              for st in a_min]
     return [gauche, droite, pied] + dedans
 
 OV_CHOISI = 210.0   # niveau 2 (croisements x3), choisi
