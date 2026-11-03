@@ -35,6 +35,8 @@ peut être tenu responsable des dommages liés à son utilisation.
 6. Contact
 Pour un usage commercial ou toute question : info@lafleurstudio.ch.
 
+Signé : Jonathan Kern
+
 -----------------------------------------------------------------------------------
 
 END USER LICENSE — FÛSARD-032
@@ -73,3 +75,5 @@ for any damage arising from its use.
 
 6. Contact
 For commercial use or any question: info@lafleurstudio.ch.
+
+Signed: Jonathan Kern

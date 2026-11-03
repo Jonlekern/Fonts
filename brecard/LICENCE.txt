@@ -38,6 +38,8 @@ Pour un usage commercial ou toute question : info@lafleurstudio.ch.
 Cette licence s'applique à Brécard à partir de la version 1.2. Les versions jusqu'à 1.1.2
 ont été publiées sous SIL Open Font License 1.1 et restent sous cette licence.
 
+Signé : Jonathan Kern
+
 -----------------------------------------------------------------------------------
 
 END USER LICENSE — BRÉCARD
@@ -79,3 +81,5 @@ For commercial use or any question: info@lafleurstudio.ch.
 
 This license applies to Brécard from version 1.2 onwards. Versions up to 1.1.2 were
 released under the SIL Open Font License 1.1 and remain under that license.
+
+Signed: Jonathan Kern
