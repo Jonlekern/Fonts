@@ -191,6 +191,8 @@ M['cedille'] = [[(0, 20), (5, -60), (70, -90), (70, -160), (10, -200), (-60, -19
 M['ogonek'] = [[(0, 10), (-60, -60), (-60, -150), (0, -200), (70, -190)]]
 M['virgule'] = mv(VIRG, -40, -130)
 BAS = {'cedille', 'ogonek', 'virgule'}
+M['caron_virgule'] = mv(VIRG, -40, 970)                   # ď ľ ť : virgule, le point en (0, 1000)
+M['virgule_haut'] = mv(rot(VIRG, 16, -59), -16, H0 + 160)  # ģ : virgule retournée au-dessus
 
 COMB = {0x300: 'grave', 0x301: 'aigu', 0x302: 'circonflexe', 0x303: 'tilde', 0x304: 'macron', 0x306: 'breve',
         0x307: 'point', 0x308: 'trema', 0x30A: 'rond', 0x30B: 'double', 0x30C: 'caron',
