@@ -29,7 +29,7 @@ Même squelette que la Hairline, trait de 220 (22 % des capitales), croisements 
 4. **Pointes** : longues de 1,5 demi-épaisseur (fers de lance).
 5. **Largeur** : lettres élargies de 18 %.
 6. **Croisements en biais** (moins de 40°) : le trait s'arrête dans l'autre, sans dépasser.
-7. **À partir de 700** : U, le fût s'arrête sur la diagonale ; u, fond plat qui traverse le fût (croix en bas à droite).
+7. **À partir de 700** : U, panse ronde et fût qui descend sous la ligne en la traversant ; u, fond plat qui traverse le fût (croix en bas à droite).
 
 `python3 triche.py fustard-132-900.png` → `fustard-132-900.png`
 

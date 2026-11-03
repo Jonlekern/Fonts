@@ -5,7 +5,7 @@
 # 4. pointes plus courtes, proportionnées à l'épaisseur
 # 5. lettres élargies pour garder les contreformes ouvertes
 # 6. croisement en biais (< 40°) : le trait s'arrête dans l'autre, sans dépasser
-# 7. à partir de 700 : U, le fût s'arrête sur la diagonale ; u, fond plat qui traverse le fût
+# 7. à partir de 700 : U, panse ronde et fût qui traverse sous la ligne ; u, fond plat qui traverse le fût
 import sys, os, math
 _ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [_ICI, os.path.join(_ICI, '..', 'jalousia')]
@@ -143,12 +143,10 @@ def couper_biais(sts, ov):
     return sts
 
 def U_gras(ov):
-    """7. U des graisses 700 et plus : la panse finit en diagonale sur le fût, le fût s'arrête là."""
-    S = techno.S; H = 1000.0; xr, x0 = 560.0, 360.0
-    yb = (xr - x0) * techno.T67
-    panse = S((100, H + ov), (100, 0, 130), (x0, 0, 150), (xr, yb)); panse['caps'][1] = 'B'
-    fut = S((xr, H + ov), (xr, yb)); fut['caps'][1] = 'B'
-    return [S((-60, H), (260, H)), S((xr - 80, H), (xr + 180, H)), panse, fut]
+    """7. U des graisses 700 et plus : panse ronde, le fût descend sous la ligne et la traverse."""
+    S = techno.S; H = 1000.0; xr = 560.0
+    panse = S((100, H + ov), (100, 0, 230), (xr, 0, 230), (xr, 520)); panse['caps'][1] = 'B'
+    return [S((-60, H), (260, H)), S((xr - 80, H), (xr + 180, H)), panse, S((xr, H + ov), (xr, -ov))]
 
 def u_gras(ov):
     """7. u des graisses 700 et plus : fond plat qui traverse le fût, croix en bas à droite."""
