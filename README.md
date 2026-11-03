@@ -8,6 +8,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 
 | Police | Style | Graisses | Licence | Liens |
 | --- | --- | --- | --- | --- |
+| **Caffeinated** | Écriture à la main tirée des boulangeries et des cafés biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/caffeinated/) · [Zip](caffeinated/Caffeinated.zip) · [Dossier](caffeinated/) |
 | **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) + Goofy, Extra Goofy | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
 | **Falsard** | Display géométrique d'inspiration techno, au centre de gravité bas | 10 (XXXS → XXXXL) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/falsard/) · [Zip](falsard/Falsard.zip) · [Dossier](falsard/) |
 | **Clebard** | Néo-grotesque suisse en extra-large | 6 (Demi → Trenta) | GUST Font License | [Page](https://jonlekern.github.io/Fonts/clebard/) · [Zip](clebard/Clebard.zip) · [Dossier](clebard/) |
@@ -26,7 +27,7 @@ shared/
 calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 brecard/, fusard-032/,
-jalousia/
+jalousia/, caffeinated/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032 et Jalousia : LICENCE.txt)
