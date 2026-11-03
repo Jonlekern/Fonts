@@ -1,0 +1,4 @@
+# This is the official list of project authors for copyright purposes.
+# The Bussard Project Authors are:
+
+Jonathan Kern (LaFleurStudio)
