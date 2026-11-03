@@ -103,16 +103,28 @@ def build(name, weight, f, wx, italic, outdir):
                              caretSlopeRise=1000 if italic else 1, caretSlopeRun=run)
     n1, n2 = style_names(name, weight, italic)
     ps = fn
+    if os.environ.get('VELVETYNE'):            # version envoyée à Velvetyne : SIL OFL 1.1, comme avant
+        droits = ('Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard". .notdef: Copyright (c) 2016, '
+                  'Jérémy Landes (Velvetyne notdef, SIL Open Font License 1.1).')
+        licence = ('This Font Software is licensed under the SIL Open Font License, Version 1.1. '
+                   'This license is available with a FAQ at: https://openfontlicense.org')
+        url_licence = 'https://openfontlicense.org'
+    else:                                      # version du site : usage perso gratuit, commercial sur autorisation
+        droits = '© 2026 LaFleurStudio. All rights reserved.'
+        licence = ('Free for personal use. Commercial use requires prior written permission from '
+                   'LaFleurStudio (free or paid, decided case by case): info@lafleurstudio.ch. '
+                   'Usage personnel gratuit ; usage commercial sur autorisation écrite de LaFleurStudio.')
+        url_licence = 'https://github.com/Jonlekern/Fonts/blob/main/brecard/LICENCE.txt'
     fb.setupNameTable({
-        'copyright': 'Copyright 2026 LaFleurStudio, with Reserved Font Name "Brécard".' + (' .notdef: Copyright (c) 2016, Jérémy Landes (Velvetyne notdef, SIL Open Font License 1.1).' if os.environ.get('VELVETYNE') else ''),
+        'copyright': droits,
         'familyName': n1, 'styleName': n2,
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
         'fullName': f'{FAMILY} {style}', 'psName': ps,
         'version': f'Version {VERSION:.3f}',
         'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
         'vendorURL': 'https://jonlekern.github.io/Fonts/',
-        'licenseDescription': 'This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org',
-        'licenseInfoURL': 'https://openfontlicense.org',
+        'licenseDescription': licence,
+        'licenseInfoURL': url_licence,
         'typographicFamily': FAMILY, 'typographicSubfamily': style,
     })
     fs = 0x80                                   # USE_TYPO_METRICS

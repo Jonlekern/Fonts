@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brécard</title>
-<meta name="description" content="Brécard, display en pointes et en losanges : tout en angles, avec le poids en haut. 9 graisses de 100 à 900, nommées en klingon, chacune avec son italique. Licence libre SIL OFL. Par LaFleurStudio.">
+<meta name="description" content="Brécard, display en pointes et en losanges : tout en angles, avec le poids en haut. 9 graisses de 100 à 900, nommées en klingon, chacune avec son italique. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"Brécard";font-weight:100;font-display:swap;src:url(fonts/woff2/Brecard-wavatlh.woff2) format("woff2")}
@@ -37,6 +37,9 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,3.4vw,38px)}
 @media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/7.8)}}
 .demo .row span{font-size:calc(100cqw/5.4)}
 .glyphs div{font-size:26px}
+.licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
+.licence p{margin-bottom:8px}
+.licence p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -65,7 +68,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,3.4vw,38px)}
         <p><strong>9 graisses</strong> de 100 à 900, comptées en klingon, <strong>chacune avec son italique</strong>.</p>
       </div>
       <div class="facts">
-        <span>9 graisses + 9 italiques</span><span>wa'vatlh → Hutvatlh</span><span>Capitales et minuscules</span><span>Langues d’Europe à alphabet latin</span><span>Licence libre SIL OFL</span><span>Version 1.1.2</span>
+        <span>9 graisses + 9 italiques</span><span>wa'vatlh → Hutvatlh</span><span>Capitales et minuscules</span><span>Langues d’Europe à alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.2</span>
       </div>
     </div>
   </div>
@@ -179,11 +182,15 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,3.4vw,38px)}
   <section id="telecharger">
     <div class="wrap">
       <h2>Télécharger</h2>
-      <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde le fichier de licence avec la police.</p>
+      <div class="licence">
+        <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
+      </div>
       <div class="dl">
         <a class="card" href="Brecard.zip" download><b>Brecard.zip</b><span>Les 18 styles en TTF + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/brecard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
-        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/brecard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/brecard/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
       <p class="label" style="margin-bottom:10px">Sur un site web</p>
 <pre><code>@font-face { font-family: "Brécard"; font-weight: 800;
@@ -202,7 +209,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,3.4vw,38px)}
 
 <footer>
   <div class="wrap">
-    <span>Brécard © 2026 LaFleurStudio · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    <span>Brécard © 2026 LaFleurStudio · <a href="LICENCE.txt">usage personnel gratuit, commercial sur autorisation</a></span>
     <span>Dessinée en Python (fontTools, HarfBuzz, skia-pathops).</span>
   </div>
 </footer>
