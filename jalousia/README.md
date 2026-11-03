@@ -17,3 +17,7 @@ I, L et D viennent des dessins. A, E, F, R, S, T, U et O sont déduits des autre
 python3 essai.py LAFLEURSTUDIO essai-craie.png
 python3 essai.py LAFLEURSTUDIO essai-net.png net
 ```
+
+## Descendance
+
+**Fûstard 132**, police techno gothique, est née de Jalousia. Elle a sa propre branche : `fustard-132`.
