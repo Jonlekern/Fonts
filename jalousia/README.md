@@ -41,3 +41,7 @@ Page : **https://jonlekern.github.io/Fonts/jalousia/**
 ## Licence
 
 Usage personnel gratuit ; usage commercial sur autorisation écrite de LaFleurStudio, gratuite ou payante selon le projet. Revente, partage des fichiers et modification interdits sans accord. Texte complet : `LICENCE.txt`. Contact : info@lafleurstudio.ch.
+
+## Descendance
+
+**Fûstard 132**, police techno gothique, est née de Jalousia. Elle a sa propre branche : `fustard-132`.
