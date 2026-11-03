@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jalousia</title>
+<meta name="description" content="Jalousia, d'après des chiffres romains néo-gothiques dessinés à la main, en deux polices : Jalousia Net (trait net) et Jalousia Craie (trait à la craie). 4 graisses aux noms latins, de Centum à Quadringenti, chacune avec son italique. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Jalousia Net";font-weight:100;font-display:swap;src:url(fonts/woff2/JalousiaNet-Centum.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net";font-weight:200;font-display:swap;src:url(fonts/woff2/JalousiaNet-Ducenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net";font-weight:300;font-display:swap;src:url(fonts/woff2/JalousiaNet-Trecenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net";font-weight:400;font-display:swap;src:url(fonts/woff2/JalousiaNet-Quadringenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/JalousiaNet-CentumItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/JalousiaNet-DucentiItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/JalousiaNet-TrecentiItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Net Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/JalousiaNet-QuadringentiItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie";font-weight:100;font-display:swap;src:url(fonts/woff2/JalousiaCraie-Centum.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie";font-weight:200;font-display:swap;src:url(fonts/woff2/JalousiaCraie-Ducenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie";font-weight:300;font-display:swap;src:url(fonts/woff2/JalousiaCraie-Trecenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie";font-weight:400;font-display:swap;src:url(fonts/woff2/JalousiaCraie-Quadringenti.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/JalousiaCraie-CentumItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/JalousiaCraie-DucentiItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/JalousiaCraie-TrecentiItalic.woff2) format("woff2")}
+@font-face{font-family:"Jalousia Craie Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/JalousiaCraie-QuadringentiItalic.woff2) format("woff2")}
+/* Jalousia partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Jalousia Net",var(--sans)}
+.label{font-family:"Jalousia Net",var(--sans);font-weight:400;font-size:14px}
+.brand{font-size:17px;font-weight:400}
+section > .wrap > h2{font-weight:400;font-size:clamp(24px,3.6vw,40px)}
+.step h3{font-weight:400;font-size:clamp(18px,2.1vw,24px)}
+.card b{font-weight:400;font-size:17px}
+.hero h1{font-family:"Jalousia Craie";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/5.2);line-height:1.15}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/6.4)}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/6.4)}}
+.demo .row span{font-size:calc(100cqw/11.5);line-height:1.3}
+.glyphs div{font-size:28px}
+.fig{background:#000;border-color:#000}
+.fig figcaption{color:#bbb}
+.licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
+.licence p{margin-bottom:8px}
+.licence p:last-child{margin-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">JALOUSIA</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">JALOUSIA</h1>
+      <div class="lede">
+        <p><strong>Chiffres romains néo-gothiques dessinés à la main</strong>, en deux polices : <strong>Jalousia Net</strong>, au trait net, et <strong>Jalousia Craie</strong>, à la craie.</p>
+        <p><strong>4 graisses</strong> aux noms latins, de Centum à Quadringenti, <strong>chacune avec son italique</strong>.</p>
+      </div>
+      <div class="facts">
+        <span>2 polices : Net et Craie</span><span>4 graisses + 4 italiques chacune</span><span>Centum → Quadringenti</span><span>Capitales et minuscules</span><span>Langues d’Europe à alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">De 100 à 400, chacune avec son italique, en Net et en Craie. Leurs noms comptent en latin : <em>Centum</em> veut dire « cent », <em>Quadringenti</em> « quatre cents ».</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Style <select id="tw" aria-label="Style"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">Veni, vidi, vici — MMXXVI</div>
+      </div>
+      <p class="hint">Astuce : deux familles à installer, « Jalousia Net » et « Jalousia Craie », de 8 styles chacune (voir « Télécharger »).</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation et symboles, et les accents de toutes les langues d’Europe à alphabet latin : français, allemand, espagnol, polonais, tchèque, hongrois, roumain, turc, baltes, nordiques… 320 caractères, accents combinants compris.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Jalousia est dessinée de zéro, en Python : chaque lettre est une suite de traits, épaissis de la même façon partout.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Des chiffres romains à la main</h3>
+            <p>Tout part de <strong>chiffres romains néo-gothiques dessinés à la craie</strong> : I, V, X, L, C, D et M, avec leurs barres ondulées, leurs crochets et leurs pieds.</p>
+          </div>
+          <figure class="fig"><img src="images/dessins.png" alt="Les dessins à la craie : I V X, L C, D et M"><figcaption>Les dessins de départ.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Tracées trait par trait</h3>
+            <p>Chaque lettre est <strong>suivie trait par trait</strong> sur le dessin, puis le trait est épaissi régulièrement.</p>
+            <p>Le C dessiné était trop large : il est devenu rond. La jambe gauche du M a été prolongée jusqu'en bas.</p>
+          </div>
+          <figure class="fig"><img src="images/trace.png" alt="Le tracé en rouge posé sur les dessins du V, du X et du M"><figcaption>En rouge, le tracé posé sur le dessin.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le reste avec leurs morceaux</h3>
+            <p>Les autres lettres sont faites <strong>avec les pièces des dessins</strong> : le fût et le pied du T, la panse du R, les barres du V, le crochet du C… Le W, c'est le M à l'envers.</p>
+            <p>Les minuscules reprennent les mêmes pièces, à 60 % de la hauteur des capitales.</p>
+          </div>
+          <div class="demo" aria-label="L'alphabet de Jalousia">
+            <div class="row"><small>Capitales</small><span style="font-weight:300">ABCDEFGHIJKLM</span></div>
+            <div class="row"><small>Minuscules</small><span style="font-weight:300">abcdefghijklm</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Net, ou à la craie</h3>
+            <p>Le même dessin existe en deux polices. <strong>Jalousia Net</strong> garde un trait propre et rond, régulier d'un bout à l'autre.</p>
+            <p><strong>Jalousia Craie</strong> lui donne du grain : <strong>le bord tremble</strong>, le trait s'affine un peu aux bouts, il y a <strong>des petits trous dedans</strong> et <strong>un peu de poussière autour</strong>. Chaque lettre a son propre grain.</p>
+          </div>
+          <div class="demo" aria-label="Jalousia Net et Jalousia Craie">
+            <div class="row"><small>Jalousia Net · Trecenti</small><span style="font-weight:300">Ave Jalousia</span></div>
+            <div class="row"><small>Jalousia Craie · Trecenti</small><span style="font-family:'Jalousia Craie';font-weight:300">Ave Jalousia</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des lettres qui se glissent</h3>
+            <p>Les lettres <strong>se glissent les unes sous les autres</strong> tant que leurs traits restent à bonne distance : un point sous la barre du T, un e sous la barre du V.</p>
+            <p>Les <strong>barres de V et W</strong> vont jusqu'à toucher la lettre d'à côté.</p>
+          </div>
+          <div class="demo" aria-label="Exemples d'espacement">
+            <div class="row"><small>Capitales</small><span style="font-weight:300">LAFLEURSTUDIO</span></div>
+            <div class="row"><small>V et W</small><span style="font-weight:300">AVE WAVE · Vevey</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Quatre graisses aux noms latins</h3>
+            <p>Les graisses viennent <strong>d'un seul réglage</strong> : l'épaisseur du trait. L'écart entre les lettres et la place des accents grandissent un peu avec elle.</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Style</th><th>Poids</th><th>Épaisseur du trait</th></tr></thead>
+              <tbody><tr><td>Centum</td><td>100</td><td class="good">22</td></tr><tr><td>Ducenti</td><td>200</td><td class="good">34</td></tr><tr><td>Trecenti</td><td>300</td><td class="good">46</td></tr><tr><td>Quadringenti</td><td>400</td><td class="good">60</td></tr><tr><td colspan="3" style="text-align:left;color:var(--muted)">Épaisseurs en unités (1000 par em). Hauteur des capitales : 700, des minuscules : 420. Fichiers de 160 à 200 Ko en Net, de 640 à 720 Ko en Craie.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>L'italique</h3>
+            <p>Chaque graisse, <strong>penchée à 12°</strong>, avec des <strong>minuscules plus manuscrites</strong> : les pieds deviennent des sorties vers la droite, le f descend sous la ligne, v, w, x et y s'arrondissent.</p>
+          </div>
+          <div class="demo" aria-label="Jalousia Net Trecenti et Trecenti Italic">
+            <div class="row"><small>Net Trecenti</small><span style="font-weight:300">vivre ensemble</span></div>
+            <div class="row"><small>Net Trecenti Italic</small><span style="font-family:'Jalousia Net Italic';font-weight:300">vivre ensemble</span></div>
+            <div class="row"><small>Craie Trecenti Italic</small><span style="font-family:'Jalousia Craie Italic';font-weight:300">vivre ensemble</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <div class="licence">
+        <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p>Revente, partage des fichiers et modification interdits sans accord. La licence couvre les deux polices. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
+      </div>
+      <div class="dl">
+        <a class="card" href="JalousiaNet.zip" download><b>JalousiaNet.zip</b><span>Les 8 styles Net en TTF + licence</span></a>
+        <a class="card" href="JalousiaCraie.zip" download><b>JalousiaCraie.zip</b><span>Les 8 styles Craie en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/jalousia/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/jalousia/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "Jalousia Craie"; font-weight: 300;
+  src: url(JalousiaCraie-Trecenti.woff2) format("woff2"); }
+@font-face { font-family: "Jalousia Craie"; font-weight: 300;
+  font-style: italic;
+  src: url(JalousiaCraie-TrecentiItalic.woff2) format("woff2"); }
+/* … une règle par style : Centum 100, Ducenti 200,
+   Trecenti 300, Quadringenti 400, et la même chose en italique ;
+   pareil pour "Jalousia Net" (fichiers JalousiaNet-…) */
+
+/* Ponctuation des capitales (tirets, guillemets) */
+.capitales { font-feature-settings: "case" 1; }</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Jalousia © 2026 LaFleurStudio · <a href="LICENCE.txt">usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Dessinée en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Jalousia Net",
+  sample: "LaFleurStudio",
+  styles: [
+    {n:"Net Centum",w:100,fam:"Jalousia Net"},{n:"Net Centum Italic",w:100,fam:"Jalousia Net Italic"},
+    {n:"Net Ducenti",w:200,fam:"Jalousia Net"},{n:"Net Ducenti Italic",w:200,fam:"Jalousia Net Italic"},
+    {n:"Net Trecenti",w:300,fam:"Jalousia Net"},{n:"Net Trecenti Italic",w:300,fam:"Jalousia Net Italic"},
+    {n:"Net Quadringenti",w:400,fam:"Jalousia Net"},{n:"Net Quadringenti Italic",w:400,fam:"Jalousia Net Italic"},
+    {n:"Craie Centum",w:100,fam:"Jalousia Craie"},{n:"Craie Centum Italic",w:100,fam:"Jalousia Craie Italic"},
+    {n:"Craie Ducenti",w:200,fam:"Jalousia Craie"},{n:"Craie Ducenti Italic",w:200,fam:"Jalousia Craie Italic"},
+    {n:"Craie Trecenti",w:300,fam:"Jalousia Craie"},{n:"Craie Trecenti Italic",w:300,fam:"Jalousia Craie Italic"},
+    {n:"Craie Quadringenti",w:400,fam:"Jalousia Craie"},{n:"Craie Quadringenti Italic",w:400,fam:"Jalousia Craie Italic"}
+  ],
+  testerDefault: 12,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÄÆÇÈÉÊËÍÎÏÑÓÔÖŒÙÚÛÜŸẞàáâäæçèéêëíîïñóôöœùúûüÿß" +
+    ".,:;!?¡¿…'\"‘’“”„«»‹›()/-–—*#%&@°" + "$€£+=©®™" +
+    "ÃÅÌÐÒÕØÝÞĀĂĄĆĊČĎĐĒĖĘĚĞĠĢĦĪĮİĶĹĻĽŁŃŅŇŐŔŘŚŞŠŤŪŮŰŲŴŶŹŻŽȘȚẀẂẄỲ" +
+    "ªºãåìðòõøýþāăąćċčďđēėęěğġģħīįıķĺļľłńņňőŕřśşšťūůűųŵŷźżžșțȷẁẃẅỳ" +
+    "<>[\\]^_`{|}~¢¥§¨¯´¶·¸×÷ˆˇ˘˙˚˛˜˝‚•−",
+  glyphChips: [4, 12, 5, 13, 6, 14],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
