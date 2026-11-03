@@ -192,8 +192,99 @@ def build(ov=70.0):
               croix_bas(w67 + 160 - 30 * f, 0)]
     return G
 
+XH, ASC, DESC = 600.0, 1000.0, -380.0   # hauteur des minuscules, montantes, descendantes
+
+def build_lc(ov):
+    """Minuscules. ov : dépassement des croisements (en proportion de la hauteur des minuscules)."""
+    f = ov / 70.0
+    X, A, D = XH, ASC, DESC
+    def croix_haut(x, y):
+        return S((x, y + 90 * f), (x, y - 110 * f))
+    def croix_bas(x, y):
+        return S((x, y + 110 * f), (x, y - 90 * f))
+    def diag(x0, y0, x1, y1, a=True, b=True):
+        u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
+        p = np.array([x0, y0]) - (u * ov if a else 0)
+        q = np.array([x1, y1]) + (u * ov if b else 0)
+        return S(tuple(p), tuple(q))
+    def croix_point(x, y, s=70):     # le point du i et du j est une croix
+        return [S((x, y + s), (x, y - s)), S((x - s, y), (x + s, y))]
+    w = X / T67
+    L = {}
+    L['a'] = [S((360, X + ov), (360, -ov)),
+              S((40, X), (360 + ov, X)), croix_haut(40 + 30 * f, X),
+              S((360 + ov, 320), (0, 320, 150), (0, 0, 150), (360 + ov, 0))]
+    L['b'] = [S((0, A + ov), (0, -ov)), S((-150, A), (150, A)),
+              S((-ov, X), (420, X, 200), (420, 0, 200), (-ov, 0))]
+    L['c'] = [S((0, X + ov), (0, -ov)),
+              S((-ov, X), (400, X)), croix_haut(400 - 30 * f, X),
+              S((-ov, 0), (420, 0))]
+    L['d'] = [S((420, A + ov), (420, -ov)), S((270, A), (570, A)),
+              S((420 + ov, X), (0, X, 200), (0, 0, 200), (420 + ov, 0))]
+    # e : un seul trait, arrondi en haut, coin vif en bas à gauche, barre qui traverse à gauche
+    L['e'] = [S((-ov, 300), (420, 300), (420, X, 150), (0, X, 150), (0, 0), (440, 0)),
+              croix_bas(440 - 30 * f, 0)]
+    L['f'] = [S((120, A + ov), (120, -ov)),
+              S((120 - ov, A), (440, A)), croix_haut(440 - 30 * f, A),
+              S((-30, X), (320, X)),
+              S((-30, 0), (290, 0))]
+    L['g'] = [S((420, X + ov), (420, D, 150), (0, D)), croix_bas(30 * f, D),
+              S((420 + ov, X), (0, X, 200), (0, 0, 200), (420 + ov, 0))]
+    L['h'] = [S((0, A + ov), (0, 0)), S((-150, A), (150, A)),
+              S((-ov, X), (420, X, 200), (420, 0))]
+    L['i'] = [S((0, X + ov), (0, -ov)), S((-150, X), (150, X)), S((-150, 0), (150, 0))] + \
+             croix_point(0, X + ov + 160)
+    L['j'] = [S((300, X + ov), (300, D, 150), (0, D)), croix_bas(30 * f, D),
+              S((150, X), (450, X))] + croix_point(300, X + ov + 160)
+    xk = 150 + 400 / T67
+    L['k'] = [S((0, A + ov), (0, -ov)), S((-150, A), (150, A)), S((-150, 0), (150, 0)),
+              diag(0, 250, 350, X), S((230, X), (500, X)),
+              diag(150, 400, xk, 0), S((xk - 120, 0), (xk + 140, 0))]
+    L['l'] = [S((0, A + ov), (0, -ov)), S((-200, A), (80, A)), S((-ov, 0), (260, 0))]
+    L['m'] = [S((0, X + ov), (0, 0)),
+              S((-ov, X), (620, X, 150), (620, 0)),
+              S((310, X + ov), (310, 0))]
+    L['n'] = [S((0, X + ov), (0, 0)),
+              S((-ov, X), (420, X, 200), (420, 0))]
+    L['o'] = arrondi.ogive(cx=220.0, top=X + 5, bot=-5.0, w=190.0, over=ov)
+    L['p'] = [S((0, X + ov), (0, D - ov)), S((-150, D), (150, D)),
+              S((-ov, X), (420, X, 200), (420, 0, 200), (-ov, 0))]
+    L['q'] = [S((420, X + ov), (420, D - ov)), S((270, D), (570, D)),
+              S((420 + ov, X), (0, X, 200), (0, 0, 200), (420 + ov, 0))]
+    L['r'] = [S((0, X + ov), (0, -ov)), S((-150, 0), (150, 0)),
+              S((-ov, X), (380, X)), croix_haut(380 - 30 * f, X)]
+    L['s'] = [S((440, X), (30, X, 90), (30, 470, 80), (390, 110, 100), (390, 0, 60), (0, 0)),
+              croix_haut(440 - 30 * f, X), croix_bas(30 * f, 0)]
+    L['t'] = [S((150, 820), (150, 0, 120), (400, 0)), croix_haut(400 - 30 * f, 0),
+              S((-20, X), (380, X))]
+    xr = 440; yb = (xr - 300) * T67
+    L['u'] = [S((-60, X), (200, X)),
+              S((100, X + ov), (100, 0, 110), (300, 0, 120), (xr + ov * C67, yb + ov * S67)),
+              S((xr, X + ov), (xr, 0)), S((xr - 80, X), (xr + 140, X))]
+    L['v'] = [S((0, X + ov), (0, -ov)), diag(0, 0, w, X),
+              S((-120, X), (140, X)), S((w - 90, X), (w + 180, X)),
+              S((-130, 0), (190, 0))]
+    L['w'] = [S((0, X + ov), (0, -ov)), diag(0, 0, w, X),
+              S((w, X + ov), (w, -ov)), diag(w, 0, 2 * w, X),
+              S((-80, 0), (2 * w + 80, 0)),
+              S((-120, X), (140, X)), S((2 * w - 90, X), (2 * w + 180, X))]
+    L['x'] = [diag(0, X, w, 0), diag(0, 0, w, X),
+              S((-130, X), (120, X)), S((w - 100, X), (w + 140, X)),
+              S((-140, 0), (110, 0)), S((w - 110, 0), (w + 130, 0))]
+    L['y'] = [S((-60, X), (200, X)),
+              S((100, X + ov), (100, 0, 110), (300, 0, 120), (xr + ov * C67, yb + ov * S67)),
+              S((xr, X + ov), (xr, D, 150), (60, D)), croix_bas(60 + 30 * f, D),
+              S((xr - 80, X), (xr + 140, X))]
+    L['z'] = [S((0, X), (w + 110, X)),
+              diag(w + 110, X, 110, 0),
+              S((-ov, 0), (w + 130, 0)),
+              croix_haut(30 * f, X), croix_bas(w + 130 - 30 * f, 0)]
+    return L
+
 OV_CHOISI = 210.0   # niveau 2 (croisements x3), choisi
+OV_MIN = OV_CHOISI * XH / 1000.0   # même exagération, en proportion des minuscules
 G = build(OV_CHOISI)
+G.update(build_lc(OV_MIN))
 GP = {ch: [s['p'] for s in v] for ch, v in G.items()}
 
 def render(word, out, k=0.3, ss=3, gap=284, G=G):
@@ -206,7 +297,7 @@ def render(word, out, k=0.3, ss=3, gap=284, G=G):
     finally:
         essai.G, essai.cr, essai.GAP = G0, cr0, gap0
     K = k * ss
-    top, bot = 1380, -420
+    top, bot = 1380, -640
     W = int((end + 600) * K); Hh = int((top - bot) * K)
     img = Image.new('L', (W, Hh), 0)
     d = ImageDraw.Draw(img)
@@ -236,5 +327,8 @@ def planche(out, lignes=('ABCDEFGHI', 'JKLMNOPQR', 'STUVWXYZ'), k=0.3, G=G):
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'alphabet':
         planche(sys.argv[2] if len(sys.argv) > 2 else 'alphabet.png')
+    elif len(sys.argv) > 1 and sys.argv[1] == 'minuscules':
+        planche(sys.argv[2] if len(sys.argv) > 2 else 'minuscules.png',
+                lignes=('abcdefghi', 'jklmnopqr', 'stuvwxyz', 'lafleurstudio'))
     else:
         render(sys.argv[1] if len(sys.argv) > 1 else 'LAFLEURSTUDIO', sys.argv[2] if len(sys.argv) > 2 else 'fustard-132.png')
