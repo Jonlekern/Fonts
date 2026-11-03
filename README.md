@@ -14,6 +14,8 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Malabard** | Display de course allongée | 7 (ExtraLight → ExtraBold) + 7 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/malabard/) · [Zip](malabard/Malabard.zip) · [Dossier](malabard/) |
 | **Brécard** | Display en pointes et en losanges, poids en haut | 9 (wa'vatlh → Hutvatlh, en klingon) + 9 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/brecard/) · [Zip](brecard/Brecard.zip) · [Dossier](brecard/) |
 | **Fûsard-032** | Techno gothique : géométrie stricte, croisements partout, bouts en pointe | 9 (Hairline → Black) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/fusard-032/) · [Zip](fusard-032/Fusard032.zip) · [Dossier](fusard-032/) |
+| **Jalousia Net** | Chiffres romains néo-gothiques dessinés à la main, trait net | 4 (Centum → Quadringenti, en latin) + 4 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia-net/) · [Zip](jalousia-net/JalousiaNet.zip) · [Dossier](jalousia-net/) |
+| **Jalousia Craie** | Le même dessin, au trait de craie | 4 (Centum → Quadringenti, en latin) + 4 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia-craie/) · [Zip](jalousia-craie/JalousiaCraie.zip) · [Dossier](jalousia-craie/) |
 
 ## Organisation
 
@@ -24,10 +26,12 @@ shared/
   specimen.js           Spécimen commun : graisses, testeur, caractères
 calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
-brecard/, fusard-032/
+brecard/, fusard-032/,
+jalousia-net/,
+jalousia-craie/       (sources de Jalousia : jalousia-net/source/)
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard et Fûsard-032 : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032 et Jalousia : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
