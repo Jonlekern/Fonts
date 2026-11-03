@@ -1,6 +1,6 @@
 # Caffeinated
 
-Une écriture à la main tirée des boulangeries et des cafés biennois : les menus et les prix écrits au feutre, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**.
+Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/caffeinated/**
 
@@ -18,8 +18,8 @@ Page : **https://jonlekern.github.io/Fonts/caffeinated/**
 
 ## Détails
 
-- Chaque lettre est relevée sur une vraie écriture à la main, puis redessinée d'un trait rond et régulier.
-- Les rares lettres introuvables ont été dessinées par le studio, dans le même esprit.
+- Chaque lettre est relevée sur une vraie ardoise de café ou de boulangerie à Bienne, puis redessinée d'un trait rond et régulier.
+- Les rares lettres qu'on n'a trouvées sur aucune ardoise ont été dessinées par le studio, dans le même esprit.
 - Tous les i accentués (î, ï, í, ì…) portent un petit cœur à la place de l'accent.
 - `☀` (U+2600) dessine un soleil qui sourit.
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
