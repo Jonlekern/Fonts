@@ -5,7 +5,7 @@
 # 4. pointes plus courtes, proportionnées à l'épaisseur
 # 5. lettres élargies pour garder les contreformes ouvertes
 # 6. croisement en biais (< 40°) : le trait s'arrête dans l'autre, sans dépasser
-# 7. U à partir de 700 : le fût s'arrête sur la diagonale
+# 7. à partir de 700 : U, le fût s'arrête sur la diagonale ; u, fond plat qui traverse le fût
 import sys, os, math
 _ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [_ICI, os.path.join(_ICI, '..', 'jalousia')]
@@ -59,10 +59,7 @@ def croisements(strokes):
     return pts
 
 def est_detail(st, ov):
-    P = np.array(st['p'])
-    L = np.linalg.norm(P[-1] - P[0])
-    d = P[-1] - P[0]
-    return len(P) == 2 and abs(d[0]) < 1 and L < 1000
+    return bool(st.get('detail'))       # les petites croix, marquées dans le dessin
 
 def contour_trait(st, X, R):
     """Morceaux de polygone d'un trait à épaisseur variable."""
@@ -153,13 +150,21 @@ def U_gras(ov):
     fut = S((xr, H + ov), (xr, yb)); fut['caps'][1] = 'B'
     return [S((-60, H), (260, H)), S((xr - 80, H), (xr + 180, H)), panse, fut]
 
+def u_gras(ov):
+    """7. u des graisses 700 et plus : fond plat qui traverse le fût, croix en bas à droite."""
+    S = techno.S; X = techno.XH; xr = 440.0
+    return [S((-60, X), (200, X)), S((xr - 80, X), (xr + 140, X)),
+            S((100, X + ov), (100, 0, 110), (xr + ov, 0)), S((xr, X + ov), (xr, -ov))]
+
 def glyphes(R):
     G = techno.build(R['ov'])
+    G.update(techno.build_lc(R['ov'] * techno.XH / 1000.0))   # minuscules, croisements en proportion
     if R.get('poids', 900) >= 700:
         G['U'] = U_gras(R['ov'])
+        G['u'] = u_gras(R['ov'] * techno.XH / 1000.0)
     out = {}
     for ch, strokes in G.items():
-        sts = [dict(p=[np.array([x * R['sx'], y]) for x, y in st['p']], caps=list(st['caps'])) for st in strokes]
+        sts = [dict(p=[np.array([x * R['sx'], y]) for x, y in st['p']], caps=list(st['caps']), detail=st.get('detail', False)) for st in strokes]
         out[ch] = couper_biais(sts, R['ov'])
     return out
 
