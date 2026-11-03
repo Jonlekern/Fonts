@@ -26,7 +26,7 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 
 | Chemin | Contenu |
 | --- | --- |
-| `Bussard.zip` | Les 2 styles en TTF + licence |
+| `Bussard.zip` | Les 2 styles en TTF + licence + auteurs |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 
@@ -38,6 +38,8 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 ```
 
 ## Licence
+
+Copyright 2026 The Bussard Project Authors : **Jonathan Kern**, **LaFleurStudio** (voir [`AUTHORS.txt`](AUTHORS.txt)).
 
 Bussard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
 Libre et gratuite, y compris pour un usage commercial. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
