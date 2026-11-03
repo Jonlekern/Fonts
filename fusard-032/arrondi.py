@@ -1,4 +1,4 @@
-# Fûsard 032, étape 3 (sharp + arrondis) : les lettres rondes (D, U, S, R) gardent leurs segments
+# Fûsard-032, étape 3 (sharp + arrondis) : les lettres rondes (D, U, S, R) gardent leurs segments
 # aux angles des règles, mais chaque coin devient un arc tangent (courbe continue) ;
 # le O est une ogive : deux arcs de cercle qui se croisent en pointe.
 import sys, math

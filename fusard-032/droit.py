@@ -1,4 +1,4 @@
-# Fûsard 032, étape 2 (traits droits, sharp) : chaque trait de l'essai devient une suite de segments
+# Fûsard-032, étape 2 (traits droits, sharp) : chaque trait de l'essai devient une suite de segments
 # dont les angles sont pris dans les 8 règles, coins pointus (onglet), bouts coupés net.
 import sys, math
 import numpy as np

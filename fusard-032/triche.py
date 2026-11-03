@@ -1,4 +1,4 @@
-# Fûsard 032, graisses 100 à 900 : même squelette que la Hairline, avec les règles de triche optique :
+# Fûsard-032, graisses 100 à 900 : même squelette que la Hairline, avec les règles de triche optique :
 # 1. contraste : horizontales plus fines que les verticales (diagonales entre les deux)
 # 2. pièges à encre : les traits s'amincissent là où ils se croisent
 # 3. détails (petites croix) plus fins

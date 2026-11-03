@@ -1,4 +1,4 @@
-# Fûsard 032 : le reste du jeu GF Latin Core (accents, lettres en plus, signes), dans la recette.
+# Fûsard-032 : le reste du jeu GF Latin Core (accents, lettres en plus, signes), dans la recette.
 import sys, os, math, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np

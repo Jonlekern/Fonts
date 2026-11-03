@@ -1,5 +1,5 @@
-# Jalousia (la racine de Fûsard 032) : lettres tracées d'après les dessins de chiffres romains néo-gothiques.
-# Copie de jalousia/essai.py (branche jalousia). Fûsard 032 part de ces traits.
+# Jalousia (la racine de Fûsard-032) : lettres tracées d'après les dessins de chiffres romains néo-gothiques.
+# Copie de jalousia/essai.py (branche jalousia). Fûsard-032 part de ces traits.
 # Unités : ligne de base 0, hauteur des capitales 1000, y vers le haut.
 import sys
 import numpy as np

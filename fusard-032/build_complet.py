@@ -1,6 +1,6 @@
-# Fûsard 032 aux normes : jeu GF Latin Core complet, 9 graisses.
+# Fûsard-032 aux normes : jeu GF Latin Core complet, 9 graisses.
 # Accents combinants placés automatiquement (mark/mkmk), i et j sans point sous un accent (ccmp),
-# ș ț roumains (locl), chiffres minuscules (onum), crénage par familles de lettres,
+# ș ț roumains (locl), chiffres minuscules par défaut, majuscules (lnum), crénage par familles de lettres,
 # hauteurs de ligne identiques dans les 9 graisses.
 import sys, os, math, json, unicodedata
 import numpy as np
@@ -16,7 +16,7 @@ from fontTools.agl import UV2AGL
 from fontTools.ttLib import TTFont
 
 SC = B.SC
-VERSION = 0.302
+VERSION = 0.303
 ICI = os.path.dirname(os.path.abspath(__file__))
 CORE = json.load(open(os.path.join(ICI, 'gf_core.json')))
 # en plus du GF Latin Core : le reste du jeu Windows (Latin-1 et Windows-1252)
@@ -56,11 +56,9 @@ def traits(R):
             continue
         if ch in '  ':
             out[n] = (cp, None, 'espace'); continue
-        if ch in '0123456789':
-            out[n] = (cp, prep(maj[ch]), 'base'); continue
         out[n] = (cp, C[ch], 'base')
     for c in '0123456789':
-        out[nom_glyphe(ord(c)) + '.onum'] = (None, C[c], 'base')
+        out[nom_glyphe(ord(c)) + '.lnum'] = (None, prep(maj[c]), 'base')
     # accents combinants : dessinés autour de x = 0, en haut des minuscules ou sous la ligne
     noms_m = {0x300: 'grave', 0x301: 'aigu', 0x302: 'circonflexe', 0x303: 'tilde', 0x304: 'macron', 0x306: 'breve',
               0x307: 'point', 0x308: 'trema', 0x30A: 'rond', 0x30B: 'double', 0x30C: 'caron'}
@@ -113,7 +111,7 @@ def construire(poids, style, sortie):
         ch = chr(cp) if cp else None
         b = base_de(ch) if ch else None
         rep = nom_glyphe(ord(b)) if (b and b != ch and ord(b) in cmap) else n
-        if n.endswith('.onum'): rep = n
+        if n.endswith('.lnum'): rep = n
         repr_.setdefault(rep, []).append(n)
     profils = {rep: B.profil(encre[rep][0], encre[rep][1] - SB, r_ink) for rep in repr_ if rep in encre}
     classes = {rep: f'@k_{i}' for i, rep in enumerate(sorted(profils))}
@@ -143,7 +141,7 @@ def construire(poids, style, sortie):
             lsb[n] = 0
     fb.setupHorizontalMetrics({n: (adv[n], lsb[n]) for n in order})
     fb.setupHorizontalHeader(ascent=1200, descent=-420)      # remis à l'identique pour les 9 graisses ensuite
-    fam = 'Fûsard 032'; ps = 'Fusard032-' + style.replace(' ', ''); regular = (style == 'Regular')
+    fam = 'Fûsard-032'; ps = 'Fusard032-' + style.replace(' ', ''); regular = (style == 'Regular')
     fb.setupNameTable({
         'copyright': '© 2026 LaFleurStudio. All rights reserved.',
         'familyName': fam if regular else f'{fam} {style}', 'styleName': 'Regular',
@@ -171,7 +169,7 @@ def construire(poids, style, sortie):
     fea += "feature ccmp { sub [i j]' lookup SANSPOINT @HAUT; } ccmp;\n"
     fea += ('feature locl { script latn; language ROM; sub Scedilla by uni0218; sub scedilla by uni0219; '
             'language MOL; sub Scedilla by uni0218; sub scedilla by uni0219; } locl;\n')
-    fea += 'feature onum {\n' + ''.join(f'  sub {nom_glyphe(ord(c))} by {nom_glyphe(ord(c))}.onum;\n' for c in '0123456789') + '} onum;\n'
+    fea += 'feature lnum {\n' + ''.join(f'  sub {nom_glyphe(ord(c))} by {nom_glyphe(ord(c))}.lnum;\n' for c in '0123456789') + '} lnum;\n'
     ym = round(Y['y_min'] * SC)
     fea += f'markClass @HAUT <anchor 0 {ym}> @MH;\nmarkClass @BAS <anchor 0 0> @MB;\n'
     fea += 'feature mark {\n'

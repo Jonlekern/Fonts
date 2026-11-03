@@ -1,4 +1,4 @@
-# Fûsard 032 : les 9 fichiers de police, de 100 (Hairline) à 900 (Black).
+# Fûsard-032 : les 9 fichiers de police, de 100 (Hairline) à 900 (Black).
 # Chaque graisse = même squelette + règles de triche.regles(poids), contours à épaisseur variable,
 # union skia-pathops, approche + crénage calculés sur les profils, chiffres minuscules via « onum ».
 import sys, os, math
@@ -235,7 +235,7 @@ def construire(poids, style, sortie):
     ymax = max(e[4] for e in encre.values()); ymin = min(e[3] for e in encre.values())
     asc, desc = int(math.ceil(ymax / 10) * 10), int(math.floor(ymin / 10) * 10)
     fb.setupHorizontalHeader(ascent=asc, descent=desc)
-    fam = 'Fûsard 032'
+    fam = 'Fûsard-032'
     ps = 'Fusard032-' + style.replace(' ', '')
     regular = (style == 'Regular')
     fb.setupNameTable({
