@@ -1,6 +1,6 @@
 # Bussard
 
-Une police à points lumineux, inspirée des tableaux de départ des arrêts de bus biennois. Chaque lettre est dessinée point par point sur une grille. **Une droite** et **une italique glitch** penchée à 12°, par **LaFleurStudio**.
+Une police à points lumineux, inspirée des transports et des affichages LED. Chaque lettre est dessinée point par point sur une grille. **Une droite** et **une italique glitch** penchée à 12°, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/bussard/**
 
@@ -18,6 +18,8 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
 - `🚌` (U+1F68C) dessine le petit bus des tableaux.
 - Tous les chiffres ont la même largeur : les horaires restent alignés.
+- Crénage en points entiers (50 unités), pour que les points restent sur la grille. Les chiffres ne sont pas crénés.
+- Article Google Fonts : [`article/ARTICLE.en_us.html`](article/ARTICLE.en_us.html).
 - Contrôlée avec Fontbakery (profil Google Fonts) : 0 erreur, 0 échec.
 
 ## Fichiers
