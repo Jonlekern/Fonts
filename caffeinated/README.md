@@ -43,3 +43,7 @@ Page : **https://jonlekern.github.io/Fonts/caffeinated/**
 
 Caffeinated est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
 Libre et gratuite, y compris pour un usage commercial. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
+
+## Merci
+
+Merci aux mains anonymes des cafés et des boulangeries biennois.
