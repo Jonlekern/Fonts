@@ -4,7 +4,7 @@ Police techno gothique de LaFleurStudio : géométrie stricte, croisements parto
 
 **Racine** : Fûstard 132 est né de **Jalousia**, police d'après des dessins de chiffres romains néo-gothiques (branche `jalousia`). Les traits de départ de Jalousia sont copiés dans `jalousia.py`, pour que ce dossier se suffise à lui-même.
 
-**Polices** (version 0.301, dossier `fonts/`, TTF et `fonts/woff2/`) : 9 graisses aux normes.
+**Polices** (version 0.302, dossier `fonts/`, TTF et `fonts/woff2/`) : 9 graisses aux normes.
 
 - **335 caractères** : tout le jeu GF Latin Core (langues d'Europe en alphabet latin) et le reste du jeu Windows (± ¹ ² ³ ¼ ½ ¾ µ † ‡ ‰ ƒ…).
 - **Accents** dans la recette : traits en pointe, circonflexe croisé comme le haut du A, tréma et point en petites croix, rond en petite ogive ; plus fins que les lettres en gras, au-dessus des pointes sur les capitales.
@@ -12,7 +12,7 @@ Police techno gothique de LaFleurStudio : géométrie stricte, croisements parto
 - **Crénage par familles** : chaque lettre accentuée suit sa lettre de base.
 - **Mêmes hauteurs de ligne** dans les 9 graisses (1180 / −400, `USE_TYPO_METRICS`).
 - Guillemets « » ‹ › posés sur la ligne de base.
-- Licence : pas encore décidée.
+- **Licence** (`LICENCE.txt`, aussi inscrite dans les fichiers) : usage personnel gratuit ; usage commercial sur autorisation écrite de LaFleurStudio, gratuite ou payante selon le projet. Contact : info@lafleurstudio.ch. Revente, partage des fichiers et modification interdits sans accord.
 
 | Poids | Nom | Fichier |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ Même squelette que la Hairline. Le trait passe de 32 (100) à 220 (900), les cr
 | 9. Premier fichier Hairline (0.100) | `build_font.py` | `police-essai.png` |
 | 10. Les 9 graisses en fichiers (0.200) : un contour par trait, union, crénage calculé sur les profils, `onum` | `build_family.py` | `famille-essai.png` |
 | 11. Style des accents | `accents.py` | — |
-| 12. Jeu complet aux normes (0.301) : accents, lettres et signes en plus, fonctions OpenType, crénage par familles | `complet.py`, `build_complet.py` | `complet-100.png`, `complet-900.png`, `langues.png` |
+| 12. Jeu complet aux normes (0.301, licence en 0.302) : accents, lettres et signes en plus, fonctions OpenType, crénage par familles | `complet.py`, `build_complet.py` | `complet-100.png`, `complet-900.png`, `langues.png` |
 | Contrôle automatique des 9 fichiers | `qa_complet.py` | — |
 
 ## Refaire les images

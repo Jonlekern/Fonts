@@ -16,7 +16,7 @@ from fontTools.agl import UV2AGL
 from fontTools.ttLib import TTFont
 
 SC = B.SC
-VERSION = 0.301
+VERSION = 0.302
 ICI = os.path.dirname(os.path.abspath(__file__))
 CORE = json.load(open(os.path.join(ICI, 'gf_core.json')))
 # en plus du GF Latin Core : le reste du jeu Windows (Latin-1 et Windows-1252)
@@ -145,13 +145,17 @@ def construire(poids, style, sortie):
     fb.setupHorizontalHeader(ascent=1200, descent=-420)      # remis à l'identique pour les 9 graisses ensuite
     fam = 'Fûstard 132'; ps = 'Fustard132-' + style.replace(' ', ''); regular = (style == 'Regular')
     fb.setupNameTable({
-        'copyright': '© 2026 LaFleurStudio',
+        'copyright': '© 2026 LaFleurStudio. All rights reserved.',
         'familyName': fam if regular else f'{fam} {style}', 'styleName': 'Regular',
         'typographicFamily': fam, 'typographicSubfamily': style,
         'uniqueFontIdentifier': f'LaFleurStudio: {fam} {style}: {VERSION:.3f}',
         'fullName': f'{fam} {style}', 'psName': ps,
         'version': f'Version {VERSION:.3f}', 'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
         'vendorURL': 'https://jonlekern.github.io/Fonts/',
+        'licenseDescription': ('Free for personal use. Commercial use requires prior written permission from '
+                               'LaFleurStudio (free or paid, decided case by case): info@lafleurstudio.ch. '
+                               'Usage personnel gratuit ; usage commercial sur autorisation écrite de LaFleurStudio.'),
+        'licenseInfoURL': 'https://github.com/Jonlekern/Fonts/blob/fustard-132/fustard-132/LICENCE.txt',
     })
     fb.setupOS2(version=4, sTypoAscender=1200, sTypoDescender=-420, sTypoLineGap=0, usWinAscent=1200, usWinDescent=420,
                 sxHeight=round(X * SC), sCapHeight=round(H * SC), achVendID='LFST', fsType=0,
