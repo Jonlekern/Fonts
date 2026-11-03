@@ -180,7 +180,7 @@ def complet(R):
         sts = [dict(st, p=[np.array([x * sx, y]) for x, y in st['p']], caps=list(st['caps'])) for st in sts]
         return triche.couper_biais(sts, ov) if R['poids'] >= 500 else sts
     G0 = {c: [dict(st, p=[np.array([x / sx, y]) for x, y in st['p']]) for st in v] for c, v in G.items()}
-    P = techno.build_ponct(ovl); P['@'] = techno.arobase(ovl, techno.build_lc(ovl)['a'])
+    P = techno.build_ponct(ovl); P['@'] = techno.arobase(ovl, techno.build_lc(ovl)['a'], k)
     out = dict(G)
     for c, v in nouvelles_lettres(G0, ov, ovl).items():
         out[c] = elargir(v)
