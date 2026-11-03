@@ -80,7 +80,7 @@ def build(ov=70.0):
     xl = 260 + 480 / T67
     G['R'] = [S((0, H + ov), (0, 0)),
               S((-ov, H), (480, H, 240), (480, 480, 240), (-ov, 480)),
-              S((-ov + 30 * f, 480 + 80 * f), (-ov + 30 * f, 480 - 80 * f)),
+              dict(S((-ov + 30 * f, 480 + 80 * f), (-ov + 30 * f, 480 - 80 * f)), detail=True),
               S((260 - ov * C67, 480 + ov * S67), (xl + ov * C67, -ov * S67)),
               S((xl - 110, 0), (xl + 150, 0))]
     G['S'] = [S((560, H), (40, H, 160), (40, 700, 120), (520, 220, 170), (520, 0, 150), (0, 0)),
@@ -99,9 +99,9 @@ def build(ov=70.0):
 
     # ---- le reste de l'alphabet ----
     def croix_haut(x, y):   # petite croix verticale en bout de barre (E, F, S)
-        return S((x, y + 90 * f), (x, y - 110 * f))
+        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return S((x, y + 110 * f), (x, y - 90 * f))
+        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):   # trait qui dépasse de ov à ses bouts
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -152,7 +152,7 @@ def build(ov=70.0):
     # P : fût, panse du R, pied
     G['P'] = [S((0, H + ov), (0, -ov)),
               S((-ov, H), (480, H, 240), (480, 440, 240), (-ov, 440)),
-              S((-ov + 30 * f, 440 + 80 * f), (-ov + 30 * f, 440 - 80 * f)),
+              dict(S((-ov + 30 * f, 440 + 80 * f), (-ov + 30 * f, 440 - 80 * f)), detail=True),
               S((-150, 0), (170, 0))]
     # H : deux fûts, barre, empattements en croix
     G['H'] = [S((0, H + ov), (0, -ov)), S((540, H + ov), (540, -ov)),
@@ -185,7 +185,7 @@ def build(ov=70.0):
     queue = [np.array([cxq + aq + rq * math.cos(t), cyq + rq * math.sin(t)]) for t in np.linspace(t0, t1, 120)]
     tc = t1 - 30 * f / rq
     xc, yc_ = cxq + aq + rq * math.cos(tc), cyq + rq * math.sin(tc)
-    G['Q'] = [dict(p=queue, caps=['tip', 'tip']), Ov[1], S((xc, yc_ + 55 * f), (xc, yc_ - 45 * f))]   # croix moitié plus courte
+    G['Q'] = [dict(p=queue, caps=['tip', 'tip']), Ov[1], dict(S((xc, yc_ + 55 * f), (xc, yc_ - 45 * f)), detail=True)]   # croix moitié plus courte
     # Y : deux bras à 67,5° qui se croisent, fût, pied
     yc = 470
     by = (H - yc) / T67
@@ -242,9 +242,9 @@ def build_chiffres_maj(ov):
     """Chiffres majuscules : coins vifs, chaque jonction en croix, comme les capitales."""
     f = ov / 70.0
     def croix_haut(x, y):
-        return S((x, y + 90 * f), (x, y - 110 * f))
+        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return S((x, y + 110 * f), (x, y - 90 * f))
+        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -287,9 +287,9 @@ def build_lc(ov):
     f = ov / 70.0
     X, A, D = XH, ASC, DESC
     def croix_haut(x, y):
-        return S((x, y + 90 * f), (x, y - 110 * f))
+        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return S((x, y + 110 * f), (x, y - 90 * f))
+        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -373,7 +373,7 @@ def build_ponct(ov):
     """Ponctuation. Les points sont des croix ; guillemets en chevrons croisés à la pointe."""
     f = ov / 70.0
     def croix_haut(x, y):
-        return S((x, y + 90 * f), (x, y - 110 * f))
+        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
     def point(x, y, s=80):
         return [S((x, y + s), (x, y - s)), S((x - s, y), (x + s, y))]
     def virgule(x, y, s=80):

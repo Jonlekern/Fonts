@@ -25,11 +25,11 @@ Même squelette que la Hairline, trait de 220 (22 % des capitales), croisements 
 
 1. **Contraste** : horizontales à 70 % de l'épaisseur des verticales, diagonales entre les deux.
 2. **Pièges à encre** : aux croisements francs (plus de 45°), les traits s'amincissent à 80 % sur une demi-épaisseur.
-3. **Détails** : petites croix à 55 %.
+3. **Détails** : petites croix (E, F, S, Z, R, P, J, Q…) à 55 %.
 4. **Pointes** : longues de 1,5 demi-épaisseur (fers de lance).
 5. **Largeur** : lettres élargies de 18 %.
 6. **Croisements en biais** (moins de 40°) : le trait s'arrête dans l'autre, sans dépasser.
-7. **U à partir de 700** : le fût s'arrête sur la diagonale.
+7. **À partir de 700** : U, le fût s'arrête sur la diagonale ; u, fond plat qui traverse le fût (croix en bas à droite).
 
 `python3 triche.py fustard-132-900.png` → `fustard-132-900.png`
 
