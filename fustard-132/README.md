@@ -12,6 +12,8 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas
 - **A** : celui de la version sharp, gardé tel quel.
 - **Q** : l'arc de gauche du O continue en longue queue courbe, barrée d'une petite croix.
 - **Trait** : 32 d'épaisseur.
+- **Minuscules** : hauteur 600, montantes 1000, descendantes −380 ; croisements à la même exagération, en proportion (126).
+  Point du i et du j en croix, queues de g, j, y sur la croix du J, e arrondi en haut avec un coin vif en bas à gauche.
 
 ## Étapes
 
@@ -23,6 +25,7 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas
 | 4. Techno gothique : géométrie stricte, croisements | `fustard.py` | `fustard-132.png` |
 | Choix de la longueur des croisements (avant, ×2, ×3 retenu) | | `croisements.png` |
 | 5. Alphabet A–Z (V, X, M, C d'après les dessins) | `fustard.py` | `alphabet.png` |
+| 6. Minuscules a–z | `fustard.py` | `minuscules.png` |
 
 ## Refaire les images
 
@@ -32,6 +35,7 @@ python3 droit.py LAFLEURSTUDIO sharp.png
 python3 arrondi.py LAFLEURSTUDIO arrondis.png
 python3 fustard.py LAFLEURSTUDIO fustard-132.png
 python3 fustard.py alphabet alphabet.png
+python3 fustard.py minuscules minuscules.png
 ```
 
 Les scripts lisent les lettres de départ dans `../jalousia/essai.py`.
