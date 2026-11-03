@@ -37,7 +37,16 @@ def path(pts, nseg=20):
             ang = a1 + da * k / nseg
             out.append(ctr + rads[i] * np.array([math.cos(ang), math.sin(ang)]))
     out.append(P[-1])
-    return out
+    # retirer les points quasi confondus (un segment de longueur ~0 fausse les coins à l'onglet)
+    propre = [out[0]]
+    for p in out[1:-1]:
+        if np.linalg.norm(p - propre[-1]) > 2.0:
+            propre.append(p)
+    if np.linalg.norm(out[-1] - propre[-1]) <= 2.0 and len(propre) > 1:
+        propre[-1] = out[-1]
+    else:
+        propre.append(out[-1])
+    return propre
 
 def S(*pts):
     return dict(p=path(pts), caps=['tip', 'tip'])
@@ -74,7 +83,7 @@ def build(ov=70.0):
               S((-ov + 30 * f, 480 + 80 * f), (-ov + 30 * f, 480 - 80 * f)),
               S((260 - ov * C67, 480 + ov * S67), (xl + ov * C67, -ov * S67)),
               S((xl - 110, 0), (xl + 150, 0))]
-    G['S'] = [S((560, H), (40, H, 160), (40, 700, 120), (520, 220, 170), (520, 0, 170), (0, 0)),
+    G['S'] = [S((560, H), (40, H, 160), (40, 700, 120), (520, 220, 170), (520, 0, 150), (0, 0)),
               S((560 - 30 * f, H + 90 * f), (560 - 30 * f, H - 110 * f)),
               S((30 * f, 110 * f), (30 * f, -90 * f))]
     G['T'] = [S((0, H), (700, H)),
@@ -82,7 +91,7 @@ def build(ov=70.0):
               S((200, 0), (500, 0))]
     r2 = math.sqrt(0.5)
     G['D'] = [S((0, H + ov), (0, -ov)),
-              S((-ov * r2, H + ov * r2), (520, H - 520 - ov * r2 + 0.0, 220), (520, 0, 220), (-ov, 0))]
+              S((-ov * r2, H + ov * r2), (520, H - 520 - min(ov, 210.0) * r2, 220), (520, 0, 220), (-ov, 0))]
     G['I'] = [S((0, H + ov), (0, -ov)),
               S((-200, H), (200, H)),
               S((-220, 0), (220, 0))]
