@@ -360,10 +360,99 @@ def build_lc(ov):
               croix_haut(30 * f, X), croix_bas(w + 130 - 30 * f, 0)]
     return L
 
+def build_ponct(ov):
+    """Ponctuation. Les points sont des croix ; guillemets en chevrons croisés à la pointe."""
+    f = ov / 70.0
+    def croix_haut(x, y):
+        return S((x, y + 90 * f), (x, y - 110 * f))
+    def point(x, y, s=80):
+        return [S((x, y + s), (x, y - s)), S((x - s, y), (x + s, y))]
+    def virgule(x, y, s=80):
+        return [S((x + 45, y + s), (x - 70, y - 200)), S((x - s, y), (x + s, y))]
+    def dague(x, y=H):       # apostrophe droite : petite dague
+        return [S((x, y + 100), (x, y - 280)), S((x - 70, y - 60), (x + 70, y - 60))]
+    def dague_penchee(x, sens, y=H):
+        return [S((x - 60 * sens, y - 300), (x + 60 * sens, y + 40)), S((x - 75, y - 80), (x + 75, y - 80))]
+    def chevron(x, sens, y=400, a=220, d=90):   # sens -1 : pointe à gauche
+        tip = np.array([x, y], float)
+        out = []
+        for dy in (a, -a):
+            far = tip + np.array([-sens * a, dy])
+            u = (tip - far) / np.linalg.norm(tip - far)
+            out.append(S(tuple(far), tuple(tip + u * d)))
+        return out
+    P = {}
+    P['.'] = point(0, 80)
+    P[','] = virgule(0, 80)
+    P[':'] = point(0, 80) + point(0, 500)
+    P[';'] = virgule(0, 80) + point(0, 500)
+    P['!'] = [S((0, H + ov), (0, 300)), S((-130, H), (130, H))] + point(0, 80)
+    P['?'] = [S((0, H), (380, H, 160), (380, 620, 140), (200, 620), (200, 300)), croix_haut(30 * f, H)] + point(200, 80)
+    P["'"] = dague(0)
+    P['"'] = dague(0) + dague(200)
+    P['’'] = dague_penchee(0, 1)
+    P['‘'] = dague_penchee(0, -1)
+    P['”'] = dague_penchee(0, 1) + dague_penchee(200, 1)
+    P['“'] = dague_penchee(0, -1) + dague_penchee(200, -1)
+    P['«'] = chevron(0, -1) + chevron(230, -1)
+    P['»'] = chevron(0, 1) + chevron(230, 1)
+    P['‹'] = chevron(0, -1)
+    P['›'] = chevron(0, 1)
+    P['-'] = [S((0, 420), (320, 420))]
+    P['–'] = [S((0, 420), (520, 420))]
+    P['—'] = [S((0, 420), (920, 420))]
+    P['('] = [arrondi.ogive(cx=150.0, top=1120.0, bot=-220.0, w=150.0, over=1.0)[0]]
+    P[')'] = [arrondi.ogive(cx=0.0, top=1120.0, bot=-220.0, w=150.0, over=1.0)[1]]
+    P['['] = [S((0, 1120 + ov), (0, -220 - ov)), S((-ov, 1120), (220, 1120)), S((-ov, -220), (220, -220))]
+    P[']'] = [S((220, 1120 + ov), (220, -220 - ov)), S((0, 1120), (220 + ov, 1120)), S((0, -220), (220 + ov, -220))]
+    w = 1340 / T67
+    u = np.array([C67, S67])
+    P['/'] = [S(tuple(np.array([0, -220]) - u * ov), tuple(np.array([w, 1120]) + u * ov))]
+    P['\\'] = [S(tuple(np.array([w, -220]) + np.array([C67, -S67]) * ov), tuple(np.array([0, 1120]) - np.array([C67, -S67]) * ov))]
+    P['|'] = [S((0, 1120 + ov), (0, -220 - ov))]
+    P['&'] = [S((0, H + ov), (0, -ov)), S((-ov, H), (300, H)), S((-ov, 0), (300, 0)),
+              S((-ov, 520), (640, 520)),
+              S((480, 760), (480, 0, 120), (700, 0)), croix_haut(700 - 30 * f, 0)]
+    P['@'] = [S((460, 710), (460, 250), (640, 250, 120), (640, 900, 250), (0, 900, 250), (0, -100, 250), (600, -100)),
+              S((520, 650), (180, 650, 150), (180, 250, 150), (520, 250))]
+    P['#'] = [S((150, 800 + ov), (150, -ov)), S((400, 800 + ov), (400, -ov)),
+              S((-ov, 250), (550 + ov, 250)), S((-ov, 550), (550 + ov, 550))]
+    c = np.array([0.0, 780.0]); r = 170
+    P['*'] = [S(tuple(c - r * np.array([math.cos(t), math.sin(t)])), tuple(c + r * np.array([math.cos(t), math.sin(t)])))
+              for t in (0, math.pi / 4, math.pi / 2, 3 * math.pi / 4)]
+    P['+'] = [S((0, 420), (440, 420)), S((220, 200), (220, 640))]
+    P['='] = [S((0, 320), (440, 320)), S((0, 520), (440, 520))]
+    P['%'] = [S(tuple(np.array([60, 0]) - u * 60), tuple(np.array([60 + 900 / T67, 900]) + u * 60))] + \
+             arrondi.ogive(cx=60.0, top=900.0, bot=560.0, w=90.0, over=60.0) + \
+             arrondi.ogive(cx=60 + 900 / T67, top=340.0, bot=0.0, w=90.0, over=60.0)
+    P['_'] = [S((0, -220), (600, -220))]
+    P['…'] = point(0, 80) + point(230, 80) + point(460, 80)
+    P['·'] = point(0, 420)
+    P[' '] = [dict(p=[np.array([0.0, -9000.0]), np.array([800.0, -9000.0])], caps=["tip", "tip"])]   # espace
+    return P
+
+def arobase(ov, a_min):
+    """@ : fenêtre de cathédrale (côtés droits, sommet en ogive, posée sur une barre), le a de Fûstard dedans."""
+    def arc(c, r, t0, t1, n=80):
+        return [np.array([c[0] + r * math.cos(t), c[1] + r * math.sin(t)]) for t in np.linspace(t0, t1, n)]
+    cx, top, bot, w = 350.0, 950.0, -150.0, 330.0
+    cy = (top + bot) / 2; h = (top - bot) / 2; a = (h * h - w * w) / (2 * w); rho = a + w
+    phi = math.atan2(h, a); d = ov / rho
+    cL = (cx + a, cy); cR = (cx - a, cy)
+    xg, xd, yl = cx - w, cx + w, 230.0
+    gauche = dict(p=path(((xg, bot - ov), (xg, cy))) + arc(cL, rho, math.pi, math.pi - phi - d)[1:], caps=['tip', 'tip'])
+    droite = dict(p=path(((500, yl), (xd, yl), (xd, cy))) + arc(cR, rho, 0.0, phi + d)[1:], caps=['T', 'tip'])
+    pied = S((xg - ov, bot), (xd + 40, bot))
+    sc = 0.75; dx = 500 - 360 * sc
+    dedans = [dict(p=[np.array([x * sc + dx, y * sc + yl]) for x, y in st['p']], caps=st['caps']) for st in a_min]
+    return [gauche, droite, pied] + dedans
+
 OV_CHOISI = 210.0   # niveau 2 (croisements x3), choisi
 OV_MIN = OV_CHOISI * XH / 1000.0   # même exagération, en proportion des minuscules
 G = build(OV_CHOISI)
 G.update(build_lc(OV_MIN))
+G.update(build_ponct(OV_MIN))
+G['@'] = arobase(OV_MIN, G['a'])
 GP = {ch: [s['p'] for s in v] for ch, v in G.items()}
 
 def render(word, out, k=0.3, ss=3, gap=284, G=G):
@@ -429,6 +518,25 @@ def planche_chiffres(out, k=0.3):
         sheet.paste(r, (0, y)); y += r.height
     sheet.save(out)
 
+def planche_ponct(out, k=0.3):
+    """Ponctuation, puis deux phrases d'essai."""
+    import os
+    lignes = [('.,:;!?\'"\u2018\u2019\u201c\u201d', G),
+              ('\u00ab\u00bb\u2039\u203a-\u2013\u2014()[]/\\|', G),
+              ('&@#*+=%_\u2026\u00b7', G),
+              ('\u00abLAFLEUR STUDIO\u00bb : 132 !', GMAJ),
+              ('(la fleur) & @studio #132 ?', G)]
+    rows = []
+    for i, (t, g) in enumerate(lignes):
+        fn = out + f'.ligne{i}.png'
+        render(t, fn, G=g, k=k); rows.append(Image.open(fn)); os.remove(fn)
+    W = max(r.width for r in rows)
+    sheet = Image.new('RGB', (W, sum(r.height for r in rows)), (0, 0, 0))
+    y = 0
+    for r in rows:
+        sheet.paste(r, (0, y)); y += r.height
+    sheet.save(out)
+
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'LAFLEURSTUDIO'
     out = sys.argv[2] if len(sys.argv) > 2 else None
@@ -438,5 +546,7 @@ if __name__ == '__main__':
         planche(out or 'minuscules.png', lignes=('abcdefghi', 'jklmnopqr', 'stuvwxyz', 'lafleurstudio'))
     elif cmd == 'chiffres':
         planche_chiffres(out or 'chiffres.png')
+    elif cmd == 'ponctuation':
+        planche_ponct(out or 'ponctuation.png')
     else:
         render(cmd, out or 'fustard-132.png')
