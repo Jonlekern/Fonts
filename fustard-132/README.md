@@ -4,7 +4,19 @@ Police techno gothique de LaFleurStudio : géométrie stricte, croisements parto
 
 **Racine** : Fûstard 132 est né de **Jalousia**, police d'après des dessins de chiffres romains néo-gothiques (branche `jalousia`). Les traits de départ de Jalousia sont copiés dans `jalousia.py`, pour que ce dossier se suffise à lui-même.
 
-**Fichier de police d'essai** : `fonts/Fustard132-Hairline.ttf` (Hairline, poids 100, version 0.100) : A–Z, a–z, chiffres, ponctuation. Chiffres majuscules par défaut ; chiffres minuscules avec l'option « chiffres elzéviriens » (`onum`). Pas encore d'accents.
+**Polices** (version 0.200, dossier `fonts/`) : 9 graisses, A–Z, a–z, chiffres, ponctuation. Chiffres majuscules par défaut ; chiffres minuscules avec l'option « chiffres elzéviriens » (`onum`). Pas encore d'accents.
+
+| Poids | Nom | Fichier |
+| --- | --- | --- |
+| 100 | Hairline | `Fustard132-Hairline.ttf` |
+| 200 | Thin | `Fustard132-Thin.ttf` |
+| 300 | Light | `Fustard132-Light.ttf` |
+| 400 | Regular | `Fustard132-Regular.ttf` |
+| 500 | Medium | `Fustard132-Medium.ttf` |
+| 600 | Bold | `Fustard132-Bold.ttf` |
+| 700 | Extra Bold | `Fustard132-ExtraBold.ttf` |
+| 800 | Super Bold | `Fustard132-SuperBold.ttf` |
+| 900 | Black | `Fustard132-Black.ttf` |
 
 ## La recette
 
@@ -22,19 +34,20 @@ Police techno gothique de LaFleurStudio : géométrie stricte, croisements parto
 - **Ponctuation** : points en croix, apostrophes en dagues, « » en chevrons croisés à la pointe, & en « Et », * à 8 branches, @ en fenêtre de cathédrale avec le a de Fûstard dedans.
 - **Chiffres** : deux jeux. Minuscules : arrondis, croix en bout de barre, 0 en ogive barrée. Majuscules : coins vifs, chaque coin en croix, 0 en cadre barré, 8 en grille.
 
-## La 900 (essai)
+## Les graisses, de 100 à 900
 
-Même squelette que la Hairline, trait de 220 (22 % des capitales), croisements rallongés à 320. Pour que ça tienne en gras, on triche :
+Même squelette que la Hairline. Le trait passe de 32 (100) à 220 (900), les croisements de 210 à 320, et les règles de triche montent en douceur jusqu'à la 900 :
 
-1. **Contraste** : horizontales à 70 % de l'épaisseur des verticales, diagonales entre les deux.
-2. **Pièges à encre** : aux croisements francs (plus de 45°), les traits s'amincissent à 80 % sur une demi-épaisseur.
-3. **Détails** : petites croix (E, F, S, Z, R, P, J, Q…) à 55 %.
-4. **Pointes** : longues de 1,5 demi-épaisseur (fers de lance).
-5. **Largeur** : lettres élargies de 18 %.
-6. **Croisements en biais** (moins de 40°) : le trait s'arrête dans l'autre, sans dépasser.
+1. **Contraste** : horizontales jusqu'à 70 % de l'épaisseur des verticales, diagonales entre les deux.
+2. **Pièges à encre** : aux croisements francs (plus de 45°), les traits s'amincissent (80 % en 900) sur une demi-épaisseur.
+3. **Détails** : petites croix (E, F, S, Z, R, P, J, Q…) jusqu'à 55 %.
+4. **Pointes** : de 3 à 1,5 demi-épaisseur (fers de lance en 900).
+5. **Largeur** : lettres élargies jusqu'à 18 %.
+6. **Croisements en biais** (moins de 40°), à partir de 500 : le trait qui traverse un autre en plein milieu s'arrête dedans (diagonale du U). Un X dont les deux traits dépassent (haut du A) reste un X.
 7. **À partir de 700** : U, panse ronde et fût qui descend sous la ligne en la traversant ; u, fond plat qui traverse le fût (croix en bas à droite).
+8. **A à partir de 600** : Ā, les deux traits s'arrêtent sous la barre du haut ; le A est étiré pour que sa barre arrive au niveau des pointes des autres lettres.
 
-`python3 triche.py fustard-132-900.png` → `fustard-132-900.png`
+`python3 triche.py graisses graisses.png` → `graisses.png` (LAFLEURSTUDIO dans les 9 graisses) ; `python3 triche.py fustard-132-900.png` → la 900.
 
 ## Étapes
 
@@ -49,7 +62,8 @@ Même squelette que la Hairline, trait de 220 (22 % des capitales), croisements 
 | 6. Minuscules a–z | `fustard.py` | `minuscules.png` |
 | 7. Chiffres minuscules et majuscules | `fustard.py` | `chiffres.png` |
 | 8. Ponctuation | `fustard.py` | `ponctuation.png` |
-| 9. Fichier de police (crénage calculé sur les profils, `onum`) | `build_font.py` | `police-essai.png` |
+| 9. Premier fichier Hairline (0.100) | `build_font.py` | `police-essai.png` |
+| 10. Les 9 graisses en fichiers (0.200) : un contour par trait, union, crénage calculé sur les profils, `onum` | `build_family.py` | `famille-essai.png` |
 
 ## Refaire les images
 
@@ -62,9 +76,9 @@ python3 fustard.py alphabet alphabet.png
 python3 fustard.py minuscules minuscules.png
 python3 fustard.py chiffres chiffres.png
 python3 fustard.py ponctuation ponctuation.png
-python3 build_font.py fonts/Fustard132-Hairline.ttf police-essai.png
+python3 build_family.py fonts famille-essai.png
 ```
 
-`build_font.py` demande fontTools et skia-pathops (`pip install fonttools skia-pathops`).
+`build_family.py` demande fontTools et skia-pathops (`pip install fonttools skia-pathops`).
 
 Les scripts lisent les traits de départ de Jalousia dans `jalousia.py`.
