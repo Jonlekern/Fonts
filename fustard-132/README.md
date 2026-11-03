@@ -1,6 +1,8 @@
 # Fûstard 132 (brouillon)
 
-Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas encore de fichier de police.
+Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours.
+
+**Fichier de police d'essai** : `fonts/Fustard132-Regular.ttf` (version 0.100) : A–Z, a–z, chiffres, ponctuation. Chiffres majuscules par défaut ; chiffres minuscules avec l'option « chiffres elzéviriens » (`onum`). Pas encore d'accents.
 
 ## La recette
 
@@ -30,6 +32,7 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas
 | 6. Minuscules a–z | `fustard.py` | `minuscules.png` |
 | 7. Chiffres minuscules et majuscules | `fustard.py` | `chiffres.png` |
 | 8. Ponctuation | `fustard.py` | `ponctuation.png` |
+| 9. Fichier de police (crénage calculé sur les profils, `onum`) | `build_font.py` | `police-essai.png` |
 
 ## Refaire les images
 
@@ -42,6 +45,9 @@ python3 fustard.py alphabet alphabet.png
 python3 fustard.py minuscules minuscules.png
 python3 fustard.py chiffres chiffres.png
 python3 fustard.py ponctuation ponctuation.png
+python3 build_font.py fonts/Fustard132-Regular.ttf police-essai.png
 ```
+
+`build_font.py` demande fontTools et skia-pathops (`pip install fonttools skia-pathops`).
 
 Les scripts lisent les lettres de départ dans `../jalousia/essai.py`.
