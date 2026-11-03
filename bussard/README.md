@@ -39,7 +39,8 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 
 ## Licence
 
-Copyright 2026 **Jonathan Kern**, **LaFleurStudio**.
+Copyright 2026 **Jonathan Kern**, **LaFleurStudio**, avec le nom réservé **« Bussard »** (Reserved Font Name).
 
 Bussard est distribuée sous **SIL Open Font License 1.1** (voir [`OFL.txt`](OFL.txt)).
 Libre et gratuite, y compris pour un usage commercial. La police ne peut pas être vendue seule, et la licence doit l'accompagner.
+Une version modifiée par quelqu'un d'autre ne peut pas s'appeler « Bussard ».
