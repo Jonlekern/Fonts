@@ -190,7 +190,86 @@ def build(ov=70.0):
               S((-ov, 0), (w67 + 160, 0)),
               croix_haut(30 * f, H),
               croix_bas(w67 + 160 - 30 * f, 0)]
+
+    # ---- chiffres ----
+    def boucle(pts):   # trait fermé : départ et arrivée se recouvrent
+        st = S(*pts); st['caps'] = ['T', 'T']; return st
+    o0 = arrondi.ogive(cx=250.0, top=H + 5, bot=-5.0, w=200.0, over=ov)
+    G['0'] = o0 + [diag(250 - 380 / T67 / 2 * 1.0, 310, 250 + 380 / T67 / 2 * 1.0, 690)]
+    G['1'] = [S((260, H + ov), (260, -ov)),
+              diag(260, H, 40, H - 220 / 1.0),
+              S((100, 0), (420, 0))]
+    G['2'] = [S((0, H), (460, H, 180), (460, 460, 120), (0, 0)),
+              croix_haut(30 * f, H),
+              S((-ov, 0), (520, 0)),
+              S((0, 0), (-ov * 0.7071, -ov * 0.7071))]
+    G['3'] = [S((0, H), (420, H, 180), (420, 540, 180), (120, 540)),
+              S((120 - ov, 540), (460, 540, 200), (460, 0, 200), (0, 0)),
+              croix_haut(30 * f, H), croix_bas(30 * f, 0)]
+    x4 = 360 - 700 / T67
+    G['4'] = [S((360, H + ov), (360, -ov)),
+              diag(360, H, x4, 300),
+              S((x4 - ov, 300), (360 + ov + 80, 300)),
+              S((220, 0), (500, 0))]
+    G['5'] = [S((40, H), (480, H)), croix_haut(480 - 30 * f, H),
+              S((40, H + ov), (40, 560)),
+              S((40 - ov, 560), (460, 560, 200), (460, 0, 200), (0, 0)),
+              croix_bas(30 * f, 0)]
+    G['6'] = [S((420, H), (0, H, 180), (0, 0, 180), (460, 0, 180), (460, 560, 180), (-ov, 560)),
+              croix_haut(420 - 30 * f, H)]
+    x7 = 480 - H / T67
+    G['7'] = [S((0, H), (480, H)), croix_haut(30 * f, H),
+              diag(480, H, x7, 0),
+              S((x7 + 480 / T67 - 140, 480), (x7 + 480 / T67 + 140, 480)),
+              S((x7 - 130, 0), (x7 + 150, 0))]
+    G['8'] = [boucle([(230, 540), (400, 540, 150), (400, H, 150), (60, H, 150), (60, 540, 150), (230, 540)]),
+              boucle([(230, 540), (460, 540, 180), (460, 0, 180), (0, 0, 180), (0, 540, 180), (230, 540)]),
+              S((-ov, 540), (460 + ov, 540))]
+    G['9'] = [S((40, 0), (460, 0, 180), (460, H, 180), (0, H, 180), (0, 440, 180), (460 + ov, 440)),
+              croix_bas(40 + 30 * f, 0)]
     return G
+
+def build_chiffres_maj(ov):
+    """Chiffres majuscules : coins vifs, chaque jonction en croix, comme les capitales."""
+    f = ov / 70.0
+    def croix_haut(x, y):
+        return S((x, y + 90 * f), (x, y - 110 * f))
+    def croix_bas(x, y):
+        return S((x, y + 110 * f), (x, y - 90 * f))
+    def diag(x0, y0, x1, y1, a=True, b=True):
+        u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
+        p = np.array([x0, y0]) - (u * ov if a else 0)
+        q = np.array([x1, y1]) + (u * ov if b else 0)
+        return S(tuple(p), tuple(q))
+    def v(x, y0, y1):        # vertical qui dépasse en haut et en bas
+        return S((x, y1 + ov), (x, y0 - ov))
+    def h(y, x0, x1):        # horizontale qui dépasse à gauche et à droite
+        return S((x0 - ov, y), (x1 + ov, y))
+    W = 440
+    C = {}
+    C['0'] = [v(0, 0, H), v(W, 0, H), h(H, 0, W), h(0, 0, W),
+              diag(W / 2 - 300 / T67, 200, W / 2 + 300 / T67, 800)]
+    C['1'] = [v(220, 0, H), S((40, 0), (400, 0)),
+              diag(220, H, 20, H - 200)]
+    C['2'] = [h(H, 0, W), S((W, H + ov), (W, 440)),
+              diag(W, 440, 0, 0), h(0, 0, W)]
+    C['3'] = [h(H, 0, W), v(W, 0, H), S((100, 520), (W + ov, 520)), h(0, 0, W)]
+    x4 = 360 - 700 / T67
+    C['4'] = [v(360, 0, H), diag(360, H, x4, 300),
+              S((x4 - ov, 300), (360 + ov + 80, 300)), S((220, 0), (500, 0)),
+              S((260, H), (460, H))]
+    C['5'] = [h(H, 0, W), S((0, H + ov), (0, 520 - ov)), h(520, 0, W),
+              S((W, 520 + ov), (W, -ov)), h(0, 0, W)]
+    C['6'] = [v(0, 0, H), S((-ov, H), (W, H)), croix_haut(W - 30 * f, H),
+              h(520, 0, W), S((W, 520 + ov), (W, -ov)), h(0, 0, W)]
+    x7 = 480 - H / T67
+    C['7'] = [h(H, 0, 480), diag(480, H, x7, 0),
+              S((x7 + 480 / T67 - 150, 480), (x7 + 480 / T67 + 150, 480)),
+              S((x7 - 140, 0), (x7 + 160, 0))]
+    C['8'] = [v(0, 0, H), v(W, 0, H), h(H, 0, W), h(520, 0, W), h(0, 0, W)]
+    C['9'] = [v(W, 0, H), h(H, 0, W), S((0, H + ov), (0, 480 - ov)), h(480, 0, W),
+              S((0, 0), (W + ov, 0)), croix_bas(30 * f, 0)]
+    return C
 
 XH, ASC, DESC = 600.0, 1000.0, -380.0   # hauteur des minuscules, montantes, descendantes
 
@@ -324,11 +403,40 @@ def planche(out, lignes=('ABCDEFGHI', 'JKLMNOPQR', 'STUVWXYZ'), k=0.3, G=G):
     for i in range(len(lignes)):
         os.remove(out + f'.ligne{i}.png')
 
+GMAJ = dict(G); GMAJ.update(build_chiffres_maj(OV_CHOISI))   # chiffres majuscules
+
+def planche_chiffres(out, k=0.3):
+    """Chiffres minuscules, chiffres majuscules, puis LAFLEUR2026 en majuscules."""
+    from PIL import ImageFont
+    import os
+    try:
+        F = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 34)
+    except OSError:
+        F = ImageFont.load_default()
+    rows = []
+    for i, (word, g, lab) in enumerate([('0123456789', G, 'minuscules'), ('0123456789', GMAJ, 'MAJUSCULES'),
+                                        ('LAFLEUR2026', GMAJ, '')]):
+        fn = out + f'.ligne{i}.png'
+        render(word, fn, G=g, k=k)
+        im = Image.open(fn)
+        if lab:
+            ImageDraw.Draw(im).text((25, 20), lab, font=F, fill=(255, 210, 60))
+        rows.append(im); os.remove(fn)
+    W = max(r.width for r in rows)
+    sheet = Image.new('RGB', (W, sum(r.height for r in rows)), (0, 0, 0))
+    y = 0
+    for r in rows:
+        sheet.paste(r, (0, y)); y += r.height
+    sheet.save(out)
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == 'alphabet':
-        planche(sys.argv[2] if len(sys.argv) > 2 else 'alphabet.png')
-    elif len(sys.argv) > 1 and sys.argv[1] == 'minuscules':
-        planche(sys.argv[2] if len(sys.argv) > 2 else 'minuscules.png',
-                lignes=('abcdefghi', 'jklmnopqr', 'stuvwxyz', 'lafleurstudio'))
+    cmd = sys.argv[1] if len(sys.argv) > 1 else 'LAFLEURSTUDIO'
+    out = sys.argv[2] if len(sys.argv) > 2 else None
+    if cmd == 'alphabet':
+        planche(out or 'alphabet.png')
+    elif cmd == 'minuscules':
+        planche(out or 'minuscules.png', lignes=('abcdefghi', 'jklmnopqr', 'stuvwxyz', 'lafleurstudio'))
+    elif cmd == 'chiffres':
+        planche_chiffres(out or 'chiffres.png')
     else:
-        render(sys.argv[1] if len(sys.argv) > 1 else 'LAFLEURSTUDIO', sys.argv[2] if len(sys.argv) > 2 else 'fustard-132.png')
+        render(cmd, out or 'fustard-132.png')
