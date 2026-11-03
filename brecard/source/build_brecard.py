@@ -121,7 +121,7 @@ def build(name, weight, f, wx, italic, outdir):
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
         'fullName': f'{FAMILY} {style}', 'psName': ps,
         'version': f'Version {VERSION:.3f}',
-        'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
+        'manufacturer': 'LaFleurStudio', 'designer': 'Jonathan Kern',
         'vendorURL': 'https://jonlekern.github.io/Fonts/',
         'licenseDescription': licence,
         'licenseInfoURL': url_licence,

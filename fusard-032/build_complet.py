@@ -148,7 +148,7 @@ def construire(poids, style, sortie):
         'typographicFamily': fam, 'typographicSubfamily': style,
         'uniqueFontIdentifier': f'LaFleurStudio: {fam} {style}: {VERSION:.3f}',
         'fullName': f'{fam} {style}', 'psName': ps,
-        'version': f'Version {VERSION:.3f}', 'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
+        'version': f'Version {VERSION:.3f}', 'manufacturer': 'LaFleurStudio', 'designer': 'Jonathan Kern',
         'vendorURL': 'https://jonlekern.github.io/Fonts/',
         'licenseDescription': ('Free for personal use. Commercial use requires prior written permission from '
                                'LaFleurStudio (free or paid, decided case by case): info@lafleurstudio.ch. '
