@@ -14,6 +14,7 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours.
 - **A** : celui de la version sharp, gardé tel quel.
 - **Q** : l'arc de gauche du O continue en longue queue courbe, barrée d'une petite croix.
 - **Trait** : 32 d'épaisseur.
+- **Gabarit** : toutes les capitales montent à 1210 et descendent à −210 (fûts, croix, A et U compris). Seuls le O et le Q gardent leurs pointes courbes, un peu en dessous.
 - **Minuscules** : hauteur 600, montantes 1000, descendantes −380 ; croisements à la même exagération, en proportion (126).
   Point du i et du j en croix, queues de g, j, y sur la croix du J, e arrondi en haut avec un coin vif en bas à gauche.
 - **Ponctuation** : points en croix, apostrophes en dagues, « » en chevrons croisés à la pointe, & en « Et », * à 8 branches, @ en fenêtre de cathédrale avec le a de Fûstard dedans.

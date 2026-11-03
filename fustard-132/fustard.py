@@ -52,6 +52,18 @@ def S(*pts):
     return dict(p=path(pts), caps=['tip', 'tip'])
 
 H = 1000
+MEME_TAILLE = True   # toutes les capitales montent à H + ov et descendent à -ov
+PC = lambda: 70 if MEME_TAILLE else 90   # bout extérieur des petites croix (70 f = ov)
+
+def ogive_over(ov, cx=315.0, top=1010.0, bot=-5.0, w=245.0):
+    """Longueur de dépassement des arcs de l'ogive pour que les pointes montent à H + ov."""
+    lo, hi = ov, 4 * ov
+    for _ in range(40):
+        m = (lo + hi) / 2
+        L, R_ = arrondi.ogive(cx=cx, top=top, bot=bot, w=w, over=m)
+        y = max(p[1] for p in L['p'])
+        lo, hi = (m, hi) if y < H + ov else (lo, m)
+    return (lo + hi) / 2
 
 def build(ov=70.0):
     f = ov / 70.0
@@ -60,23 +72,36 @@ def build(ov=70.0):
               S((-150, H), (330, H)),
               S((-ov, 0), (560, 0))]
     # A : celui de la version sharp, gardé tel quel
-    G['A'] = arrondi.G3s['A']
+    if MEME_TAILLE:
+        # A de la version sharp, avec les dépassements : les deux traits se croisent au-dessus
+        # de la barre du haut, et chaque pied traverse une barre posée sur la ligne
+        pd, pa = np.array([12.0, 15.0]), np.array([430.0, 1000.0])     # diagonale gauche
+        qa, qd = np.array([390.0, 1000.0]), np.array([616.0, 21.0])    # trait de droite
+        ud = (pa - pd) / np.linalg.norm(pa - pd); ur = (qd - qa) / np.linalg.norm(qd - qa)
+        g0 = pd - ud * ((pd[1] + ov) / ud[1]); g1 = pa + ud * (ov / ud[1])
+        d0 = qa - ur * (ov / -ur[1]); d1 = qd + ur * ((qd[1] + ov) / -ur[1])
+        xg = pd[0] - pd[1] * ud[0] / ud[1]; xd = qd[0] + qd[1] * ur[0] / -ur[1]
+        G['A'] = [S((230, H), (650, H)), S(tuple(g0), tuple(g1)), S(tuple(d0), tuple(d1)),
+                  S((100, 347), (660, 347)),
+                  S((xg - 150, 0), (xg + 150, 0)), S((xd - 150, 0), (xd + 150, 0))]
+    else:
+        G['A'] = arrondi.G3s['A']
     G['F'] = [S((120, H + ov), (120, -ov)),
               S((0, H), (560, H)),
-              S((560 - 30 * f, H + 90 * f), (560 - 30 * f, H - 110 * f)),
+              S((560 - 30 * f, H + PC() * f), (560 - 30 * f, H - 110 * f)),
               S((120 - ov, 520), (440, 520)),
               S((-30, 0), (290, 0))]
     G['E'] = [S((0, H + ov), (0, -ov)),
               S((-ov, H), (540, H)),
-              S((540 - 30 * f, H + 90 * f), (540 - 30 * f, H - 110 * f)),
+              S((540 - 30 * f, H + PC() * f), (540 - 30 * f, H - 110 * f)),
               S((-ov, 510), (420, 510)),
               S((-ov, 0), (560, 0))]
     xr = 560
     yb = (xr - 360) * T67
     G['U'] = [S((-60, H), (260, H)),
               S((100, H + ov), (100, 0, 130), (360, 0, 150), (xr + ov * C67, yb + ov * S67)),
-              S((xr, H + ov), (xr, 0)),
-              S((xr - 80, H), (xr + 180, H))]
+              S((xr, H + ov), (xr, -ov if MEME_TAILLE else 0)),
+              S((xr - 80, H), (xr + 180, H))] + ([S((xr - 130, 0), (xr + 150, 0))] if MEME_TAILLE else [])
     xl = 260 + 480 / T67
     G['R'] = [S((0, H + ov), (0, 0)),
               S((-ov, H), (480, H, 240), (480, 480, 240), (-ov, 480)),
@@ -84,8 +109,8 @@ def build(ov=70.0):
               S((260 - ov * C67, 480 + ov * S67), (xl + ov * C67, -ov * S67)),
               S((xl - 110, 0), (xl + 150, 0))]
     G['S'] = [S((560, H), (40, H, 160), (40, 700, 120), (520, 220, 170), (520, 0, 150), (0, 0)),
-              S((560 - 30 * f, H + 90 * f), (560 - 30 * f, H - 110 * f)),
-              S((30 * f, 110 * f), (30 * f, -90 * f))]
+              S((560 - 30 * f, H + PC() * f), (560 - 30 * f, H - 110 * f)),
+              S((30 * f, 110 * f), (30 * f, -PC() * f))]
     G['T'] = [S((0, H), (700, H)),
               S((350, H + ov), (350, -ov)),
               S((200, 0), (500, 0))]
@@ -95,13 +120,14 @@ def build(ov=70.0):
     G['I'] = [S((0, H + ov), (0, -ov)),
               S((-200, H), (200, H)),
               S((-220, 0), (220, 0))]
-    G['O'] = arrondi.ogive(over=ov)
+    ov_o = ov   # l'ogive garde ses pointes courbes (le cercle plafonne vers 1150)
+    G['O'] = arrondi.ogive(over=ov_o)
 
     # ---- le reste de l'alphabet ----
     def croix_haut(x, y):   # petite croix verticale en bout de barre (E, F, S)
-        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
+        return dict(S((x, y + PC() * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
+        return dict(S((x, y + 110 * f), (x, y - PC() * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):   # trait qui dépasse de ov à ses bouts
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -177,11 +203,11 @@ def build(ov=70.0):
               S((-150, 0), (150, 0)), S((w67 - 150, H), (w67 + 150, H))]
     # Q : l'ogive du O, queue à 45° qui traverse la pointe du bas
     # Q : l'arc de gauche du O continue sa courbe en longue queue, barrée d'une croix
-    Ov = arrondi.ogive(over=ov)
+    Ov = arrondi.ogive(over=ov_o)
     cxq, hq, wq = 315.0, 507.5, 245.0
     aq = (hq * hq - wq * wq) / (2 * wq); rq = aq + wq; cyq = 502.5
     phq = math.atan2(hq, aq)
-    t0, t1 = math.pi - phq - ov / rq, math.pi + phq + 520 / rq
+    t0, t1 = math.pi - phq - ov_o / rq, math.pi + phq + 520 / rq
     queue = [np.array([cxq + aq + rq * math.cos(t), cyq + rq * math.sin(t)]) for t in np.linspace(t0, t1, 120)]
     tc = t1 - 30 * f / rq
     xc, yc_ = cxq + aq + rq * math.cos(tc), cyq + rq * math.sin(tc)
@@ -242,9 +268,9 @@ def build_chiffres_maj(ov):
     """Chiffres majuscules : coins vifs, chaque jonction en croix, comme les capitales."""
     f = ov / 70.0
     def croix_haut(x, y):
-        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
+        return dict(S((x, y + PC() * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
+        return dict(S((x, y + 110 * f), (x, y - PC() * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -261,7 +287,7 @@ def build_chiffres_maj(ov):
     C['1'] = [v(220, 0, H), S((40, 0), (400, 0)),
               diag(220, H, 20, H - 200)]
     C['2'] = [h(H, 0, W), S((W, H + ov), (W, 440)),
-              diag(W, 440, 0, 0), h(0, 0, W)]
+              diag(W, 440, 0, 0) if not MEME_TAILLE else S((W + ov * 0.7071, 440 + ov * 0.7071), (-ov, -ov)), h(0, 0, W)]
     C['3'] = [h(H, 0, W), v(W, 0, H), S((100, 520), (W + ov, 520)), h(0, 0, W)]
     x4 = 360 - 700 / T67
     C['4'] = [v(360, 0, H), diag(360, H, x4, 300),
@@ -287,9 +313,9 @@ def build_lc(ov):
     f = ov / 70.0
     X, A, D = XH, ASC, DESC
     def croix_haut(x, y):
-        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
+        return dict(S((x, y + PC() * f), (x, y - 110 * f)), detail=True)
     def croix_bas(x, y):
-        return dict(S((x, y + 110 * f), (x, y - 90 * f)), detail=True)
+        return dict(S((x, y + 110 * f), (x, y - PC() * f)), detail=True)
     def diag(x0, y0, x1, y1, a=True, b=True):
         u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
         p = np.array([x0, y0]) - (u * ov if a else 0)
@@ -373,7 +399,7 @@ def build_ponct(ov):
     """Ponctuation. Les points sont des croix ; guillemets en chevrons croisés à la pointe."""
     f = ov / 70.0
     def croix_haut(x, y):
-        return dict(S((x, y + 90 * f), (x, y - 110 * f)), detail=True)
+        return dict(S((x, y + PC() * f), (x, y - 110 * f)), detail=True)
     def point(x, y, s=80):
         return [S((x, y + s), (x, y - s)), S((x - s, y), (x + s, y))]
     def virgule(x, y, s=80):
