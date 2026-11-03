@@ -1,6 +1,6 @@
 # Caffeinated
 
-Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**.
+Un projet artistique : le portrait de Bienne par son écriture. Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/caffeinated/**
 
