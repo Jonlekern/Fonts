@@ -16,6 +16,7 @@ Deux styles : **Craie** (trait à la craie) et **Net** (trait net). Jeu de carac
 
 I, L, D, M, V et X viennent des dessins. Les autres lettres sont faites avec leurs morceaux.
 Espacement : les lettres se glissent les unes sous les autres tant que les traits restent à bonne distance ; les barres de V et W peuvent toucher la lettre d'à côté.
+Ponctuation : tirets, guillemets et points médians sont placés pour les minuscules ; la fonction OpenType `case` les remonte pour les capitales.
 
 ## Refaire les polices
 
