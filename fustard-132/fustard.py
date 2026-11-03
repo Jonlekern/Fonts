@@ -430,10 +430,11 @@ def build_ponct(ov):
     P['‘'] = dague_penchee(0, -1)
     P['”'] = dague_penchee(0, 1) + dague_penchee(200, 1)
     P['“'] = dague_penchee(0, -1) + dague_penchee(200, -1)
-    P['«'] = chevron(0, -1) + chevron(230, -1)
-    P['»'] = chevron(0, 1) + chevron(230, 1)
-    P['‹'] = chevron(0, -1)
-    P['›'] = chevron(0, 1)
+    # guillemets posés sur la ligne de base (pas au milieu)
+    P['«'] = chevron(0, -1, y=220) + chevron(230, -1, y=220)
+    P['»'] = chevron(0, 1, y=220) + chevron(230, 1, y=220)
+    P['‹'] = chevron(0, -1, y=220)
+    P['›'] = chevron(0, 1, y=220)
     P['-'] = [S((0, 420), (320, 420))]
     P['–'] = [S((0, 420), (520, 420))]
     P['—'] = [S((0, 420), (920, 420))]
