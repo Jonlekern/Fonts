@@ -150,6 +150,17 @@ S['™'] = mv(G['T'], 0, 620, 0.4, 0.4) + mv(G['M'], 330, 620, 0.4, 0.4)
 S['ª'] = mv(G['A'], 0, 520, 0.45, 0.45) + [[(0, 450), (150, 458), (300, 452)]]
 S['º'] = mv(G['O'], 0, 520, 0.45, 0.45) + [[(0, 450), (130, 458), (260, 452)]]
 
+# ponctuation des minuscules par défaut, celle des capitales en forme « case » (fonction case)
+CASSE = {}
+for ch in '-–—':
+    CASSE[ch] = S[ch]; S[ch] = mv(S[ch], 0, -120)
+for ch in '‹›«»':
+    CASSE[ch] = S[ch]; S[ch] = mv(S[ch], 0, -140, 1, 0.8, 0, 450)
+for ch in '·•':
+    CASSE[ch] = S[ch]; S[ch] = mv(S[ch], 0, -140)
+# cercle pointillé (pour montrer un accent seul)
+S['◌'] = [point(300 + 230 * np.cos(a), 400 + 230 * np.sin(a)) for a in np.linspace(0, 2 * np.pi, 12, endpoint=False)]
+
 # ---------- lettres en plus ----------
 S['Æ'] = [
     [(0, 20), (80, 170), (200, 430), (330, 720), (420, 940), (440, 990)],

@@ -9,6 +9,7 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.areaPen import AreaPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
+from fontTools.pens.roundingPen import RoundingPen
 from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 from fontTools.ttLib import TTFont
 from fontTools.agl import UV2AGL
@@ -21,7 +22,7 @@ VERSION = 1.0
 SC = 0.7                      # unités de dessin (capitales à 1000) -> unités de police (capitales à 700)
 R, GAP, BAND = essai.R, essai.GAP, essai.BAND
 XH = minuscules.XH
-ASC, DESC = 900, -250
+ASC, DESC = 950, -300
 ESPACE_MOT = 300
 CHEVAUCHE = 120               # deux lettres peuvent se glisser l'une sous l'autre de 120 au plus
 BARRES_COLLEES = {'V', 'W', 'v', 'w'}    # leurs barres peuvent toucher la lettre d'à côté
@@ -36,6 +37,8 @@ D = {}                        # nom -> traits (unités de dessin), glyphes simpl
 for ch, sts in list(essai.G.items()) + list(signes.S.items()) + list(minuscules.m.items()):
     D[gname(ord(ch))] = sts
 D['Dcroat'] = signes.S['Đ']; D.pop('Eth', None)
+for ch, sts in signes.CASSE.items(): D[gname(ord(ch)) + '.case'] = sts
+MATH = ['plus', 'minus', 'equal', 'multiply', 'divide', 'less', 'greater']   # même chasse
 MARQ = {}                     # nom -> traits, accents sans chasse (posés autour de x = 0)
 NOM_MARQUE = {}
 for cp, m in signes.COMB.items():
@@ -57,10 +60,11 @@ for cp in CORE:
     marques = [signes.COMB[ord(c)] for c in dec[1:]]
     if ch in signes.VIRGULE_DESSOUS: marques = ['virgule' if m == 'cedille' else m for m in marques]
     if ch == 'ģ': marques = ['virgule_haut']
-    if ch in 'ďľť': marques = ['caron_virgule']
+    if ch in 'ďľťĽ': marques = ['caron_virgule']
     base = base_de(dec[0])
     if base == 'i' and any(m not in signes.BAS for m in marques): base = 'dotlessi'
     COMPO[gname(cp)] = (base, marques)
+COMPO['iogonek.dotless'] = ('dotlessi', ['ogonek'])          # lituanien : į sans point sous un accent
 ACC = {gname(ord(c)): m for c, m in signes.ESPACE.items()}     # accents avec chasse
 
 CMAP = {}
@@ -71,6 +75,7 @@ for cp in CORE:
     elif gname(cp) in COMPO or gname(cp) in ACC: CMAP[cp] = gname(cp)
     else: CMAP[cp] = base_de(ch)
 CMAP[0xA0] = 'space'
+CMAP[0x25CC] = 'uni25CC'
 manque = sorted({n for n in CMAP.values()} - set(D) - set(MARQ) - set(COMPO) - set(ACC) - {'space'})
 assert not manque, manque
 
@@ -210,6 +215,9 @@ def dp(pts, tol):
     a = rec(pts[i0:i1 + 1]); b = rec(np.vstack([pts[i1:], pts[:1]]))
     return np.vstack([a[:-1], b[:-1]])
 
+def polys_rec(path):
+    rec = RecordingPen(); path.draw(rec); return rec.value
+
 def vers_glyphe(path, f, tol):
     """Path (unités de dessin) -> glyphe TrueType, avec f(x, y) -> (x, y) en unités de police."""
     rec = RecordingPen(); path.draw(rec)
@@ -227,6 +235,10 @@ def vers_glyphe(path, f, tol):
                 pen.closePath()
             cont = []
     out = pathops.simplify(out, fix_winding=True)
+    for _ in range(3):                         # arrondir aux unités entières sans laisser de bords en double
+        rp = pathops.Path(); out.draw(RoundingPen(rp.getPen()))
+        out = pathops.simplify(rp, fix_winding=True)
+        if all(float(v).is_integer() for op, args in polys_rec(out) for p in args for v in p): break
     fin = pathops.Path(); fpen = fin.getPen()
     for c in out.contours:
         a = AreaPen(); c.draw(a)
@@ -249,6 +261,7 @@ def placement(b, m):
     sts = D[b]; lo, hi = boite(sts); P = points(sts)
     if m == 'caron_virgule':                      # ď ľ ť : virgule à droite du haut du fût
         xt, yt = P[np.argmax(P[:, 1])]
+        if b == 'L': return xt + 60, 1190 - 1000       # Ľ : au-dessus de la barre du haut
         return xt + 80, yt - 20 - 1000
     if m == 'ogonek':
         bas = P[P[:, 1] < 80]
@@ -286,7 +299,7 @@ def profil(traits):
     for s, barre in traits:
         for x, y in essai.cr(s):
             b = int(np.floor(y / BAND))
-            for bb in (b - 1, b, b + 1):
+            for bb in range(b - 2, b + 3):                         # ±2 bandes : un peu d'air au-dessus et au-dessous
                 i = bb - BMIN
                 if 0 <= i < nb:
                     g[barre][i] = min(g[barre][i], (x - R) - lo)     # marge à gauche dans la bande
@@ -335,8 +348,11 @@ def construire(style, outdir):
     glyf['space'] = TTGlyphPen(None).glyph(); hm['space'] = (ESPACE_MOT, 0)
     tol = 0.45 if style == 'net' else 0.6
     pos = {}                                                      # nom -> (lo) pour placer les accents
+    largeur_math = max(boite(D[n])[1] - boite(D[n])[0] for n in MATH) + GAP
     for nom in sorted(D):
         sts = D[nom]; lo, hi = boite(sts)
+        if nom in MATH:                                           # signes de calcul : même chasse, centrés
+            lo -= (largeur_math - GAP - (hi - lo)) / 2; hi = lo + largeur_math - GAP
         f = lambda x, y, lo=lo: (round((x - lo + GAP / 2) * SC), round(y * SC))
         glyf[nom] = vers_glyphe(contour(sts, style, zlib.crc32(nom.encode())), f, tol)
         hm[nom] = (round((hi - lo + GAP) * SC), round(GAP / 2 * SC)); pos[nom] = lo
@@ -385,6 +401,11 @@ def construire(style, outdir):
                 sxHeight=round(XH * SC), sCapHeight=700, yStrikeoutPosition=320, yStrikeoutSize=22, ulCodePageRange1=1)
     fb.setupPost(underlinePosition=-120, underlineThickness=22)
     fb.font['head'].fontRevision = VERSION
+    from fontTools.ttLib import newTable
+    from fontTools.ttLib.tables import ttProgram
+    gasp = newTable('gasp'); gasp.version = 1; gasp.gaspRange = {0xFFFF: 0x000F}; fb.font['gasp'] = gasp
+    prep = newTable('prep'); prep.program = ttProgram.Program()
+    prep.program.fromAssembly(['PUSHW[ ]', '511', 'SCANCTRL[ ]', 'PUSHB[ ]', '4', 'SCANTYPE[ ]']); fb.font['prep'] = prep
     # accents posés par la police (marques combinantes) + crénage
     bases = sorted(D) + sorted(COMPO) + sorted(ACC)
     haut = [NOM_MARQUE[m] for m in signes.COMB.values() if genre(m) == 'haut']
@@ -394,11 +415,23 @@ def construire(style, outdir):
            f"markClass [{' '.join(bas)}] <anchor 0 0> @BAS;",
            f"markClass [{NOM_MARQUE['ogonek']}] <anchor 0 0> @OGO;",
            # i et j perdent leur point sous un accent
-           'feature ccmp {', f"  sub i' [{' '.join(haut)}] by dotlessi;", f"  sub j' [{' '.join(haut)}] by uni0237;", '} ccmp;',
+           f"@HAUTS = [{' '.join(haut)}];", f"@BASSES = [{' '.join(bas + [NOM_MARQUE['ogonek']])}];",
+           'feature ccmp {', "  sub i' @HAUTS by dotlessi;", "  sub i' @BASSES @HAUTS by dotlessi;",
+           "  sub j' @HAUTS by uni0237;", "  sub j' @BASSES @HAUTS by uni0237;",
+           "  sub i' @BASSES @BASSES @HAUTS by dotlessi;", "  sub j' @BASSES @BASSES @HAUTS by uni0237;",
+           "  sub iogonek' @HAUTS by iogonek.dotless;", "  sub iogonek' @BASSES @HAUTS by iogonek.dotless;", '} ccmp;',
+           'feature case {'] + [f'  sub {n[:-5]} by {n};' for n in sorted(D) if n.endswith('.case')] + ['} case;',
            'feature mark {']
     for b in sorted(D):
         ah, ab, ao = ancre(b, 'aigu'), ancre(b, 'cedille'), ancre(b, 'ogonek')
         fea.append(f"  pos base {b} <anchor {ah[0]} {ah[1]}> mark @HAUT <anchor {ab[0]} {ab[1]}> mark @BAS "
+                   f"<anchor {ao[0]} {ao[1]}> mark @OGO;")
+    for c in sorted(COMPO):                                   # lettres accentuées : un accent de plus se pose au-dessus
+        b, ms = COMPO[c]
+        ah, ab, ao = ancre(b, 'aigu'), ancre(b, 'cedille'), ancre(b, 'ogonek')
+        if any(genre(m) == 'haut' for m in ms): ah = (ah[0], ah[1] + round(220 * SC))
+        if any(genre(m) != 'haut' for m in ms): ab = (ab[0], ab[1] - round(220 * SC))
+        fea.append(f"  pos base {c} <anchor {ah[0]} {ah[1]}> mark @HAUT <anchor {ab[0]} {ab[1]}> mark @BAS "
                    f"<anchor {ao[0]} {ao[1]}> mark @OGO;")
     fea.append('} mark;')
     fea.append('feature mkmk {')
