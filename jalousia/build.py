@@ -21,6 +21,16 @@ FAMILLE = 'Jalousia'
 VERSION = 1.0
 SC = 0.7                      # unités de dessin (capitales à 1000) -> unités de police (capitales à 700)
 R, GAP, BAND = essai.R, essai.GAP, essai.BAND
+GRAISSES = [(100, 'Centum', 16), (200, 'Ducenti', 24), (300, 'Trecenti', 33), (400, 'Quadringenti', 43)]   # (poids, nom, demi-trait)
+
+def regler(r):
+    """Demi-épaisseur du trait de la graisse ; l'écart entre lettres grandit un peu avec elle."""
+    global R, GAP
+    R = r; GAP = 170 + 1.5 * (r - 16)
+
+def plus(r=None):
+    """Écart en plus pour les accents quand le trait s'épaissit."""
+    return 2 * (R - 16)
 XH = minuscules.XH
 ASC, DESC = 950, -300
 ESPACE_MOT = 300
@@ -183,10 +193,10 @@ def contour(sts, style, graine):
         L = n * pas
         for _ in range(rng.poisson(L / 22)):                              # trous dans le trait
             i = rng.integers(n); c = C[i] + Nm[i] * rng.uniform(-0.6, 0.6) * r[i]
-            poly(trous, rond(c, rng.uniform(2.5, 5.0), 8))
+            poly(trous, rond(c, rng.uniform(2.5, 5.0) * (R / 16) ** 0.6, 8))
         for _ in range(rng.poisson(L / 40)):                              # poussière autour
             i = rng.integers(n); c = C[i] + Nm[i] * rng.choice([-1, 1]) * (r[i] + rng.uniform(2, 10))
-            poly(pen, rond(c, rng.uniform(2.5, 4.5), 8))
+            poly(pen, rond(c, rng.uniform(2.5, 4.5) * (R / 16) ** 0.6, 8))
         pleins += polys_de(union_par_paquets(pen.l, rng))
     plein = union(pleins, rng)
     if style == 'craie' and trous.l:
@@ -261,15 +271,19 @@ def placement(b, m):
     sts = D[b]; lo, hi = boite(sts); P = points(sts)
     if m == 'caron_virgule':                      # ď ľ ť : virgule à droite du haut du fût
         xt, yt = P[np.argmax(P[:, 1])]
-        if b == 'L': return xt + 60, 1190 - 1000       # Ľ : au-dessus de la barre du haut
-        return xt + 80, yt - 20 - 1000
+        e = 1.6 * (R - 16)
+        if b == 'L': return xt + 120 + e, 220 + 2 * R                 # Ľ : au-dessus de la barre, à droite du fût
+        if b == 't': return xt + 110 + e, yt + 40 - 1000               # ť : loin de la barre du t
+        return xt + 80 + e, yt - 20 - 1000
     if m == 'ogonek':
         bas = P[P[:, 1] < 80]
         return ((bas[:, 0].max() - 30) if len(bas) else hi - R - 30), 0
+    if m == 'virgule':
+        return (lo + hi) / 2, -plus()
     if m in signes.BAS:
         return (lo + hi) / 2, 0
     dy = 0 if P[:, 1].max() > 800 else -(1000 - XH)   # minuscules sans hampe : accent à hauteur d'x
-    return (lo + hi) / 2, dy
+    return (lo + hi) / 2, dy + plus()
 
 def genre(m):
     return 'ogonek' if m == 'ogonek' else ('bas' if m in signes.BAS else 'haut')
@@ -339,7 +353,8 @@ def fea_crenage(noms, k):
     return '\n'.join(out), len(cg), len(cd), npairs
 
 # ---------------------------------------------------------------- police
-def construire(style, outdir):
+def construire(style, poids, nom_poids, r, outdir):
+    regler(r)
     ordre = ['.notdef', 'space']; glyf = {}; hm = {}
     pen = TTGlyphPen(None)
     for pts in ([(40, 0), (40, 700), (400, 700), (400, 0)], [(80, 40), (360, 40), (360, 660), (80, 660)]):
@@ -382,24 +397,25 @@ def construire(style, outdir):
         hm[n] = (hm[n][0], getattr(g, 'xMin', 0) if g.numberOfContours else 0)
     fb.setupHorizontalMetrics(hm)
     fb.setupHorizontalHeader(ascent=ASC, descent=DESC, lineGap=0)
-    ps = f'{FAMILLE}-{style.capitalize()}'
     nom_style = style.capitalize()
+    ps = f'{FAMILLE}-{nom_style}{nom_poids}'
+    famille1 = f'{FAMILLE} {nom_style}' if poids == 400 else f'{FAMILLE} {nom_style} {nom_poids}'   # noms « anciens »
     fb.setupNameTable({
         'copyright': '© 2026 LaFleurStudio. All rights reserved.',
-        'familyName': f'{FAMILLE} {nom_style}', 'styleName': 'Regular',
+        'familyName': famille1, 'styleName': 'Regular',
         'uniqueFontIdentifier': f'{VERSION:.3f};LFST;{ps}',
-        'fullName': f'{FAMILLE} {nom_style}', 'psName': ps,
+        'fullName': f'{FAMILLE} {nom_style} {nom_poids}', 'psName': ps,
         'version': f'Version {VERSION:.3f}',
         'manufacturer': 'LaFleurStudio', 'designer': 'Jonathan Kern',
         'vendorURL': 'https://jonlekern.github.io/Fonts/',
-        'typographicFamily': FAMILLE, 'typographicSubfamily': nom_style,
+        'typographicFamily': FAMILLE, 'typographicSubfamily': f'{nom_style} {nom_poids}',
     })
     ymin = min(getattr(gl[n], 'yMin', 0) for n in ordre); ymax = max(getattr(gl[n], 'yMax', 0) for n in ordre)
-    fb.setupOS2(version=4, usWeightClass=400, usWidthClass=5, achVendID='LFST', fsSelection=0x40 | 0x80, fsType=0,
+    fb.setupOS2(version=4, usWeightClass=poids, usWidthClass=5, achVendID='LFST', fsSelection=0x40 | 0x80, fsType=0,
                 sTypoAscender=ASC, sTypoDescender=DESC, sTypoLineGap=0,
                 usWinAscent=max(ymax, ASC), usWinDescent=max(-ymin, -DESC),
-                sxHeight=round(XH * SC), sCapHeight=700, yStrikeoutPosition=320, yStrikeoutSize=22, ulCodePageRange1=1)
-    fb.setupPost(underlinePosition=-120, underlineThickness=22)
+                sxHeight=round(XH * SC), sCapHeight=700, yStrikeoutPosition=320, yStrikeoutSize=round(2 * R * SC), ulCodePageRange1=1)
+    fb.setupPost(underlinePosition=-120, underlineThickness=round(2 * R * SC))
     fb.font['head'].fontRevision = VERSION
     from fontTools.ttLib import newTable
     from fontTools.ttLib.tables import ttProgram
@@ -429,13 +445,13 @@ def construire(style, outdir):
     for c in sorted(COMPO):                                   # lettres accentuées : un accent de plus se pose au-dessus
         b, ms = COMPO[c]
         ah, ab, ao = ancre(b, 'aigu'), ancre(b, 'cedille'), ancre(b, 'ogonek')
-        if any(genre(m) == 'haut' for m in ms): ah = (ah[0], ah[1] + round(220 * SC))
-        if any(genre(m) != 'haut' for m in ms): ab = (ab[0], ab[1] - round(220 * SC))
+        if any(genre(m) == 'haut' for m in ms): ah = (ah[0], ah[1] + round((220 + plus()) * SC))
+        if any(genre(m) != 'haut' for m in ms): ab = (ab[0], ab[1] - round((220 + plus()) * SC))
         fea.append(f"  pos base {c} <anchor {ah[0]} {ah[1]}> mark @HAUT <anchor {ab[0]} {ab[1]}> mark @BAS "
                    f"<anchor {ao[0]} {ao[1]}> mark @OGO;")
     fea.append('} mark;')
     fea.append('feature mkmk {')
-    fea.append(f"  pos mark [{' '.join(haut)}] <anchor 0 {round(200 * SC)}> mark @HAUT;")
+    fea.append(f"  pos mark [{' '.join(haut)}] <anchor 0 {round((200 + plus()) * SC)}> mark @HAUT;")
     fea.append('} mkmk;')
     fea.append('table GDEF {')
     fea.append(f"  GlyphClassDef [{' '.join(bases)}], , [{' '.join(sorted(MARQ))}], ;")
@@ -452,5 +468,9 @@ def construire(style, outdir):
 
 if __name__ == '__main__':
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'fonts')
-    styles = sys.argv[2:] or ['net', 'craie']
-    for st in styles: construire(st, out)
+    choix = sys.argv[2:]
+    styles = [a for a in choix if a in ('net', 'craie')] or ['net', 'craie']
+    poids = [int(a) for a in choix if a.isdigit()] or [g[0] for g in GRAISSES]
+    for st in styles:
+        for p, nom, r in GRAISSES:
+            if p in poids: construire(st, p, nom, r, out)

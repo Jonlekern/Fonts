@@ -1,11 +1,18 @@
 # Jalousia
 
 Police inspirée des chiffres romains néo-gothiques, capitales et minuscules.
-Deux styles : **Craie** (trait à la craie) et **Net** (trait net). Jeu de caractères GF Latin Core.
+Deux styles : **Craie** (trait à la craie) et **Net** (trait net), chacun en 4 graisses aux noms latins. Jeu de caractères GF Latin Core.
+
+| Graisse | Nom |
+| --- | --- |
+| 100 | Centum |
+| 200 | Ducenti |
+| 300 | Trecenti |
+| 400 | Quadringenti |
 
 | Chemin | Contenu |
 | --- | --- |
-| `fonts/ttf/` | Jalousia-Craie.ttf, Jalousia-Net.ttf |
+| `fonts/ttf/` | Jalousia-CraieCentum.ttf … Jalousia-NetQuadringenti.ttf (8 fichiers) |
 | `fonts/woff2/` | Les mêmes pour le web |
 | `dessins/` | Les lettres romaines dessinées à la main : I V X, L C, D, M |
 | `essai.py` | Tracé des 26 lettres et rendu d'un mot |
@@ -21,8 +28,8 @@ Ponctuation : tirets, guillemets et points médians sont placés pour les minusc
 ## Refaire les polices
 
 ```sh
-python3 build.py fonts          # Net et Craie
-python3 build.py fonts net      # un seul style
+python3 build.py fonts              # les 8 fichiers
+python3 build.py fonts net 400      # un style, une graisse
 ```
 
 ## Refaire les images
