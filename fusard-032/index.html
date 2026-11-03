@@ -27,7 +27,7 @@ section > .wrap > h2{font-size:clamp(28px,4.4vw,48px);font-weight:800}
 .wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/12.6);line-height:1.5}
 @media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/12.6)}}
 .demo .row span{font-size:calc(100cqw/9);line-height:1.45}
-.demo .row span.lnum{font-feature-settings:"lnum" 1}
+.demo .row span.lnum{font-feature-settings:"lnum" 1;font-size:calc(100cqw/14)}
 .glyphs div{font-size:30px}
 #tester-text{line-height:1.5}
 .licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
@@ -146,11 +146,11 @@ section > .wrap > h2{font-size:clamp(28px,4.4vw,48px);font-weight:800}
         <div class="step">
           <div>
             <h3>Deux jeux de chiffres</h3>
-            <p>Les <strong>chiffres minuscules</strong>, plus ronds, sont les chiffres par défaut. Les <strong>chiffres majuscules</strong>, coins vifs et croisements partout, s'activent avec l'option « chiffres alignés » des logiciels.</p>
+            <p>Les <strong>chiffres minuscules</strong>, plus ronds, sont les chiffres par défaut. Les <strong>chiffres romains</strong>, chacun d'un seul tenant entre deux barres, s'activent avec l'option « chiffres alignés » des logiciels. Le 0 devient N, pour <em>nulla</em>.</p>
           </div>
           <div class="demo" aria-label="Les deux jeux de chiffres">
             <div class="row"><small>Chiffres minuscules (par défaut)</small><span style="font-weight:500">0123456789</span></div>
-            <div class="row"><small>Chiffres majuscules (lnum)</small><span class="lnum" style="font-weight:500">0123456789</span></div>
+            <div class="row"><small>Chiffres romains (lnum)</small><span class="lnum" style="font-weight:500">0123456789</span></div>
           </div>
         </div>
 
@@ -205,7 +205,7 @@ section > .wrap > h2{font-size:clamp(28px,4.4vw,48px);font-weight:800}
   src: url(Fusard032-Black.woff2) format("woff2"); }
 /* … une règle par graisse, de 100 (Hairline) à 900 (Black) */
 
-/* Chiffres majuscules */
+/* Chiffres romains */
 .chiffres { font-feature-settings: "lnum" 1; }</code></pre>
     </div>
   </section>

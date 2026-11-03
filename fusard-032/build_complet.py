@@ -1,6 +1,6 @@
 # Fûsard-032 aux normes : jeu GF Latin Core complet, 9 graisses.
 # Accents combinants placés automatiquement (mark/mkmk), i et j sans point sous un accent (ccmp),
-# ș ț roumains (locl), chiffres minuscules par défaut, majuscules (lnum), crénage par familles de lettres,
+# ș ț roumains (locl), chiffres minuscules par défaut, chiffres romains (lnum), crénage par familles de lettres,
 # hauteurs de ligne identiques dans les 9 graisses.
 import sys, os, math, json, unicodedata
 import numpy as np
@@ -40,7 +40,7 @@ def traits(R):
     """Traits de tous les glyphes de la graisse : nom -> (unicode ou None, traits, rôle)."""
     C = complet.complet(R)
     ov = R['ov']; ovl = ov * X / 1000.0
-    maj = techno.build_chiffres_maj(ov)
+    rom = techno.build_chiffres_romains(ov)
     k = (R['rv'] - 16) / (110 - 16)
     hacc = 200 * (1 + 0.35 * k)
     y_min = X + ovl + 60
@@ -58,7 +58,7 @@ def traits(R):
             out[n] = (cp, None, 'espace'); continue
         out[n] = (cp, C[ch], 'base')
     for c in '0123456789':
-        out[nom_glyphe(ord(c)) + '.lnum'] = (None, prep(maj[c]), 'base')
+        out[nom_glyphe(ord(c)) + '.lnum'] = (None, prep(rom[c]), 'base')
     # accents combinants : dessinés autour de x = 0, en haut des minuscules ou sous la ligne
     noms_m = {0x300: 'grave', 0x301: 'aigu', 0x302: 'circonflexe', 0x303: 'tilde', 0x304: 'macron', 0x306: 'breve',
               0x307: 'point', 0x308: 'trema', 0x30A: 'rond', 0x30B: 'double', 0x30C: 'caron'}

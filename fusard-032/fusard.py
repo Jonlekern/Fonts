@@ -307,6 +307,35 @@ def build_chiffres_maj(ov):
               S((0, 0), (W + ov, 0)), croix_bas(30 * f, 0)]
     return C
 
+ROMAINS = {'0': 'N', '1': 'I', '2': 'II', '3': 'III', '4': 'IV', '5': 'V',
+           '6': 'VI', '7': 'VII', '8': 'VIII', '9': 'IX'}   # 0 = N, « nulla »
+
+def build_chiffres_romains(ov, g=300.0):
+    """Chiffres majuscules en chiffres romains : chaque chiffre d'un seul tenant, fûts et
+    diagonales à 67,5° entre une barre continue en haut et une en bas, qui dépassent de ov."""
+    w = H / T67
+    def diag(x0, y0, x1, y1):
+        u = np.array([x1 - x0, y1 - y0], float); u /= np.linalg.norm(u)
+        return S(tuple(np.array([x0, y0]) - u * ov), tuple(np.array([x1, y1]) + u * ov))
+    def fut(x):
+        return S((x, H + ov), (x, -ov))
+    C = {}
+    for c, lettres in ROMAINS.items():
+        sts, x = [], 0.0
+        for i, l in enumerate(lettres):
+            if i: x += g
+            if l == 'I':
+                sts.append(fut(x))
+            elif l == 'V':
+                sts += [fut(x), diag(x, 0, x + w, H)]; x += w
+            elif l == 'X':
+                sts += [diag(x, H, x + w, 0), diag(x, 0, x + w, H)]; x += w
+            elif l == 'N':
+                sts += [fut(x), fut(x + w), diag(x, H, x + w, 0)]; x += w
+        sts += [S((-ov, H), (x + ov, H)), S((-ov, 0), (x + ov, 0))]
+        C[c] = sts
+    return C
+
 XH, ASC, DESC = 600.0, 1000.0, -380.0   # hauteur des minuscules, montantes, descendantes
 
 def build_lc(ov):
