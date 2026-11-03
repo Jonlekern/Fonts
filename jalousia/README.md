@@ -1,15 +1,26 @@
-# Jalousia (brouillon)
+# Jalousia
 
-Police inspirée des chiffres romains néo-gothiques, version craie. Travail en cours, pas encore de fichier de police.
+Police inspirée des chiffres romains néo-gothiques, en capitales seules : les minuscules affichent les capitales.
+Deux styles : **Craie** (trait à la craie) et **Net** (trait net). Jeu de caractères GF Latin Core.
 
 | Chemin | Contenu |
 | --- | --- |
-| `dessins/` | Les 7 lettres romaines dessinées à la main : I V X, L C, D, M |
-| `essai.py` | Tracé des lettres et rendu d'un mot |
-| `essai-craie.png` | LAFLEURSTUDIO, version craie |
-| `essai-net.png` | LAFLEURSTUDIO, trait net |
+| `fonts/ttf/` | Jalousia-Craie.ttf, Jalousia-Net.ttf |
+| `fonts/woff2/` | Les mêmes pour le web |
+| `dessins/` | Les lettres romaines dessinées à la main : I V X, L C, D, M |
+| `essai.py` | Tracé des 26 lettres et rendu d'un mot |
+| `signes.py` | Chiffres, ponctuation, signes, lettres en plus, accents |
+| `build.py` | Fabrication des fichiers de police |
+| `gf_core.json` | Liste des caractères GF Latin Core |
 
-I, L et D viennent des dessins. A, E, F, R, S, T, U et O sont déduits des autres lettres.
+I, L, D, M, V et X viennent des dessins. Les autres lettres sont faites avec leurs morceaux.
+
+## Refaire les polices
+
+```sh
+python3 build.py fonts          # Net et Craie
+python3 build.py fonts net      # un seul style
+```
 
 ## Refaire les images
 
