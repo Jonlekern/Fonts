@@ -2,7 +2,7 @@
 
 Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours.
 
-**Fichier de police d'essai** : `fonts/Fustard132-Regular.ttf` (version 0.100) : A–Z, a–z, chiffres, ponctuation. Chiffres majuscules par défaut ; chiffres minuscules avec l'option « chiffres elzéviriens » (`onum`). Pas encore d'accents.
+**Fichier de police d'essai** : `fonts/Fustard132-Hairline.ttf` (Hairline, poids 100, version 0.100) : A–Z, a–z, chiffres, ponctuation. Chiffres majuscules par défaut ; chiffres minuscules avec l'option « chiffres elzéviriens » (`onum`). Pas encore d'accents.
 
 ## La recette
 
@@ -45,7 +45,7 @@ python3 fustard.py alphabet alphabet.png
 python3 fustard.py minuscules minuscules.png
 python3 fustard.py chiffres chiffres.png
 python3 fustard.py ponctuation ponctuation.png
-python3 build_font.py fonts/Fustard132-Regular.ttf police-essai.png
+python3 build_font.py fonts/Fustard132-Hairline.ttf police-essai.png
 ```
 
 `build_font.py` demande fontTools et skia-pathops (`pip install fonttools skia-pathops`).

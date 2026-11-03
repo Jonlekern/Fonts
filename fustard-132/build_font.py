@@ -149,14 +149,15 @@ def construire(sortie):
     fam = 'Fûstard 132'
     fb.setupNameTable({
         'copyright': '© 2026 LaFleurStudio',
-        'familyName': fam, 'styleName': 'Regular',
-        'uniqueFontIdentifier': 'LaFleurStudio: Fûstard 132 Regular: 0.100',
-        'fullName': fam + ' Regular', 'psName': 'Fustard132-Regular',
+        'familyName': fam + ' Hairline', 'styleName': 'Regular',
+        'typographicFamily': fam, 'typographicSubfamily': 'Hairline',
+        'uniqueFontIdentifier': 'LaFleurStudio: Fûstard 132 Hairline: 0.100',
+        'fullName': fam + ' Hairline', 'psName': 'Fustard132-Hairline',
         'version': 'Version 0.100', 'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
     })
     fb.setupOS2(sTypoAscender=850, sTypoDescender=-350, sTypoLineGap=0,
                 usWinAscent=asc, usWinDescent=-desc, sxHeight=round(techno.XH * SC),
-                sCapHeight=round(1000 * SC), achVendID='LFST', fsType=0,
+                sCapHeight=round(1000 * SC), achVendID='LFST', fsType=0, fsSelection=0x40,
                 usWeightClass=100, ulCodePageRange1=1)
     fb.setupPost()
     from fontTools.misc.timeTools import timestampNow
@@ -186,7 +187,7 @@ def essai(ttf, out):
     im.save(out)
 
 if __name__ == '__main__':
-    out = sys.argv[1] if len(sys.argv) > 1 else 'Fustard132-Regular.ttf'
+    out = sys.argv[1] if len(sys.argv) > 1 else 'Fustard132-Hairline.ttf'
     n, k = construire(out)
     print(f'{out} : {n} glyphes, {k} paires de crénage')
     if len(sys.argv) > 2:
