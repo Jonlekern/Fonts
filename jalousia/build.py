@@ -1,6 +1,6 @@
-# Fabrique Jalousia Craie et Jalousia Net (TTF + WOFF2), jeu GF Latin Core, capitales seules.
-#   python3 build.py <dossier_sortie>
-# Les minuscules affichent les capitales. Les lettres accentuées sont des composites (lettre + accent).
+# Fabrique Jalousia Craie et Jalousia Net (TTF + WOFF2), capitales et minuscules, jeu GF Latin Core.
+#   python3 build.py <dossier_sortie> [net|craie]
+# Les lettres accentuées sont des composites (lettre + accent).
 import sys, os, json, zlib, unicodedata
 import numpy as np
 import pathops
@@ -14,15 +14,17 @@ from fontTools.ttLib import TTFont
 from fontTools.agl import UV2AGL
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import essai, signes
+import essai, signes, minuscules
 
 FAMILLE = 'Jalousia'
 VERSION = 1.0
 SC = 0.7                      # unités de dessin (capitales à 1000) -> unités de police (capitales à 700)
 R, GAP, BAND = essai.R, essai.GAP, essai.BAND
+XH = minuscules.XH
 ASC, DESC = 900, -250
 ESPACE_MOT = 300
 CHEVAUCHE = 120               # deux lettres peuvent se glisser l'une sous l'autre de 120 au plus
+BARRES_COLLEES = {'V', 'W', 'v', 'w'}    # leurs barres peuvent toucher la lettre d'à côté
 
 def gname(cp):
     if cp == 0x20: return 'space'
@@ -31,20 +33,20 @@ def gname(cp):
 # ---------------------------------------------------------------- jeu de caractères
 CORE = json.load(open(os.path.join(HERE, 'gf_core.json')))
 D = {}                        # nom -> traits (unités de dessin), glyphes simples avec chasse
-for ch, sts in list(essai.G.items()) + list(signes.S.items()):
+for ch, sts in list(essai.G.items()) + list(signes.S.items()) + list(minuscules.m.items()):
     D[gname(ord(ch))] = sts
 D['Dcroat'] = signes.S['Đ']; D.pop('Eth', None)
 MARQ = {}                     # nom -> traits, accents sans chasse (posés autour de x = 0)
 NOM_MARQUE = {}
 for cp, m in signes.COMB.items():
     MARQ[gname(cp)] = signes.M[m]; NOM_MARQUE[m] = gname(cp)
+for m, n in (('caron_virgule', 'caroncomb.alt'), ('virgule_haut', 'commaturnedabovecomb')):
+    MARQ[n] = signes.M[m]; NOM_MARQUE[m] = n
 
 def base_de(ch):
-    """Glyphe affiché pour un caractère (les minuscules prennent la capitale)."""
-    special = {'ß': 'uni1E9E', 'ı': 'I', 'ȷ': 'J', 'ð': 'Dcroat', 'Ð': 'Dcroat', 'đ': 'Dcroat', 'ÿ': 'Ydieresis'}
-    if ch in special: return special[ch]
-    if ch.islower() and len(ch.upper()) == 1: ch = ch.upper()
-    return gname(ord(ch))
+    """Glyphe d'un caractère sans accent."""
+    special = {'Ð': 'Dcroat'}
+    return special.get(ch, gname(ord(ch)))
 
 COMPO = {}                    # nom -> (base, [marques])
 for cp in CORE:
@@ -52,23 +54,22 @@ for cp in CORE:
     if 0x300 <= cp <= 0x36F: continue
     dec = unicodedata.normalize('NFD', ch)
     if len(dec) < 2 or not dec[0].isalpha(): continue
-    up = ch.upper() if ch.islower() and len(ch.upper()) == 1 else ch
-    dec = unicodedata.normalize('NFD', up)
     marques = [signes.COMB[ord(c)] for c in dec[1:]]
-    if up in signes.VIRGULE_DESSOUS: marques = ['virgule' if m == 'cedille' else m for m in marques]
-    COMPO[gname(ord(up))] = (base_de(dec[0]), marques)
+    if ch in signes.VIRGULE_DESSOUS: marques = ['virgule' if m == 'cedille' else m for m in marques]
+    if ch == 'ģ': marques = ['virgule_haut']
+    if ch in 'ďľť': marques = ['caron_virgule']
+    base = base_de(dec[0])
+    if base == 'i' and any(m not in signes.BAS for m in marques): base = 'dotlessi'
+    COMPO[gname(cp)] = (base, marques)
 ACC = {gname(ord(c)): m for c, m in signes.ESPACE.items()}     # accents avec chasse
 
 CMAP = {}
 for cp in CORE:
     ch = chr(cp)
-    if cp == 0x20: CMAP[cp] = 'space'; continue
-    if 0x300 <= cp <= 0x36F: CMAP[cp] = gname(cp); continue
-    n = base_de(ch)
-    up = ch.upper() if ch.islower() and len(ch.upper()) == 1 else ch
-    if gname(ord(up)) in COMPO: n = gname(ord(up))
-    if gname(cp) in ACC: n = gname(cp)
-    CMAP[cp] = n
+    if cp == 0x20: CMAP[cp] = 'space'
+    elif 0x300 <= cp <= 0x36F: CMAP[cp] = gname(cp)
+    elif gname(cp) in COMPO or gname(cp) in ACC: CMAP[cp] = gname(cp)
+    else: CMAP[cp] = base_de(ch)
 CMAP[0xA0] = 'space'
 manque = sorted({n for n in CMAP.values()} - set(D) - set(MARQ) - set(COMPO) - set(ACC) - {'space'})
 assert not manque, manque
@@ -243,44 +244,64 @@ def boite(sts):
     P = points(sts)
     return P[:, 0].min() - R, P[:, 0].max() + R
 
-def ancres(sts):
-    lo, hi = boite(sts)
-    P = points(sts); bas = P[P[:, 1] < 80]
-    ogo = (bas[:, 0].max() - 30) if len(bas) else hi - R - 30
-    return {'haut': (lo + hi) / 2, 'bas': (lo + hi) / 2, 'ogonek': ogo}
+def placement(b, m):
+    """Où poser l'accent m sur la lettre b : (x, décalage vertical), en unités de dessin."""
+    sts = D[b]; lo, hi = boite(sts); P = points(sts)
+    if m == 'caron_virgule':                      # ď ľ ť : virgule à droite du haut du fût
+        xt, yt = P[np.argmax(P[:, 1])]
+        return xt + 80, yt - 20 - 1000
+    if m == 'ogonek':
+        bas = P[P[:, 1] < 80]
+        return ((bas[:, 0].max() - 30) if len(bas) else hi - R - 30), 0
+    if m in signes.BAS:
+        return (lo + hi) / 2, 0
+    dy = 0 if P[:, 1].max() > 800 else -(1000 - XH)   # minuscules sans hampe : accent à hauteur d'x
+    return (lo + hi) / 2, dy
 
-def place_marque(m, a):
+def genre(m):
     return 'ogonek' if m == 'ogonek' else ('bas' if m in signes.BAS else 'haut')
 
+def est_barre(s):
+    P = essai.cr(s); w = np.ptp(P[:, 0]); h = np.ptp(P[:, 1])
+    return w > 80 and h < 0.2 * w
+
 def traits_complets(nom):
-    """Traits d'un glyphe avec chasse, accents compris (pour le crénage)."""
-    if nom in D: return D[nom]
-    if nom in COMPO:
-        b, ms = COMPO[nom]; A = ancres(D[b]); out = list(D[b])
-        for m in ms: out += signes.mv(signes.M[m], A[place_marque(m, A)])
-        return out
-    return signes.M[ACC[nom]]
+    """Traits d'un glyphe avec chasse, accents compris, avec pour chacun : est-ce une barre qui peut toucher ?"""
+    if nom in ACC: return [(s, False) for s in signes.M[ACC[nom]]]
+    if nom in D: b, extra = nom, []
+    else:
+        b, ms = COMPO[nom]; extra = []
+        for m in ms:
+            x, dy = placement(b, m); extra += signes.mv(signes.M[m], x, dy)
+    colle = b in BARRES_COLLEES
+    return [(s, colle and est_barre(s)) for s in D[b]] + [(s, False) for s in extra]
 
 # ---------------------------------------------------------------- crénage
-BMIN, BMAX = -15, 75
-def profil(sts):
-    P = points(sts); lo, hi = boite(sts)
+BMIN, BMAX = -20, 75
+def profil(traits):
+    sts = [s for s, _ in traits]; lo, hi = boite(sts)
     nb = BMAX - BMIN
-    gauche = np.full(nb, np.inf); droite = np.full(nb, np.inf)
-    for x, y in P:
-        b = int(np.floor(y / BAND))
-        for bb in (b - 1, b, b + 1):
-            i = bb - BMIN
-            if 0 <= i < nb:
-                gauche[i] = min(gauche[i], (x - R) - lo)      # marge à gauche dans la bande
-                droite[i] = min(droite[i], hi - (x + R))      # marge à droite dans la bande
-    return gauche, droite, hi - lo
+    g = {False: np.full(nb, np.inf), True: np.full(nb, np.inf)}
+    d = {False: np.full(nb, np.inf), True: np.full(nb, np.inf)}
+    for s, barre in traits:
+        for x, y in essai.cr(s):
+            b = int(np.floor(y / BAND))
+            for bb in (b - 1, b, b + 1):
+                i = bb - BMIN
+                if 0 <= i < nb:
+                    g[barre][i] = min(g[barre][i], (x - R) - lo)     # marge à gauche dans la bande
+                    d[barre][i] = min(d[barre][i], hi - (x + R))     # marge à droite dans la bande
+    return g[False], g[True], d[False], d[True], hi - lo
 
 def crenage(noms):
-    pr = {n: profil(traits_complets(n)) for n in noms}
-    G = np.array([pr[n][0] for n in noms]); Dr = np.array([pr[n][1] for n in noms]); W = np.array([pr[n][2] for n in noms])
-    tot = Dr[:, None, :] + G[None, :, :]
-    k = -np.min(tot, axis=2)                                     # se glisser tant que les bandes restent à GAP
+    pr = [profil(traits_complets(n)) for n in noms]
+    Gc = np.array([p[0] for p in pr]); Gb = np.array([p[1] for p in pr])
+    Dc = np.array([p[2] for p in pr]); Db = np.array([p[3] for p in pr]); W = np.array([p[4] for p in pr])
+    k = np.zeros((len(noms), len(noms)))
+    for i in range(len(noms)):
+        # écart GAP entre deux traits ; une barre de V ou W peut aller jusqu'à toucher
+        t = np.minimum.reduce([Dc[i] + Gc, Db[i] + Gc + GAP, Dc[i] + Gb + GAP, Db[i] + Gb + GAP])
+        k[i] = -np.min(t, axis=1)
     lim = -(GAP + np.minimum(CHEVAUCHE, 0.25 * np.minimum(W[:, None], W[None, :])))
     k = np.maximum(k, lim)
     k = np.where(np.isfinite(k), k, lim)
@@ -324,12 +345,12 @@ def construire(style, outdir):
         f = lambda x, y: (round(x * SC), round(y * SC))
         glyf[nom] = vers_glyphe(contour(MARQ[nom], style, zlib.crc32(nom.encode())), f, tol)
         hm[nom] = (0, 0); ordre.append(nom)
-    def x_ancre(b, m):
-        A = ancres(D[b]); return round((A[place_marque(m, A)] - pos[b] + GAP / 2) * SC)
+    def ancre(b, m):
+        x, dy = placement(b, m); return round((x - pos[b] + GAP / 2) * SC), round(dy * SC)
     for nom in sorted(COMPO):
         b, ms = COMPO[nom]
         g = TTGlyphPen(glyf); g.addComponent(b, (1, 0, 0, 1, 0, 0))
-        for m in ms: g.addComponent(NOM_MARQUE[m], (1, 0, 0, 1, x_ancre(b, m), 0))
+        for m in ms: g.addComponent(NOM_MARQUE[m], (1, 0, 0, 1) + ancre(b, m))
         glyf[nom] = g.glyph(); hm[nom] = hm[b]; ordre.append(nom)
     for nom in sorted(ACC):
         sts = signes.M[ACC[nom]]; lo, hi = boite(sts)
@@ -361,22 +382,24 @@ def construire(style, outdir):
     fb.setupOS2(version=4, usWeightClass=400, usWidthClass=5, achVendID='LFST', fsSelection=0x40 | 0x80, fsType=0,
                 sTypoAscender=ASC, sTypoDescender=DESC, sTypoLineGap=0,
                 usWinAscent=max(ymax, ASC), usWinDescent=max(-ymin, -DESC),
-                sxHeight=700, sCapHeight=700, yStrikeoutPosition=320, yStrikeoutSize=22, ulCodePageRange1=1)
+                sxHeight=round(XH * SC), sCapHeight=700, yStrikeoutPosition=320, yStrikeoutSize=22, ulCodePageRange1=1)
     fb.setupPost(underlinePosition=-120, underlineThickness=22)
     fb.font['head'].fontRevision = VERSION
     # accents posés par la police (marques combinantes) + crénage
     bases = sorted(D) + sorted(COMPO) + sorted(ACC)
-    haut = [NOM_MARQUE[m] for m in signes.M if place_marque(m, None) == 'haut']
-    bas = [NOM_MARQUE[m] for m in signes.M if place_marque(m, None) == 'bas']
+    haut = [NOM_MARQUE[m] for m in signes.COMB.values() if genre(m) == 'haut']
+    bas = [NOM_MARQUE[m] for m in signes.COMB.values() if genre(m) == 'bas']
     fea = ['languagesystem DFLT dflt;', 'languagesystem latn dflt;',
            f"markClass [{' '.join(haut)}] <anchor 0 0> @HAUT;",
            f"markClass [{' '.join(bas)}] <anchor 0 0> @BAS;",
            f"markClass [{NOM_MARQUE['ogonek']}] <anchor 0 0> @OGO;",
+           # i et j perdent leur point sous un accent
+           'feature ccmp {', f"  sub i' [{' '.join(haut)}] by dotlessi;", f"  sub j' [{' '.join(haut)}] by uni0237;", '} ccmp;',
            'feature mark {']
     for b in sorted(D):
-        A = ancres(D[b]); fx = lambda v: round((v - pos[b] + GAP / 2) * SC)
-        fea.append(f"  pos base {b} <anchor {fx(A['haut'])} 0> mark @HAUT <anchor {fx(A['bas'])} 0> mark @BAS "
-                   f"<anchor {fx(A['ogonek'])} 0> mark @OGO;")
+        ah, ab, ao = ancre(b, 'aigu'), ancre(b, 'cedille'), ancre(b, 'ogonek')
+        fea.append(f"  pos base {b} <anchor {ah[0]} {ah[1]}> mark @HAUT <anchor {ab[0]} {ab[1]}> mark @BAS "
+                   f"<anchor {ao[0]} {ao[1]}> mark @OGO;")
     fea.append('} mark;')
     fea.append('feature mkmk {')
     fea.append(f"  pos mark [{' '.join(haut)}] <anchor 0 {round(200 * SC)}> mark @HAUT;")
