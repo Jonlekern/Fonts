@@ -1,4 +1,4 @@
-# Fûstard 132 en 900 : même squelette que la Hairline, avec les règles de triche optique :
+# Fûstard 132, graisses 100 à 900 : même squelette que la Hairline, avec les règles de triche optique :
 # 1. contraste : horizontales plus fines que les verticales (diagonales entre les deux)
 # 2. pièges à encre : les traits s'amincissent là où ils se croisent
 # 3. détails (petites croix) plus fins
@@ -6,6 +6,7 @@
 # 5. lettres élargies pour garder les contreformes ouvertes
 # 6. croisement en biais (< 40°) : le trait s'arrête dans l'autre, sans dépasser
 # 7. à partir de 700 : U, panse ronde et fût qui traverse sous la ligne ; u, fond plat qui traverse le fût
+# 8. à partir de 600 : A en Ā, les traits s'arrêtent sous la barre du haut, A étiré jusqu'aux pointes
 import sys, os, math
 _ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _ICI)
@@ -22,6 +23,13 @@ REGLES = dict(rv=110.0,        # demi-épaisseur des verticales (trait 220 = 22 
               pointe=1.5,      # 4. pointe longue de 1,5 demi-épaisseur
               sx=1.18,         # 5. lettres élargies de 18 %
               ov=320.0, gap=230.0, poids=900)
+
+def regles(poids):
+    """Règles pour une graisse de 100 (Hairline) à 900 : tout passe en douceur de l'une à l'autre."""
+    t = (poids - 100) / 800.0
+    k = t ** 1.4                                   # progression de l'épaisseur
+    return dict(rv=16 + (110 - 16) * k, horiz=1 - 0.30 * k, piege=1 - 0.20 * k, detail=1 - 0.45 * k,
+                pointe=3.0 - 1.5 * k, sx=1 + 0.18 * k, ov=210 + 110 * k, gap=284 - 54 * k, poids=poids)
 
 def densifier(P, step=12.0, coin=20.0):
     """Points rapprochés ; garde les coins vifs (virage > coin degrés)."""
@@ -126,7 +134,7 @@ def couper_biais(sts, ov):
             meilleur = None
             for j, o in enumerate(sts):
                 if j == i: continue
-                for c, d in zip(o['p'], o['p'][1:]):
+                for k_, (c, d) in enumerate(zip(o['p'], o['p'][1:])):
                     v = (d - c) / (np.linalg.norm(d - c) + 1e-9)
                     angle = math.degrees(math.acos(min(1.0, abs(float(u @ v)))))
                     if angle >= 40: continue          # 45° (D) garde son croisement
@@ -135,13 +143,43 @@ def couper_biais(sts, ov):
                     t, s_ = np.linalg.solve(M, c - a)
                     reste = (1 - t) * np.linalg.norm(b - a)
                     if 0 < t < 1 and -0.02 <= s_ <= 1.02 and reste <= ov * 1.3:
+                        # l'autre trait doit continuer des deux côtés (cas du U) ;
+                        # si le croisement est près de son bout aussi, c'est un X voulu (haut du A) : on garde
+                        x = a + (b - a) * t
+                        Q = [np.array(q, float) for q in o['p']]
+                        L = np.cumsum([0] + [np.linalg.norm(Q[k + 1] - Q[k]) for k in range(len(Q) - 1)])
+                        sx_ = L[k_] + np.linalg.norm(x - c)
+                        if min(sx_, L[-1] - sx_) <= ov * 2.0:
+                            continue
                         if meilleur is None or reste < meilleur[0]:
-                            meilleur = (reste, a + (b - a) * t)
+                            meilleur = (reste, x)
             if meilleur:
                 if fin == 0: P[0] = meilleur[1]
                 else: P[-1] = meilleur[1]
                 st['caps'][fin] = 'B'   # bout franc, sans dépassement
     return sts
+
+def A_barre(A, R):
+    """8. A à partir de 600 : Ā, les deux traits s'arrêtent net sous la barre du haut (plus de croix au-dessus),
+    et le A est étiré en hauteur : le haut de sa barre arrive au niveau des pointes des autres lettres."""
+    H = 1000.0
+    rh = R['rv'] * R['horiz']
+    etire = (H + R['ov'] - rh) / H
+    A = [dict(st, p=[np.array([p[0], p[1] * etire if p[1] > 0 else p[1]]) for p in st['p']]) for st in A]
+    H = H * etire
+    out = []
+    for st in A:
+        P = [np.array(p, float) for p in st['p']]
+        if len(P) == 2 and abs(P[1][1] - P[0][1]) > 500:            # un des deux grands traits
+            haut, bas = (1, 0) if P[1][1] > P[0][1] else (0, 1)
+            a, b = P[bas], P[haut]
+            t = (H - a[1]) / (b[1] - a[1])
+            P[haut] = a + (b - a) * t
+            caps = list(st['caps']); caps[haut] = 'B'
+            out.append(dict(st, p=P, caps=caps))
+        else:
+            out.append(st)
+    return out
 
 def U_gras(ov):
     """7. U des graisses 700 et plus : panse ronde, le fût descend sous la ligne et la traverse."""
@@ -158,13 +196,15 @@ def u_gras(ov):
 def glyphes(R):
     G = techno.build(R['ov'])
     G.update(techno.build_lc(R['ov'] * techno.XH / 1000.0))   # minuscules, croisements en proportion
+    if R.get('poids', 900) >= 600:
+        G['A'] = A_barre(G['A'], R)
     if R.get('poids', 900) >= 700:
         G['U'] = U_gras(R['ov'])
         G['u'] = u_gras(R['ov'] * techno.XH / 1000.0)
     out = {}
     for ch, strokes in G.items():
         sts = [dict(p=[np.array([x * R['sx'], y]) for x, y in st['p']], caps=list(st['caps']), detail=st.get('detail', False)) for st in strokes]
-        out[ch] = couper_biais(sts, R['ov'])
+        out[ch] = couper_biais(sts, R['ov']) if R.get('poids', 900) >= 500 else sts   # 6. à partir de 500
     return out
 
 def render(word, out, R=REGLES, k=0.3, ss=3, triche=True):
@@ -188,5 +228,28 @@ def render(word, out, R=REGLES, k=0.3, ss=3, triche=True):
                 d.polygon([((x + ox + 350) * K, (top - y) * K) for x, y in q], fill=238)
     img.resize((W // ss, H // ss), Image.LANCZOS).convert('RGB').save(out)
 
+def planche_graisses(out, mot='LAFLEURSTUDIO', k=0.22):
+    """Le mot dans les 9 graisses, de 100 à 900."""
+    from PIL import ImageFont
+    try:
+        F = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 34)
+    except OSError:
+        F = ImageFont.load_default()
+    rows = []
+    for p in range(100, 1000, 100):
+        fn = out + f'.{p}.png'
+        render(mot, fn, R=regles(p), k=k)
+        im = Image.open(fn).convert('RGB'); ImageDraw.Draw(im).text((12, 8), str(p), font=F, fill=(255, 210, 60))
+        rows.append(im); os.remove(fn)
+    W = max(r.width for r in rows)
+    sheet = Image.new('RGB', (W, sum(r.height for r in rows)), (0, 0, 0))
+    y = 0
+    for r in rows:
+        sheet.paste(r, (0, y)); y += r.height
+    sheet.save(out)
+
 if __name__ == '__main__':
-    render(sys.argv[2] if len(sys.argv) > 2 else 'LAFLEURSTUDIO', sys.argv[1] if len(sys.argv) > 1 else 'fustard-132-900.png')
+    if len(sys.argv) > 1 and sys.argv[1] == 'graisses':
+        planche_graisses(sys.argv[2] if len(sys.argv) > 2 else 'graisses.png')
+    else:
+        render(sys.argv[2] if len(sys.argv) > 2 else 'LAFLEURSTUDIO', sys.argv[1] if len(sys.argv) > 1 else 'fustard-132-900.png')
