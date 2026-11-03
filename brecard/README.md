@@ -44,6 +44,7 @@ Les graisses sont comptées en klingon : *vatlh* veut dire « cent ». Les fichi
 
 ## Versions
 
+- **1.2.1** : designer : Jonathan Kern.
 - **1.2** : nouvelle licence : usage personnel gratuit, usage commercial sur autorisation de LaFleurStudio.
 - **1.1.2** : retour au .notdef de Brécard, sans monogramme.
 - **1.1.1** : ¦ †, accents seuls à hauteur de capitale.
