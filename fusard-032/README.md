@@ -54,6 +54,7 @@ Même squelette que la Hairline. Le trait passe de 32 (100) à 220 (900), les cr
 6. **Croisements en biais** (moins de 40°), à partir de 500 : le trait qui traverse un autre en plein milieu s'arrête dedans (diagonale du U). Un X dont les deux traits dépassent (haut du A) reste un X.
 7. **À partir de 700** : U, panse ronde et fût qui descend sous la ligne en la traversant ; u, fond plat qui traverse le fût (croix en bas à droite).
 8. **A à partir de 600** : Ā, les deux traits s'arrêtent sous la barre du haut ; le A est étiré pour que sa barre arrive au niveau des pointes des autres lettres.
+9. **E et F en Black** : la croix au bout de la barre du haut est plus courte et plus fine.
 
 `python3 triche.py graisses graisses.png` → `graisses.png` (LAFLEURSTUDIO dans les 9 graisses) ; `python3 triche.py fusard-032-900.png` → la 900.
 
