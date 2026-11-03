@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bussard</title>
-<meta name="description" content="Bussard, une police à points lumineux inspirée des tableaux de départ des arrêts de bus biennois. Une droite et une italique glitch penchée à 12°. Libre et gratuite (SIL OFL). Par LaFleurStudio.">
+<meta name="description" content="Bussard, une police à points lumineux inspirée des transports et des affichages LED. Une droite et une italique glitch penchée à 12°. Libre et gratuite (SIL OFL). Par LaFleurStudio.">
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"Bussard";font-weight:400;font-display:swap;src:url(fonts/woff2/Bussard-Regular.woff2) format("woff2")}
@@ -30,6 +30,10 @@ section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
 .tableau span.long{font-size:calc(100cqw/15)}
 .tableau span.it{font-family:"Bussard Italic","Bussard",var(--sans)}
 .bf{font-family:"Bussard",var(--sans);font-size:1.3em;line-height:1}
+/* la présentation : une ligne de tableau avec le bus */
+.affiche{margin-top:clamp(24px,4vw,40px);background:#16181a;color:#f6f2de;border-radius:16px;padding:clamp(18px,3vw,34px) clamp(20px,3.6vw,44px);container-type:inline-size;max-width:960px}
+.affiche div{display:flex;justify-content:space-between;align-items:baseline;font-family:"Bussard",var(--sans);white-space:nowrap;font-size:calc(100cqw/13);line-height:1.35}
+.affiche .tete{justify-content:flex-end}
 </style>
 </head>
 <body>
@@ -53,8 +57,12 @@ section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
     <div class="wrap">
       <p class="label">LaFleurStudio · 2026</p>
       <h1 style="margin-top:18px">Bussard</h1>
+      <div class="affiche" aria-label="PLACE CENTRALE, départ dans 3 minutes, avec le dessin du bus">
+        <div class="tete"><span>🚌</span></div>
+        <div><span>PLACE CENTRALE</span><span>3'</span></div>
+      </div>
       <div class="lede">
-        <p><strong>Une police à points lumineux</strong>, inspirée des <strong>tableaux de départ des arrêts de bus biennois</strong> : chaque lettre est dessinée point par point, sur une grille.</p>
+        <p><strong>Une police à points lumineux</strong>, inspirée des <strong>transports et des affichages LED</strong> : chaque lettre est dessinée point par point, sur une grille.</p>
         <p><strong>Une droite</strong>, et <strong>une italique penchée à 12°</strong> qui glitche comme un tableau fatigué. Le petit bus est dans la police.</p>
       </div>
       <div class="facts">
@@ -80,7 +88,7 @@ section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
           <label>Style <select id="tw" aria-label="Style"></select></label>
           <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
         </div>
-        <div id="tester-text" contenteditable="true" spellcheck="false">Le bus a 3' de retard, comme toi.</div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">BIEL/BIENNE GARE</div>
       </div>
       <p class="hint">Astuce : les points se voient mieux en grand. À partir de 30 px, c'est un vrai tableau.</p>
     </div>
@@ -98,7 +106,7 @@ section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
   <section id="origine">
     <div class="wrap">
       <h2>D'où elle vient</h2>
-      <p class="intro">À Bienne, chaque arrêt de bus affiche les prochains départs sur un tableau lumineux. <strong>Bussard</strong> part de ces tableaux : une écriture faite de points, qu'on lit en attendant le bus.</p>
+      <p class="intro"><strong>Bussard est inspirée des transports et des affichages LED</strong> : les tableaux de départ des arrêts de bus et des gares, où chaque lettre est faite de petits points lumineux. Une écriture qu'on lit en attendant le bus.</p>
 
       <div class="steps">
 
@@ -106,7 +114,7 @@ section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
           <div>
             <h3>Une grille de points</h3>
             <p>Chaque lettre est <strong>dessinée point par point</strong> sur une grille : <strong>14 points</strong> de haut pour les majuscules, <strong>10</strong> pour les minuscules, et des traits de <strong>2 points</strong> d'épaisseur.</p>
-            <p>Les angles sont arrondis d'un point, comme sur les tableaux. Les points ne se touchent jamais.</p>
+            <p>Les angles sont arrondis d'un point, comme sur les tableaux. Les points ne se touchent jamais, et le crénage déplace les lettres <strong>d'un point entier</strong> : tout reste sur la grille.</p>
           </div>
           <div class="tableau" aria-label="Un tableau de départ en Bussard">
             <div class="row"><small>Ligne · Destination · Départ</small><span>1 Stades 3'</span></div>
