@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bussard</title>
+<meta name="description" content="Bussard, une police à points lumineux inspirée des tableaux de départ des arrêts de bus biennois. Une droite et une italique glitch penchée à 12°. Libre et gratuite (SIL OFL). Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Bussard";font-weight:400;font-display:swap;src:url(fonts/woff2/Bussard-Regular.woff2) format("woff2")}
+@font-face{font-family:"Bussard Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Bussard-Italic.woff2) format("woff2")}
+/* Bussard partout où le texte est assez grand pour voir les points */
+section > .wrap > h2,.wrow .sample,#tester-text,.glyphs div,.tableau span,.card b{font-family:"Bussard",var(--sans);font-weight:400}
+section > .wrap > h2{font-size:clamp(30px,4.4vw,48px)}
+.brand,.step h3{font-family:"Bussard",var(--sans);font-weight:400}
+.brand{font-size:22px;letter-spacing:.02em}
+.step h3{font-size:clamp(24px,2.6vw,30px)}
+.card b{font-size:20px}
+.hero h1{font-family:"Bussard Italic","Bussard";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/4.6);line-height:1.1;letter-spacing:0}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/11);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/11)}}
+.glyphs{grid-template-columns:repeat(auto-fill,minmax(72px,1fr))}
+.glyphs div{font-size:36px}
+#tester-text{line-height:1.3}
+/* les démos façon tableau de départ : fond sombre, points clairs */
+.tableau{background:#16181a;color:#f6f2de;border-radius:12px;padding:20px 22px;overflow:hidden;container-type:inline-size}
+.tableau .row{display:flex;flex-direction:column;gap:2px;margin:4px 0 12px}
+.tableau .row small{font-size:12px;color:#9a968a}
+.tableau span{white-space:nowrap;line-height:1.25;font-size:calc(100cqw/11)}
+.tableau span.long{font-size:calc(100cqw/15)}
+.tableau span.it{font-family:"Bussard Italic","Bussard",var(--sans)}
+.bf{font-family:"Bussard",var(--sans);font-size:1.3em;line-height:1}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">BUSSARD</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">Bussard</h1>
+      <div class="lede">
+        <p><strong>Une police à points lumineux</strong>, inspirée des <strong>tableaux de départ des arrêts de bus biennois</strong> : chaque lettre est dessinée point par point, sur une grille.</p>
+        <p><strong>Une droite</strong>, et <strong>une italique penchée à 12°</strong> qui glitche comme un tableau fatigué. Le petit bus est dans la police.</p>
+      </div>
+      <div class="facts">
+        <span>2 styles</span><span>Droite + Italique glitch</span><span>Points lumineux</span><span>Chiffres à chasse fixe</span><span>Latin étendu</span><span>Libre et gratuite (SIL OFL)</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="styles">
+    <div class="wrap">
+      <h2>Les styles</h2>
+      <p class="intro">La droite pour lire, l'italique pour le glitch. Les deux ont exactement les mêmes points, seule l'italique penche et décroche.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Style <select id="tw" aria-label="Style"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">Le bus a 3' de retard, comme toi.</div>
+      </div>
+      <p class="hint">Astuce : les points se voient mieux en grand. À partir de 30 px, c'est un vrai tableau.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, accents (y compris ceux d'Europe centrale), ponctuation et symboles. Et <span class="bf">🚌</span> dessine le petit bus.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro">À Bienne, chaque arrêt de bus affiche les prochains départs sur un tableau lumineux. <strong>Bussard</strong> part de ces tableaux : une écriture faite de points, qu'on lit en attendant le bus.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Une grille de points</h3>
+            <p>Chaque lettre est <strong>dessinée point par point</strong> sur une grille : <strong>14 points</strong> de haut pour les majuscules, <strong>10</strong> pour les minuscules, et des traits de <strong>2 points</strong> d'épaisseur.</p>
+            <p>Les angles sont arrondis d'un point, comme sur les tableaux. Les points ne se touchent jamais.</p>
+          </div>
+          <div class="tableau" aria-label="Un tableau de départ en Bussard">
+            <div class="row"><small>Ligne · Destination · Départ</small><span>1 Stades 3'</span></div>
+            <div class="row"><small>&nbsp;</small><span>6 Centre hospitalier 5'</span></div>
+            <div class="row"><small>&nbsp;</small><span>9 Ecoles Tilleul 10'</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le glitch</h3>
+            <p>Sur un tableau qui fatigue, la <strong>moitié basse des lettres décroche</strong> : un point plus bas, un point vers la gauche.</p>
+            <p>L'italique reprend ce défaut, <strong>régulier, sur toutes les lettres</strong>, et penche à <strong>12°</strong>.</p>
+          </div>
+          <div class="tableau" aria-label="La droite et l'italique glitch">
+            <div class="row"><small>Droite</small><span>8 Fuchsenried 4'</span></div>
+            <div class="row"><small>Italique glitch</small><span class="it">8 Fuchsenried 4'</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le petit bus</h3>
+            <p>Le caractère <span class="bf">🚌</span> dessine <strong>le bus des tableaux</strong>, avec ses fenêtres, sa porte et ses roues. Il glitche aussi dans l'italique.</p>
+          </div>
+          <div class="tableau" aria-label="Le bus en Bussard">
+            <div class="row"><small>Droite</small><span>🚌 Départ</span></div>
+            <div class="row"><small>Italique glitch</small><span class="it">🚌 Départ</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des chiffres alignés</h3>
+            <p>Tous les chiffres ont <strong>la même largeur</strong> : les heures et les minutes restent alignées d'une ligne à l'autre, comme sur un vrai tableau.</p>
+          </div>
+          <div class="tableau" aria-label="Des horaires alignés en Bussard">
+            <div class="row"><small>&nbsp;</small><span>17:10 · 17:12</span></div>
+            <div class="row"><small>&nbsp;</small><span>18:41 · 19:08</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Bussard.zip" download><b>Bussard.zip</b><span>Les 2 styles en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/bussard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/bussard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "Bussard"; font-style: normal;
+  src: url(Bussard-Regular.woff2) format("woff2"); }
+@font-face { font-family: "Bussard"; font-style: italic;
+  src: url(Bussard-Italic.woff2) format("woff2"); }</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Bussard · 2026 · LaFleurStudio · Jonathan Kern · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    <span>Construite en Python (fontTools).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Bussard",
+  sample: "Prochain bus : 3'",
+  styles: [
+    {n:"Regular",w:400,label:"Droite"},{n:"Italic",w:400,label:"Italique glitch · 12°",fam:"Bussard Italic"}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØŒÙÚÛÜÝŸŠŽàáâãäåæçèéêëìíîïñòóôõöøœùúûüýÿšžß" +
+    "ĄąĆćĘęŁłŃńŚśŹźŻżČčĎďĚěŇňŘřŤťŮůĞğİıŞşŐőŰű" +
+    ".,:;!?¡¿…'\"‘’“”«»‹›()[]{}/\\|-–—_*•#%&@¶§°" + "$€£¥¢+−×÷=<>~©®™🚌",
+  glyphChips: [0, 1],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
