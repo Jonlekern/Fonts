@@ -19,7 +19,6 @@ Page : **https://jonlekern.github.io/Fonts/caffeinated/**
 ## Détails
 
 - Chaque lettre est relevée sur une vraie ardoise de café ou de boulangerie à Bienne, puis redessinée d'un trait rond et régulier.
-- Les rares lettres qu'on n'a trouvées sur aucune ardoise ont été dessinées par le studio, dans le même esprit.
 - Tous les i accentués (î, ï, í, ì…) portent un petit cœur à la place de l'accent.
 - `☀` (U+2600) dessine un soleil qui sourit.
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
