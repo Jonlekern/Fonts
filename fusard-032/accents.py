@@ -1,4 +1,4 @@
-# Fûsard 032 : essai du style des accents (recette : traits droits, pointes, croix, ogive)
+# Fûsard-032 : essai du style des accents (recette : traits droits, pointes, croix, ogive)
 import sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np

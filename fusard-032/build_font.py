@@ -1,4 +1,4 @@
-# Fûsard 032 : fabrique le fichier de police (TTF) à partir des traits dessinés dans fusard.py.
+# Fûsard-032 : fabrique le fichier de police (TTF) à partir des traits dessinés dans fusard.py.
 # Traits -> contours (union skia-pathops), approche par boîtes + crénage calculé sur les profils,
 # chiffres majuscules par défaut, chiffres minuscules via « onum » (chiffres elzéviriens).
 import sys, os, math
@@ -146,12 +146,12 @@ def construire(sortie):
     ymax = max(e[4] for e in encre.values()); ymin = min(e[3] for e in encre.values())
     asc, desc = int(math.ceil(ymax / 10) * 10), int(math.floor(ymin / 10) * 10)
     fb.setupHorizontalHeader(ascent=asc, descent=desc)
-    fam = 'Fûsard 032'
+    fam = 'Fûsard-032'
     fb.setupNameTable({
         'copyright': '© 2026 LaFleurStudio',
         'familyName': fam + ' Hairline', 'styleName': 'Regular',
         'typographicFamily': fam, 'typographicSubfamily': 'Hairline',
-        'uniqueFontIdentifier': 'LaFleurStudio: Fûsard 032 Hairline: 0.100',
+        'uniqueFontIdentifier': 'LaFleurStudio: Fûsard-032 Hairline: 0.100',
         'fullName': fam + ' Hairline', 'psName': 'Fusard032-Hairline',
         'version': 'Version 0.100', 'manufacturer': 'LaFleurStudio', 'designer': 'LaFleurStudio',
     })

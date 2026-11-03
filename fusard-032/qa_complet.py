@@ -1,4 +1,4 @@
-# Contrôle automatique des 9 fichiers Fûsard 032
+# Contrôle automatique des 9 fichiers Fûsard-032
 import sys, os, json, unicodedata
 from fontTools.ttLib import TTFont
 from fontTools.pens.areaPen import AreaPen
@@ -59,8 +59,8 @@ for s in ('Hairline', 'Black'):
     g, _ = forme('ĩ');  ok1 = g[0] == 'dotlessi'
     g, pos = forme('n̈'); ok2 = g == ['n', 'dieresiscomb'] and pos[1].y_offset != 0 or pos[1].x_offset != 0
     g, _ = forme('ş', 'ro'); ok3 = g == ['uni0219']
-    g, _ = forme('0', feats={'onum': True}); ok4 = g == ['zero.onum']
-    for nom, ok in (('i + tilde -> ı', ok1), ('n + tréma placé', ok2), ('ş roumain', ok3), ('onum', ok4)):
+    g, _ = forme('0', feats={'lnum': True}); ok4 = g == ['zero.lnum']
+    for nom, ok in (('i + tilde -> ı', ok1), ('n + tréma placé', ok2), ('ş roumain', ok3), ('lnum', ok4)):
         if not ok: pb.append((s, 'mise en forme', nom))
 print('problèmes :', len(pb))
 for p in pb[:40]: print(' ', p)

@@ -1,4 +1,4 @@
-# Fûsard 032 : Jalousia en techno gothique. Géométrie stricte (90°, 0°, 67,5°, 45°),
+# Fûsard-032 : Jalousia en techno gothique. Géométrie stricte (90°, 0°, 67,5°, 45°),
 # chaque jonction devient un croisement (les traits dépassent de OV),
 # bouts en pointe, arrondis réguliers, O en ogive.
 import sys, math

@@ -1,4 +1,4 @@
-# Fûsard 032, étape 1 : étude des angles du LAFLEURSTUDIO de l'essai Jalousia.
+# Fûsard-032, étape 1 : étude des angles du LAFLEURSTUDIO de l'essai Jalousia.
 # Chaque trait est simplifié en segments droits (Ramer-Douglas-Peucker),
 # puis on mesure l'angle de chaque segment.
 # Angle : 0 = horizontal, 90 = vertical ; + = monte vers la droite.
