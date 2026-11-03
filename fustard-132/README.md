@@ -10,6 +10,7 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas
 - **Arrondis réguliers** sur U, R, S et D, à rayon constant.
 - **O en ogive** : deux arcs de cercle qui se croisent en pointe en haut et en bas.
 - **A** : celui de la version sharp, gardé tel quel.
+- **Q** : l'arc de gauche du O continue en longue queue courbe, barrée d'une petite croix.
 - **Trait** : 32 d'épaisseur.
 
 ## Étapes
@@ -21,6 +22,7 @@ Version techno gothique de Jalousia (dossier `jalousia/`). Travail en cours, pas
 | 3. Arrondis sur les lettres rondes, O en ogive | `arrondi.py` | `arrondis.png` |
 | 4. Techno gothique : géométrie stricte, croisements | `fustard.py` | `fustard-132.png` |
 | Choix de la longueur des croisements (avant, ×2, ×3 retenu) | | `croisements.png` |
+| 5. Alphabet A–Z (V, X, M, C d'après les dessins) | `fustard.py` | `alphabet.png` |
 
 ## Refaire les images
 
@@ -29,6 +31,7 @@ python3 etude_img.py etude.png
 python3 droit.py LAFLEURSTUDIO sharp.png
 python3 arrondi.py LAFLEURSTUDIO arrondis.png
 python3 fustard.py LAFLEURSTUDIO fustard-132.png
+python3 fustard.py alphabet alphabet.png
 ```
 
 Les scripts lisent les lettres de départ dans `../jalousia/essai.py`.
