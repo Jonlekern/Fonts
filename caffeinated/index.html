@@ -26,6 +26,8 @@ section > .wrap > h2{font-weight:600;font-size:clamp(26px,3.8vw,42px)}
 .demo .row span.long{font-size:calc(100cqw/17)}
 .glyphs div{font-size:28px}
 #tester-text{line-height:1.75}
+.cf{font-family:"Caffeinated",var(--sans);font-weight:500;font-size:1.15em;line-height:1;color:var(--ink)}
+.cf.sol{font-size:.95em}
 </style>
 </head>
 <body>
@@ -85,7 +87,7 @@ section > .wrap > h2{font-weight:600;font-size:clamp(26px,3.8vw,42px)}
   <section id="caracteres">
     <div class="wrap">
       <h2>Caractères</h2>
-      <p class="intro">Majuscules, minuscules, chiffres, accents (y compris ceux d'Europe centrale), ponctuation et symboles. Les i accentués portent un cœur, et ☀ est un soleil.</p>
+      <p class="intro">Majuscules, minuscules, chiffres, accents (y compris ceux d'Europe centrale), ponctuation et symboles. Les i accentués portent un cœur (<span class="cf">î ï í ì</span>), et <span class="cf sol">☀</span> est un soleil.</p>
       <div class="glyph-controls" id="gw"></div>
       <div class="glyphs" id="glyphs"></div>
     </div>
@@ -127,12 +129,12 @@ section > .wrap > h2{font-weight:600;font-size:clamp(26px,3.8vw,42px)}
         <div class="step">
           <div>
             <h3>Un cœur et un soleil</h3>
-            <p>Tous les <strong>i accentués portent un petit cœur</strong> à la place de l'accent : î, ï, í, ì, en minuscule comme en majuscule. Même dans un caffè così buono.</p>
-            <p>Et le caractère <strong>☀</strong> dessine un <strong>soleil qui sourit</strong>, avec deux petits traits pour les yeux.</p>
+            <p>Tous les <strong>i accentués portent un petit cœur</strong> à la place de l'accent : <span class="cf">î ï í ì</span>, en minuscule comme en majuscule. Même dans un <span class="cf">caffè così buono</span>.</p>
+            <p>Et le caractère <span class="cf sol">☀</span> dessine un <strong>soleil qui sourit</strong>, avec deux petits traits pour les yeux.</p>
           </div>
           <div class="demo" aria-label="Le cœur et le soleil en Caffeinated Ristretto">
             <div class="row"><small>Ristretto (500)</small><span style="font-weight:500">Caffè, così buono</span></div>
-            <div class="row"><small>Ristretto (500)</small><span style="font-weight:500">Bagel ☀ Café</span></div>
+            <div class="row"><small>Ristretto (500)</small><span style="font-weight:500">S'il te plaît ☀</span></div>
           </div>
         </div>
 
@@ -194,7 +196,7 @@ section > .wrap > h2{font-weight:600;font-size:clamp(26px,3.8vw,42px)}
 <script>
 window.SPECIMEN = {
   family: "Caffeinated",
-  sample: "Pain au chocolat & espresso",
+  sample: "Un espresso, s'il vous plaît",
   styles: [
     {n:"Lungo",w:300},{n:"Espresso",w:400},{n:"Ristretto",w:500},{n:"Doppio",w:600},{n:"Moka",w:700}
   ],
