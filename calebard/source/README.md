@@ -21,6 +21,12 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `liga_off.py` | Ligatures coupées dans Goofy |
 | `flower_lib.py`, `add_flower.py` | Fleur LaFleurStudio : ❀ (U+2740), ✿ bold 1 (U+273F), ❁ bold 2 (U+2741), ✾ bold 3 (U+273E) |
 | `rename_style.py` | Noms des graisses |
+| `logo102.py` | Version 1.0.2 : L et U à la largeur du vrai logo, C G J O Q S U Ə Œ qui dépassent comme dans le logo (58 sous la ligne, 57 au-dessus des capitales), variantes accentuées et ancres suivies |
+| `r102.py` | Version 1.0.2 : R à la largeur du logo (droite du montant resserrée à 90 %) |
+| `spacing102.py` + `espaces-logo-tshirt.json` | Version 1.0.2 : les 6 règles d'espacement recalculées sur les espaces du vrai logo, 12 paires de LAFLEURSTUDIO |
+| `j102.py` | Version 1.0.2 : bout du crochet du j coupé en biais |
+| `f102.py` | Version 1.0.2 : F à la largeur du logo |
+| `post102.sh` | Version 1.0.2 : enchaîne les cinq scripts ci-dessus sur les 11 graisses de la 1.0.1, puis pose le numéro de version |
 
 ## Refaire la version 1.0.1
 
@@ -35,3 +41,11 @@ STRETCH=1.209 OVR1000=overrides-1000-120.json OVR1100=overrides-1100-120.json ./
 Variables : `PY` (Python à utiliser), `VF` (chemin d'Anybody). La fleur lit `logo-fleur.svg` (dépôt lafleurstudio : `images/logo-fleur.svg`). Le numéro de version se pose à la fin : `set_version.py 1.001 out/ttf/*.ttf`.
 
 Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` redonnent la version 1.0.
+
+## Refaire la version 1.0.2
+
+À partir des 11 graisses de la version 1.0.1 (Goofy et Extra Goofy ne changent pas) :
+
+```sh
+./post102.sh dossier-ttf
+```
