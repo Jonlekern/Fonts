@@ -48,4 +48,4 @@ Libre et gratuite, y compris pour un usage commercial. La police ne peut pas êt
 
 ## Merci
 
-Merci aux mains anonymes des cafés et des boulangeries biennois.
+Merci aux mains anonymes des cafés et des boulangeries biennoises.
