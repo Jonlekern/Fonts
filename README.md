@@ -17,6 +17,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Jalousia** | Chiffres romains néo-gothiques dessinés à la main, en deux polices : Net (trait net) et Craie | 4 (Centum → Quadringenti, en latin) + 4 italiques, pour chacune | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia/) · [Zip Net](jalousia/JalousiaNet.zip) · [Zip Craie](jalousia/JalousiaCraie.zip) · [Dossier](jalousia/) |
 | **Espresso 3.50.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-350/) · [Zip](espresso-350/Espresso350.zip) · [Dossier](espresso-350/) |
 | **Bussard** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/bussard/) · [Zip](bussard/Bussard.zip) · [Dossier](bussard/) |
+| **The Forever Font** | Chasse fixe au flou exact de l'encre : lettres tirées de tatouages et d'une machine à écrire, 3 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/the-forever-font/) · [Zip](the-forever-font/TheForeverFont.zip) · [Dossier](the-forever-font/) |
 
 ## Organisation
 
@@ -28,10 +29,11 @@ shared/
 calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 brecard/, fusard-032/,
-jalousia/, espresso-350/, bussard/
+jalousia/, espresso-350/, bussard/,
+the-forever-font/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032 et Jalousia : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032, Jalousia et The Forever Font : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web

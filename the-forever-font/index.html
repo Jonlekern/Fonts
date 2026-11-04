@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Forever Font</title>
+<meta name="description" content="The Forever Font, police à chasse fixe qui garde le flou exact de l'encre : lettres tirées de tatouages et d'une machine à écrire, 3 versions de chaque signe qui tournent toutes seules. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(fonts/woff2/TheForeverFont-Regular.woff2) format("woff2")}
+/* The Forever Font partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span{font-family:"The Forever Font",var(--sans)}
+.label{font-family:"The Forever Font",var(--sans);font-weight:400;font-size:15px}
+.brand{font-size:17px;font-weight:400}
+section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
+.step h3{font-weight:400;font-size:clamp(19px,2.2vw,25px)}
+.card b{font-weight:400;font-size:17px}
+.hero h1{font-family:"The Forever Font";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/8.4);line-height:1.2}
+.demo .row span{font-size:calc(100cqw/13);line-height:1.35}
+.glyphs div{font-size:30px}
+.fig{background:#fff}
+.licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
+.licence p{margin-bottom:8px}
+.licence p:last-child{margin-bottom:0}
+.sans-versions{font-feature-settings:"calt" 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">THE FOREVER FONT</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">THE FOREVER FONT</h1>
+      <div class="lede">
+        <p><strong>Le flou exact de l'encre</strong>, gardé dans la police : le trait bave, l'encre est plus ou moins chargée, et de petites taches entourent chaque lettre.</p>
+        <p>Des lettres tirées de <strong>tatouages</strong> et d'une <strong>machine à écrire</strong>, en chasse fixe, avec <strong>trois versions de chaque signe</strong> qui tournent toutes seules.</p>
+      </div>
+      <div class="facts">
+        <span>Chasse fixe</span><span>161 signes</span><span>3 versions de chaque signe</span><span>Le flou dans le fichier</span><span>Langues d’Europe de l’Ouest</span><span>Usage personnel gratuit</span><span>Version 1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Style <select id="tw" aria-label="Style"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="64" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">Écrit à l'encre, pour toujours.</div>
+      </div>
+      <p class="hint">Astuce : une seule police à installer, « The Forever Font » (voir « Télécharger »).</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation et symboles, avec les accents du français, de l'allemand, de l'espagnol et du portugais : 161 signes.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">The Forever Font est fabriquée en Python : les lettres sont relevées, mises au même style, puis le flou de l'encre est mesuré et posé sur chacune.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Des lettres tatouées</h3>
+            <p>Tout part de <strong>deux tatouages</strong> écrits dans une police de machine à écrire. Les lettres sont redressées, puis leur <strong>forme nette</strong> est retrouvée sous l'encre qui a bavé.</p>
+            <p><strong>Le tatouage passe toujours en premier</strong> : quand il a la lettre, c'est elle qu'on prend, même le t et sa tête en flèche. Le m, que l'encre avait bouché, est refait avec le n tatoué.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres qui viennent des tatouages">
+            <div class="row"><small>Lettres tatouées</small><span>a c e h i m n o t w y</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Une machine à écrire pour le reste</h3>
+            <p>Les autres lettres, les capitales, les chiffres et la ponctuation viennent d'<strong>une vieille machine à écrire</strong>. Elles sont mises <strong>à la hauteur, à l'épaisseur et aux longues tiges</strong> des lettres tatouées.</p>
+            <p>Le 1 et le 0, absents de la machine, sont faits avec son I et son O. Les signes qui manquaient (@ # € $ œ ß « »…) sont montés avec ses morceaux : le « est un ^ couché, le ! une apostrophe allongée sur un point.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres de la machine à écrire">
+            <div class="row"><small>Minuscules de la machine</small><span>bdfgjklpqrsuvxz</span></div>
+            <div class="row"><small>Capitales et chiffres</small><span>ABCDEFG 1234567890</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le flou exact de l'encre</h3>
+            <p>Le flou est <strong>mesuré sur l'encre sous la peau</strong> : un flou étroit et un flou large mêlés, des zones plus ou moins chargées, le grain, et <strong>un halo de petites taches</strong> qui s'éclaircit en s'éloignant du trait.</p>
+          </div>
+          <figure class="fig"><img src="images/net-flou.png" alt="Le mot forever : en haut la forme nette, en bas la même avec le flou de l'encre"><figcaption>En haut, la forme nette. En bas, avec le flou.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les mesures</h3>
+            <p>Toutes les valeurs sont prises sur l'encre, en <strong>hauteur des minuscules</strong> (la hauteur du x).</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Mesure</th><th>Valeur</th></tr></thead>
+              <tbody>
+                <tr><td>Flou étroit</td><td class="good">2,4 à 3,4 %</td></tr>
+                <tr><td>Flou large</td><td class="good">7,3 %, 40 % de l'encre</td></tr>
+                <tr><td>Taches autour du trait</td><td class="good">jusqu'à 20 %</td></tr>
+                <tr><td>Zones plus ou moins chargées</td><td class="good">± 9 %</td></tr>
+                <tr><td colspan="2" style="text-align:left;color:var(--muted)">Capitales à 700 unités, minuscules à 426 (1000 par em). Chaque signe a sa chasse : 488 unités.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Trois versions de chaque signe</h3>
+            <p>Chaque signe existe <strong>en trois versions</strong> : l'encre plus ou moins chargée, le flou plus ou moins large, la lettre qui bouge d'un poil, comme la frappe d'une machine.</p>
+            <p>Elles <strong>tournent toutes seules</strong>, même d'un mot à l'autre : deux e côte à côte ne sont jamais pareils.</p>
+          </div>
+          <div class="demo" aria-label="Avec et sans les trois versions">
+            <div class="row"><small>Avec les 3 versions</small><span>eeeeee oooooo</span></div>
+            <div class="row"><small>Une seule version</small><span class="sans-versions">eeeeee oooooo</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Une police en images</h3>
+            <p>Le flou ne peut pas se dessiner en contours : <strong>chaque signe est une image</strong>, rangée dans le fichier en trois formats, pour Apple, pour Adobe et Firefox, et pour Windows et Android.</p>
+            <p>L'encre est <strong>noire</strong> et sa couleur ne se change pas. Les logiciels qui n'affichent pas les polices en couleur montrent la <strong>forme nette</strong>.</p>
+          </div>
+          <div class="demo" aria-label="The Forever Font">
+            <div class="row"><small>Capitales</small><span>LAFLEURSTUDIO</span></div>
+            <div class="row"><small>Accents</small><span>Ça, c'est l'été à Zürich !</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <div class="licence">
+        <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
+      </div>
+      <div class="dl">
+        <a class="card" href="TheForeverFont.zip" download><b>TheForeverFont.zip</b><span>La police en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "The Forever Font";
+  src: url(TheForeverFont-Regular.woff2) format("woff2"); }
+
+/* Les 3 versions de chaque signe tournent toutes seules ;
+   pour les couper : */
+.une-version { font-feature-settings: "calt" 0; }</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>The Forever Font © 2026 LaFleurStudio · <a href="LICENCE.txt">usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Fabriquée en Python (fontTools, SciPy).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "The Forever Font",
+  sample: "LaFleurStudio",
+  styles: [{n:"Regular",w:400}],
+  testerDefault: 0,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜŸàáâãäæçèéêëìíîïñòóôõöœùúûüÿßı" +
+    ".,:;!?¡¿…'\"«»‹›()[]/\\|-_*#%&@°§½" + "$€+=<>^`´¨~",
+  glyphChips: [0],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
