@@ -14,6 +14,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Malabard** | Display de course allongée | 7 (ExtraLight → ExtraBold) + 7 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/malabard/) · [Zip](malabard/Malabard.zip) · [Dossier](malabard/) |
 | **Brécard** | Display en pointes et en losanges, poids en haut | 9 (wa'vatlh → Hutvatlh, en klingon) + 9 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/brecard/) · [Zip](brecard/Brecard.zip) · [Dossier](brecard/) |
 | **Fûsard-032** | Techno gothique : géométrie stricte, croisements partout, bouts en pointe | 9 (Hairline → Black) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/fusard-032/) · [Zip](fusard-032/Fusard032.zip) · [Dossier](fusard-032/) |
+| **Typefive** | Chasse fixe faite avec les vraies frappes d'une machine à écrire : le grain du ruban, 5 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/typefive/) · [Zip](typefive/Typefive.zip) · [Dossier](typefive/) |
 | **Jalousia** | Chiffres romains néo-gothiques dessinés à la main, en deux polices : Net (trait net) et Craie | 4 (Centum → Quadringenti, en latin) + 4 italiques, pour chacune | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia/) · [Zip Net](jalousia/JalousiaNet.zip) · [Zip Craie](jalousia/JalousiaCraie.zip) · [Dossier](jalousia/) |
 | **Espresso 4.4.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-44/) · [Zip](espresso-44/Espresso44.zip) · [Dossier](espresso-44/) |
 | **Bussard** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/bussard/) · [Zip](bussard/Bussard.zip) · [Dossier](bussard/) |
@@ -30,10 +31,10 @@ calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 brecard/, fusard-032/,
 jalousia/, espresso-44/, bussard/,
-the-forever-font/
+the-forever-font/, typefive/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032, Jalousia et The Forever Font : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; Brécard, Fûsard-032, Jalousia, The Forever Font et Typefive : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
@@ -52,7 +53,7 @@ Chaque police garde sa propre licence. Les pages utilisent les fichiers WOFF2 de
 
 ## Règle : polices en couleur
 
-Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme **The Forever Font** et son encre noire) ne suit pas le mode sombre : elle resterait noire sur fond noir.
+Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme **The Forever Font** et **Typefive** et leur encre noire) ne suit pas le mode sombre : elle resterait noire sur fond noir.
 
 **Police noire = la page garde les couleurs claires du site, même en mode sombre.**
 

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typefive</title>
+<meta name="description" content="Typefive, police à chasse fixe faite avec les vraies frappes d'une machine à écrire : le grain du ruban, l'encre plus ou moins chargée, cinq versions de chaque signe qui tournent toutes seules. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(fonts/woff2/Typefive-Regular.woff2) format("woff2")}
+/* Police à l'encre noire : toujours les couleurs claires du site, même en mode sombre */
+:root{color-scheme:light}
+/* Typefive partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span{font-family:"Typefive",var(--sans)}
+.label{font-family:"Typefive",var(--sans);font-weight:400;font-size:15px}
+.brand{font-size:17px;font-weight:400}
+section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
+.step h3{font-weight:400;font-size:clamp(19px,2.2vw,25px)}
+.card b{font-weight:400;font-size:17px}
+.hero h1{font-family:"Typefive";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/5);line-height:1.2}
+.demo .row span{font-size:calc(100cqw/13);line-height:1.35}
+.glyphs div{font-size:30px}
+.licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
+.licence p{margin-bottom:8px}
+.licence p:last-child{margin-bottom:0}
+.sans-versions{font-feature-settings:"calt" 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">TYPEFIVE</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:18px">TYPEFIVE</h1>
+      <div class="lede">
+        <p><strong>Les vraies frappes d'une machine à écrire</strong>, gardées telles quelles dans la police : le grain du ruban, l'encre plus ou moins chargée, la lettre qui bouge d'un poil.</p>
+        <p>Chaque touche a été tapée <strong>cinq fois</strong> : <strong>cinq versions de chaque signe</strong> qui tournent toutes seules, en chasse fixe.</p>
+      </div>
+      <div class="facts">
+        <span>Chasse fixe</span><span>Les vraies frappes</span><span>5 versions de chaque signe</span><span>Le grain du ruban dans le fichier</span><span>Usage personnel gratuit</span><span>Version 1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Style <select id="tw" aria-label="Style"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="64" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">Tapé à la machine, frappe après frappe.</div>
+      </div>
+      <p class="hint">Astuce : une seule police à installer, « Typefive » (voir « Télécharger »).</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation et accents.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Typefive est fabriquée en Python : chaque frappe est découpée, calée sur la ligne et rangée dans la police telle quelle.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Une feuille tapée à la machine</h3>
+            <p>Chaque touche de la machine a été tapée <strong>cinq fois</strong>, sur deux feuilles. Les feuilles ont été scannées à <strong>1200 dpi</strong>, en niveaux de gris : assez fin pour garder le grain du ruban.</p>
+          </div>
+          <div class="demo" aria-label="Cinq frappes de la même touche">
+            <div class="row"><small>Cinq frappes du a</small><span>aaaaa</span></div>
+            <div class="row"><small>Cinq frappes du e</small><span>eeeee</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les vraies frappes</h3>
+            <p>Chaque frappe est découpée, puis calée sur la ligne de base et sur le pas de la machine. Elle n'est <strong>pas redessinée</strong> : son encre, ses manques et ses petites taches restent.</p>
+            <p>Les frappes ratées ou trop pâles sont écartées. Les accents et l'apostrophe sont choisis frappe par frappe.</p>
+          </div>
+          <div class="demo" aria-label="Typefive">
+            <div class="row"><small>Capitales</small><span>LAFLEURSTUDIO</span></div>
+            <div class="row"><small>Minuscules</small><span>frappe après frappe</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les mesures</h3>
+            <p>Toutes les valeurs sont prises sur les frappes, à <strong>1200 dpi</strong>.</p>
+          </div>
+          <div class="tablewrap">
+            <table>
+              <thead><tr><th>Mesure</th><th>Valeur</th></tr></thead>
+              <tbody>
+                <tr><td>Pas de la machine</td><td class="good">2,5 mm (10 signes au pouce)</td></tr>
+                <tr><td>Capitales</td><td class="good">2,9 mm</td></tr>
+                <tr><td>Minuscules</td><td class="good">2,1 mm</td></tr>
+                <tr><td colspan="2" style="text-align:left;color:var(--muted)">Capitales à 696 unités, minuscules à 508 (1000 par em). Chaque signe a sa chasse : 600 unités ; l'apostrophe, 300.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Cinq versions de chaque signe</h3>
+            <p>Chaque signe garde <strong>jusqu'à cinq de ses frappes</strong> : l'encre plus ou moins chargée, la lettre qui bouge d'un poil.</p>
+            <p>Elles <strong>tournent toutes seules</strong>, même d'un mot à l'autre : deux lettres pareilles côte à côte ne sont jamais les mêmes.</p>
+          </div>
+          <div class="demo" aria-label="Avec et sans les cinq versions">
+            <div class="row"><small>Avec les 5 versions</small><span>eeeeee oooooo</span></div>
+            <div class="row"><small>Une seule version</small><span class="sans-versions">eeeeee oooooo</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les signes qui manquaient</h3>
+            <p>Ce que la machine n'a pas est <strong>monté avec ses propres frappes</strong> : le « est un ^ couché, le œ un o et un e collés, et le ! une apostrophe sur un point, comme on le tapait à la machine.</p>
+          </div>
+          <div class="demo" aria-label="Signes montés avec les frappes">
+            <div class="row"><small>Guillemets et accents</small><span>« Ça, c'est l'été ! »</span></div>
+            <div class="row"><small>Signes</small><span>œ æ … ° ½ ?</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Une police en images</h3>
+            <p>Le grain du ruban ne peut pas se dessiner en contours : <strong>chaque signe est une image</strong>, rangée dans le fichier en trois formats, pour Apple, pour Adobe et Firefox, et pour Windows et Android.</p>
+            <p>L'encre est <strong>noire</strong> et sa couleur ne se change pas. Les logiciels qui n'affichent pas les polices en couleur montrent la <strong>forme nette</strong>.</p>
+          </div>
+          <div class="demo" aria-label="Typefive">
+            <div class="row"><small>Chiffres</small><span>1234567890</span></div>
+            <div class="row"><small>Ponctuation</small><span>( . , : ; ! ? ' " )</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <div class="licence">
+        <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
+      </div>
+      <div class="dl">
+        <a class="card" href="Typefive.zip" download><b>Typefive.zip</b><span>La police en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/typefive/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/typefive/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+<pre><code>@font-face { font-family: "Typefive";
+  src: url(Typefive-Regular.woff2) format("woff2"); }
+
+/* Les 5 versions de chaque signe tournent toutes seules ;
+   pour les couper : */
+.une-version { font-feature-settings: "calt" 0; }</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Typefive © 2026 LaFleurStudio · <a href="LICENCE.txt">usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Fabriquée en Python (fontTools, SciPy).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Typefive",
+  sample: "LaFleurStudio",
+  styles: [{n:"Regular",w:400}],
+  testerDefault: 0,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÂÄÆÇÈÉÊËÎÏÔÖŒÙÛÜŸàâäæçèéêëîïôöœùûüÿ" +
+    ".,:;!?…'\"«»‹›()-_/*&%+=°½" + "^`´¨",
+  glyphChips: [0],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
