@@ -16,7 +16,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Fûsard-032** | Techno gothique : géométrie stricte, croisements partout, bouts en pointe | 9 (Hairline → Black) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/fusard-032/) · [Zip](fusard-032/Fusard032.zip) · [Dossier](fusard-032/) |
 | **Jalousia** | Chiffres romains néo-gothiques dessinés à la main, en deux polices : Net (trait net) et Craie | 4 (Centum → Quadringenti, en latin) + 4 italiques, pour chacune | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia/) · [Zip Net](jalousia/JalousiaNet.zip) · [Zip Craie](jalousia/JalousiaCraie.zip) · [Dossier](jalousia/) |
 | **Espresso 3.50.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-350/) · [Zip](espresso-350/Espresso350.zip) · [Dossier](espresso-350/) |
-| **Bussard** | Points lumineux inspirés des transports et des affichages LED, droite et italique glitch | 2 (Regular, Italic) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/bussard/) · [Zip](bussard/Bussard.zip) · [Dossier](bussard/) |
+| **Bussard** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/bussard/) · [Zip](bussard/Bussard.zip) · [Dossier](bussard/) |
 
 ## Organisation
 
