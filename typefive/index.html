@@ -130,13 +130,16 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
 
         <div class="step">
           <div>
-            <h3>Cinq versions de chaque signe</h3>
+            <h3>Cinq frappes qui tournent</h3>
             <p>Chaque signe garde <strong>jusqu'à cinq de ses frappes</strong> : l'encre plus ou moins chargée, la lettre qui bouge d'un poil.</p>
-            <p>Elles <strong>tournent toutes seules</strong>, même d'un mot à l'autre : deux lettres pareilles côte à côte ne sont jamais les mêmes.</p>
+            <p>La police les fait <strong>tourner toute seule, dans l'ordre</strong> : chaque signe prend la frappe qui suit celle du signe d'avant. 1, 2, 3, 4, 5, puis on recommence à 1.</p>
+            <p>La rotation continue d'une lettre à l'autre et d'un mot à l'autre, espaces compris : tape « aaaaa » et tu as cinq a différents. L'apostrophe a sept frappes : après certaines lettres, elle saute de deux pour que toutes servent.</p>
+            <p>C'est la fonction <strong>calt</strong> (variantes contextuelles) de la police. Elle marche toute seule dans les navigateurs, InDesign ou Pages ; dans Word, coche « Variantes contextuelles » (Police → Avancé).</p>
           </div>
-          <div class="demo" aria-label="Avec et sans les cinq versions">
-            <div class="row"><small>Avec les 5 versions</small><span>eeeeee oooooo</span></div>
-            <div class="row"><small>Une seule version</small><span class="sans-versions">eeeeee oooooo</span></div>
+          <div class="demo" aria-label="La rotation des cinq frappes">
+            <div class="row"><small>Tape « aaaaa »</small><span>aaaaa</span></div>
+            <div class="row"><small>La frappe de chaque a</small><span class="sans-versions">12345</span></div>
+            <div class="row"><small>Sans la rotation</small><span class="sans-versions">aaaaa</span></div>
           </div>
         </div>
 
