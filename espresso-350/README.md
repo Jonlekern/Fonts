@@ -1,6 +1,6 @@
 # Espresso 3.50.-
 
-Un projet artistique : le portrait de Bienne par son écriture. Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**.
+Un projet artistique : le portrait de Bienne par son écriture. Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**. Version 1.1.
 
 Page : **https://jonlekern.github.io/Fonts/espresso-350/**
 
@@ -20,6 +20,8 @@ Page : **https://jonlekern.github.io/Fonts/espresso-350/**
 
 - Chaque lettre est relevée sur une vraie ardoise de café ou de boulangerie à Bienne, puis redessinée d'un trait rond et régulier.
 - Tous les i accentués (î, ï, í, ì…) portent un petit cœur à la place de l'accent.
+- Deux e : rond et ouvert au milieu d'un mot, à longue sortie en fin de mot (fonction `calt`, accents compris).
+- Le f descend sous la ligne et se glisse sous la lettre d'avant ; ff s'écrit d'un seul geste (fonction `liga`).
 - `☀` (U+2600) dessine un soleil qui sourit.
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
 - Crénage calculé sur la forme de chaque lettre, pour chaque graisse.
