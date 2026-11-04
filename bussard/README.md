@@ -1,17 +1,23 @@
 # Bussard
 
-Une police à points lumineux, inspirée des transports et des affichages LED. Chaque lettre est dessinée point par point sur une grille. **Une droite** et **une italique glitch** penchée à 12°, par **LaFleurStudio**.
+Une police à points lumineux, inspirée des transports et des affichages LED. Chaque lettre est dessinée point par point sur une grille. **6 graisses**, de **Thin** à **Black**, chacune avec son **italique glitch** penchée à 12°, par **LaFleurStudio**.
 
 Page : **https://jonlekern.github.io/Fonts/bussard/**
 
-## Styles
+## Graisses
 
-| Style | Fichier | Détail |
-| --- | --- | --- |
-| Regular | `Bussard-Regular` | Droite |
-| Italic | `Bussard-Italic` | Penchée à 12°, la moitié basse des lettres décroche d'un point |
+| Style | Poids | Trait | Point | Fichiers |
+| --- | --- | --- | --- | --- |
+| Thin | 100 | 1 point | petits points (rayon 13) | `Bussard-Thin`, `Bussard-ThinItalic` |
+| Light | 300 | 1 point | rayon 20 | `Bussard-Light`, `Bussard-LightItalic` |
+| Regular | 400 | 2 points | rayon 20 | `Bussard-Regular`, `Bussard-Italic` |
+| Medium | 500 | 2 points | gros points (rayon 23) | `Bussard-Medium`, `Bussard-MediumItalic` |
+| Bold | 700 | 3 points | rayon 20 | `Bussard-Bold`, `Bussard-BoldItalic` |
+| Black | 900 | 3 points | gros points (rayon 23,5) | `Bussard-Black`, `Bussard-BlackItalic` |
 
-Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits de 2 points.
+Les italiques penchent à 12° et glitchent : la moitié basse des lettres décroche d'un point vers le bas et d'un point vers la gauche.
+
+Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, un point tous les 50 unités, dans toutes les graisses.
 
 ## Détails
 
@@ -26,15 +32,16 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, traits d
 
 | Chemin | Contenu |
 | --- | --- |
-| `Bussard.zip` | Les 2 styles en TTF + licence |
+| `Bussard.zip` | Les 12 styles en TTF + licence |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 
 ## Sur le web
 
 ```css
-@font-face { font-family: "Bussard"; font-style: normal; src: url(Bussard-Regular.woff2) format("woff2"); }
-@font-face { font-family: "Bussard"; font-style: italic; src: url(Bussard-Italic.woff2) format("woff2"); }
+@font-face { font-family: "Bussard"; font-weight: 400; font-style: normal; src: url(Bussard-Regular.woff2) format("woff2"); }
+@font-face { font-family: "Bussard"; font-weight: 400; font-style: italic; src: url(Bussard-Italic.woff2) format("woff2"); }
+/* … une règle par style : Thin 100, Light 300, Regular 400, Medium 500, Bold 700, Black 900, et leurs italiques */
 ```
 
 ## Licence
