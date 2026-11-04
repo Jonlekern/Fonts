@@ -54,12 +54,11 @@ Chaque police garde sa propre licence. Les pages utilisent les fichiers WOFF2 de
 
 Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme **The Forever Font** et son encre noire) ne suit pas le mode sombre : elle resterait noire sur fond noir.
 
-**Police noire = page blanche, obligatoire, même en mode sombre.**
+**Police noire = la page garde les couleurs claires du site, même en mode sombre.**
 
-- Sur sa page : `<html lang="fr" data-theme="light">` et, dans le `<style>` de la page :
-  `:root{color-scheme:light;--bg:#fff;--surface:#fff;--line:#e2e2e2}` et `.tester,.demo,.licence,pre{border:1px solid var(--line)}`.
-- Sur la page d'accueil : sa carte reste blanche, avec ses propres couleurs sur la balise `<a class="font-card">` :
-  `style="--bg:#fff;--ink:#141414;--muted:#6f685e;--line:#d9d2c6;background:#fff;color:#141414;border-color:#d9d2c6"`.
+- Sur sa page : `<html lang="fr" data-theme="light">` et, dans le `<style>` de la page : `:root{color-scheme:light}`.
+- Sur la page d'accueil : sa carte garde les couleurs claires, avec ses propres couleurs sur la balise `<a class="font-card">` :
+  `style="--bg:#f4f1ec;--ink:#141414;--muted:#6f685e;--line:#d9d2c6;background:#f4f1ec;color:#141414;border-color:#d9d2c6"`.
 - Vérifier la page et la carte en mode sombre avant de mettre en ligne.
 
 Exemple complet : `the-forever-font/index.html`.
