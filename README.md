@@ -16,7 +16,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Fûsard-032** | Techno gothique : géométrie stricte, croisements partout, bouts en pointe | 9 (Hairline → Black) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/fusard-032/) · [Zip](fusard-032/Fusard032.zip) · [Dossier](fusard-032/) |
 | **Typefive** | Chasse fixe faite avec les vraies frappes d'une machine à écrire : le grain du ruban, 5 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/typefive/) · [Zip](typefive/Typefive.zip) · [Dossier](typefive/) |
 | **Jalousia** | Chiffres romains néo-gothiques dessinés à la main, en deux polices : Net (trait net) et Craie | 4 (Centum → Quadringenti, en latin) + 4 italiques, pour chacune | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/jalousia/) · [Zip Net](jalousia/JalousiaNet.zip) · [Zip Craie](jalousia/JalousiaCraie.zip) · [Dossier](jalousia/) |
-| **Espresso 4.4.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-44/) · [Zip](espresso-44/Espresso44.zip) · [Dossier](espresso-44/) |
+| **Espresso 4.40.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-440/) · [Zip](espresso-440/Espresso440.zip) · [Dossier](espresso-440/) |
 | **Bussard** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/bussard/) · [Zip](bussard/Bussard.zip) · [Dossier](bussard/) |
 | **The Forever Font** | Chasse fixe au flou exact de l'encre : lettres tirées de tatouages et d'une machine à écrire, 3 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/the-forever-font/) · [Zip](the-forever-font/TheForeverFont.zip) · [Dossier](the-forever-font/) |
 
@@ -30,7 +30,7 @@ shared/
 calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 brecard/, fusard-032/,
-jalousia/, espresso-44/, bussard/,
+jalousia/, espresso-440/, bussard/,
 the-forever-font/, typefive/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
