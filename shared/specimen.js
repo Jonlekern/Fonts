@@ -1,6 +1,10 @@
 /* Spécimen commun : liste des graisses, testeur, grille de caractères.
    Chaque page de police définit window.SPECIMEN avant de charger ce script :
-   { family, sample, styles:[{n,w,label?,fam?}], testerDefault, testerExtra?:[styles en plus dans le testeur], glyphs, glyphChips:[index], glyphDefault } */
+   { family, sample, styles:[{n,w,label?,fam?}], testerDefault, testerExtra?:[styles en plus dans le testeur], glyphs, glyphChips:[index], glyphDefault, glyphsGarder? } */
+/* Règle du site : les signes ajoutés pour le standard Google (Europe de l'Est, turc, gallois, accents seuls) ne sont pas montrés
+   dans la grille des caractères. Ils restent dans les polices et s'affichent quand on les tape dans le testeur.
+   Une page peut en garder certains avec glyphsGarder (ex. Clebard : Ă ă Đ đ du vietnamien). */
+const SIGNES_CACHES = "ĀāĂăĄąĆćĊċČčĎďĐđĒēĖėĘęĚěĞğĠġĢģĦħĪīĮįİıĶķĹĺĻļĽľŁłŃńŅņŇňŐőŔŕŘřŚśŞşŠšŤťŪūŮůŰűŲųŹźŻżŽžȘșȚțȷŴŵŶŷẀẁẂẃẄẅỲỳˆˇ˘˙˚˛˜˝";
 (function () {
   const C = window.SPECIMEN; if (!C) return;
   const fam = s => `'${s.fam || C.family}'`;
@@ -22,7 +26,8 @@
 
   const grid = document.getElementById("glyphs"), gw = document.getElementById("gw");
   if (grid && gw) {
-    grid.innerHTML = [...C.glyphs].map(c => `<div aria-label="${esc(c)}" style="font-family:inherit">${esc(c)}</div>`).join("");
+    const caches = new Set([...SIGNES_CACHES].filter(c => !(C.glyphsGarder || "").includes(c)));
+    grid.innerHTML = [...C.glyphs].filter(c => !caches.has(c)).map(c => `<div aria-label="${esc(c)}" style="font-family:inherit">${esc(c)}</div>`).join("");
     const chips = C.glyphChips.map(i => C.styles[i]);
     gw.innerHTML = chips.map((s, i) => `<button class="chip" data-i="${i}">${s.n}</button>`).join("");
     const apply = i => { const s = chips[i]; grid.style.fontFamily = fam(s); grid.style.fontWeight = s.w;

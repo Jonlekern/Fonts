@@ -4,14 +4,10 @@ dossier, out = sys.argv[1], sys.argv[2]
 textes = [
     ('Français', 'Ça fûsard ! Où êtes-vous, cœur ? Noël à l’île, été.'),
     ('Deutsch', 'Größe, Straße, Übermaß — GROẞE ÄRGER.'),
-    ('Polski', 'Zażółć gęślą jaźń. ŁÓDŹ, ŚWIĘTO.'),
-    ('Čeština', 'Příliš žluťoučký kůň úpěl ďábelské ódy.'),
-    ('Magyar', 'Árvíztűrő tükörfúrógép. ŐSZ, ŰR.'),
-    ('Română', 'Șapte țânțari în ţară. ÎNȘIRAT.'),
-    ('Türkçe', 'Pijamalı hasta yağız şoföre çabucak güvendi. İSTANBUL.'),
+    ('Español', '¿Qué tal, señor Muñoz? ¡Año nuevo, ESPAÑA!'),
+    ('Português', 'São João, coração e ação. AÇÚCAR, MÃE.'),
     ('Íslenska', 'Þú ert ðað, Ægir! Ég sá Ölfusá.'),
     ('Dansk / Norsk', 'Høj sø, Århus, Øresund, Æblegrød.'),
-    ('Latviešu', 'Ķēniņš Ļauj Ģērbties: ļoti ņiprs.'),
     ('Signes', '€ £ $ ¥ ¢ ¤ © ® ™ § ¶ ° ± × ÷ − ¬ • † ‡ ‰ « » ‹ › „ ‚ ¡ ¿ ª º ¹ ² ³ ¼ ½ ¾ µ ƒ ¦'),
 ]
 graisses = ['Hairline', 'Regular', 'Black']

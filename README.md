@@ -63,3 +63,11 @@ Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme 
 - Vérifier la page et la carte en mode sombre avant de mettre en ligne.
 
 Exemple complet : `the-forever-font/index.html`.
+
+## Règle : signes du standard Google
+
+Les signes ajoutés pour le standard Google (Europe de l'Est, turc, gallois, accents seuls : ł ş ğ č ř ő ȷ ˇ ˘…) **ne sont pas montrés sur le site** : ni dans la grille des caractères, ni dans les exemples ou les images. Ils restent dans les polices et s'affichent quand on les tape dans le testeur.
+
+- La grille les retire toute seule : liste `SIGNES_CACHES` dans `shared/specimen.js`.
+- Une page peut en garder avec `glyphsGarder` (Clebard garde Ă ă Đ đ, pour le vietnamien).
+- L'espagnol et le portugais (ñ á ó ã…) restent montrés.
