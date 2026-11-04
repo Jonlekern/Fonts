@@ -1,0 +1,17 @@
+{
+ "_note": "Espaces entre les lettres du vrai logo LAFLEURSTUDIO (celui du t-shirt), en unités (hauteur des capitales = 1350), mesurés boîte à boîte.",
+ "espaces": {
+  "LA": 95.6,
+  "AF": 355.8,
+  "FL": 471.5,
+  "LE": 355.8,
+  "EU": 471.6,
+  "UR": 558.3,
+  "RS": 240.0,
+  "ST": 268.9,
+  "TU": 356.0,
+  "UD": 558.2,
+  "DI": 423.1,
+  "IO": 423.9
+ }
+}
