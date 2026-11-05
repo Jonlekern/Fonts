@@ -62,8 +62,8 @@ Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme 
 **Police noire = la page garde les couleurs claires du site, même en mode sombre.**
 
 - Sur sa page : `<html lang="fr" data-theme="light">` et, dans le `<style>` de la page : `:root{color-scheme:light}`.
-- Sur la page d'accueil : sa carte garde les couleurs claires, avec ses propres couleurs sur la balise `<a class="font-card">` :
-  `style="--bg:#f4f1ec;--ink:#141414;--muted:#6f685e;--line:#d9d2c6;background:#f4f1ec;color:#141414;border-color:#d9d2c6"`.
+- Les pages de ces polices restent **blanches** (le papier, la peau : on voit la vraie encre).
+- Sur la page d'accueil, leur carte suit le mode sombre comme les autres : le nom et l'exemple portent la classe `encre` (`class="name encre"`, `class="sample encre"`). En mode clair l'encre reste noire ; en mode sombre elle est retournée en blanc avec `filter:invert(1)`, halo compris (c'est un négatif : la police elle-même reste noire).
 - Vérifier la page et la carte en mode sombre avant de mettre en ligne.
 
 Exemple complet : `the-forever-font/index.html`.
