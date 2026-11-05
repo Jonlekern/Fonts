@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexum</title>
+<meta name="description" content="Nexum, police techno gothique : géométrie stricte, croisements partout, bouts en pointe. 9 graisses de Hairline à Black. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Nexum";font-weight:100;font-display:swap;src:url(fonts/woff2/Nexum-Hairline.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:200;font-display:swap;src:url(fonts/woff2/Nexum-Thin.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:300;font-display:swap;src:url(fonts/woff2/Nexum-Light.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:400;font-display:swap;src:url(fonts/woff2/Nexum-Regular.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:500;font-display:swap;src:url(fonts/woff2/Nexum-Medium.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:600;font-display:swap;src:url(fonts/woff2/Nexum-Bold.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:700;font-display:swap;src:url(fonts/woff2/Nexum-ExtraBold.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:800;font-display:swap;src:url(fonts/woff2/Nexum-SuperBold.woff2) format("woff2")}
+@font-face{font-family:"Nexum";font-weight:900;font-display:swap;src:url(fonts/woff2/Nexum-Black.woff2) format("woff2")}
+/* Nexum partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Nexum",var(--sans)}
+.label{font-family:"Nexum",var(--sans);font-weight:600;font-size:13px}
+.brand{font-size:18px;font-weight:700}
+section > .wrap > h2{font-size:clamp(28px,4.4vw,48px);font-weight:800}
+.step h3{font-size:clamp(20px,2.4vw,27px);font-weight:700}
+.card b{font-size:18px;font-weight:700}
+.hero h1{font-family:"Nexum",var(--sans);font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/4.15);line-height:1.15}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/12.6);line-height:1.5}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/12.6)}}
+.demo .row span{font-size:calc(100cqw/9);line-height:1.45}
+.demo .row span.lnum{font-feature-settings:"lnum" 1;font-size:calc(100cqw/14)}
+.glyphs div{font-size:30px}
+#tester-text{line-height:1.5}
+.licence{background:var(--surface);border-radius:12px;padding:20px 22px;margin:0 0 26px}
+.licence p{margin-bottom:8px}
+.licence p:last-child{margin-bottom:0}
+.regles{margin:6px 0 0 18px;color:var(--muted)}
+.regles li{margin-bottom:4px}
+.regles strong{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">NEXUM</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026</p>
+      <h1 style="margin-top:44px">NEXUM</h1>
+      <div class="lede">
+        <p><strong>Police techno gothique</strong> : géométrie stricte, croisements partout, bouts en pointe.</p>
+        <p><strong>Née de dessins de chiffres romains</strong>, en 9 graisses de Hairline à Black.</p>
+      </div>
+      <div class="facts">
+        <span>9 graisses</span><span>Hairline → Black</span><span>335 caractères</span><span>Langues d'Europe à alphabet latin</span><span>Usage personnel gratuit</span><span>Version 0.303</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">De 100 à 900. Plus la police est grasse, plus ses croisements s'allongent, et plus elle triche pour rester lisible.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="16" max="160" value="56" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">LaFleurStudio, création graphique</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, deux jeux de chiffres, accents de toutes les langues d'Europe à alphabet latin, ponctuation et symboles. Les accents suivent la recette : pointes, croix et ogives.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Nexum part de sept lettres dessinées à la main et grandit étape par étape, avec des règles, des scripts Python et beaucoup d'allers-retours à l'œil.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Des chiffres romains dessinés à la main</h3>
+            <p>Tout part de sept lettres tracées à la craie : <strong>I V X L C D M</strong>, les chiffres romains, dans un esprit néo-gothique. Avec des empattements en vagues, des traits qui se croisent et qui dépassent.</p>
+            <p>Les autres lettres de LAFLEURSTUDIO ont été déduites de ces sept-là. C'est la police racine, <strong>Jalousia</strong>.</p>
+          </div>
+          <figure class="fig"><img src="images/jalousia-craie.png" alt="LAFLEURSTUDIO en Jalousia, à la craie"><figcaption>Jalousia, la version craie.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Étudier les angles</h3>
+            <p>Chaque trait de Jalousia a été découpé en segments droits : <strong>98 segments</strong>, qui se rangent en <strong>8 angles</strong>. Les barres, les pieds, les attaques, les obliques, les diagonales et les fûts.</p>
+            <p>Ces 8 angles sont devenus les règles de la version en traits droits.</p>
+          </div>
+          <figure class="fig"><img src="images/etude.png" alt="LAFLEURSTUDIO découpé en segments colorés selon leur angle"><figcaption>Une couleur par famille d'angle.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Sharp, puis arrondi</h3>
+            <p>D'abord, que des traits droits aux 8 angles, des <strong>coins vifs</strong> et des <strong>bouts en pointe</strong>, comme des épines.</p>
+            <p>Puis les courbes reviennent, propres et régulières, sur le D, le U, le S et le R. Le O devient une <strong>ogive</strong> : deux arcs de cercle qui se croisent en pointe.</p>
+          </div>
+          <figure class="fig"><img src="images/sharp-arrondis.png" alt="LAFLEURSTUDIO en traits droits, puis avec les arrondis"><figcaption>En haut sharp, en bas avec les arrondis.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Techno gothique : des croix partout</h3>
+            <p>Plus rien de fait main : verticales à 90°, barres à 0°, diagonales à 67,5° et 45°. Et surtout, à chaque coin, les deux traits <strong>se croisent et dépassent</strong>.</p>
+            <p>Les croisements ont été poussés <strong>trois fois plus loin</strong> que dans la première version. C'est la recette de Nexum.</p>
+          </div>
+          <figure class="fig"><img src="images/croisements.png" alt="Trois longueurs de croisements, la plus longue retenue"><figcaption>Avant, ×2, puis ×3, retenu.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Deux jeux de chiffres</h3>
+            <p>Les <strong>chiffres minuscules</strong>, plus ronds, sont les chiffres par défaut. Les <strong>chiffres romains</strong>, chacun d'un seul tenant entre deux barres, s'activent avec l'option « chiffres alignés » des logiciels. Le 0 devient N, pour <em>nulla</em>.</p>
+          </div>
+          <div class="demo" aria-label="Les deux jeux de chiffres">
+            <div class="row"><small>Chiffres minuscules (par défaut)</small><span style="font-weight:500">0123456789</span></div>
+            <div class="row"><small>Chiffres romains (lnum)</small><span class="lnum" style="font-weight:500">0123456789</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Neuf graisses et des règles pour tricher</h3>
+            <p>Même squelette de 100 à 900. Le trait passe de 32 à 220 unités, et les croisements de 210 à 320. Pour que le gras reste lisible, on triche :</p>
+            <ol class="regles">
+              <li><strong>Contraste</strong> : horizontales plus fines que les verticales.</li>
+              <li><strong>Pièges à encre</strong> : les traits s'amincissent là où ils se croisent.</li>
+              <li><strong>Détails</strong> : petites croix plus fines.</li>
+              <li><strong>Pointes</strong> plus courtes en fers de lance.</li>
+              <li><strong>Lettres élargies</strong> pour garder l'intérieur ouvert.</li>
+              <li><strong>Croisements en biais</strong> fondus dans le fût dès 500.</li>
+              <li><strong>U et u</strong> redessinés dès 700.</li>
+              <li><strong>A coiffé d'une barre</strong> dès 600, étiré jusqu'aux pointes.</li>
+            </ol>
+          </div>
+          <figure class="fig"><img src="images/triche.png" alt="LAFLEURSTUDIO en 900 sans triche, puis avec les règles"><figcaption>La 900 sans triche, puis avec les règles.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Aux normes</h3>
+            <p><strong>335 caractères</strong> : lettres accentuées, ponctuation et symboles. Les accents se posent tout seuls sur n'importe quelle lettre, et le i perd son point sous un accent.</p>
+            <p>Les lettres accentuées se crénent comme leur lettre de base, et les 9 graisses ont les mêmes hauteurs de ligne.</p>
+          </div>
+          <figure class="fig"><img src="images/langues.png" alt="Phrases en six langues en Hairline, Regular et Black"><figcaption>Six langues et tous les signes, en Hairline, Regular et Black.</figcaption></figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <div class="licence">
+        <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
+      </div>
+      <div class="dl">
+        <a class="card" href="Nexum.zip" download><b>Nexum.zip</b><span>Les 9 graisses en TTF et WOFF2 + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/nexum/fonts"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/nexum/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Nexum"; font-weight: 100;
+  src: url(Nexum-Hairline.woff2) format("woff2"); }
+@font-face { font-family: "Nexum"; font-weight: 900;
+  src: url(Nexum-Black.woff2) format("woff2"); }
+/* … une règle par graisse, de 100 (Hairline) à 900 (Black) */
+
+/* Chiffres romains */
+.chiffres { font-feature-settings: "lnum" 1; }</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Nexum © 2026 LaFleurStudio · née de Jalousia · <a href="LICENCE.txt">usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, HarfBuzz, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Nexum",
+  sample: "LAFLEURSTUDIO",
+  styles: [
+    {n:"Hairline",w:100},{n:"Thin",w:200},{n:"Light",w:300},{n:"Regular",w:400},{n:"Medium",w:500},
+    {n:"Bold",w:600},{n:"Extra Bold",w:700},{n:"Super Bold",w:800},{n:"Black",w:900}
+  ],
+  testerDefault: 4,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ªµºÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿĀāĂăĄąĆćĊċČčĎďĐđĒēĖėĘęĚěĞğĠġĢģĦħĪīĮįİıĶķĹĺĻļĽľŁłŃńŅņŇňŐőŒœŔŕŘřŚśŞşŠšŤťŪūŮůŰűŲųŴŵŶŷŸŹźŻżŽžƒȘșȚțȷˆˇẀẁẂẃẄẅẞỲỳ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~¡¢£¤¥¦§¨©«¬®¯°±²³´¶·¸¹»¼½¾¿×÷˘˙˚˛˜˝–—‘’‚“”„†‡•…‰‹›€™−",
+  glyphChips: [0, 3, 6, 8],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
