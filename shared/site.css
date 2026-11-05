@@ -97,6 +97,12 @@ td.bad{color:var(--accent)}
 .card:hover{border-color:var(--ink)}
 .card b{font-family:"Calebard";font-weight:900;font-size:15px}
 .card span{color:var(--muted);font-size:14px}
+/* code d'installation caché sous une flèche */
+.code-web summary{display:inline-flex;align-items:flex-start;gap:10px;cursor:pointer;list-style:none;padding:4px 0}
+.code-web summary::-webkit-details-marker{display:none}
+.code-web summary::before{content:"";flex:none;margin-top:.35em;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+.code-web[open] summary::before{transform:rotate(45deg) translate(-2px,-2px)}
+.code-web[open] summary{margin-bottom:10px}
 pre{background:var(--surface);border-radius:12px;padding:18px;overflow-x:auto;font:13px/1.55 var(--mono)}
 footer{padding:40px 0 56px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
