@@ -8,12 +8,22 @@ Les lettres viennent de **tatouages** et d'une **machine à écrire**. Le flou e
 
 Page : **https://jonlekern.github.io/Fonts/the-forever-font/**
 
+## Deux versions
+
+| Version | Faite avec | Pour |
+| --- | --- | --- |
+| **The Forever Font** | les images des lettres, avec le flou, le grain de la peau et le halo (sbix, SVG, CBDT) | les sites web et les apps du Mac (Pages, Keynote, TextEdit). Illustrator, Photoshop et InDesign n'y montrent que des lettres noires. |
+| **The Forever Font Vecteur** | les mêmes lettres dessinées en vecteurs : l'encre en huit couches de gris (SVG), et en noir pour les logiciels sans couleur | Illustrator, Photoshop, InDesign et Word |
+
+Elles n'ont pas le même nom : on peut installer les deux.
+
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `TheForeverFont.zip` | La police en TTF + licence |
-| `fonts/ttf/` | Police à installer (flou en couleur : sbix, SVG et CBDT) |
+| `TheForeverFont.zip` | The Forever Font (images) en TTF + licence |
+| `TheForeverFontVecteur.zip` | The Forever Font Vecteur (vecteurs) en TTF + licence |
+| `fonts/ttf/` | Les deux polices à installer |
 | `fonts/woff2/` | Police pour le web (sbix et CBDT), et un aperçu léger pour la page d'accueil |
 | `images/` | Image de la page |
 | `LICENCE.txt` | Licence |

@@ -25,6 +25,17 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
 .licence p{margin-bottom:8px}
 .licence p:last-child{margin-bottom:0}
 .sans-versions{font-feature-settings:"calt" 0}
+/* Quelle version ? */
+.versions{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.version{border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.version > b{font-family:"The Forever Font",var(--sans);font-weight:400;font-size:26px}
+.version p{color:var(--muted)}
+.version p strong{color:var(--ink)}
+.version .card{margin-top:auto}
+.reglages{background:var(--surface);border-radius:12px;padding:20px 22px;margin-top:18px}
+.reglages p{margin-bottom:10px}
+.reglages ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.reglages li b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -37,6 +48,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
       <li><a href="#testeur">Testeur</a></li>
       <li><a href="#caracteres">Caractères</a></li>
       <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#versions">Versions</a></li>
       <li><a href="#telecharger">Télécharger</a></li>
     </ul>
   </div>
@@ -68,7 +80,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         </div>
         <div id="tester-text" contenteditable="true" spellcheck="false">Écrit à l'encre, pour toujours.</div>
       </div>
-      <p class="hint">Astuce : une seule police à installer, « The Forever Font » (voir « Télécharger »).</p>
+      <p class="hint">Astuce : The Forever Font existe en deux versions, selon ton logiciel (voir « Quelle version ? »).</p>
     </div>
   </section>
 
@@ -166,6 +178,41 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
     </div>
   </section>
 
+  <section id="versions">
+    <div class="wrap">
+      <h2>Quelle version ?</h2>
+      <p class="intro">The Forever Font existe en deux versions. Elles n'ont pas le même nom : tu peux installer les deux.</p>
+      <div class="versions">
+        <div class="version">
+          <b>The Forever Font</b>
+          <p>Les images des lettres, avec le flou, le grain de la peau et le halo de l'encre. La plus fidèle au tatouage.</p>
+          <p><strong>Télécharge celle-ci pour</strong> les sites web et les apps du Mac (Pages, Keynote, TextEdit).</p>
+          <p><strong>Pas pour</strong> Illustrator, Photoshop et InDesign : ils n'y montrent que des lettres noires, toujours la même version.</p>
+          <a class="card" href="TheForeverFont.zip" download><b>TheForeverFont.zip</b><span>La police en TTF + licence</span></a>
+        </div>
+        <div class="version">
+          <b>The Forever Font Vecteur</b>
+          <p>Les mêmes lettres, dessinées en vecteurs : l'encre en huit couches de gris, et les trois versions de chaque signe.</p>
+          <p><strong>Télécharge celle-ci pour</strong> Illustrator, Photoshop, InDesign et Word.</p>
+          <p><strong>Dans Word</strong> et les logiciels sans couleur, les lettres s'affichent en noir, et les trois versions tournent quand même.</p>
+          <a class="card" href="TheForeverFontVecteur.zip" download><b>TheForeverFontVecteur.zip</b><span>La police en TTF + licence</span></a>
+        </div>
+      </div>
+      <div class="reglages">
+        <p><strong>La différence :</strong> The Forever Font range des images des lettres dans le fichier, mais les logiciels Adobe ne savent pas les lire. The Forever Font Vecteur redessine ces mêmes lettres en tracés : Adobe les affiche en gris, et les logiciels sans couleur les montrent en noir.</p>
+        <p><strong>Pour voir le gris et le halo</strong> : rien à cocher. Choisis bien « The Forever Font Vecteur » dans la liste des polices (un petit logo SVG est à côté de son nom). Il faut au moins Illustrator 2018, Photoshop 2017 ou InDesign 2019 : les versions plus anciennes montrent seulement les lettres en noir.</p>
+        <p><strong>Pour que les 3 versions tournent</strong>, la fonction « Variantes contextuelles » doit être active :</p>
+        <ul>
+          <li><b>Illustrator</b> : Fenêtre › Texte › OpenType, coche « Variantes contextuelles ».</li>
+          <li><b>Photoshop</b> : Fenêtre › Caractère, menu ☰ du panneau › OpenType › « Variantes contextuelles ».</li>
+          <li><b>InDesign</b> : Fenêtre › Texte et tableaux › Caractère, menu ☰ › OpenType › « Variantes contextuelles » (pas toujours cochée de base).</li>
+          <li><b>Word</b> : Format › Police › Paramètres avancés, coche « Utiliser les variantes contextuelles ».</li>
+          <li><b>Pages, Keynote, TextEdit et le web</b> : rien à faire, ça tourne tout seul.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="telecharger">
     <div class="wrap">
       <h2>Télécharger</h2>
@@ -175,7 +222,8 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
       </div>
       <div class="dl">
-        <a class="card" href="TheForeverFont.zip" download><b>TheForeverFont.zip</b><span>La police en TTF + licence</span></a>
+        <a class="card" href="TheForeverFont.zip" download><b>TheForeverFont.zip</b><span>Version photo : web et apps du Mac</span></a>
+        <a class="card" href="TheForeverFontVecteur.zip" download><b>TheForeverFontVecteur.zip</b><span>Version vecteurs : Illustrator, Photoshop, InDesign, Word</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
