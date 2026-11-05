@@ -6,14 +6,24 @@ Chaque touche a été tapée cinq fois. Les frappes sont découpées et gardées
 
 Capitales, minuscules, chiffres, ponctuation et accents des langues d'Europe. Version 1.0.
 
+## Deux versions
+
+| Version | Faite avec | Pour |
+| --- | --- | --- |
+| **Typefive** | les photos des frappes (sbix, SVG, CBDT) | les sites web et les apps du Mac (Pages, Keynote, TextEdit). Illustrator, Photoshop et InDesign n'y montrent que des lettres noires. |
+| **Typefive Vecteur** | les mêmes frappes dessinées en vecteurs : le gris de l'encre en huit couches (SVG), et en noir avec le grain pour les logiciels sans couleur | Illustrator, Photoshop, InDesign et Word |
+
+Elles n'ont pas le même nom : on peut installer les deux.
+
 Page : **https://jonlekern.github.io/Fonts/typefive/**
 
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `Typefive.zip` | La police en TTF + licence |
-| `fonts/ttf/` | Police à installer (frappes en couleur : sbix, SVG et CBDT) |
+| `Typefive.zip` | Typefive (photos des frappes) en TTF + licence |
+| `TypefiveVecteur.zip` | Typefive Vecteur (frappes en vecteurs) en TTF + licence |
+| `fonts/ttf/` | Les deux polices à installer |
 | `fonts/woff2/` | Police pour le web (sbix et CBDT), et un aperçu léger pour la page d'accueil |
 | `LICENCE.txt` | Licence |
 
