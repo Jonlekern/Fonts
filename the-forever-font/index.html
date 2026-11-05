@@ -179,13 +179,15 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/the-forever-font/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
-      <p class="label" style="margin-bottom:10px">Sur un site web</p>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
 <pre><code>@font-face { font-family: "The Forever Font";
   src: url(TheForeverFont-Regular.woff2) format("woff2"); }
 
 /* Les 3 versions de chaque signe tournent toutes seules ;
    pour les couper : */
 .une-version { font-feature-settings: "calt" 0; }</code></pre>
+</details>
     </div>
   </section>
 </main>
