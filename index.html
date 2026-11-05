@@ -32,6 +32,10 @@
 @font-face{font-family:"Jalousia Craie";font-weight:400;font-display:swap;src:url(jalousia/fonts/woff2/JalousiaCraie-Quadringenti.woff2) format("woff2")}
 @font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(the-forever-font/fonts/woff2/TheForeverFont-Apercu.woff2) format("woff2")}
 @font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(typefive/fonts/woff2/Typefive-Apercu.woff2) format("woff2")}
+/* Polices à l'encre (images avec halo) : encre noire en clair, retournée en blanc en sombre (le halo suit) */
+.encre{color:#141414}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .encre{filter:invert(1)}}
+:root[data-theme="dark"] .encre{filter:invert(1)}
 </style>
 </head>
 <body>
@@ -67,9 +71,9 @@
           <div class="go">Voir la police →</div>
         </a>
 
-        <a class="font-card" href="typefive/" style="--bg:#f4f1ec;--ink:#141414;--muted:#6f685e;--line:#d9d2c6;background:#f4f1ec;color:#141414;border-color:#d9d2c6">
-          <div class="name" style="font-family:'Typefive';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/7)">TypeFive</div>
-          <div class="sample" style="font-family:'Typefive';font-weight:400;line-height:1.4;color:var(--ink)">Tapé à la machine</div>
+        <a class="font-card" href="typefive/">
+          <div class="name encre" style="font-family:'Typefive';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/7)">TypeFive</div>
+          <div class="sample encre" style="font-family:'Typefive';font-weight:400;line-height:1.4">Tapé à la machine</div>
           <div class="meta"><span>1 style</span><span>Les vraies frappes</span><span>5 versions de chaque signe</span><span>Usage perso gratuit</span><span>2032</span></div>
           <div class="go">Voir la police →</div>
         </a>
@@ -101,9 +105,9 @@
           <div class="meta"><span>11 graisses</span><span>Hairline → Extreme Black</span><span>+ Goofy</span><span>SIL OFL 1.1</span><span>2032</span></div>
           <div class="go">Voir la police →</div>
         </a>
-        <a class="font-card" href="the-forever-font/" style="--bg:#f4f1ec;--ink:#141414;--muted:#6f685e;--line:#d9d2c6;background:#f4f1ec;color:#141414;border-color:#d9d2c6">
-          <div class="name" style="font-family:'The Forever Font';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/8.6)">THE FOREVER FONT</div>
-          <div class="sample" style="font-family:'The Forever Font';font-weight:400;line-height:1.4;color:var(--ink)">Écrit à l'encre, pour toujours</div>
+        <a class="font-card" href="the-forever-font/">
+          <div class="name encre" style="font-family:'The Forever Font';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/8.6)">THE FOREVER FONT</div>
+          <div class="sample encre" style="font-family:'The Forever Font';font-weight:400;line-height:1.4">Écrit à l'encre, pour toujours</div>
           <div class="meta"><span>1 style</span><span>Le flou de l'encre</span><span>3 versions de chaque signe</span><span>Usage perso gratuit</span><span>2032</span></div>
           <div class="go">Voir la police →</div>
         </a>
