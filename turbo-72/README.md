@@ -4,7 +4,7 @@
 
 Police de course de LaFleurStudio : **Swift Rallye 01 deux fois plus haute**. Comme pour Malabard, seules les verticales s'allongent ; les coins ronds, les biseaux, les barres et l'épaisseur des traits ne bougent pas. Majuscules seulement (les minuscules tapées sortent en majuscules).
 
-**Racine** : Turbo 72° part de [Swift Rallye 01](../swift-rallye-01/), née de l'étude des traits des majuscules de Biel/Bienne WildStyle.
+**Racine** : Turbo 72° part de Swift Rallye 01, née de l'étude des traits des majuscules de Biel/Bienne WildStyle.
 
 ## La recette
 
