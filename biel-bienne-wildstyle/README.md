@@ -39,4 +39,4 @@ Page : https://jonlekern.github.io/Fonts/biel-bienne-wildstyle/
 
 ## Licence
 
-Usage personnel gratuit, usage commercial sur autorisation écrite de LaFleurStudio : voir `LICENCE.txt`. Version 1.000.
+Usage personnel gratuit, usage commercial sur autorisation écrite de LaFleurStudio : voir `LICENCE.txt`. Version 1.001 : un petit espace en plus entre les mots en majuscules (wildstyle), les mots en bubble ne bougent pas.
