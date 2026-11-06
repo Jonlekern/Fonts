@@ -4,7 +4,7 @@ Police de LaFleurStudio, en chasse fixe, qui garde **le flou exact de l'encre** 
 
 Les lettres viennent de **tatouages** et d'une **machine à écrire**. Le flou est mesuré sur l'encre sous la peau, puis appliqué à chaque signe.
 
-161 signes, dont les capitales, les minuscules et les chiffres, la ponctuation, et les accents du français, de l'allemand, de l'espagnol et du portugais. Version 1.0.
+161 signes, dont les capitales, les minuscules et les chiffres, la ponctuation, et les accents du français, de l'allemand, de l'espagnol et du portugais. Version 1.001.
 
 Page : **https://jonlekern.github.io/Fonts/the-forever-font/**
 

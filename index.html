@@ -32,6 +32,8 @@
 @font-face{font-family:"Jalousia Craie";font-weight:400;font-display:swap;src:url(jalousia/fonts/woff2/JalousiaCraie-Quadringenti.woff2) format("woff2")}
 @font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(the-forever-font/fonts/woff2/TheForeverFont-Apercu.woff2) format("woff2")}
 @font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(typefive/fonts/woff2/Typefive-Apercu.woff2) format("woff2")}
+/* Firefox ne lit pas les images des polices : il prend les versions Vecteur (couches de gris) */
+@supports (-moz-appearance:none){@font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(the-forever-font/fonts/woff2/TheForeverFontVecteur-Apercu.woff2) format("woff2")}@font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(typefive/fonts/woff2/TypefiveVecteur-Apercu.woff2) format("woff2")}}
 /* Polices à l'encre (images avec halo) : encre noire en clair, retournée en blanc en sombre (le halo suit) */
 .encre{color:#141414}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .encre{filter:invert(1)}}

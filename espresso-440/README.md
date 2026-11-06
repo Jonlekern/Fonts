@@ -1,6 +1,6 @@
 # Espresso 4.40.-
 
-Un projet artistique : le portrait de Bienne par son écriture. Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**. Version 1.1.
+Un projet artistique : le portrait de Bienne par son écriture. Une écriture à la main tirée des ardoises des cafés et des boulangeries biennois : les menus et les prix écrits au feutre craie, relevés lettre par lettre. **5 graisses**, du **Lungo** au **Moka**, par **LaFleurStudio**. Version 1.101.
 
 Page : **https://jonlekern.github.io/Fonts/espresso-440/**
 

@@ -4,7 +4,7 @@ Police techno gothique de LaFleurStudio : géométrie stricte, croisements parto
 
 **Racine** : Nexum est né de **Jalousia**, police d'après des dessins de chiffres romains néo-gothiques (branche `jalousia`). Les traits de départ de Jalousia sont copiés dans `jalousia.py`, pour que ce dossier se suffise à lui-même.
 
-**Polices** (version 0.303, dossier `fonts/`, TTF et `fonts/woff2/`) : 9 graisses aux normes.
+**Polices** (version 0.304, dossier `fonts/`, TTF et `fonts/woff2/`) : 9 graisses aux normes.
 
 - **335 caractères** : tout le jeu GF Latin Core (langues d'Europe en alphabet latin) et le reste du jeu Windows (± ¹ ² ³ ¼ ½ ¾ µ † ‡ ‰ ƒ…).
 - **Accents** dans la recette : traits en pointe, circonflexe croisé comme le haut du A, tréma et point en petites croix, rond en petite ogive ; plus fins que les lettres en gras, au-dessus des pointes sur les capitales.
