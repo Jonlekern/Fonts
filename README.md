@@ -20,7 +20,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **DOTSIGNAL** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/dotsignal/) · [Zip](dotsignal/DOTSIGNAL.zip) · [Dossier](dotsignal/) |
 | **The Forever Font** | Chasse fixe au flou exact de l'encre : lettres tirées de tatouages et d'une machine à écrire, 3 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/the-forever-font/) · [Zip](the-forever-font/TheForeverFont.zip) · [Dossier](the-forever-font/) |
 | **Biel/Bienne WildStyle** | Graffiti tiré des murs de Biel/Bienne : majuscules en wildstyle, minuscules en bubble ; versions noire, couleur et calques | 4 (Toy → Legend) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/biel-bienne-wildstyle/) · [Zip](biel-bienne-wildstyle/BielBienneWildStyle.zip) · [Dossier](biel-bienne-wildstyle/) |
-| **Turbo 72°** | Ex-Swift Rallye 02 : Swift Rallye 01 deux fois plus haute (seules les verticales s'allongent), avec le jour du L, D, B, T et le truc du A | 12 (Reco → Groupe B) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/turbo-72/) · [Zip](turbo-72/Turbo72.zip) · [Dossier](turbo-72/) |
+| **Turbo 72°** | Course rétro-futuriste, haute et penchée, née de l'étude des traits du wildstyle ; le jour du L, D, B, T et le truc du A | 12 (Reco → Groupe B) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/turbo-72/) · [Zip](turbo-72/Turbo72.zip) · [Dossier](turbo-72/) |
 
 ## Organisation
 
