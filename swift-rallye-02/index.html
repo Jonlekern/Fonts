@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swift Rallye 02</title>
+<meta name="description" content="Swift Rallye 02 : Swift Rallye 01 deux fois plus haute, seules les verticales s'allongent. Police de course des années 70, coins ronds, bouts en biseau. 12 graisses, de Reco à Groupe B. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"SwiftRallye02";font-weight:100;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Reco.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:200;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Liaison.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:300;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Pointage.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:400;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Depart.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:500;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Speciale.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:600;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Chrono.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:700;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Epingle.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:800;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Derapage.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:900;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Saut.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02";font-weight:1000;font-display:swap;src:url(fonts/woff2/SwiftRallye02-Turbo.woff2) format("woff2")}
+/* au-dessus de 1000, une police n'a plus de numéro de graisse : Groupe 4 et Groupe B ont leur propre nom */
+@font-face{font-family:"SwiftRallye02 Groupe4";font-display:swap;src:url(fonts/woff2/SwiftRallye02-Groupe4.woff2) format("woff2")}
+@font-face{font-family:"SwiftRallye02 GroupeB";font-display:swap;src:url(fonts/woff2/SwiftRallye02-GroupeB.woff2) format("woff2")}
+/* Swift Rallye 02 partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"SwiftRallye02",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:20px;font-weight:800;letter-spacing:.02em}
+section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
+.step h3{font-weight:700;font-size:clamp(22px,2.6vw,30px)}
+.card b{font-weight:700;font-size:clamp(15px,4.2vw,22px);overflow-wrap:anywhere}
+.hero h1{font-family:"SwiftRallye02";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.4);line-height:1.25}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/10);line-height:1.45}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/13)}}
+.demo .row span{font-size:calc(100cqw/11);line-height:1.5}
+.glyphs div{font-size:34px}
+#tester-text{line-height:1.4}
+.angles{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.angles span{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-family:var(--sans);font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">SWIFT RALLYE 02</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Course / rallye</p>
+      <h1 style="margin-top:18px">SWIFT RALLYE 02</h1>
+      <div class="lede">
+        <p><strong>Swift Rallye 01, deux fois plus haute.</strong> Comme pour Malabard, seules les verticales s'allongent : les coins ronds, les biseaux, les barres et l'épaisseur des traits ne bougent pas.</p>
+        <p>Les lettres en diagonale gardent les 8 angles de l'étude des traits. Et deux détails n'existent que dans la 02 : <strong>le jour</strong> du L, du D, du B et du T, et <strong>le truc du A</strong>. <strong>12 graisses</strong>, de Reco à Groupe B. En majuscules seulement.</p>
+      </div>
+      <div class="facts">
+        <span>Course / rallye</span><span>12 graisses</span><span>Reco → Groupe B</span><span>2 fois plus haute que la 01</span><span>Majuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">De la reco au Groupe B, le trait grossit et les angles ne bougent pas. Les deux dernières graisses trichent : les barres et les diagonales arrêtent de grossir, seules les verticales continuent. Les trous du B, du E et du 8 restent ouverts.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">À FOND DANS L'ÉPINGLE !</div>
+      </div>
+      <p class="hint">Astuce : les 10 premières graisses sont dans une seule famille « Swift Rallye 02 », de 100 à 1000. Groupe 4 et Groupe B ont leur propre nom, car un fichier de police ne connaît pas de graisse au-dessus de 1000.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">26 majuscules, 10 chiffres, la ponctuation, les signes et les accents des langues d'Europe en alphabet latin.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Swift Rallye 02 part de Swift Rallye 01</strong>, elle-même née de l'étude des traits de Biel/Bienne WildStyle. On lui a fait le traitement de Malabard : rallonger les droites sans toucher aux courbes.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Deux fois plus haute</h3>
+            <p>Les lettres montent de 600 à 1200. <strong>Seules les verticales s'allongent</strong> : les coins ronds, les biseaux, les barres, les traînées et l'épaisseur des traits restent ceux de la 01.</p>
+          </div>
+          <div class="demo" aria-label="Exemples en Swift Rallye 02">
+            <div class="row"><small>Départ (400)</small><span style="font-weight:400">LAFLEURSTUDIO</span></div>
+            <div class="row"><small>Turbo (1000)</small><span style="font-weight:1000">RALLYE 1986</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les diagonales gardent leurs angles</h3>
+            <p>Étirées d'un bloc, les diagonales seraient sorties des 8 angles. Elles prennent plutôt <strong>les angles les plus raides</strong> : le N et le V à −80°, le X à 57° et −80°, le K à 57° et −66°. Le Z garde sa diagonale à 31°, avec un petit retour vertical à chaque bout.</p>
+          </div>
+          <div class="demo" aria-label="Lettres en diagonale">
+            <div class="row"><small>Chrono (600)</small><span style="font-weight:600">KNVWXYZ</span></div>
+            <div class="row"><small>Saut (900)</small><span style="font-weight:900">ZIG ZAG</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le jour</h3>
+            <p>Sur le L, le D et le B, <strong>la verticale ne touche plus la barre du bas</strong> : elle s'arrête juste avant, coupée en biseau, et laisse un petit jour. Sur le T, c'est la même chose sous la barre du haut.</p>
+          </div>
+          <div class="demo" aria-label="Le jour">
+            <div class="row"><small>Épingle (700)</small><span style="font-weight:700">BLD TOT</span></div>
+            <div class="row"><small>Groupe B</small><span style="font-family:'SwiftRallye02 GroupeB',var(--sans)">DOUBLE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le truc du A</h3>
+            <p>Dans le A, la jambe en diagonale est fine et la verticale de droite est épaisse. On l'a reproduit sur les lettres à deux côtés : sur <strong>H, U, O, N, M, D, G, Q, 0 et 8</strong>, la verticale de gauche prend la finesse de la jambe du A. Ça se voit surtout dans les graisses grasses.</p>
+          </div>
+          <div class="demo" aria-label="Le truc du A">
+            <div class="row"><small>Turbo (1000)</small><span style="font-weight:1000">AHUONM</span></div>
+            <div class="row"><small>Groupe B</small><span style="font-family:'SwiftRallye02 GroupeB',var(--sans)">DGQ08</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="SwiftRallye02.zip" download><b>SWIFTRALLYE02.ZIP</b><span>Les 12 graisses (TTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/swift-rallye-02/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/swift-rallye-02/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Swift Rallye 02"; font-weight: 400;
+  src: url(SwiftRallye02-Depart.woff2) format("woff2"); }
+/* … une règle par graisse : Reco 100, Liaison 200, Pointage 300, Départ 400,
+   Spéciale 500, Chrono 600, Épingle 700, Dérapage 800, Saut 900, Turbo 1000.
+   Groupe 4 et Groupe B : une famille chacune, par exemple
+   @font-face { font-family: "Swift Rallye 02 Groupe B";
+     src: url(SwiftRallye02-GroupeB.woff2) format("woff2"); } */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Swift Rallye 02 © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "SwiftRallye02",
+  sample: "SWIFT RALLYE 02",
+  styles: [
+    {n:"Reco",w:100},{n:"Liaison",w:200},{n:"Pointage",w:300},{n:"Départ",w:400},{n:"Spéciale",w:500},{n:"Chrono",w:600},
+    {n:"Épingle",w:700},{n:"Dérapage",w:800},{n:"Saut",w:900},{n:"Turbo",w:1000},
+    {n:"Groupe 4",w:400,label:"1100",fam:"SwiftRallye02 Groupe4"},{n:"Groupe B",w:400,label:"1200",fam:"SwiftRallye02 GroupeB"}
+  ],
+  testerDefault: 6,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞ" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 3, 6, 9, 11],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
