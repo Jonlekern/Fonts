@@ -1,8 +1,10 @@
-# Swift Rallye 02
+# Turbo 72°
+
+*Anciennement Swift Rallye 02.*
 
 Police de course de LaFleurStudio : **Swift Rallye 01 deux fois plus haute**. Comme pour Malabard, seules les verticales s'allongent ; les coins ronds, les biseaux, les barres et l'épaisseur des traits ne bougent pas. Majuscules seulement (les minuscules tapées sortent en majuscules).
 
-**Racine** : Swift Rallye 02 part de [Swift Rallye 01](../swift-rallye-01/), née de l'étude des traits des majuscules de Biel/Bienne WildStyle.
+**Racine** : Turbo 72° part de [Swift Rallye 01](../swift-rallye-01/), née de l'étude des traits des majuscules de Biel/Bienne WildStyle.
 
 ## La recette
 
@@ -10,27 +12,27 @@ Police de course de LaFleurStudio : **Swift Rallye 01 deux fois plus haute**. Co
 - **8 angles gardés** : les lettres en diagonale prennent les angles les plus raides de l'étude pour ne pas devenir trop larges : N et V à −80°, X à 57° et −80°, K à 57° et −66°, W à −80° et 57°, jambe du R à −66°. Le Z garde sa diagonale à 31° avec un retour vertical à chaque bout ; la barre du 4 monte ; le Y a une coupe aux coins ronds en haut, sa verticale part du milieu.
 - **Le jour** : sur le L, le D et le B, la verticale ne touche plus la barre du bas ; elle s'arrête juste avant, coupée en biseau. Sur le T, même chose sous la barre du haut.
 - **Le truc du A** : sur H, U, O, N, M, D, G, Q, 0 et 8, la verticale de gauche prend la finesse de la jambe du A (57°), celle de droite reste épaisse.
-- **Espace entre les mots** : un tout petit peu plus grand que dans la 01 (+12 %), pour que les mots hauts respirent.
-- Tout le reste comme la 01 : verticales à 72°, rondes en octogone arrondies, bouts en biseau, traînées, épaisseur du marqueur biseau.
+- **Espace entre les mots** : un tout petit peu plus grand que dans Swift Rallye 01 (+12 %), pour que les mots hauts respirent.
+- Tout le reste comme Swift Rallye 01 : verticales à 72°, rondes en octogone arrondies, bouts en biseau, traînées, épaisseur du marqueur biseau.
 
 ## Les graisses
 
 | Poids | Nom | Fichier |
 | --- | --- | --- |
-| 100 | Reco | `SwiftRallye02-Reco.ttf` |
-| 200 | Liaison | `SwiftRallye02-Liaison.ttf` |
-| 300 | Pointage | `SwiftRallye02-Pointage.ttf` |
-| 400 | Départ | `SwiftRallye02-Depart.ttf` |
-| 500 | Spéciale | `SwiftRallye02-Speciale.ttf` |
-| 600 | Chrono | `SwiftRallye02-Chrono.ttf` |
-| 700 | Épingle | `SwiftRallye02-Epingle.ttf` |
-| 800 | Dérapage | `SwiftRallye02-Derapage.ttf` |
-| 900 | Saut | `SwiftRallye02-Saut.ttf` |
-| 1000 | Turbo | `SwiftRallye02-Turbo.ttf` |
-| 1100 | Groupe 4 | `SwiftRallye02-Groupe4.ttf` |
-| 1200 | Groupe B | `SwiftRallye02-GroupeB.ttf` |
+| 100 | Reco | `Turbo72-Reco.ttf` |
+| 200 | Liaison | `Turbo72-Liaison.ttf` |
+| 300 | Pointage | `Turbo72-Pointage.ttf` |
+| 400 | Départ | `Turbo72-Depart.ttf` |
+| 500 | Spéciale | `Turbo72-Speciale.ttf` |
+| 600 | Chrono | `Turbo72-Chrono.ttf` |
+| 700 | Épingle | `Turbo72-Epingle.ttf` |
+| 800 | Dérapage | `Turbo72-Derapage.ttf` |
+| 900 | Saut | `Turbo72-Saut.ttf` |
+| 1000 | Turbo | `Turbo72-Turbo.ttf` |
+| 1100 | Groupe 4 | `Turbo72-Groupe4.ttf` |
+| 1200 | Groupe B | `Turbo72-GroupeB.ttf` |
 
-Un fichier de police ne connaît pas de graisse au-dessus de 1000 : Groupe 4 et Groupe B sont déclarées 1000 et se choisissent par leur nom. Comme pour la 01, en Groupe 4 et Groupe B les barres et les diagonales arrêtent de grossir ; les accents, les points et les petits signes restent plus fins que les lettres dans les graisses grasses.
+Un fichier de police ne connaît pas de graisse au-dessus de 1000 : Groupe 4 et Groupe B sont déclarées 1000 et se choisissent par leur nom. Comme pour Swift Rallye 01, en Groupe 4 et Groupe B les barres et les diagonales arrêtent de grossir ; les accents, les points et les petits signes restent plus fins que les lettres dans les graisses grasses.
 
 ## Caractères
 
@@ -40,7 +42,7 @@ Un fichier de police ne connaît pas de graisse au-dessus de 1000 : Groupe 4 et 
 
 - `fonts/ttf/` : les 12 graisses à installer.
 - `fonts/woff2/` : les 12 graisses pour le web.
-- `SwiftRallye02.zip` : les 12 graisses en TTF + licence.
+- `Turbo72.zip` : les 12 graisses en TTF + licence.
 - `LICENCE.txt` : la licence.
 
 ## Licence

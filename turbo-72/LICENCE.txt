@@ -1,9 +1,9 @@
-LICENCE D'UTILISATION — SWIFT RALLYE 02
+LICENCE D'UTILISATION — TURBO 72°
 © 2026 LaFleurStudio. Tous droits réservés.
-Cette licence couvre la police Swift Rallye 02.
+Cette licence couvre la police Turbo 72°.
 
 1. Usage personnel : gratuit
-Vous pouvez télécharger, installer et utiliser Swift Rallye 02 gratuitement pour un usage
+Vous pouvez télécharger, installer et utiliser Turbo 72° gratuitement pour un usage
 personnel et non commercial : projets personnels, études, essais, maquettes, site
 personnel sans activité commerciale.
 
@@ -26,7 +26,7 @@ est donnée par écrit et précise le projet qu'elle couvre.
   permette de les récupérer.
 
 4. Propriété
-Swift Rallye 02 reste la propriété de LaFleurStudio. Cette licence donne un droit
+Turbo 72° reste la propriété de LaFleurStudio. Cette licence donne un droit
 d'utilisation, pas un droit de propriété.
 
 5. Aucune garantie
@@ -40,12 +40,12 @@ Signé : Jonathan Kern
 
 -----------------------------------------------------------------------------------
 
-END USER LICENSE — SWIFT RALLYE 02
+END USER LICENSE — TURBO 72°
 © 2026 LaFleurStudio. All rights reserved.
-This license covers Swift Rallye 02.
+This license covers Turbo 72°.
 
 1. Personal use: free
-You may download, install and use Swift Rallye 02 free of charge for personal,
+You may download, install and use Turbo 72° free of charge for personal,
 non-commercial use: personal projects, studies, tests, mock-ups, a personal website
 with no commercial activity.
 
@@ -68,7 +68,7 @@ writing and names the project it covers.
   extracted.
 
 4. Ownership
-Swift Rallye 02 remains the property of LaFleurStudio. This license grants a right of use,
+Turbo 72° remains the property of LaFleurStudio. This license grants a right of use,
 not ownership.
 
 5. No warranty
