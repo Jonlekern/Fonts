@@ -70,6 +70,10 @@ Une police dont la couleur est dans le fichier (images ou couleurs fixes, comme 
 
 Exemple complet : `the-forever-font/index.html`.
 
+## Règle : cartes de l'accueil
+
+**Deux lignes de tags au maximum** sous chaque carte, mesurées sur téléphone (390 px de large). Si ça déborde, on garde les tags les plus utiles (graisses, licence, année) et on enlève les autres.
+
 ## Règle : signes du standard Google
 
 Les signes ajoutés pour le standard Google (Europe de l'Est, turc, gallois, accents seuls : ł ş ğ č ř ő ȷ ˇ ˘…) **ne sont pas montrés sur le site** : ni dans la grille des caractères, ni dans les exemples ou les images. Ils restent dans les polices et s'affichent quand on les tape dans le testeur.
