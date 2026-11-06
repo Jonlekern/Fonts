@@ -32,6 +32,7 @@ section > .wrap > h2,.step h3,.version b,.merci p,.card b{text-transform:upperca
 .demo .row span.long{font-size:calc(100cqw/15)}
 .demo .row span.coul{font-family:"BielBienneWildStyleCouleur",var(--sans)}
 .glyphs div{font-size:34px}
+.intro .emo{font-family:"BielBienneWildStyle";font-weight:400;font-size:1.5em;line-height:1;white-space:nowrap}
 #tester-text{line-height:1.6}
 .versions{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
 .version{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
@@ -102,7 +103,7 @@ section > .wrap > h2,.step h3,.version b,.merci p,.card b{text-transform:upperca
   <section id="caracteres">
     <div class="wrap">
       <h2>Caractères</h2>
-      <p class="intro">Majuscules wildstyle, minuscules bubble, chiffres, ponctuation, les accents du français et de l'allemand, et trois emojis : ☭ ☺ 😉.</p>
+      <p class="intro">Majuscules wildstyle, minuscules bubble, chiffres, ponctuation, les accents du français et de l'allemand, et trois emojis : <span class="emo">☭ ☺ 😉</span>.</p>
       <div class="glyph-controls" id="gw"></div>
       <div class="glyphs" id="glyphs"></div>
     </div>
@@ -255,5 +256,10 @@ window.SPECIMEN = {
 };
 </script>
 <script src="../shared/specimen.js"></script>
+<script>
+/* Les emojis de la phrase suivent la graisse choisie dans la grille */
+(() => { const g = document.getElementById("glyphs"), gw = document.getElementById("gw"), e = document.querySelector(".intro .emo");
+  if (g && gw && e) { const f = () => { e.style.fontWeight = g.style.fontWeight; }; gw.addEventListener("click", f); f(); } })();
+</script>
 </body>
 </html>
