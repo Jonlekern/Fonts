@@ -4,7 +4,7 @@ Police de LaFleurStudio, en chasse fixe, faite avec **les vraies frappes d'une m
 
 Chaque touche a été tapée cinq fois. Les frappes sont découpées et gardées telles quelles, sans être redessinées.
 
-Capitales, minuscules, chiffres, ponctuation et accents des langues d'Europe. Version 1.0.
+Capitales, minuscules, chiffres, ponctuation et accents des langues d'Europe. Version 1.001.
 
 ## Deux versions
 

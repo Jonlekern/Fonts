@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(fonts/woff2/TheForeverFont-Regular.woff2) format("woff2")}
+/* Firefox ne lit pas les images des polices : il prend la version Vecteur (couches de gris) */
+@supports (-moz-appearance:none){@font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(fonts/woff2/TheForeverFontVecteur-Regular.woff2) format("woff2")}}
 /* Police à l'encre noire : toujours les couleurs claires du site, même en mode sombre */
 :root{color-scheme:light}
 /* The Forever Font partout sur sa propre page */
@@ -64,7 +66,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <p>Des lettres tirées de <strong>tatouages</strong> et d'une <strong>machine à écrire</strong>, en chasse fixe, avec <strong>trois versions de chaque signe</strong> qui tournent toutes seules.</p>
       </div>
       <div class="facts">
-        <span>Chasse fixe</span><span>161 signes</span><span>3 versions de chaque signe</span><span>Le flou dans le fichier</span><span>Langues d’Europe de l’Ouest</span><span>Usage personnel gratuit</span><span>Version 1.0</span>
+        <span>Chasse fixe</span><span>161 signes</span><span>3 versions de chaque signe</span><span>Le flou dans le fichier</span><span>Langues d’Europe de l’Ouest</span><span>Usage personnel gratuit</span><span>Version 1.001</span>
       </div>
     </div>
   </div>

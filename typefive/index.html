@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(fonts/woff2/Typefive-Regular.woff2) format("woff2")}
+/* Firefox ne lit pas les images des polices : il prend la version Vecteur (couches de gris) */
+@supports (-moz-appearance:none){@font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(fonts/woff2/TypefiveVecteur-Regular.woff2) format("woff2")}}
 /* Police à l'encre noire : toujours les couleurs claires du site, même en mode sombre */
 :root{color-scheme:light}
 /* Typefive partout sur sa propre page */
@@ -63,7 +65,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <p>Chaque touche a été tapée <strong>cinq fois</strong> : <strong>cinq versions de chaque signe</strong> qui tournent toutes seules, en chasse fixe.</p>
       </div>
       <div class="facts">
-        <span>Chasse fixe</span><span>Les vraies frappes</span><span>5 versions de chaque signe</span><span>Le grain du ruban dans le fichier</span><span>Usage personnel gratuit</span><span>Version 1.0</span>
+        <span>Chasse fixe</span><span>Les vraies frappes</span><span>5 versions de chaque signe</span><span>Le grain du ruban dans le fichier</span><span>Usage personnel gratuit</span><span>Version 1.001</span>
       </div>
     </div>
   </div>
