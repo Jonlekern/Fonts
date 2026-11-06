@@ -19,6 +19,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Espresso 4.40.-** | Projet artistique : écriture à la main tirée des ardoises des cafés et des boulangeries biennois | 5 (Lungo → Moka) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/espresso-440/) · [Zip](espresso-440/Espresso440.zip) · [Dossier](espresso-440/) |
 | **DOTSIGNAL** | Points lumineux inspirés des transports et des affichages LED, avec italique glitch | 6 (Thin → Black) + 6 italiques glitch | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/dotsignal/) · [Zip](dotsignal/DOTSIGNAL.zip) · [Dossier](dotsignal/) |
 | **The Forever Font** | Chasse fixe au flou exact de l'encre : lettres tirées de tatouages et d'une machine à écrire, 3 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/the-forever-font/) · [Zip](the-forever-font/TheForeverFont.zip) · [Dossier](the-forever-font/) |
+| **Biel/Bienne WildStyle** | Graffiti tiré des murs de Biel/Bienne : majuscules en wildstyle, minuscules en bubble ; versions noire, couleur et calques | 4 (Toy → Legend) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/biel-bienne-wildstyle/) · [Zip](biel-bienne-wildstyle/BielBienneWildStyle.zip) · [Dossier](biel-bienne-wildstyle/) |
 
 ## Organisation
 
@@ -31,10 +32,11 @@ calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 dihedron-008/, nexum/,
 jalousia/, espresso-440/, dotsignal/,
-the-forever-font/, typefive/
+the-forever-font/, typefive/,
+biel-bienne-wildstyle/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font et Typefive : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive et Biel/Bienne WildStyle : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
