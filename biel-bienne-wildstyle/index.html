@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biel/Bienne WildStyle</title>
+<meta name="description" content="Biel/Bienne WildStyle : une police graffiti tirée des murs de Biel/Bienne. Majuscules en wildstyle, minuscules en bubble. 4 graisses, de Toy à Legend, en version noire, couleur et calques. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"BielBienneWildStyle";font-weight:300;font-display:swap;src:url(fonts/woff2/BielBienneWildStyle-Toy.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyle";font-weight:400;font-display:swap;src:url(fonts/woff2/BielBienneWildStyle-Writer.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyle";font-weight:700;font-display:swap;src:url(fonts/woff2/BielBienneWildStyle-King.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyle";font-weight:900;font-display:swap;src:url(fonts/woff2/BielBienneWildStyle-Legend.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyleCouleur";font-weight:300;font-display:swap;src:url(fonts/woff2/BielBienneWildStyleCouleur-Toy.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyleCouleur";font-weight:400;font-display:swap;src:url(fonts/woff2/BielBienneWildStyleCouleur-Writer.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyleCouleur";font-weight:700;font-display:swap;src:url(fonts/woff2/BielBienneWildStyleCouleur-King.woff2) format("woff2")}
+@font-face{font-family:"BielBienneWildStyleCouleur";font-weight:900;font-display:swap;src:url(fonts/woff2/BielBienneWildStyleCouleur-Legend.woff2) format("woff2")}
+/* Biel/Bienne WildStyle partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"BielBienneWildStyle",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:20px;font-weight:400;letter-spacing:.02em}
+section > .wrap > h2{font-weight:400;font-size:clamp(30px,4.4vw,50px)}
+/* titres tout en bubble : majuscules et minuscules ne se mélangent pas dans un mot */
+section > .wrap > h2,.step h3,.version b,.merci p,.card b{text-transform:lowercase}
+.step h3{font-weight:400;font-size:clamp(22px,2.6vw,30px)}
+.card b{font-weight:400;font-size:22px}
+.hero h1{font-family:"BielBienneWildStyle";font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/7.2);line-height:1.15}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/11);line-height:1.6;padding-top:.15em}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/11)}}
+.demo .row span{font-size:calc(100cqw/8)}
+.demo .row span{line-height:1.7;padding-top:.2em}
+.demo .row span.long{font-size:calc(100cqw/15)}
+.demo .row span.coul{font-family:"BielBienneWildStyleCouleur",var(--sans)}
+.glyphs div{font-size:34px}
+#tester-text{line-height:1.6}
+.versions{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.version{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+.version b{display:block;font-family:"BielBienneWildStyle",var(--sans);font-weight:400;font-size:28px;line-height:1.2;margin-bottom:6px}
+.version b.coul{font-family:"BielBienneWildStyleCouleur",var(--sans)}
+.version p{margin:.4em 0 0}
+.calques{position:relative;display:inline-block;font-size:56px;line-height:1.3}
+.calques span{font-family:"BielBienneWildStyleCouleur",var(--sans)}
+.merci{text-align:center;border-bottom:0}
+.merci p{font-family:"BielBienneWildStyle",var(--sans);font-weight:400;font-size:clamp(26px,3.8vw,44px);line-height:1.35;max-width:24ch;margin:0 auto}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">BIEL/BIENNE wildstyle</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#versions">Versions</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Graffiti</p>
+      <h1 style="margin-top:18px">BIEL/BIENNE wildstyle</h1>
+      <div class="lede">
+        <p><strong>Une police graffiti tirée des murs de Biel/Bienne.</strong> Les majuscules sont en <strong>wildstyle</strong> : des traits de marqueur, des cassures nettes, des barres qui débordent. Les minuscules sont en <strong>bubble</strong> : des lettres gonflées comme des throw-ups.</p>
+        <p><strong>4 graisses</strong>, de Toy à Legend, comme on monte dans la hiérarchie des writers. En noir, en couleur ou en calques à superposer.</p>
+      </div>
+      <div class="facts">
+        <span>Graffiti</span><span>4 graisses</span><span>Toy → Legend</span><span>Majuscules wildstyle</span><span>Minuscules bubble</span><span>Noire, Couleur, Calques</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Du toy au legend : le trait du marqueur et les bulles s'épaississent, la forme des lettres ne bouge pas.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien. Les majuscules sortent en wildstyle, les minuscules en bubble.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">BIENNE bonne journée</div>
+      </div>
+      <p class="hint">Astuce : les 4 graisses sont dans une seule famille « Biel/Bienne WildStyle ». La version Couleur est aussi dans le testeur.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules wildstyle, minuscules bubble, chiffres, ponctuation, les accents du français et de l'allemand, et trois emojis : ☭ ☺ 😉.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="versions">
+    <div class="wrap">
+      <h2>Trois versions</h2>
+      <p class="intro">La même police, à utiliser de trois façons. Elles sont toutes dans le zip.</p>
+      <div class="versions">
+        <div class="version">
+          <b>NOIRE bubble</b>
+          <p>Les lettres pleines, dans la couleur de ton texte. Elle marche <strong>partout</strong> : Word, Pages, Illustrator, InDesign, Photoshop, le web.</p>
+        </div>
+        <div class="version">
+          <b class="coul">COULEUR bubble</b>
+          <p>Contour noir et remplissage blanc, déjà dans la police, comme un throw-up. Dans un mot, <strong>chaque lettre passe devant celle de gauche</strong>.</p>
+          <p>Elle marche dans <strong>Illustrator, Photoshop et InDesign</strong> (versions récentes), dans les navigateurs web et sur Mac. Ailleurs, utilise la noire ou les calques.</p>
+        </div>
+        <div class="version">
+          <b>CALQUES bubble</b>
+          <p>Deux polices à superposer : <strong>Remplissage</strong> dessous, <strong>Contour</strong> dessus, avec le même texte, la même taille et la même position. Tu choisis la couleur de chaque calque.</p>
+          <p>Parfait dans Illustrator, InDesign, Photoshop ou Figma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Biel/Bienne WildStyle est tirée des murs de Biel/Bienne.</strong> Les lettres ont été relevées sur les tags, les pièces et les throw-ups de la ville, puis redessinées d'une main sûre : pas de vagues, pas de flèches collées, seulement ce que les murs montrent.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Les majuscules en wildstyle</h3>
+            <p>Chaque majuscule part d'une <strong>vraie lettre du mur</strong>, nettoyée puis re-tracée : des traits droits ou une seule courbe franche, des <strong>cassures nettes</strong>, des bouts <strong>coupés en biais</strong> ou effilés, l'épais et le fin du marqueur.</p>
+            <p>Les lettres peuvent <strong>dépasser de leur case</strong> : la barre du T passe au-dessus de la voisine, le pied du L se glisse sous elle. Comme sur un mur, le mot coule d'un seul geste.</p>
+          </div>
+          <div class="demo" aria-label="Exemples de majuscules en Biel/Bienne WildStyle Writer">
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">LAFLEURSTUDIO</span></div>
+            <div class="row"><small>King (700)</small><span style="font-weight:700">BIEL/BIENNE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les minuscules en bubble</h3>
+            <p>Les minuscules sont <strong>gonflées comme des bulles</strong>, toutes à la même hauteur, comme un throw-up : rien ne dépasse en haut ni en bas. Leur <strong>bas est plus lourd</strong> que le haut, et elles penchent et sautillent un peu sur la ligne.</p>
+            <p>Majuscules et minuscules forment deux alphabets à part : on écrit un mot <strong>tout en wildstyle ou tout en bubble</strong>.</p>
+          </div>
+          <div class="demo" aria-label="Exemples de minuscules en Biel/Bienne WildStyle">
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">bonne journée</span></div>
+            <div class="row"><small>Couleur Writer</small><span class="coul" style="font-weight:400">graffiti</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des accents graffiti</h3>
+            <p>Les accents aussi viennent des murs. En majuscule, le <strong>tréma devient un ovale</strong> et l'<strong>accent circonflexe une couronne</strong>.</p>
+            <p>En bubble, le tréma est une <strong>auréole</strong>, le circonflexe une <strong>petite couronne gonflée</strong>, l'aigu une <strong>goutte</strong> et le grave un <strong>éclat</strong>. Le point du i et du j peut devenir une <strong>étoile</strong>.</p>
+          </div>
+          <div class="demo" aria-label="Accents en Biel/Bienne WildStyle">
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">fête über naïve</span></div>
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">ÄÊË ÉÈ</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le A anarchie et les lettres qui alternent</h3>
+            <p>Dans le <strong>premier mot de chaque phrase</strong>, le A sort en <strong>A anarchie</strong>, dans son cercle. Dans les mots suivants, il prend la forme d'un autre A des murs.</p>
+            <p>Le F et le Z existent en <strong>deux versions</strong>, qui <strong>alternent toutes seules</strong> dans un même texte. D'autres variantes (B, H, I, K à flèche, i et j à étoile) se choisissent à la main dans les jeux stylistiques.</p>
+          </div>
+          <div class="demo" aria-label="Le A anarchie et les lettres qui alternent">
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">ZALIXO A BIENNE</span></div>
+            <div class="row"><small>Writer (400)</small><span style="font-weight:400">FIZZ FAZ</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Toy, Writer, King, Legend</h3>
+            <p>Les graisses portent les grades des writers : le <strong>toy</strong> débute, le <strong>writer</strong> écrit, le <strong>king</strong> règne sur le mur, et le <strong>legend</strong> reste.</p>
+            <p>En wildstyle, le trait du marqueur s'épaissit en gardant ses coupes en biais. En bubble, les bulles gonflent et leurs fentes restent ouvertes, même en Legend.</p>
+          </div>
+          <div class="demo" aria-label="Les 4 graisses de Biel/Bienne WildStyle">
+            <div class="row"><small>Toy (300)</small><span style="font-weight:300">BIEL bubble</span></div>
+            <div class="row"><small>Legend (900)</small><span style="font-weight:900">BIEL bubble</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="BielBienneWildStyle.zip" download><b>BielBienneWildStyle.zip</b><span>Les 4 graisses en Noire, Couleur et Calques (TTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/biel-bienne-wildstyle/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/biel-bienne-wildstyle/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Biel/Bienne WildStyle"; font-weight: 400;
+  src: url(BielBienneWildStyle-Writer.woff2) format("woff2"); }
+/* … une règle par graisse : Toy 300, Writer 400, King 700, Legend 900.
+   Version couleur : BielBienneWildStyleCouleur-Writer.woff2, etc. */</code></pre>
+</details>
+    </div>
+  </section>
+
+  <section id="merci" class="merci">
+    <div class="wrap">
+      <p>Merci aux murs de Biel/Bienne.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Biel/Bienne WildStyle © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, HarfBuzz, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "BielBienneWildStyle",
+  sample: "BIENNE bonne journée",
+  styles: [
+    {n:"Toy",w:300},{n:"Writer",w:400},{n:"King",w:700},{n:"Legend",w:900}
+  ],
+  testerExtra: [
+    {n:"Couleur Toy",w:300,fam:"BielBienneWildStyleCouleur"},{n:"Couleur Writer",w:400,fam:"BielBienneWildStyleCouleur"},
+    {n:"Couleur King",w:700,fam:"BielBienneWildStyleCouleur"},{n:"Couleur Legend",w:900,fam:"BielBienneWildStyleCouleur"}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÂÄÅÇÈÉÊËÎÏÔÖÙÛÜŸàâäåçèéêëîïôöùûüÿ" +
+    ".,:;!?'\"‘’“”()-–_={}~*@©☭☺😉",
+  glyphChips: [0, 1, 2, 3],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
