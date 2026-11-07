@@ -1,8 +1,8 @@
-# Nuitard
+# Small Hours
 
 Grotesk à chasse fixe de LaFleurStudio, **entièrement dessinée à neuf**. Toutes les lettres ont la même largeur, comme sur un terminal ou un ticket de caisse : pour le code, les tableaux, les écrans et les titres. Majuscules et minuscules.
 
-Le nom vient du nuitard, celui qui travaille ou traîne la nuit : les graisses vont de 20h à 4h du matin.
+Le nom vient des *small hours*, les petites heures d'après minuit : les graisses vont de 20h à 4h du matin.
 
 ## La recette
 
@@ -22,15 +22,15 @@ Les graisses suivent la nuit, de **20h** à **4h**.
 
 | Poids | Nom | Fichier |
 | --- | --- | --- |
-| 100 | 20h | `Nuitard-20h.otf` |
-| 200 | 21h | `Nuitard-21h.otf` |
-| 300 | 22h | `Nuitard-22h.otf` |
-| 400 | 23h | `Nuitard-23h.otf` |
-| 500 | 0h | `Nuitard-0h.otf` |
-| 600 | 1h | `Nuitard-1h.otf` |
-| 700 | 2h | `Nuitard-2h.otf` |
-| 800 | 3h | `Nuitard-3h.otf` |
-| 900 | 4h | `Nuitard-4h.otf` |
+| 100 | 20h | `SmallHours-20h.otf` |
+| 200 | 21h | `SmallHours-21h.otf` |
+| 300 | 22h | `SmallHours-22h.otf` |
+| 400 | 23h | `SmallHours-23h.otf` |
+| 500 | 0h | `SmallHours-0h.otf` |
+| 600 | 1h | `SmallHours-1h.otf` |
+| 700 | 2h | `SmallHours-2h.otf` |
+| 800 | 3h | `SmallHours-3h.otf` |
+| 900 | 4h | `SmallHours-4h.otf` |
 
 ## Caractères
 
@@ -40,7 +40,7 @@ Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signe
 
 - `fonts/otf/` : les 9 graisses à installer (OpenType)
 - `fonts/woff2/` : les 9 graisses pour le web
-- `Nuitard.zip` : les 9 graisses (OTF) + la licence
+- `SmallHours.zip` : les 9 graisses (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence
