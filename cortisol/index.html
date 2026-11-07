@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cortisol</title>
+<meta name="description" content="Cortisol : serif à fort contraste dessinée à neuf, de la serif de mode à la Fat Face. Déliés fins, boules aux bouts, 9 graisses de Zen à Burnout. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Cortisol";font-weight:100;font-display:swap;src:url(fonts/woff2/Cortisol-Zen.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:200;font-display:swap;src:url(fonts/woff2/Cortisol-Chill.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:300;font-display:swap;src:url(fonts/woff2/Cortisol-Cool.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:400;font-display:swap;src:url(fonts/woff2/Cortisol-Steady.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:500;font-display:swap;src:url(fonts/woff2/Cortisol-Busy.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:600;font-display:swap;src:url(fonts/woff2/Cortisol-Tense.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:700;font-display:swap;src:url(fonts/woff2/Cortisol-Rush.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:800;font-display:swap;src:url(fonts/woff2/Cortisol-Panic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol";font-weight:900;font-display:swap;src:url(fonts/woff2/Cortisol-Burnout.woff2) format("woff2")}
+/* Cortisol partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Cortisol",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:19px;font-weight:700;letter-spacing:.03em}
+section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:1.1}
+.step h3{font-weight:600;font-size:clamp(22px,2.6vw,30px)}
+.card b{font-weight:700;font-size:clamp(16px,4.4vw,24px);overflow-wrap:anywhere}
+.hero h1{font-family:"Cortisol";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.9);line-height:1.15}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/11);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/12)}}
+.demo .row span{font-size:calc(100cqw/8.5);line-height:1.3}
+.glyphs div{font-size:34px}
+#tester-text{line-height:1.25}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">CORTISOL</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Serif à fort contraste</p>
+      <h1 style="margin-top:18px">CORTISOL</h1>
+      <div class="lede">
+        <p><strong>De la serif de mode à la Fat Face.</strong> <strong>9 graisses</strong>, du zen au burnout. Majuscules et minuscules.</p>
+      </div>
+      <div class="facts">
+        <span>Serif à fort contraste</span><span>9 graisses</span><span>Zen → Burnout</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Elles suivent la montée du stress : de Zen, aux déliés fins comme des cheveux, à Burnout, une Fat Face d'affiche. Les déliés restent fins, seuls les fûts grossissent.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">« Haute pression » BURNOUT 1810</div>
+      </div>
+      <p class="hint">Astuce : les 9 graisses sont dans une seule famille « Cortisol », de 100 à 900.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Une serif de mode qui finit en affiche.</strong> Chaque lettre est dessinée à neuf, pour les titres, les logos et les t-shirts.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>De la mode à la Fat Face</h3>
+            <p>Les graisses fines ont le contraste des serifs de magazine de mode : des fûts nets et des déliés presque invisibles. En montant, les fûts gonflent jusqu'à la <strong>Fat Face</strong>, la serif ultra-grasse des affiches anglaises du début du XIXe siècle.</p>
+          </div>
+          <div class="demo" aria-label="De la mode à la Fat Face">
+            <div class="row"><small>Zen (100)</small><span style="font-weight:100">Haute couture</span></div>
+            <div class="row"><small>Burnout (900)</small><span style="font-weight:900">Fat Face</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des boules au bout des déliés</h3>
+            <p>Les déliés de a, c, f, g, j, r, y, J et des chiffres 2, 3, 5, 6, 9 finissent dans une <strong>boule</strong>. Les points sont ronds, les virgules et les apostrophes sont des gouttes.</p>
+          </div>
+          <div class="demo" aria-label="Les boules">
+            <div class="row"><small>Steady (400)</small><span style="font-weight:400">cafards 2569</span></div>
+            <div class="row"><small>Rush (700)</small><span style="font-weight:700">jogging ?</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>L'axe vertical</h3>
+            <p>Les fûts et les côtés des rondes sont épais, le haut et le bas sont fins : l'<strong>axe</strong> est vertical. Les empattements sont plats, avec un tout petit congé, et ils ne se touchent jamais d'une lettre à l'autre.</p>
+          </div>
+          <div class="demo" aria-label="L'axe vertical">
+            <div class="row"><small>Cool (300)</small><span style="font-weight:300">OBJETS</span></div>
+            <div class="row"><small>Panic (800)</small><span style="font-weight:800">Hôtel</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les lettres qui la signent</h3>
+            <p><strong>Q</strong> : la queue part épaisse du bas de la panse et file en délié loin sous la ligne. <strong>M</strong> : la pointe descend jusqu'à la ligne. <strong>N</strong> : la diagonale finit en pointe au pied droit. <strong>y</strong> : la queue fine finit par une boule.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres signature">
+            <div class="row"><small>Tense (600)</small><span style="font-weight:600">QUAI MN</span></div>
+            <div class="row"><small>Burnout (900)</small><span style="font-weight:900">QMy</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Cortisol.zip" download><b>CORTISOL.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/cortisol/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/cortisol/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Cortisol"; font-weight: 900;
+  src: url(Cortisol-Burnout.woff2) format("woff2"); }
+/* … une règle par graisse : Zen 100, Chill 200, Cool 300, Steady 400,
+   Busy 500, Tense 600, Rush 700, Panic 800, Burnout 900. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Cortisol © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Cortisol",
+  sample: "Haute pression",
+  styles: [
+    {n:"Zen",w:100},{n:"Chill",w:200},{n:"Cool",w:300},{n:"Steady",w:400},{n:"Busy",w:500},
+    {n:"Tense",w:600},{n:"Rush",w:700},{n:"Panic",w:800},{n:"Burnout",w:900}
+  ],
+  testerDefault: 8,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 2, 4, 6, 8],
+  glyphDefault: 2
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
