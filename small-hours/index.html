@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Hours</title>
+<meta name="description" content="Small Hours : grotesk à chasse fixe dessinée à neuf, pour le code, les tableaux et les écrans. Rondes presque carrées, zéro pointé, 9 graisses de 20h à 4h du matin. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Small Hours";font-weight:100;font-display:swap;src:url(fonts/woff2/SmallHours-20h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:200;font-display:swap;src:url(fonts/woff2/SmallHours-21h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:300;font-display:swap;src:url(fonts/woff2/SmallHours-22h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:400;font-display:swap;src:url(fonts/woff2/SmallHours-23h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:500;font-display:swap;src:url(fonts/woff2/SmallHours-0h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:600;font-display:swap;src:url(fonts/woff2/SmallHours-1h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:700;font-display:swap;src:url(fonts/woff2/SmallHours-2h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:800;font-display:swap;src:url(fonts/woff2/SmallHours-3h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours";font-weight:900;font-display:swap;src:url(fonts/woff2/SmallHours-4h.woff2) format("woff2")}
+/* Small Hours partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Small Hours",var(--mono)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:19px;font-weight:700;letter-spacing:.02em}
+section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:1.1}
+.step h3{font-weight:600;font-size:clamp(22px,2.6vw,30px)}
+.card b{font-weight:700;font-size:clamp(16px,4.4vw,24px);overflow-wrap:anywhere}
+.hero h1{font-family:"Small Hours";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.8);line-height:1.05}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/7.9);line-height:1.25}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/7.9)}}
+.demo .row span{font-size:calc(100cqw/6.2);line-height:1.25;white-space:pre}
+.glyphs div{font-size:34px}
+#tester-text{line-height:1.3}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">SMALL HOURS</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Grotesk à chasse fixe</p>
+      <h1 style="margin-top:18px">SMALL HOURS</h1>
+      <div class="lede">
+        <p><strong>La grotesk des écrans de nuit.</strong> Toutes les lettres ont la même largeur. <strong>9 graisses</strong>, de 20h à 4h du matin. Majuscules et minuscules.</p>
+      </div>
+      <div class="facts">
+        <span>Chasse fixe</span><span>9 graisses</span><span>20h → 4h</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Elles suivent la nuit : à 20h le trait est fin comme un fil, à 4h du matin il est noir. Les cases ne bougent pas, seule l'encre grossit.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="64" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">Encore une ligne et je dors. 03:59</div>
+      </div>
+      <p class="hint">Astuce : les 9 graisses sont dans une seule famille « Small Hours », de 100 à 900.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin. Chaque signe tient dans la même case.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Une grotesk pour ceux qui finissent tard.</strong> Chaque lettre est dessinée à neuf, pour le code, les tableaux, les tickets, les écrans et les titres.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Toutes la même largeur</h3>
+            <p>Chaque signe occupe la <strong>même case</strong>, du i au M. Les colonnes tombent juste, comme sur un terminal ou un ticket de caisse. En gras, le m et le W s'allègent un peu pour garder leurs blancs.</p>
+          </div>
+          <div class="demo" aria-label="Toutes la même largeur">
+            <div class="row"><small>23h (400)</small><span style="font-weight:400">iiiii</span></div>
+            <div class="row"><small>23h (400)</small><span style="font-weight:400">MMMMM</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des rondes d'écran</h3>
+            <p>Les rondes sont des <strong>superellipses</strong>, entre l'ovale et le carré, comme les coins d'un écran. Les bouts de C, G, S, a, c, e sont coupés à l'horizontale. Les points sont carrés, comme des pixels.</p>
+          </div>
+          <div class="demo" aria-label="Des rondes d'écran">
+            <div class="row"><small>22h (300)</small><span style="font-weight:300">OCGS 369</span></div>
+            <div class="row"><small>2h (700)</small><span style="font-weight:700">écran.</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Pas de confusion</h3>
+            <p>Le <strong>zéro</strong> a un point au milieu, le <strong>l</strong> finit par une queue, le <strong>i</strong> a un fanion et un pied. 0 O o et 1 l I i se reconnaissent au premier coup d'œil, même en petit.</p>
+          </div>
+          <div class="demo" aria-label="Pas de confusion">
+            <div class="row"><small>23h (400)</small><span style="font-weight:400">0Oo 1lIi</span></div>
+            <div class="row"><small>4h (900)</small><span style="font-weight:900">0Oo 1lIi</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>De 20h à 4h</h3>
+            <p>Les graisses portent les heures de la nuit. <strong>20h</strong> est la plus fine, <strong>23h</strong> la normale, <strong>4h</strong> la plus noire : celle des affiches et des titres.</p>
+          </div>
+          <div class="demo" aria-label="De 20h à 4h">
+            <div class="row"><small>20h (100)</small><span style="font-weight:100">{ nuit }</span></div>
+            <div class="row"><small>4h (900)</small><span style="font-weight:900">{ nuit }</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="SmallHours.zip" download><b>SMALLHOURS.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/small-hours/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/small-hours/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Small Hours"; font-weight: 400;
+  src: url(SmallHours-23h.woff2) format("woff2"); }
+/* … une règle par graisse : 20h 100, 21h 200, 22h 300, 23h 400,
+   0h 500, 1h 600, 2h 700, 3h 800, 4h 900. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Small Hours © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Small Hours",
+  sample: "Nuit blanche",
+  styles: [
+    {n:"20h",w:100},{n:"21h",w:200},{n:"22h",w:300},{n:"23h",w:400},{n:"0h",w:500},
+    {n:"1h",w:600},{n:"2h",w:700},{n:"3h",w:800},{n:"4h",w:900}
+  ],
+  testerDefault: 3,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 3, 4, 6, 8],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
