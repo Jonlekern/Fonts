@@ -1,9 +1,9 @@
-LICENCE D'UTILISATION — NUITARD
+LICENCE D'UTILISATION — SMALL HOURS
 © 2026 LaFleurStudio. Tous droits réservés.
-Cette licence couvre la police Nuitard.
+Cette licence couvre la police Small Hours.
 
 1. Usage personnel : gratuit
-Vous pouvez télécharger, installer et utiliser Nuitard gratuitement pour un usage
+Vous pouvez télécharger, installer et utiliser Small Hours gratuitement pour un usage
 personnel et non commercial : projets personnels, études, essais, maquettes, site
 personnel sans activité commerciale.
 
@@ -26,7 +26,7 @@ est donnée par écrit et précise le projet qu'elle couvre.
   permette de les récupérer.
 
 4. Propriété
-Nuitard reste la propriété de LaFleurStudio. Cette licence donne un droit
+Small Hours reste la propriété de LaFleurStudio. Cette licence donne un droit
 d'utilisation, pas un droit de propriété.
 
 5. Aucune garantie
@@ -40,12 +40,12 @@ Signé : Jonathan Kern
 
 -----------------------------------------------------------------------------------
 
-END USER LICENSE — NUITARD
+END USER LICENSE — SMALL HOURS
 © 2026 LaFleurStudio. All rights reserved.
-This license covers Nuitard.
+This license covers Small Hours.
 
 1. Personal use: free
-You may download, install and use Nuitard free of charge for personal,
+You may download, install and use Small Hours free of charge for personal,
 non-commercial use: personal projects, studies, tests, mock-ups, a personal website
 with no commercial activity.
 
@@ -68,7 +68,7 @@ writing and names the project it covers.
   extracted.
 
 4. Ownership
-Nuitard remains the property of LaFleurStudio. This license grants a right of use,
+Small Hours remains the property of LaFleurStudio. This license grants a right of use,
 not ownership.
 
 5. No warranty
