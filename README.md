@@ -23,6 +23,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Turbo 72°** | Course rétro-futuriste, haute et penchée, née de l'étude des traits du wildstyle ; le jour du L, D, B, T et le truc du A | 12 (Reco → Groupe B) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/turbo-72/) · [Zip](turbo-72/Turbo72.zip) · [Dossier](turbo-72/) |
 | **Overshoot** | Grotesque extra-large dessinée à neuf, au squelette suisse : rondes entre l'ovale et le carré, bouts coupés à l'horizontale | 9 (Calm → Storm, l'échelle du vent) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/overshoot/) · [Zip](overshoot/Overshoot.zip) · [Dossier](overshoot/) |
 | **Trap** | Grotesque étroite et haute dessinée à neuf, avec des pièges à encre qui se creusent quand la graisse monte | 9 (ppp → ffff, les nuances de la musique) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/trap/) · [Zip](trap/Trap.zip) · [Dossier](trap/) |
+| **Cortisol** | Serif à fort contraste dessinée à neuf, de la serif de mode à la Fat Face : déliés fins, boules aux bouts, points ronds | 9 (Zen → Burnout, la montée du stress) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/cortisol/) · [Zip](cortisol/Cortisol.zip) · [Dossier](cortisol/) |
 
 ## Organisation
 
@@ -37,10 +38,10 @@ dihedron-008/, nexum/,
 jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
-overshoot/, trap/
+overshoot/, trap/, cortisol/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot et Trap : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap et Cortisol : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
