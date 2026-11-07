@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overshoot</title>
+<meta name="description" content="Overshoot : grotesque extra-large dessinée à neuf, au squelette suisse. Rondes entre l'ovale et le carré, bouts coupés à l'horizontale. 9 graisses, de Calm à Storm. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Overshoot";font-weight:100;font-display:swap;src:url(fonts/woff2/Overshoot-Calm.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:200;font-display:swap;src:url(fonts/woff2/Overshoot-LightAir.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:300;font-display:swap;src:url(fonts/woff2/Overshoot-LightBreeze.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:400;font-display:swap;src:url(fonts/woff2/Overshoot-GentleBreeze.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:500;font-display:swap;src:url(fonts/woff2/Overshoot-ModerateBreeze.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:600;font-display:swap;src:url(fonts/woff2/Overshoot-FreshBreeze.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:700;font-display:swap;src:url(fonts/woff2/Overshoot-StrongBreeze.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:800;font-display:swap;src:url(fonts/woff2/Overshoot-Gale.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:900;font-display:swap;src:url(fonts/woff2/Overshoot-Storm.woff2) format("woff2")}
+/* Overshoot partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Overshoot",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:18px;font-weight:800;letter-spacing:.02em}
+section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
+.step h3{font-weight:700;font-size:clamp(20px,2.4vw,28px)}
+.card b{font-weight:700;font-size:clamp(15px,4.2vw,22px);overflow-wrap:anywhere}
+.hero h1{font-family:"Overshoot";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/9.4);line-height:1.1}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/12);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/14)}}
+.demo .row span{font-size:calc(100cqw/9);line-height:1.35}
+.glyphs div{font-size:34px}
+#tester-text{line-height:1.3}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">OVERSHOOT</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Grotesque extra-large</p>
+      <h1 style="margin-top:18px">OVERSHOOT</h1>
+      <div class="lede">
+        <p><strong>Une grotesque extra-large au squelette suisse, dessinée à neuf.</strong> <strong>9 graisses</strong>, du calme à la tempête. Majuscules et minuscules.</p>
+      </div>
+      <div class="facts">
+        <span>Grotesque extra-large</span><span>9 graisses</span><span>Calm → Storm</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Elles portent les noms de l'échelle du vent : de Calm, presque un fil, à Storm, plein noir. Les rondes, les bouts et l'espacement suivent la graisse pour que les contreformes restent ouvertes.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">« Jaguar majeur » GRAND MAQUIS 77</div>
+      </div>
+      <p class="hint">Astuce : les 9 graisses sont dans une seule famille « Overshoot », de 100 à 900.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Une grotesque extra-large qui a de l'ancien dedans.</strong> Le squelette vient des grotesques suisses des années 1950, l'attitude des extra-larges d'aujourd'hui. Chaque lettre est dessinée à neuf.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Des rondes entre l'ovale et le carré</h3>
+            <p>Toutes les rondes sont des <strong>superellipses</strong> : plus tendues qu'un ovale, plus douces qu'un carré. L'overshoot, c'est leur petit dépassement au-dessus et au-dessous de la ligne, pour qu'elles paraissent aussi hautes que les lettres droites.</p>
+          </div>
+          <div class="demo" aria-label="Les rondes">
+            <div class="row"><small>Gentle Breeze (400)</small><span style="font-weight:400">OCGQS</span></div>
+            <div class="row"><small>Storm (900)</small><span style="font-weight:900">boost</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les bouts coupés à l'horizontale</h3>
+            <p>Le c, le e, le s, le C, le G, le S et les chiffres finissent par <strong>une coupe bien à plat</strong>. C'est l'ADN suisse de la police.</p>
+          </div>
+          <div class="demo" aria-label="Les coupes horizontales">
+            <div class="row"><small>Fresh Breeze (600)</small><span style="font-weight:600">CESAR 2356</span></div>
+            <div class="row"><small>Strong Breeze (700)</small><span style="font-weight:700">ceci est sec</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les lettres qui la signent</h3>
+            <p><strong>R</strong> : la jambe tombe droit, avec un petit pied qui botte. <strong>a</strong> : le même petit pied. <strong>G</strong> : un éperon en coin net. <strong>M</strong> et <strong>W</strong> : la pointe du milieu s'arrête en l'air. <strong>Q</strong> : la queue est une dalle posée au sol. <strong>7</strong> : la jambe un peu creusée. <strong>j</strong> : le crochet coupé en biais se glisse sous la lettre d'avant.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres signature">
+            <div class="row"><small>Strong Breeze (700)</small><span style="font-weight:700">RGM QW7</span></div>
+            <div class="row"><small>Gale (800)</small><span style="font-weight:800">majeur</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les guillemets posés au sol</h3>
+            <p>Les guillemets sont <strong>lourds à la pointe</strong>, fins au bout, et posés sur la ligne comme les lettres.</p>
+          </div>
+          <div class="demo" aria-label="Les guillemets">
+            <div class="row"><small>Strong Breeze (700)</small><span style="font-weight:700">«JAGUAR»</span></div>
+            <div class="row"><small>Calm (100)</small><span style="font-weight:100">‹ calme ›</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Overshoot.zip" download><b>OVERSHOOT.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/overshoot/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/overshoot/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Overshoot"; font-weight: 700;
+  src: url(Overshoot-StrongBreeze.woff2) format("woff2"); }
+/* … une règle par graisse : Calm 100, Light Air 200, Light Breeze 300,
+   Gentle Breeze 400, Moderate Breeze 500, Fresh Breeze 600,
+   Strong Breeze 700, Gale 800, Storm 900. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Overshoot © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Overshoot",
+  sample: "Overshoot",
+  styles: [
+    {n:"Calm",w:100},{n:"Light Air",w:200},{n:"Light Breeze",w:300},{n:"Gentle Breeze",w:400},{n:"Moderate Breeze",w:500},
+    {n:"Fresh Breeze",w:600},{n:"Strong Breeze",w:700},{n:"Gale",w:800},{n:"Storm",w:900}
+  ],
+  testerDefault: 6,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 2, 4, 6, 8],
+  glyphDefault: 3
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
