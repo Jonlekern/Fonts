@@ -50,6 +50,7 @@ Le logo fleur du studio est inclus dans toutes les polices :
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page et logo LAFLEURSTUDIO (SVG) |
+| `original/` | Anybody d'origine, pas modifiée, avec sa licence OFL : sert juste à la comparaison sur la page |
 | `source/` | Scripts Python de fabrication |
 
 ## Sur le web

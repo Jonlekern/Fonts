@@ -45,6 +45,7 @@ Chaque graisse a son italique, penchée de 12° : même dessin, mêmes chasses, 
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page |
+| `original/` | Orbitron d'origine, pas modifiée, avec sa licence OFL : sert juste à la comparaison sur la page |
 | `source/` | Scripts Python de fabrication |
 
 ## Sur le web
