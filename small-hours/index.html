@@ -16,6 +16,15 @@
 @font-face{font-family:"Small Hours";font-weight:700;font-display:swap;src:url(fonts/woff2/SmallHours-2h.woff2) format("woff2")}
 @font-face{font-family:"Small Hours";font-weight:800;font-display:swap;src:url(fonts/woff2/SmallHours-3h.woff2) format("woff2")}
 @font-face{font-family:"Small Hours";font-weight:900;font-display:swap;src:url(fonts/woff2/SmallHours-4h.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/SmallHours-20hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/SmallHours-21hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/SmallHours-22hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/SmallHours-23hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/SmallHours-0hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/SmallHours-1hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/SmallHours-2hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/SmallHours-3hItalic.woff2) format("woff2")}
+@font-face{font-family:"Small Hours Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/SmallHours-4hItalic.woff2) format("woff2")}
 /* Small Hours partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Small Hours",var(--mono)}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -56,7 +65,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
         <p><strong>La grotesk des écrans de nuit.</strong> Toutes les lettres ont la même largeur. <strong>9 graisses</strong>, de 20h à 4h du matin. Majuscules et minuscules.</p>
       </div>
       <div class="facts">
-        <span>Chasse fixe</span><span>9 graisses</span><span>20h → 4h</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Chasse fixe</span><span>9 graisses</span><span>+ italiques</span><span>20h → 4h</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -64,7 +73,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">Elles suivent la nuit : à 20h le trait est fin comme un fil, à 4h du matin il est noir. Les cases ne bougent pas, seule l'encre grossit.</p>
+      <p class="intro">Elles suivent la nuit : à 20h le trait est fin comme un fil, à 4h du matin il est noir. Les cases ne bougent pas, seule l'encre grossit. Chaque graisse a aussi son <strong>italique</strong>, penchée de 10°.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -153,7 +162,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
       <h2>Télécharger</h2>
       <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="SmallHours.zip" download><b>SMALLHOURS.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="SmallHours.zip" download><b>SMALLHOURS.ZIP</b><span>Les 9 graisses et leurs italiques (OTF) + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/small-hours/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/small-hours/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -162,7 +171,8 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
 <pre><code>@font-face { font-family: "Small Hours"; font-weight: 400;
   src: url(SmallHours-23h.woff2) format("woff2"); }
 /* … une règle par graisse : 20h 100, 21h 200, 22h 300, 23h 400,
-   0h 500, 1h 600, 2h 700, 3h 800, 4h 900. */</code></pre>
+   0h 500, 1h 600, 2h 700, 3h 800, 4h 900. */
+/* Italiques : famille « Small Hours Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -180,14 +190,14 @@ window.SPECIMEN = {
   family: "Small Hours",
   sample: "Nuit blanche",
   styles: [
-    {n:"20h",w:100},{n:"21h",w:200},{n:"22h",w:300},{n:"23h",w:400},{n:"0h",w:500},
-    {n:"1h",w:600},{n:"2h",w:700},{n:"3h",w:800},{n:"4h",w:900}
+    {n:"20h",w:100},{n:"20h Italic",w:100,fam:"Small Hours Italic"},{n:"21h",w:200},{n:"21h Italic",w:200,fam:"Small Hours Italic"},{n:"22h",w:300},{n:"22h Italic",w:300,fam:"Small Hours Italic"},{n:"23h",w:400},{n:"23h Italic",w:400,fam:"Small Hours Italic"},{n:"0h",w:500},{n:"0h Italic",w:500,fam:"Small Hours Italic"},
+    {n:"1h",w:600},{n:"1h Italic",w:600,fam:"Small Hours Italic"},{n:"2h",w:700},{n:"2h Italic",w:700,fam:"Small Hours Italic"},{n:"3h",w:800},{n:"3h Italic",w:800,fam:"Small Hours Italic"},{n:"4h",w:900},{n:"4h Italic",w:900,fam:"Small Hours Italic"}
   ],
-  testerDefault: 3,
+  testerDefault: 6,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
     ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
-  glyphChips: [0, 3, 4, 6, 8],
+  glyphChips: [0, 6, 8, 12, 16, 7],
   glyphDefault: 1
 };
 </script>

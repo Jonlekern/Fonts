@@ -40,11 +40,15 @@ Les graisses portent les nuances de la musique : du **ppp** (pianississimo, pres
 
 Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.
 
+## Italiques
+
+Chaque graisse a son italique, penchée de 10° : même dessin, mêmes chasses, même crénage. Les fichiers finissent par « Italic » (`Trap-fItalic.otf`…). Sur le web : une famille « Trap Italic » avec les mêmes graisses.
+
 ## Fichiers
 
-- `fonts/otf/` : les 9 graisses à installer (OpenType)
-- `fonts/woff2/` : les 9 graisses pour le web
-- `Trap.zip` : les 9 graisses (OTF) + la licence
+- `fonts/otf/` : les 9 graisses et leurs italiques à installer (OpenType)
+- `fonts/woff2/` : les 9 graisses et leurs italiques pour le web
+- `Trap.zip` : les 9 graisses et leurs italiques (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence

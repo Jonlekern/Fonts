@@ -30,11 +30,15 @@ Les graisses portent le nom des gaz nobles, du plus léger au plus lourd, de **H
 
 Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.
 
+## Italiques
+
+Chaque graisse a son italique, penchée de 12° : même dessin, mêmes chasses, même crénage. Les fichiers finissent par « Italic » (`LastCall-ArgonItalic.otf`…). Sur le web : une famille « Last Call Italic » avec les mêmes graisses.
+
 ## Fichiers
 
-- `fonts/otf/` : les 7 graisses à installer (OpenType)
-- `fonts/woff2/` : les 7 graisses pour le web
-- `LastCall.zip` : les 7 graisses (OTF) + la licence
+- `fonts/otf/` : les 7 graisses et leurs italiques à installer (OpenType)
+- `fonts/woff2/` : les 7 graisses et leurs italiques pour le web
+- `LastCall.zip` : les 7 graisses et leurs italiques (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence

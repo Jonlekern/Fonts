@@ -33,11 +33,15 @@ Page : **https://jonlekern.github.io/Fonts/falsard/**
 - **1.0.1** : guillemets « » ‹ ›, petits et posés en bas, et point médian ·. LaFleurStudio noté comme fabricant, les auteurs d'Orbitron restent crédités.
 - **1.0** : première version.
 
+## Italiques
+
+Chaque graisse a son italique, penchée de 12° : même dessin, mêmes chasses, même crénage. Les fichiers finissent par « Italic » (`Falsard-LItalic.ttf`…). Sur le web : une famille « Falsard Italic » avec les mêmes graisses.
+
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `Falsard.zip` | Les 10 graisses en TTF + licence |
+| `Falsard.zip` | Les 10 graisses et leurs italiques en TTF + licence |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page |

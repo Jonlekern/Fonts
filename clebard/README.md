@@ -26,11 +26,15 @@ Le format s'arrête à 1000 : Grande, Venti et Trenta sont déclarées entre 900
 5. Trenta trichée : là où la 1400 casse, la Venti épaissie seulement à l'horizontale.
 6. Espacement et crénage de Calebard.
 
+## Italiques
+
+Chaque graisse a son italique, penchée de 12° : même dessin, mêmes chasses, même crénage. Les fichiers finissent par « Italic » (`Clebard-DemiItalic.ttf`…). Sur le web : une famille « Clebard Italic » avec les mêmes graisses.
+
 ## Fichiers
 
 | Chemin | Contenu |
 | --- | --- |
-| `Clebard.zip` | Les 6 tailles en TTF et WOFF2, la licence et les sources (toute l’œuvre listée dans `MANIFEST-Clebard.txt`) |
+| `Clebard.zip` | Les 6 tailles et leurs italiques en TTF et WOFF2, la licence et les sources (toute l’œuvre listée dans `MANIFEST-Clebard.txt`) |
 | `fonts/ttf/` | Polices à installer (Mac, Windows, logiciels) |
 | `fonts/woff2/` | Polices pour le web |
 | `images/` | Images de la page |

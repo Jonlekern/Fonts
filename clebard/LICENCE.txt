@@ -36,5 +36,7 @@ Changes made by LaFleurStudio (2026)
   freely.
 - Outlines converted to TrueType; names, vertical metrics and weight
   classes changed.
+- Italics (2026): each weight slanted by 12 degrees (source/oblique.py),
+  files Clebard-*Italic.ttf and Clebard-*Italic.woff2.
 
 The scripts used to make these changes are in the source/ folder.

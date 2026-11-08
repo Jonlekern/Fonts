@@ -36,11 +36,15 @@ Les graisses suivent la nuit, de **20h** à **4h**.
 
 Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.
 
+## Italiques
+
+Chaque graisse a son italique, penchée de 10° : même dessin, mêmes chasses, même crénage. Les fichiers finissent par « Italic » (`SmallHours-0hItalic.otf`…). Sur le web : une famille « Small Hours Italic » avec les mêmes graisses.
+
 ## Fichiers
 
-- `fonts/otf/` : les 9 graisses à installer (OpenType)
-- `fonts/woff2/` : les 9 graisses pour le web
-- `SmallHours.zip` : les 9 graisses (OTF) + la licence
+- `fonts/otf/` : les 9 graisses et leurs italiques à installer (OpenType)
+- `fonts/woff2/` : les 9 graisses et leurs italiques pour le web
+- `SmallHours.zip` : les 9 graisses et leurs italiques (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence

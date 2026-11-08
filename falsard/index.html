@@ -20,6 +20,16 @@
 @font-face{font-family:"Falsard";font-weight:900;font-display:swap;src:url(fonts/woff2/Falsard-XXL.woff2) format("woff2")}
 @font-face{font-family:"Falsard";font-weight:1000;font-display:swap;src:url(fonts/woff2/Falsard-XXXL.woff2) format("woff2")}
 @font-face{font-family:"Falsard XXXXL";font-weight:1000;font-display:swap;src:url(fonts/woff2/Falsard-XXXXL.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/Falsard-XXXSItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Falsard-XXSItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Falsard-XSItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Falsard-SItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Falsard-MItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Falsard-LItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/Falsard-XLItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/Falsard-XXLItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard Italic";font-weight:1000;font-display:swap;src:url(fonts/woff2/Falsard-XXXLItalic.woff2) format("woff2")}
+@font-face{font-family:"Falsard XXXXL Italic";font-weight:1000;font-display:swap;src:url(fonts/woff2/Falsard-XXXXLItalic.woff2) format("woff2")}
 /* Falsard partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Falsard",var(--sans)}
 .label{font-family:"Falsard",var(--sans);font-size:13px}
@@ -61,7 +71,7 @@ section > .wrap > h2{font-size:clamp(26px,4.2vw,44px)}
         <p><strong>10 graisses en tailles de t-shirt</strong>, du XXXS au XXXXL.</p>
       </div>
       <div class="facts">
-        <span>10 graisses</span><span>XXXS → XXXXL</span><span>Majuscules, minuscules, chiffres, accents</span><span>© ® ™</span><span>Licence libre SIL OFL 1.1</span><span>Version 1.0.1</span>
+        <span>10 graisses</span><span>+ italiques</span><span>XXXS → XXXXL</span><span>Majuscules, minuscules, chiffres, accents</span><span>© ® ™</span><span>Licence libre SIL OFL 1.1</span><span>Version 1.0.1</span>
       </div>
     </div>
   </div>
@@ -69,7 +79,7 @@ section > .wrap > h2{font-size:clamp(26px,4.2vw,44px)}
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">De 200 à 1100, nommées comme des t-shirts. Le M est pile au milieu. En dessous de 400 et au-dessus de 900, la police a été poussée plus loin que la police d'origine.</p>
+      <p class="intro">De 200 à 1100, nommées comme des t-shirts. Le M est pile au milieu. En dessous de 400 et au-dessus de 900, la police a été poussée plus loin que la police d'origine. Chaque graisse a aussi son <strong>italique</strong>, penchée de 12°.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -187,7 +197,7 @@ section > .wrap > h2{font-size:clamp(26px,4.2vw,44px)}
       <h2>Télécharger</h2>
       <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Falsard.zip" download><b>Falsard.zip</b><span>Les 10 graisses en TTF + licence</span></a>
+        <a class="card" href="Falsard.zip" download><b>Falsard.zip</b><span>Les 10 graisses et leurs italiques en TTF + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/falsard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/falsard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
       </div>
@@ -201,7 +211,8 @@ section > .wrap > h2{font-size:clamp(26px,4.2vw,44px)}
 
 /* La XXXXL est aussi en 1000 : déclare-la à part */
 @font-face { font-family: "Falsard XXXXL"; font-weight: 1000;
-  src: url(Falsard-XXXXL.woff2) format("woff2"); }</code></pre>
+  src: url(Falsard-XXXXL.woff2) format("woff2"); }
+/* Italiques : famille « Falsard Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -219,15 +230,15 @@ window.SPECIMEN = {
   family: "Falsard",
   sample: "LAFLEURSTUDIO",
   styles: [
-    {n:"XXXS",w:200},{n:"XXS",w:300},{n:"XS",w:400},{n:"S",w:500},{n:"M",w:600},
-    {n:"L",w:700},{n:"XL",w:800},{n:"XXL",w:900},{n:"XXXL",w:1000},
-    {n:"XXXXL",w:1000,label:1100,fam:"Falsard XXXXL"}
+    {n:"XXXS",w:200},{n:"XXXS Italic",w:200,fam:"Falsard Italic"},{n:"XXS",w:300},{n:"XXS Italic",w:300,fam:"Falsard Italic"},{n:"XS",w:400},{n:"XS Italic",w:400,fam:"Falsard Italic"},{n:"S",w:500},{n:"S Italic",w:500,fam:"Falsard Italic"},{n:"M",w:600},{n:"M Italic",w:600,fam:"Falsard Italic"},
+    {n:"L",w:700},{n:"L Italic",w:700,fam:"Falsard Italic"},{n:"XL",w:800},{n:"XL Italic",w:800,fam:"Falsard Italic"},{n:"XXL",w:900},{n:"XXL Italic",w:900,fam:"Falsard Italic"},{n:"XXXL",w:1000},{n:"XXXL Italic",w:1000,fam:"Falsard Italic"},
+    {n:"XXXXL",w:1000,label:1100,fam:"Falsard XXXXL"},{n:"XXXXL Italic",w:1000,label:1100,fam:"Falsard XXXXL Italic"}
   ],
-  testerDefault: 7,
+  testerDefault: 14,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜÝŸŠŽàáâãäåæçèéêëìíîïñòóôõöœùúûüýÿšžß" +
     ".,:;!?¡¿…·'\"‘’“”«»‹›()[]{}/\\|-–—_*•#%&@¶°" + "$€£¢+−×÷=<>~©®™",
-  glyphChips: [0, 2, 7, 9],
+  glyphChips: [0, 4, 14, 18, 15],
   glyphDefault: 2
 };
 </script>

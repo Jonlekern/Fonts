@@ -16,6 +16,15 @@
 @font-face{font-family:"Trap";font-weight:700;font-display:swap;src:url(fonts/woff2/Trap-ff.woff2) format("woff2")}
 @font-face{font-family:"Trap";font-weight:800;font-display:swap;src:url(fonts/woff2/Trap-fff.woff2) format("woff2")}
 @font-face{font-family:"Trap";font-weight:900;font-display:swap;src:url(fonts/woff2/Trap-ffff.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/Trap-pppItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/Trap-ppItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Trap-pItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Trap-mpItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Trap-mfItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Trap-fItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Trap-ffItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/Trap-fffItalic.woff2) format("woff2")}
+@font-face{font-family:"Trap Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/Trap-ffffItalic.woff2) format("woff2")}
 /* Trap partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Trap",var(--sans)}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -56,7 +65,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,6vw,68px);line-height:
         <p><strong>Une grotesque étroite et haute, avec des pièges à encre.</strong> <strong>9 graisses</strong>, du murmure au plein noir. Majuscules et minuscules.</p>
       </div>
       <div class="facts">
-        <span>Grotesque étroite</span><span>9 graisses</span><span>ppp → ffff</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Grotesque étroite</span><span>9 graisses</span><span>+ italiques</span><span>ppp → ffff</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -64,7 +73,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,6vw,68px);line-height:
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">Elles portent les nuances de la musique : de ppp (pianississimo), presque un murmure, à ffff, plein noir. Plus la graisse monte, plus la lettre s'élargit un peu et plus les pièges se creusent.</p>
+      <p class="intro">Elles portent les nuances de la musique : de ppp (pianississimo), presque un murmure, à ffff, plein noir. Plus la graisse monte, plus la lettre s'élargit un peu et plus les pièges se creusent. Chaque graisse a aussi son <strong>italique</strong>, penchée de 10°.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -153,7 +162,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,6vw,68px);line-height:
       <h2>Télécharger</h2>
       <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Trap.zip" download><b>TRAP.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="Trap.zip" download><b>TRAP.ZIP</b><span>Les 9 graisses et leurs italiques (OTF) + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/trap/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/trap/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -162,7 +171,8 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,6vw,68px);line-height:
 <pre><code>@font-face { font-family: "Trap"; font-weight: 900;
   src: url(Trap-ffff.woff2) format("woff2"); }
 /* … une règle par graisse : ppp 100, pp 200, p 300, mp 400,
-   mf 500, f 600, ff 700, fff 800, ffff 900. */</code></pre>
+   mf 500, f 600, ff 700, fff 800, ffff 900. */
+/* Italiques : famille « Trap Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -180,14 +190,14 @@ window.SPECIMEN = {
   family: "Trap",
   sample: "Crescendo",
   styles: [
-    {n:"ppp",w:100},{n:"pp",w:200},{n:"p",w:300},{n:"mp",w:400},{n:"mf",w:500},
-    {n:"f",w:600},{n:"ff",w:700},{n:"fff",w:800},{n:"ffff",w:900}
+    {n:"ppp",w:100},{n:"ppp Italic",w:100,fam:"Trap Italic"},{n:"pp",w:200},{n:"pp Italic",w:200,fam:"Trap Italic"},{n:"p",w:300},{n:"p Italic",w:300,fam:"Trap Italic"},{n:"mp",w:400},{n:"mp Italic",w:400,fam:"Trap Italic"},{n:"mf",w:500},{n:"mf Italic",w:500,fam:"Trap Italic"},
+    {n:"f",w:600},{n:"f Italic",w:600,fam:"Trap Italic"},{n:"ff",w:700},{n:"ff Italic",w:700,fam:"Trap Italic"},{n:"fff",w:800},{n:"fff Italic",w:800,fam:"Trap Italic"},{n:"ffff",w:900},{n:"ffff Italic",w:900,fam:"Trap Italic"}
   ],
-  testerDefault: 8,
+  testerDefault: 16,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
     ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
-  glyphChips: [0, 2, 4, 6, 8],
+  glyphChips: [0, 4, 8, 12, 16, 9],
   glyphDefault: 2
 };
 </script>

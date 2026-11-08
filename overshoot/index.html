@@ -16,6 +16,15 @@
 @font-face{font-family:"Overshoot";font-weight:700;font-display:swap;src:url(fonts/woff2/Overshoot-StrongBreeze.woff2) format("woff2")}
 @font-face{font-family:"Overshoot";font-weight:800;font-display:swap;src:url(fonts/woff2/Overshoot-Gale.woff2) format("woff2")}
 @font-face{font-family:"Overshoot";font-weight:900;font-display:swap;src:url(fonts/woff2/Overshoot-Storm.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/Overshoot-CalmItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/Overshoot-LightAirItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Overshoot-LightBreezeItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Overshoot-GentleBreezeItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Overshoot-ModerateBreezeItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Overshoot-FreshBreezeItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Overshoot-StrongBreezeItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/Overshoot-GaleItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/Overshoot-StormItalic.woff2) format("woff2")}
 /* Overshoot partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Overshoot",var(--sans)}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -56,7 +65,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
         <p><strong>Une grotesque extra-large au squelette suisse, dessinée à neuf.</strong> <strong>9 graisses</strong>, du calme à la tempête. Majuscules et minuscules.</p>
       </div>
       <div class="facts">
-        <span>Grotesque extra-large</span><span>9 graisses</span><span>Calm → Storm</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Grotesque extra-large</span><span>9 graisses</span><span>+ italiques</span><span>Calm → Storm</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -64,7 +73,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">Elles portent les noms de l'échelle du vent : de Calm, presque un fil, à Storm, plein noir. Les rondes, les bouts et l'espacement suivent la graisse pour que les contreformes restent ouvertes.</p>
+      <p class="intro">Elles portent les noms de l'échelle du vent : de Calm, presque un fil, à Storm, plein noir. Les rondes, les bouts et l'espacement suivent la graisse pour que les contreformes restent ouvertes. Chaque graisse a aussi son <strong>italique</strong>, penchée de 12°.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -153,7 +162,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
       <h2>Télécharger</h2>
       <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Overshoot.zip" download><b>OVERSHOOT.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="Overshoot.zip" download><b>OVERSHOOT.ZIP</b><span>Les 9 graisses et leurs italiques (OTF) + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/overshoot/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/overshoot/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -163,7 +172,8 @@ section > .wrap > h2{font-weight:800;font-size:clamp(22px,4.4vw,50px)}
   src: url(Overshoot-StrongBreeze.woff2) format("woff2"); }
 /* … une règle par graisse : Calm 100, Light Air 200, Light Breeze 300,
    Gentle Breeze 400, Moderate Breeze 500, Fresh Breeze 600,
-   Strong Breeze 700, Gale 800, Storm 900. */</code></pre>
+   Strong Breeze 700, Gale 800, Storm 900. */
+/* Italiques : famille « Overshoot Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -181,14 +191,14 @@ window.SPECIMEN = {
   family: "Overshoot",
   sample: "Overshoot",
   styles: [
-    {n:"Calm",w:100},{n:"Light Air",w:200},{n:"Light Breeze",w:300},{n:"Gentle Breeze",w:400},{n:"Moderate Breeze",w:500},
-    {n:"Fresh Breeze",w:600},{n:"Strong Breeze",w:700},{n:"Gale",w:800},{n:"Storm",w:900}
+    {n:"Calm",w:100},{n:"Calm Italic",w:100,fam:"Overshoot Italic"},{n:"Light Air",w:200},{n:"Light Air Italic",w:200,fam:"Overshoot Italic"},{n:"Light Breeze",w:300},{n:"Light Breeze Italic",w:300,fam:"Overshoot Italic"},{n:"Gentle Breeze",w:400},{n:"Gentle Breeze Italic",w:400,fam:"Overshoot Italic"},{n:"Moderate Breeze",w:500},{n:"Moderate Breeze Italic",w:500,fam:"Overshoot Italic"},
+    {n:"Fresh Breeze",w:600},{n:"Fresh Breeze Italic",w:600,fam:"Overshoot Italic"},{n:"Strong Breeze",w:700},{n:"Strong Breeze Italic",w:700,fam:"Overshoot Italic"},{n:"Gale",w:800},{n:"Gale Italic",w:800,fam:"Overshoot Italic"},{n:"Storm",w:900},{n:"Storm Italic",w:900,fam:"Overshoot Italic"}
   ],
-  testerDefault: 6,
+  testerDefault: 12,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
     ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
-  glyphChips: [0, 2, 4, 6, 8],
+  glyphChips: [0, 4, 8, 12, 16, 13],
   glyphDefault: 3
 };
 </script>
