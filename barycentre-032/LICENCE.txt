@@ -1,9 +1,9 @@
-LICENCE D'UTILISATION — TRAÎNE
+LICENCE D'UTILISATION — BARYCENTRE-032
 © 2026 LaFleurStudio. Tous droits réservés.
-Cette licence couvre la police Traîne.
+Cette licence couvre la police BARYCENTRE-032.
 
 1. Usage personnel : gratuit
-Vous pouvez télécharger, installer et utiliser Traîne gratuitement pour un usage
+Vous pouvez télécharger, installer et utiliser BARYCENTRE-032 gratuitement pour un usage
 personnel et non commercial : projets personnels, études, essais, maquettes, site
 personnel sans activité commerciale.
 
@@ -26,7 +26,7 @@ est donnée par écrit et précise le projet qu'elle couvre.
   permette de les récupérer.
 
 4. Propriété
-Traîne reste la propriété de LaFleurStudio. Cette licence donne un droit
+BARYCENTRE-032 reste la propriété de LaFleurStudio. Cette licence donne un droit
 d'utilisation, pas un droit de propriété.
 
 5. Aucune garantie
@@ -40,12 +40,12 @@ Signé : Jonathan Kern
 
 -----------------------------------------------------------------------------------
 
-END USER LICENSE — TRAÎNE
+END USER LICENSE — BARYCENTRE-032
 © 2026 LaFleurStudio. All rights reserved.
-This license covers Traîne.
+This license covers BARYCENTRE-032.
 
 1. Personal use: free
-You may download, install and use Traîne free of charge for personal,
+You may download, install and use BARYCENTRE-032 free of charge for personal,
 non-commercial use: personal projects, studies, tests, mock-ups, a personal website
 with no commercial activity.
 
@@ -68,7 +68,7 @@ writing and names the project it covers.
   extracted.
 
 4. Ownership
-Traîne remains the property of LaFleurStudio. This license grants a right of use,
+BARYCENTRE-032 remains the property of LaFleurStudio. This license grants a right of use,
 not ownership.
 
 5. No warranty
