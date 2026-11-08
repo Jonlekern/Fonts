@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psalter</title>
+<meta name="description" content="Psalter : gothique Textura écrite à la plume, dessinée à neuf. Jambages droits, losanges en haut et au pied, rondes cassées, capitales à délié décoratif. 5 graisses de Matins à Compline. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Psalter";font-weight:200;font-display:swap;src:url(fonts/woff2/Psalter-Matins.woff2) format("woff2")}
+@font-face{font-family:"Psalter";font-weight:300;font-display:swap;src:url(fonts/woff2/Psalter-Lauds.woff2) format("woff2")}
+@font-face{font-family:"Psalter";font-weight:400;font-display:swap;src:url(fonts/woff2/Psalter-Terce.woff2) format("woff2")}
+@font-face{font-family:"Psalter";font-weight:600;font-display:swap;src:url(fonts/woff2/Psalter-Vespers.woff2) format("woff2")}
+@font-face{font-family:"Psalter";font-weight:800;font-display:swap;src:url(fonts/woff2/Psalter-Compline.woff2) format("woff2")}
+/* Psalter partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Psalter",var(--serif,Georgia),serif}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:24px;font-weight:600}
+section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:1.1}
+.step h3{font-weight:400;font-size:clamp(26px,3vw,36px)}
+.card b{font-weight:600;font-size:clamp(18px,4.8vw,28px);overflow-wrap:anywhere}
+.hero h1{font-family:"Psalter";font-weight:800;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/3.2);line-height:1.1}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/5.2);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/5.2)}}
+.demo .row span{font-size:calc(100cqw/4.3);line-height:1.3;white-space:pre}
+.glyphs div{font-size:38px}
+#tester-text{line-height:1.45}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Psalter</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Gothique Textura</p>
+      <h1 style="margin-top:18px">Psalter</h1>
+      <div class="lede">
+        <p><strong>L'écriture noire des psautiers du Moyen Âge.</strong> Des jambages droits serrés comme une palissade, un losange en haut et au pied de chacun, des rondes cassées en angles : tout vient d'une plume plate tenue droite. <strong>5 graisses</strong>, de Matins à Compline. Pour les étiquettes, les tatouages, les affiches et les titres.</p>
+      </div>
+      <div class="facts">
+        <span>Gothique Textura</span><span>5 graisses</span><span>Matins → Compline</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Elles portent le nom des heures de la prière, de l'aube à la nuit : Matins, Lauds, Terce, Vespers, Compline. Plus l'heure avance, plus la plume est large et la page noire.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">Brasserie du Vieux Moulin — Bière Blonde & Ambrée</div>
+      </div>
+      <p class="hint">Astuce : les 5 graisses sont dans une seule famille « Psalter » : 200, 300, 400, 600 et 800.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin. Les accents aussi sont des petits gestes de plume.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Une page de psautier, en police.</strong> Chaque lettre est écrite à neuf avec la même plume plate tenue droite, comme dans les livres de prière du XIIIe au XVe siècle : pour les étiquettes de bière, les tatouages, les pochettes et les titres.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Des jambages en palissade</h3>
+            <p>Le n, le m, le u sont faits de <strong>jambages</strong> droits et serrés, le blanc entre eux à peine plus large qu'eux. Chacun commence par un <strong>losange</strong> et finit par un pied en losange, comme quand la plume entre et sort du trait.</p>
+          </div>
+          <div class="demo" aria-label="Des jambages en palissade">
+            <div class="row"><small>Matins (200)</small><span style="font-weight:200">minimum</span></div>
+            <div class="row"><small>Compline (800)</small><span style="font-weight:800">minimum</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des rondes cassées</h3>
+            <p>Dans la Textura il n'y a pas de rond : le o, le c, le e sont <strong>cassés en angles</strong>. La plume tenue droite fait l'épaule épaisse en haut à droite et le pied épais en bas à gauche, et des déliés entre les deux.</p>
+          </div>
+          <div class="demo" aria-label="Des rondes cassées">
+            <div class="row"><small>Terce (400)</small><span style="font-weight:400">Gloria</span></div>
+            <div class="row"><small>Vespers (600)</small><span style="font-weight:600">Bier & Brot</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des capitales à délié</h3>
+            <p>Les capitales ont un <strong>délié décoratif</strong> qui court le long du fût, comme dans les manuscrits. H et N gardent deux vrais fûts pour se lire tout de suite.</p>
+          </div>
+          <div class="demo" aria-label="Des capitales à délié">
+            <div class="row"><small>Terce (400)</small><span style="font-weight:400">Heilige</span></div>
+            <div class="row"><small>Compline (800)</small><span style="font-weight:800">Nacht</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>De Matins à Compline</h3>
+            <p>Les graisses suivent les heures de la prière : <strong>Matins</strong>, la plume fine de l'aube, <strong>Terce</strong>, celle du matin, <strong>Compline</strong>, la plus large, la prière du soir.</p>
+          </div>
+          <div class="demo" aria-label="De Matins à Compline">
+            <div class="row"><small>Matins (200)</small><span style="font-weight:200">Psalter</span></div>
+            <div class="row"><small>Compline (800)</small><span style="font-weight:800">Psalter</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Psalter.zip" download><b>Psalter.zip</b><span>Les 5 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/psalter/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/psalter/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Psalter"; font-weight: 400;
+  src: url(Psalter-Terce.woff2) format("woff2"); }
+/* … une règle par graisse : Matins 200, Lauds 300, Terce 400,
+   Vespers 600, Compline 800. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Psalter © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Psalter",
+  sample: "Heilige Nacht",
+  styles: [
+    {n:"Matins",w:200},{n:"Lauds",w:300},{n:"Terce",w:400},{n:"Vespers",w:600},{n:"Compline",w:800}
+  ],
+  testerDefault: 2,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 2, 4],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
