@@ -20,8 +20,8 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
 .step h3{font-weight:400;font-size:clamp(26px,3vw,36px)}
 .card b{font-weight:600;font-size:clamp(18px,4.8vw,28px);overflow-wrap:anywhere}
 .hero h1{font-family:"Longhand";font-weight:800;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/4.4);line-height:1.15}
-.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/9.3);line-height:1.4}
-@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/9.3)}}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/10.4);line-height:1.4}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/10.4)}}
 .demo .row span{font-size:calc(100cqw/5.0);line-height:1.4;white-space:pre}
 .glyphs div{font-size:38px}
 #tester-text{line-height:1.45}
@@ -74,7 +74,7 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
           <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
           <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
         </div>
-        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">Fait à Venise, le 3 mars 1526. Avec toute mon amitié.</div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">Fait à Bienne, le 8 novembre 2026. Avec toute mon amitié, LaFleurStudio.</div>
       </div>
       <p class="hint">Astuce : les 5 graisses sont dans une seule famille « Longhand » : 200, 300, 400, 600 et 800.</p>
     </div>
@@ -102,8 +102,8 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
             <p>Une plume large glisse le long de chaque geste, toujours au même angle. Là où elle avance de face, le trait est <strong>plein</strong>, là où elle glisse sur la tranche, il devient un <strong>délié</strong>. Comme à la main.</p>
           </div>
           <div class="demo" aria-label="Une plume plate, tenue en biais">
-            <div class="row"><small>Note (200)</small><span style="font-weight:200">ominous</span></div>
-            <div class="row"><small>Decree (800)</small><span style="font-weight:800">ominous</span></div>
+            <div class="row"><small>Note (200)</small><span style="font-weight:200">Bienne</span></div>
+            <div class="row"><small>Decree (800)</small><span style="font-weight:800">Bienne</span></div>
           </div>
         </div>
 
@@ -113,8 +113,8 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
             <p>Comme dans l'italique de chancellerie, les arches du <strong>n</strong>, du <strong>m</strong> et du <strong>h</strong> partent du fût assez bas et montent en diagonale. Le <strong>a</strong> est en triangle et les fûts finissent par une petite sortie.</p>
           </div>
           <div class="demo" aria-label="Des arches qui partent du fût">
-            <div class="row"><small>Deed (400)</small><span style="font-weight:400">manuscrit</span></div>
-            <div class="row"><small>Charter (600)</small><span style="font-weight:600">hamburg</span></div>
+            <div class="row"><small>Deed (400)</small><span style="font-weight:400">création</span></div>
+            <div class="row"><small>Charter (600)</small><span style="font-weight:600">graphique</span></div>
           </div>
         </div>
 
@@ -124,8 +124,8 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
             <p>Les minuscules sont petites et les montantes et descendantes très longues, comme dans les écritures du XVIe siècle. Le <strong>f</strong> descend sous la ligne et se glisse sous ses voisines.</p>
           </div>
           <div class="demo" aria-label="Des montantes et des queues longues">
-            <div class="row"><small>Letter (300)</small><span style="font-weight:300">Les fleurs</span></div>
-            <div class="row"><small>Decree (800)</small><span style="font-weight:800">Jardin</span></div>
+            <div class="row"><small>Letter (300)</small><span style="font-weight:300">La fleur</span></div>
+            <div class="row"><small>Decree (800)</small><span style="font-weight:800">Jura</span></div>
           </div>
         </div>
 
@@ -174,7 +174,7 @@ section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:
 <script>
 window.SPECIMEN = {
   family: "Longhand",
-  sample: "Lettre écrite à la main",
+  sample: "Écrit à la main, à Bienne",
   styles: [
     {n:"Note",w:200},{n:"Letter",w:300},{n:"Deed",w:400},{n:"Charter",w:600},{n:"Decree",w:800}
   ],
