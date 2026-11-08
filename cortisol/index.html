@@ -16,6 +16,15 @@
 @font-face{font-family:"Cortisol";font-weight:700;font-display:swap;src:url(fonts/woff2/Cortisol-Rush.woff2) format("woff2")}
 @font-face{font-family:"Cortisol";font-weight:800;font-display:swap;src:url(fonts/woff2/Cortisol-Panic.woff2) format("woff2")}
 @font-face{font-family:"Cortisol";font-weight:900;font-display:swap;src:url(fonts/woff2/Cortisol-Burnout.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/Cortisol-ZenItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/Cortisol-ChillItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Cortisol-CoolItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Cortisol-SteadyItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Cortisol-BusyItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Cortisol-TenseItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Cortisol-RushItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/Cortisol-PanicItalic.woff2) format("woff2")}
+@font-face{font-family:"Cortisol Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/Cortisol-BurnoutItalic.woff2) format("woff2")}
 /* Cortisol partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Cortisol",var(--sans)}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -56,7 +65,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
         <p><strong>De la serif de mode à la Fat Face.</strong> <strong>9 graisses</strong>, du zen au burnout. Majuscules et minuscules.</p>
       </div>
       <div class="facts">
-        <span>Serif à fort contraste</span><span>9 graisses</span><span>Zen → Burnout</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Serif à fort contraste</span><span>9 graisses</span><span>+ italiques</span><span>Zen → Burnout</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -64,7 +73,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">Elles suivent la montée du stress : de Zen, aux déliés fins comme des cheveux, à Burnout, une Fat Face d'affiche. Les déliés restent fins, seuls les fûts grossissent.</p>
+      <p class="intro">Elles suivent la montée du stress : de Zen, aux déliés fins comme des cheveux, à Burnout, une Fat Face d'affiche. Les déliés restent fins, seuls les fûts grossissent. Chaque graisse a aussi sa <strong>vraie italique</strong>, redessinée : a à un étage, f qui descend sous la ligne, sorties en crochet à la place des pieds.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -153,7 +162,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
       <h2>Télécharger</h2>
       <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Cortisol.zip" download><b>CORTISOL.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="Cortisol.zip" download><b>CORTISOL.ZIP</b><span>Les 9 graisses et leurs italiques (OTF) + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/cortisol/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/cortisol/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -162,7 +171,8 @@ section > .wrap > h2{font-weight:700;font-size:clamp(28px,5vw,58px);line-height:
 <pre><code>@font-face { font-family: "Cortisol"; font-weight: 900;
   src: url(Cortisol-Burnout.woff2) format("woff2"); }
 /* … une règle par graisse : Zen 100, Chill 200, Cool 300, Steady 400,
-   Busy 500, Tense 600, Rush 700, Panic 800, Burnout 900. */</code></pre>
+   Busy 500, Tense 600, Rush 700, Panic 800, Burnout 900. */
+/* Italiques : famille « Cortisol Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -180,14 +190,14 @@ window.SPECIMEN = {
   family: "Cortisol",
   sample: "Haute pression",
   styles: [
-    {n:"Zen",w:100},{n:"Chill",w:200},{n:"Cool",w:300},{n:"Steady",w:400},{n:"Busy",w:500},
-    {n:"Tense",w:600},{n:"Rush",w:700},{n:"Panic",w:800},{n:"Burnout",w:900}
+    {n:"Zen",w:100},{n:"Zen Italic",w:100,fam:"Cortisol Italic"},{n:"Chill",w:200},{n:"Chill Italic",w:200,fam:"Cortisol Italic"},{n:"Cool",w:300},{n:"Cool Italic",w:300,fam:"Cortisol Italic"},{n:"Steady",w:400},{n:"Steady Italic",w:400,fam:"Cortisol Italic"},{n:"Busy",w:500},{n:"Busy Italic",w:500,fam:"Cortisol Italic"},
+    {n:"Tense",w:600},{n:"Tense Italic",w:600,fam:"Cortisol Italic"},{n:"Rush",w:700},{n:"Rush Italic",w:700,fam:"Cortisol Italic"},{n:"Panic",w:800},{n:"Panic Italic",w:800,fam:"Cortisol Italic"},{n:"Burnout",w:900},{n:"Burnout Italic",w:900,fam:"Cortisol Italic"}
   ],
-  testerDefault: 8,
+  testerDefault: 16,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
     ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
-  glyphChips: [0, 2, 4, 6, 8],
+  glyphChips: [0, 4, 8, 12, 16, 9],
   glyphDefault: 2
 };
 </script>

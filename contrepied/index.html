@@ -16,6 +16,15 @@
 @font-face{font-family:"Contrepied";font-weight:700;font-display:swap;src:url(fonts/woff2/Contrepied-Volee.woff2) format("woff2")}
 @font-face{font-family:"Contrepied";font-weight:800;font-display:swap;src:url(fonts/woff2/Contrepied-Boulet.woff2) format("woff2")}
 @font-face{font-family:"Contrepied";font-weight:900;font-display:swap;src:url(fonts/woff2/Contrepied-Canon.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:100;font-display:swap;src:url(fonts/woff2/Contrepied-PasseItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:200;font-display:swap;src:url(fonts/woff2/Contrepied-FeinteItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Contrepied-CrochetItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Contrepied-DribbleItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Contrepied-TirItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Contrepied-FrappeItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Contrepied-VoleeItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:800;font-display:swap;src:url(fonts/woff2/Contrepied-BouletItalic.woff2) format("woff2")}
+@font-face{font-family:"Contrepied Italic";font-weight:900;font-display:swap;src:url(fonts/woff2/Contrepied-CanonItalic.woff2) format("woff2")}
 /* Contrepied partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Contrepied",var(--sans)}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -56,7 +65,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,5.4vw,62px);line-heigh
         <p><strong>Le contraste à l'envers.</strong> Verticales fines, horizontales et empattements épais : le style des affiches de saloon. <strong>9 graisses</strong>, de Passe à Canon. Majuscules et minuscules.</p>
       </div>
       <div class="facts">
-        <span>Contraste inversé</span><span>9 graisses</span><span>Passe → Canon</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Contraste inversé</span><span>9 graisses</span><span>+ italiques</span><span>Passe → Canon</span><span>Majuscules et minuscules</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -64,7 +73,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,5.4vw,62px);line-heigh
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">Elles suivent la force d'un tir au foot : de Passe, toute en finesse, à Canon. Les verticales restent fines, ce sont les horizontales et les empattements qui grossissent.</p>
+      <p class="intro">Elles suivent la force d'un tir au foot : de Passe, toute en finesse, à Canon. Les verticales restent fines, ce sont les horizontales et les empattements qui grossissent. Chaque graisse a aussi sa <strong>vraie italique</strong>, redessinée : a à un étage, f qui descend sous la ligne, sorties en crochet à la place des pieds.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -153,7 +162,7 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,5.4vw,62px);line-heigh
       <h2>Télécharger</h2>
       <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Contrepied.zip" download><b>CONTREPIED.ZIP</b><span>Les 9 graisses (OTF) + licence</span></a>
+        <a class="card" href="Contrepied.zip" download><b>CONTREPIED.ZIP</b><span>Les 9 graisses et leurs italiques (OTF) + licence</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/contrepied/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/contrepied/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -162,7 +171,8 @@ section > .wrap > h2{font-weight:800;font-size:clamp(30px,5.4vw,62px);line-heigh
 <pre><code>@font-face { font-family: "Contrepied"; font-weight: 400;
   src: url(Contrepied-Dribble.woff2) format("woff2"); }
 /* … une règle par graisse : Passe 100, Feinte 200, Crochet 300, Dribble 400,
-   Tir 500, Frappe 600, Volée 700 (Contrepied-Volee), Boulet 800, Canon 900. */</code></pre>
+   Tir 500, Frappe 600, Volée 700 (Contrepied-Volee), Boulet 800, Canon 900. */
+/* Italiques : famille « Contrepied Italic », mêmes graisses, fichiers en …Italic.woff2. */</code></pre>
 </details>
     </div>
   </section>
@@ -180,14 +190,14 @@ window.SPECIMEN = {
   family: "Contrepied",
   sample: "Le Saloon de 1885",
   styles: [
-    {n:"Passe",w:100},{n:"Feinte",w:200},{n:"Crochet",w:300},{n:"Dribble",w:400},{n:"Tir",w:500},
-    {n:"Frappe",w:600},{n:"Volée",w:700},{n:"Boulet",w:800},{n:"Canon",w:900}
+    {n:"Passe",w:100},{n:"Passe Italic",w:100,fam:"Contrepied Italic"},{n:"Feinte",w:200},{n:"Feinte Italic",w:200,fam:"Contrepied Italic"},{n:"Crochet",w:300},{n:"Crochet Italic",w:300,fam:"Contrepied Italic"},{n:"Dribble",w:400},{n:"Dribble Italic",w:400,fam:"Contrepied Italic"},{n:"Tir",w:500},{n:"Tir Italic",w:500,fam:"Contrepied Italic"},
+    {n:"Frappe",w:600},{n:"Frappe Italic",w:600,fam:"Contrepied Italic"},{n:"Volée",w:700},{n:"Volée Italic",w:700,fam:"Contrepied Italic"},{n:"Boulet",w:800},{n:"Boulet Italic",w:800,fam:"Contrepied Italic"},{n:"Canon",w:900},{n:"Canon Italic",w:900,fam:"Contrepied Italic"}
   ],
-  testerDefault: 6,
+  testerDefault: 12,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
     ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
-  glyphChips: [0, 3, 4, 6, 8],
+  glyphChips: [0, 6, 8, 12, 16, 7],
   glyphDefault: 1
 };
 </script>

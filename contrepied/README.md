@@ -34,11 +34,15 @@ Les graisses suivent la force d'un tir au foot, de **Passe** à **Canon**.
 
 Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin.
 
+## Italiques
+
+Chaque graisse a sa vraie italique, penchée de 11° et redessinée : a à un étage, f qui descend sous la ligne avec un crochet à boule, et les minuscules n, m, h, u, i, l, a, d finissent par une sortie en crochet au lieu d'un pied. Les capitales et les chiffres sont penchés. Crénage refait pour l'italique. Les fichiers finissent par « Italic » (`Contrepied-BouletItalic.otf`…). Sur le web : une famille « Contrepied Italic » avec les mêmes graisses.
+
 ## Fichiers
 
-- `fonts/otf/` : les 9 graisses à installer (OpenType)
-- `fonts/woff2/` : les 9 graisses pour le web
-- `Contrepied.zip` : les 9 graisses (OTF) + la licence
+- `fonts/otf/` : les 9 graisses et leurs italiques à installer (OpenType)
+- `fonts/woff2/` : les 9 graisses et leurs italiques pour le web
+- `Contrepied.zip` : les 9 graisses et leurs italiques (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence
