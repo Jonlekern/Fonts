@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clebard</title>
-<meta name="description" content="Clebard, néo-grotesque suisse en extra-large : un chien de race qui a pris du coffre. 6 graisses en tailles de café, du Demi au Trenta. Licence libre GUST. Par LaFleurStudio.">
+<meta name="description" content="Clebard : néo-grotesque suisse en extra-large. 6 graisses en tailles de café, du Demi au Trenta. Licence libre GUST. Par LaFleurStudio.">
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"Clebard";font-weight:400;font-display:swap;src:url(fonts/woff2/Clebard-Demi.woff2) format("woff2")}
@@ -58,8 +58,7 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
       <h1 style="margin-top:18px">CLEBARD</h1>
       <p class="motto">Chien qui aboie ne mord pas</p>
       <div class="lede">
-        <p><strong>Néo-grotesque suisse en extra-large</strong> : un chien de race qui a pris du coffre.</p>
-        <p><strong>6 graisses en tailles de café</strong>, du Demi au Trenta.</p>
+        <p><strong>Néo-grotesque suisse en extra-large.</strong> Un chien de race qui a pris du coffre. <strong>6 graisses en tailles de café</strong>, du Demi au Trenta.</p>
       </div>
       <div class="facts">
         <span>6 graisses</span><span>+ italiques</span><span>Demi → Trenta</span><span>Chasse à 140 %</span><span>Latin, grec, vietnamien</span><span>Licence libre GUST</span>
@@ -70,7 +69,7 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
   <section id="graisses">
     <div class="wrap">
       <h2>Les graisses</h2>
-      <p class="intro">De 400 à 1400, nommées comme des tailles de café. Au-delà de 700, la police a été poussée plus loin que le Bold d'origine. Chaque graisse a aussi son <strong>italique</strong>, penchée de 12°.</p>
+      <p class="intro">De 400 à 1400, en tailles de café. L'originale s'arrête au Bold (700) : au-delà, c'est nous. Chaque graisse a son <strong>italique</strong>, penchée de 12°.</p>
       <div class="weights" id="weights"></div>
     </div>
   </section>
@@ -78,7 +77,7 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
   <section id="testeur">
     <div class="wrap">
       <h2>Testeur</h2>
-      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <p class="intro">Clique et écris.</p>
       <div class="tester">
         <div class="controls">
           <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
@@ -86,14 +85,14 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
         </div>
         <div id="tester-text" contenteditable="true" spellcheck="false">Le chien qui aboie ne mord pas</div>
       </div>
-      <p class="hint">Astuce : les 6 tailles sont dans une seule famille « Clebard », de 400 à 1000 (voir « Télécharger »).</p>
+      <p class="hint">Une seule famille « Clebard » pour les 6 tailles, de 400 à 1000 (voir « Télécharger »).</p>
     </div>
   </section>
 
   <section id="caracteres">
     <div class="wrap">
       <h2>Caractères</h2>
-      <p class="intro">Majuscules, minuscules, chiffres, accents (y compris le vietnamien), grec, ponctuation et symboles.</p>
+      <p class="intro">Majuscules, minuscules, chiffres, accents (vietnamien compris), grec, ponctuation, symboles.</p>
       <div class="glyph-controls" id="gw"></div>
       <div class="glyphs" id="glyphs"></div>
     </div>
@@ -102,15 +101,15 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
   <section id="fabrication">
     <div class="wrap">
       <h2>Comment on l'a faite</h2>
-      <p class="intro">Clebard n'a pas été dessinée de zéro : elle part de TeX Gyre Heros, transformée étape par étape avec des scripts Python.</p>
+      <p class="intro">Clebard part de TeX Gyre Heros. On l'a transformée étape par étape, avec des scripts Python.</p>
 
       <div class="steps">
 
         <div class="step">
           <div>
             <h3>On a pris un classique suisse</h3>
-            <p>On a pris <strong>TeX Gyre Heros</strong>, la version libre du grand classique suisse des années 1950, et on l'a <strong>élargie, épaissie et respacée</strong>.</p>
-            <p>On a gardé son caractère : le R avec sa jambe qui descend à la verticale, le G avec son éperon, les bouts de courbes coupés à l'horizontale.</p>
+            <p><strong>TeX Gyre Heros</strong>, la version libre du grand classique suisse des années 1950. On l'a <strong>élargie, épaissie et respacée</strong>.</p>
+            <p>Son caractère reste : le R à la jambe verticale, le G à éperon, les bouts de courbes coupés à l'horizontale.</p>
           </div>
           <div class="demo" aria-label="Clebard en Short et en Trenta">
             <div class="row"><small>Short (600)</small><span style="font-weight:600">CLEBARD</span></div>
@@ -121,17 +120,16 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
         <div class="step">
           <div>
             <h3>Élargir à 140 % sans déformer</h3>
-            <p>Étirer une police épaissit ses traits verticaux, mais pas les horizontaux : les lettres ont l'air déformées. Étiré brut à 140 %, le fût du H du Bold passe de 150 à <strong>210</strong> unités.</p>
-            <p>La solution : <strong>étirer, puis rentrer les contours à l'horizontale</strong>, d'une ellipse plus large que haute. Les fûts retombent pile à leur épaisseur d'origine, <strong>150</strong>, et les courbes restent rondes.</p>
+            <p>Étirer épaissit les verticales, pas les horizontales. À 140 % brut, le fût du H du Bold passe de 150 à <strong>210</strong> unités : déformé.</p>
+            <p>L'astuce : <strong>on étire, puis on rentre les contours à l'horizontale</strong>. Les fûts retombent à <strong>150</strong>, les courbes restent rondes.</p>
           </div>
           <figure class="fig"><img src="images/elargir.png" alt="CLEBARD en TeX Gyre Heros Bold, étiré brut à 140 %, puis élargi sans déformer"><figcaption>La base, l'étirement brut, puis la version corrigée.</figcaption></figure>
         </div>
 
         <div class="step">
           <div>
-            <h3>Six graisses, en tailles de café</h3>
-            <p>Chaque graisse part du Regular ou du Bold de Heros. Les contours sont <strong>poussés vers l'extérieur ou rentrés</strong> jusqu'à une épaisseur visée pour les fûts et pour les traits horizontaux, en prolongeant la progression du Regular au Bold jusqu'à 1400. La hauteur des majuscules est ensuite recalée.</p>
-            <p>Les noms sont ceux des tailles de café, du Demi au Trenta.</p>
+            <h3>6 graisses, en tailles de café</h3>
+            <p>Chaque graisse part du Regular ou du Bold de Heros. On <strong>pousse ou on rentre les contours</strong> jusqu'à l'épaisseur visée, en prolongeant l'écart Regular → Bold jusqu'à 1400. Puis on recale la hauteur des majuscules.</p>
           </div>
           <div class="tablewrap">
             <table>
@@ -144,8 +142,8 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
         <div class="step">
           <div>
             <h3>Garder les ouvertures</h3>
-            <p>Au-delà de 1000, les blancs du e, du s, du a, du g, du 3, du 5, du 6, du 9 et du € se bouchent. Pour ces lettres seulement, <strong>les traits horizontaux sont affinés</strong> juste ce qu'il faut pour garder une ouverture lisible.</p>
-            <p>Les points et les accents sont décalés pour ne pas se coller à la lettre, et la croix du ð reste lisible.</p>
+            <p>Après 1000, les blancs du e, s, a, g, 3, 5, 6, 9 et € se bouchent. Pour ces signes-là, on <strong>affine les traits horizontaux</strong>, juste assez pour que ça reste ouvert.</p>
+            <p>Points et accents décollés de la lettre, croix du ð lisible.</p>
           </div>
           <figure class="fig"><img src="images/ouvertures.png" alt="seag3 en 1200, les blancs bouchés, puis corrigés"><figcaption>En haut sans correction, en bas la Venti.</figcaption></figure>
         </div>
@@ -153,8 +151,8 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
         <div class="step">
           <div>
             <h3>La Trenta, trichée</h3>
-            <p>À 1400, le dessin casse : le s devient un pâté, le € se referme. Là où ça casse, on triche : <strong>on reprend la 1200 et on l'épaissit seulement à l'horizontale</strong>.</p>
-            <p>Résultat : les fûts de la 1400 (<strong>283</strong> unités) avec les ouvertures de la 1200. Partout ailleurs, c'est de la vraie 1400.</p>
+            <p>À 1400, ça casse : le s fait un pâté, le € se referme. Là, on triche : <strong>on reprend la 1200 et on l'épaissit seulement à l'horizontale</strong>.</p>
+            <p>Les fûts de la 1400 (<strong>283</strong> unités), les ouvertures de la 1200. Partout ailleurs, c'est de la vraie 1400.</p>
           </div>
           <figure class="fig"><img src="images/triche.png" alt="sea€5 en 1400 pure, cassé, puis triché"><figcaption>En haut la 1400 pure, en bas la Trenta.</figcaption></figure>
         </div>
@@ -162,8 +160,8 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
         <div class="step">
           <div>
             <h3>L'espacement de Calebard</h3>
-            <p>Les approches, lettre par lettre, et le crénage viennent de <a href="../calebard/">Calebard</a>, mis à la taille de Clebard (même hauteur de majuscules). Avec le L–A resserré de LAFLEURSTUDIO.</p>
-            <p>Chaque taille prend l'espacement de la graisse de Calebard la plus proche. Les lettres accentuées sont placées comme leur lettre de base.</p>
+            <p>Approches et crénage viennent de <a href="../calebard/">Calebard</a>, mis à l'échelle (même hauteur de majuscules). Avec le L–A serré de LAFLEURSTUDIO.</p>
+            <p>Chaque taille prend l'espacement de la graisse de Calebard la plus proche. Les accentuées suivent leur lettre de base.</p>
           </div>
           <figure class="fig"><img src="images/espacement.png" alt="LAFLEURSTUDIO en Calebard, puis en Clebard avant et après l'espacement de Calebard"><figcaption>Calebard, puis Clebard avant et après.</figcaption></figure>
         </div>
@@ -175,9 +173,9 @@ section > .wrap > h2{font-weight:950;font-size:clamp(20px,3.1vw,34px)}
   <section id="telecharger">
     <div class="wrap">
       <h2>Télécharger</h2>
-      <p class="intro">Libre et gratuite, y compris pour un usage commercial. Garde les fichiers de licence avec la police.</p>
+      <p class="intro">Libre et gratuite, même en commercial. Garde les fichiers de licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="Clebard.zip" download><b>Clebard.zip</b><span>Les 6 tailles et leurs italiques en TTF et WOFF2, la licence et les sources</span></a>
+        <a class="card" href="Clebard.zip" download><b>Clebard.zip</b><span>6 tailles + italiques, en TTF et WOFF2, licence et sources</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/clebard/fonts/ttf"><b>TTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/clebard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
       </div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Typefive</title>
-<meta name="description" content="Typefive, police à chasse fixe faite avec les vraies frappes d'une machine à écrire : le grain du ruban, l'encre plus ou moins chargée, cinq versions de chaque signe qui tournent toutes seules. Usage personnel gratuit, usage commercial sur autorisation. Par LaFleurStudio.">
+<meta name="description" content="Typefive : les vraies frappes d'une machine à écrire, en chasse fixe. Le grain du ruban, 5 versions de chaque signe qui tournent toutes seules. Gratuit en perso, commercial sur autorisation. Par LaFleurStudio.">
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(fonts/woff2/Typefive-Regular.woff2) format("woff2")}
@@ -61,8 +61,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
       <p class="label">LaFleurStudio · 2026</p>
       <h1 style="margin-top:18px">TypeFive</h1>
       <div class="lede">
-        <p><strong>Les vraies frappes d'une machine à écrire</strong>, gardées telles quelles dans la police : le grain du ruban, l'encre plus ou moins chargée, la lettre qui bouge d'un poil.</p>
-        <p>Chaque touche a été tapée <strong>cinq fois</strong> : <strong>cinq versions de chaque signe</strong> qui tournent toutes seules, en chasse fixe.</p>
+        <p><strong>Les vraies frappes d'une machine à écrire</strong>, telles quelles : le grain du ruban, l'encre plus ou moins chargée. Chaque touche tapée <strong>5 fois</strong> : <strong>5 versions de chaque signe</strong> qui tournent toutes seules, en chasse fixe.</p>
       </div>
       <div class="facts">
         <span>Chasse fixe</span><span>Les vraies frappes</span><span>5 versions de chaque signe</span><span>Le grain du ruban dans le fichier</span><span>Usage personnel gratuit</span><span>Version 1.001</span>
@@ -73,7 +72,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
   <section id="testeur">
     <div class="wrap">
       <h2>Testeur</h2>
-      <p class="intro">Clique sur le texte pour écrire le tien.</p>
+      <p class="intro">Clique et écris.</p>
       <div class="tester">
         <div class="controls">
           <label>Style <select id="tw" aria-label="Style"></select></label>
@@ -81,14 +80,14 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         </div>
         <div id="tester-text" contenteditable="true" spellcheck="false">Tapé à la machine, frappe après frappe.</div>
       </div>
-      <p class="hint">Astuce : Typefive existe en deux versions, selon ton logiciel (voir « Quelle version ? »).</p>
+      <p class="hint">Deux versions, selon ton logiciel. Voir « Quelle version ? ».</p>
     </div>
   </section>
 
   <section id="caracteres">
     <div class="wrap">
       <h2>Caractères</h2>
-      <p class="intro">Majuscules, minuscules, chiffres, ponctuation et accents.</p>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, accents.</p>
       <div class="glyph-controls" id="gw"></div>
       <div class="glyphs" id="glyphs"></div>
     </div>
@@ -97,14 +96,14 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
   <section id="fabrication">
     <div class="wrap">
       <h2>Comment on l'a faite</h2>
-      <p class="intro">Typefive est fabriquée en Python : chaque frappe est découpée, calée sur la ligne et rangée dans la police telle quelle.</p>
+      <p class="intro">Fabriquée en Python. Chaque frappe est découpée, calée sur la ligne et rangée telle quelle.</p>
 
       <div class="steps">
 
         <div class="step">
           <div>
-            <h3>Une feuille tapée à la machine</h3>
-            <p>Chaque touche de la machine a été tapée <strong>cinq fois</strong>, sur deux feuilles. Les feuilles ont été scannées à <strong>1200 dpi</strong>, en niveaux de gris : assez fin pour garder le grain du ruban.</p>
+            <h3>Tapé à la machine</h3>
+            <p>Chaque touche tapée <strong>5 fois</strong>, sur deux feuilles. Scan à <strong>1200 dpi</strong>, en niveaux de gris : assez fin pour garder le grain du ruban.</p>
           </div>
           <div class="demo" aria-label="Cinq frappes de la même touche">
             <div class="row"><small>Cinq frappes du a</small><span>aaaaa</span></div>
@@ -115,8 +114,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <div class="step">
           <div>
             <h3>Les vraies frappes</h3>
-            <p>Chaque frappe est découpée, puis calée sur la ligne de base et sur le pas de la machine. Elle n'est <strong>pas redessinée</strong> : son encre, ses manques et ses petites taches restent.</p>
-            <p>Les frappes ratées ou trop pâles sont écartées. Les accents et l'apostrophe sont choisis frappe par frappe.</p>
+            <p>Chaque frappe est découpée, calée sur la ligne de base et le pas de la machine. <strong>Pas redessinée</strong> : l'encre, les manques, les petites taches restent. On jette les frappes ratées ou trop pâles. Accents et apostrophe : choisis frappe par frappe.</p>
           </div>
           <div class="demo" aria-label="Typefive">
             <div class="row"><small>Capitales</small><span>LAFLEURSTUDIO</span></div>
@@ -127,7 +125,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <div class="step">
           <div>
             <h3>Les mesures</h3>
-            <p>Toutes les valeurs sont prises sur les frappes, à <strong>1200 dpi</strong>.</p>
+            <p>Toutes prises sur les frappes, à <strong>1200 dpi</strong>.</p>
           </div>
           <div class="tablewrap">
             <table>
@@ -144,11 +142,9 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
 
         <div class="step">
           <div>
-            <h3>Cinq frappes qui tournent</h3>
-            <p>Chaque signe garde <strong>jusqu'à cinq de ses frappes</strong> : l'encre plus ou moins chargée, la lettre qui bouge d'un poil.</p>
-            <p>La police les fait <strong>tourner toute seule</strong> : chaque signe avance d'une à quatre frappes par rapport au signe d'avant, selon la lettre d'avant. Deux signes côte à côte ne sont jamais la même frappe, et une lettre qui revient un peu plus loin tombe rarement sur la même.</p>
-            <p>La rotation continue d'une lettre à l'autre et d'un mot à l'autre, espaces compris : tape « aaaaa » et tu as cinq a différents. L'apostrophe a sept frappes : après certaines lettres, elle saute de deux pour que toutes servent.</p>
-            <p>C'est la fonction <strong>calt</strong> (variantes contextuelles) de la police. Elle marche toute seule dans les navigateurs, InDesign ou Pages ; dans Word, coche « Variantes contextuelles » (Police → Avancé).</p>
+            <h3>5 frappes qui tournent</h3>
+            <p>Chaque signe garde <strong>jusqu'à 5 de ses frappes</strong>, et la police les fait <strong>tourner toute seule</strong>, d'un mot à l'autre, espaces compris. Deux signes côte à côte, jamais la même frappe. Tape « aaaaa » : cinq a différents. L'apostrophe en a 7, et elles servent toutes.</p>
+            <p>C'est la fonction <strong>calt</strong> (variantes contextuelles). Rien à faire dans les navigateurs, InDesign ou Pages. Dans Word, coche « Variantes contextuelles » (Police → Avancé).</p>
           </div>
           <div class="demo" aria-label="La rotation des cinq frappes">
             <div class="row"><small>Tape « aaaaa »</small><span>aaaaa</span></div>
@@ -160,7 +156,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <div class="step">
           <div>
             <h3>Les signes qui manquaient</h3>
-            <p>Ce que la machine n'a pas est <strong>monté avec ses propres frappes</strong> : le « est un ^ couché, le œ un o et un e collés, et le ! une apostrophe sur un point, comme on le tapait à la machine.</p>
+            <p>Ce que la machine n'a pas, on le <strong>monte avec ses propres frappes</strong> : le « est un ^ couché, le œ un o et un e collés, le ! une apostrophe sur un point. Comme on le tapait à la machine.</p>
           </div>
           <div class="demo" aria-label="Signes montés avec les frappes">
             <div class="row"><small>Guillemets et accents</small><span>« Ça, c'est l'été ! »</span></div>
@@ -171,8 +167,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
         <div class="step">
           <div>
             <h3>Une police en images</h3>
-            <p>Le grain du ruban ne peut pas se dessiner en contours : <strong>chaque signe est une image</strong>, rangée dans le fichier en trois formats, pour Apple, pour Adobe et Firefox, et pour Windows et Android.</p>
-            <p>L'encre est <strong>noire</strong> et sa couleur ne se change pas. Les logiciels qui n'affichent pas les polices en couleur montrent la <strong>forme nette</strong>.</p>
+            <p>Le grain du ruban, ça ne se dessine pas en contours. Donc <strong>chaque signe est une image</strong>, rangée en trois formats : pour Apple, pour Adobe et Firefox, pour Windows et Android. L'encre est <strong>noire</strong>, sa couleur ne se change pas. Les logiciels qui n'affichent pas les polices en couleur montrent la <strong>forme nette</strong>.</p>
           </div>
           <div class="demo" aria-label="Typefive">
             <div class="row"><small>Chiffres</small><span>1234567890</span></div>
@@ -187,27 +182,27 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
   <section id="versions">
     <div class="wrap">
       <h2>Quelle version ?</h2>
-      <p class="intro">Typefive existe en deux versions. Elles n'ont pas le même nom : tu peux installer les deux.</p>
+      <p class="intro">Deux versions, deux noms différents : tu peux installer les deux.</p>
       <div class="versions">
         <div class="version">
           <b>Typefive</b>
-          <p>Les photos des frappes, avec toutes les nuances de l'encre. La plus fidèle à la machine.</p>
-          <p><strong>Télécharge celle-ci pour</strong> les sites web et les apps du Mac (Pages, Keynote, TextEdit).</p>
+          <p>Les photos des frappes, toutes les nuances de l'encre. La plus fidèle à la machine.</p>
+          <p><strong>Prends-la pour</strong> les sites web et les apps du Mac (Pages, Keynote, TextEdit).</p>
           <p><strong>Pas pour</strong> Illustrator, Photoshop et InDesign : ils n'y montrent que des lettres noires, toujours la même frappe.</p>
           <a class="card" href="Typefive.zip" download><b>Typefive.zip</b><span>La police en TTF + licence</span></a>
         </div>
         <div class="version">
           <b>Typefive Vecteur</b>
-          <p>Les mêmes frappes, dessinées en vecteurs : le gris de l'encre en huit couches, et les cinq versions de chaque signe.</p>
-          <p><strong>Télécharge celle-ci pour</strong> Illustrator, Photoshop, InDesign et Word.</p>
-          <p><strong>Dans Word</strong> et les logiciels sans couleur, les lettres s'affichent en noir, avec leur grain, et les cinq frappes tournent quand même.</p>
+          <p>Les mêmes frappes en vecteurs : le gris de l'encre en 8 couches, et les 5 versions de chaque signe.</p>
+          <p><strong>Prends-la pour</strong> Illustrator, Photoshop, InDesign et Word.</p>
+          <p><strong>Dans Word</strong> et les logiciels sans couleur : lettres en noir, avec leur grain, et les 5 frappes tournent quand même.</p>
           <a class="card" href="TypefiveVecteur.zip" download><b>TypefiveVecteur.zip</b><span>La police en TTF + licence</span></a>
         </div>
       </div>
       <div class="reglages">
-        <p><strong>La différence :</strong> Typefive range de vraies photos des frappes dans le fichier, avec toutes les nuances de l'encre, mais les logiciels Adobe ne savent pas les lire. Typefive Vecteur redessine ces mêmes frappes en tracés : Adobe les affiche en gris, et les logiciels sans couleur les montrent en noir avec le grain.</p>
-        <p><strong>Pour voir le gris</strong> : rien à cocher. Choisis bien « Typefive Vecteur » dans la liste des polices (un petit logo SVG est à côté de son nom). Il faut au moins Illustrator 2018, Photoshop 2017 ou InDesign 2019 : les versions plus anciennes montrent seulement les lettres en noir.</p>
-        <p><strong>Pour que les 5 frappes tournent</strong>, la fonction « Variantes contextuelles » doit être active :</p>
+        <p><strong>La différence :</strong> Typefive range de vraies photos des frappes, et Adobe ne sait pas les lire. Typefive Vecteur redessine les mêmes frappes en tracés : en gris chez Adobe, en noir avec le grain dans les logiciels sans couleur.</p>
+        <p><strong>Pour voir le gris</strong> : rien à cocher. Choisis bien « Typefive Vecteur » (petit logo SVG à côté du nom). Il faut au moins Illustrator 2018, Photoshop 2017 ou InDesign 2019. Avant, les lettres sont juste noires.</p>
+        <p><strong>Pour que les 5 frappes tournent</strong>, active « Variantes contextuelles » :</p>
         <ul>
           <li><b>Illustrator</b> : Fenêtre › Texte › OpenType, coche « Variantes contextuelles ».</li>
           <li><b>Photoshop</b> : Fenêtre › Caractère, menu ☰ du panneau › OpenType › « Variantes contextuelles ».</li>
@@ -224,7 +219,7 @@ section > .wrap > h2{font-weight:400;font-size:clamp(26px,3.8vw,42px)}
       <h2>Télécharger</h2>
       <div class="licence">
         <p><strong>Usage personnel : gratuit.</strong> Projets perso, études, essais, maquettes.</p>
-        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Chaque projet est étudié : l'autorisation peut être gratuite ou payante.</p>
+        <p><strong>Usage commercial : sur autorisation.</strong> Logo, client, produit vendu, pub, site d'entreprise… écris à <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Selon le projet, c'est gratuit ou payant.</p>
         <p>Revente, partage des fichiers et modification interdits sans accord. Texte complet : <a href="LICENCE.txt">LICENCE.txt</a>.</p>
       </div>
       <div class="dl">
