@@ -1,9 +1,9 @@
-LICENCE D'UTILISATION — SANS RIRE
+LICENCE D'UTILISATION — DRASTIC SANS
 © 2026 LaFleurStudio. Tous droits réservés.
-Cette licence couvre la police Sans Rire.
+Cette licence couvre la police Drastic Sans.
 
 1. Usage personnel : gratuit
-Vous pouvez télécharger, installer et utiliser Sans Rire gratuitement pour un usage
+Vous pouvez télécharger, installer et utiliser Drastic Sans gratuitement pour un usage
 personnel et non commercial : projets personnels, études, essais, maquettes, site
 personnel sans activité commerciale.
 
@@ -26,7 +26,7 @@ est donnée par écrit et précise le projet qu'elle couvre.
   permette de les récupérer.
 
 4. Propriété
-Sans Rire reste la propriété de LaFleurStudio. Cette licence donne un droit
+Drastic Sans reste la propriété de LaFleurStudio. Cette licence donne un droit
 d'utilisation, pas un droit de propriété.
 
 5. Aucune garantie
@@ -40,12 +40,12 @@ Signé : Jonathan Kern
 
 -----------------------------------------------------------------------------------
 
-END USER LICENSE — SANS RIRE
+END USER LICENSE — DRASTIC SANS
 © 2026 LaFleurStudio. All rights reserved.
-This license covers Sans Rire.
+This license covers Drastic Sans.
 
 1. Personal use: free
-You may download, install and use Sans Rire free of charge for personal,
+You may download, install and use Drastic Sans free of charge for personal,
 non-commercial use: personal projects, studies, tests, mock-ups, a personal website
 with no commercial activity.
 
@@ -68,7 +68,7 @@ writing and names the project it covers.
   extracted.
 
 4. Ownership
-Sans Rire remains the property of LaFleurStudio. This license grants a right of use,
+Drastic Sans remains the property of LaFleurStudio. This license grants a right of use,
 not ownership.
 
 5. No warranty

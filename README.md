@@ -29,7 +29,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Last Call** | Police néon dessinée à neuf : des tubes ronds de même épaisseur, coudes arrondis, coupés à chaque jonction comme sur une enseigne de bar | 7 (Helium → Oganesson, les gaz nobles) + 7 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/last-call/) · [Zip](last-call/LastCall.zip) · [Dossier](last-call/) |
 | **Longhand** | Italique de chancellerie dessinée à neuf, écrite à la plume large : pleins et déliés de la plume, arches qui partent du fût, longues montantes | 5 (Note → Decree, du billet au décret) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/longhand/) · [Zip](longhand/Longhand.zip) · [Dossier](longhand/) |
 | **Psalter** | Gothique Textura dessinée à neuf, écrite à la plume tenue droite : jambages à losanges, rondes cassées, capitales à délié décoratif | 5 (Matins → Compline, les heures de la prière) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/psalter/) · [Zip](psalter/Psalter.zip) · [Dossier](psalter/) |
-| **Sans Rire** | Comic sans au feutre dessinée à neuf : pâté d'encre au départ, bols en squircle, 3 versions par lettre qui tournent et sautillent, Zinzin (ss01), cœurs sur les i (ss02), ‽ ‼ ♥ | 5 (Lol → Jpp, du petit rire au fou rire) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/sans-rire/) · [Zip](sans-rire/SansRire.zip) · [Dossier](sans-rire/) |
+| **Drastic Sans** | Comic sans au feutre dessinée à neuf : pâté d'encre au départ, bols en squircle, 3 versions par lettre qui tournent et sautillent, Zinzin (ss01), cœurs sur les i (ss02), ‽ ‼ ♥ | 5 (Lol → Jpp, du petit rire au fou rire) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/drastic-sans/) · [Zip](drastic-sans/DrasticSans.zip) · [Dossier](drastic-sans/) |
 
 ## Organisation
 
@@ -45,10 +45,10 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-sans-rire/
+drastic-sans/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter et Sans Rire : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter et Drastic Sans : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web

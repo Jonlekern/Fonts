@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drastic Sans</title>
+<meta name="description" content="Drastic Sans : comic sans au feutre, dessinée à neuf. Chaque lettre est tracée trois fois et les trois versions tournent : le texte danse. Zinzin, cœurs sur les i, ‽ et ♥. 5 graisses, de Lol à Jpp. Usage personnel gratuit. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Drastic Sans";font-weight:300;font-display:swap;src:url(fonts/woff2/DrasticSans-Lol.woff2) format("woff2")}
+@font-face{font-family:"Drastic Sans";font-weight:400;font-display:swap;src:url(fonts/woff2/DrasticSans-Mdr.woff2) format("woff2")}
+@font-face{font-family:"Drastic Sans";font-weight:600;font-display:swap;src:url(fonts/woff2/DrasticSans-Ptdr.woff2) format("woff2")}
+@font-face{font-family:"Drastic Sans";font-weight:800;font-display:swap;src:url(fonts/woff2/DrasticSans-Xptdr.woff2) format("woff2")}
+@font-face{font-family:"Drastic Sans";font-weight:900;font-display:swap;src:url(fonts/woff2/DrasticSans-Jpp.woff2) format("woff2")}
+/* Drastic Sans partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Drastic Sans",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:22px;font-weight:800}
+section > .wrap > h2{font-weight:800;font-size:clamp(32px,5.6vw,64px);line-height:1.15}
+.step h3{font-weight:600;font-size:clamp(22px,2.7vw,32px)}
+.card b{font-weight:800;font-size:clamp(17px,4.6vw,26px);overflow-wrap:anywhere}
+.hero h1{font-family:"Drastic Sans";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/8.1);line-height:1.2}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/9.6);line-height:1.45}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/9.6)}}
+.demo .row span{line-height:1.45;white-space:pre}
+.glyphs div{font-size:36px}
+#tester-text{line-height:1.5}
+.feat{display:flex;gap:8px;flex-wrap:wrap}
+.zz{font-feature-settings:"ss01"}
+.cc{font-feature-settings:"ss02"}
+.sage{font-feature-settings:"calt" 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Drastic Sans</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Comic sans</p>
+      <h1 style="margin-top:18px">Drastic Sans</h1>
+      <div class="lede">
+        <p><strong>Le comic sans, mais pas sérieux.</strong> Une police au feutre, dessinée à neuf. Chaque lettre est tracée trois fois et, dans le texte, les trois versions tournent : les lettres penchent, sautillent et ne tiennent pas en place. <strong>5 graisses</strong>, du petit rire au fou rire.</p>
+      </div>
+      <div class="facts">
+        <span>Feutre</span><span>5 graisses</span><span>Lol → Jpp</span><span>3 versions par lettre</span><span>Zinzin et cœurs</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Du petit rire au fou rire : Lol, Mdr, Ptdr, Xptdr et Jpp (« j'en peux plus »). Le dessin ne change pas : seul le feutre s'épaissit, et il triche un peu dans les plus grosses pour garder les signes ouverts.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique sur le texte pour écrire le tien. Tape <strong>?!</strong>, <strong>!!</strong>, <strong>&lt;3</strong> ou <strong>wtf</strong> pour voir.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+          <div class="feat" id="feat" role="group" aria-label="Fonctions">
+            <button class="chip" data-f="calt" aria-pressed="true">Danse</button>
+            <button class="chip" data-f="ss01" aria-pressed="false">Zinzin</button>
+            <button class="chip" data-f="ss02" aria-pressed="false">Cœurs</button>
+          </div>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">Wesh frère, t’as vu ça ?! Sans rire, c’est vraiment drôle &lt;3</div>
+      </div>
+      <p class="hint">Astuce : les 5 graisses sont dans une seule famille « Drastic Sans » : 300, 400, 600, 800 et 900. Les lettres dansent toutes seules (fonction calt) ; Zinzin est ss01 et les cœurs sont ss02.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin. Et en plus : ‽ ‼ ♥.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Un comic sans, en plus vivant.</strong> Chaque lettre est écrite à neuf, geste par geste, au feutre : pour les affiches, les bulles, les menus, les invitations, les stories et tout ce qui ne doit pas se prendre au sérieux.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Un feutre qui bave un peu</h3>
+            <p>Une pointe ronde glisse le long de chaque geste. Quand elle se pose, l'encre fait un <strong>petit pâté</strong> ; quand elle se lève, le trait gonfle à peine ; entre les deux, la main <strong>tremble un tout petit peu</strong>. Les bols sont des « squircles », ni ronds ni carrés.</p>
+          </div>
+          <div class="demo" aria-label="Un feutre qui bave un peu">
+            <div class="row"><small>Lol (300)</small><span style="font-weight:300;font-size:calc(100cqw/3.8)">griffonné</span></div>
+            <div class="row"><small>Jpp (900)</small><span style="font-weight:900;font-size:calc(100cqw/6.5)">griffonné</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Trois versions par lettre</h3>
+            <p>Chaque lettre et chaque chiffre est tracé <strong>trois fois</strong>. Dans le texte, les trois versions tournent : une penche à gauche et saute, une penche à droite et descend. Deux lettres pareilles côte à côte ne sont jamais identiques.</p>
+          </div>
+          <div class="demo" aria-label="Trois versions par lettre">
+            <div class="row"><small>Mdr, ça danse</small><span style="font-weight:400;font-size:calc(100cqw/4.7)">mmmmmm</span></div>
+            <div class="row"><small>Mdr, sans la danse (calt 0)</small><span class="sage" style="font-weight:400;font-size:calc(100cqw/4.7)">mmmmmm</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Zinzin</h3>
+            <p>Avec <strong>ss01</strong>, les lettres sautent beaucoup plus haut et plus bas. Pour les titres qui crient.</p>
+          </div>
+          <div class="demo" aria-label="Zinzin">
+            <div class="row"><small>Ptdr (600)</small><span style="font-weight:600;font-size:calc(100cqw/3.9)">Zinzin !!</span></div>
+            <div class="row"><small>Ptdr, Zinzin (ss01)</small><span class="zz" style="font-weight:600;font-size:calc(100cqw/3.9)">Zinzin !!</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des cœurs et des ligatures</h3>
+            <p><strong>?!</strong> et <strong>!?</strong> deviennent un seul signe, <strong>!!</strong> aussi, <strong>&lt;3</strong> devient un cœur et <strong>wtf</strong> se prend des traits de surprise. Avec <strong>ss02</strong>, les i et les j ont des cœurs à la place des points.</p>
+          </div>
+          <div class="demo" aria-label="Des cœurs et des ligatures">
+            <div class="row"><small>Mdr (400)</small><span style="font-weight:400;font-size:calc(100cqw/5.4)">?! !? !! &lt;3 wtf</span></div>
+            <div class="row"><small>Lol, Cœurs (ss02)</small><span class="cc" style="font-weight:300;font-size:calc(100cqw/4.1)">bisous, Lili</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>De Lol à Jpp</h3>
+            <p>Les graisses suivent le rire : <strong>Lol</strong>, le feutre fin, pour un mot en passant ; <strong>Mdr</strong> pour lire ; <strong>Jpp</strong>, le gros feutre, pour ce qui doit se voir de loin.</p>
+          </div>
+          <div class="demo" aria-label="De Lol à Jpp">
+            <div class="row"><small>Lol (300)</small><span style="font-weight:300;font-size:calc(100cqw/3.1)">hahaha</span></div>
+            <div class="row"><small>Jpp (900)</small><span style="font-weight:900;font-size:calc(100cqw/4.9)">hahaha</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite pour un usage personnel. Pour un usage commercial, demande l'autorisation : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde le fichier de licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="DrasticSans.zip" download><b>DrasticSans.zip</b><span>Les 5 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/drastic-sans/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/drastic-sans/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Drastic Sans"; font-weight: 400;
+  src: url(DrasticSans-Mdr.woff2) format("woff2"); }
+/* … une règle par graisse : Lol 300, Mdr 400, Ptdr 600,
+   Xptdr 800, Jpp 900. */
+.zinzin { font-feature-settings: "ss01"; }   /* les lettres sautent */
+.coeurs { font-feature-settings: "ss02"; }   /* cœurs sur les i et les j */
+.sage   { font-feature-settings: "calt" 0; } /* sans la danse */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Drastic Sans © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Drastic Sans",
+  sample: "C’est pour rire",
+  styles: [
+    {n:"Lol",w:300},{n:"Mdr",w:400},{n:"Ptdr",w:600},{n:"Xptdr",w:800},{n:"Jpp",w:900}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^‽‼♥",
+  glyphChips: [0, 2, 4],
+  glyphDefault: 1
+};
+/* fonctions OpenType du testeur : la danse (calt), Zinzin (ss01), les cœurs (ss02) */
+(function () {
+  const box = document.getElementById("feat"), txt = document.getElementById("tester-text");
+  if (!box || !txt) return;
+  const apply = () => {
+    const on = f => box.querySelector(`[data-f="${f}"]`).getAttribute("aria-pressed") === "true";
+    txt.style.fontFeatureSettings = `"calt" ${on("calt") ? 1 : 0}, "ss01" ${on("ss01") ? 1 : 0}, "ss02" ${on("ss02") ? 1 : 0}`;
+  };
+  box.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true"); apply();
+  });
+  apply();
+})();
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>

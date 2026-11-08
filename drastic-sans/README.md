@@ -1,8 +1,8 @@
-# Sans Rire
+# Drastic Sans
 
 Comic sans de LaFleurStudio, **entièrement dessinée à neuf**, écrite au feutre. Chaque lettre est une suite de gestes ; un feutre rond glisse le long de chaque geste. Il bave un peu quand il se pose, gonfle un peu quand il se lève, et la main tremble à peine. Majuscules et minuscules.
 
-Le nom : *sans rire*, c'est une police comique. Et c'est une sans.
+Le nom : *Drastic Sans*, un comic sans qui ne fait pas dans la demi-mesure.
 
 ## La recette
 
@@ -28,11 +28,11 @@ Les graisses vont du petit rire au fou rire, de **Lol** à **Jpp** (« j'en peux
 
 | Poids | Nom | Feutre | Fichier |
 | --- | --- | --- | --- |
-| 300 | Lol | 40 | `SansRire-Lol.otf` |
-| 400 | Mdr | 62 | `SansRire-Mdr.otf` |
-| 600 | Ptdr | 88 | `SansRire-Ptdr.otf` |
-| 800 | Xptdr | 116 | `SansRire-Xptdr.otf` |
-| 900 | Jpp | 146 | `SansRire-Jpp.otf` |
+| 300 | Lol | 40 | `DrasticSans-Lol.otf` |
+| 400 | Mdr | 62 | `DrasticSans-Mdr.otf` |
+| 600 | Ptdr | 88 | `DrasticSans-Ptdr.otf` |
+| 800 | Xptdr | 116 | `DrasticSans-Xptdr.otf` |
+| 900 | Jpp | 146 | `DrasticSans-Jpp.otf` |
 
 ## Caractères
 
@@ -42,7 +42,7 @@ Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signe
 
 - `fonts/otf/` : les 5 graisses à installer (OpenType)
 - `fonts/woff2/` : les 5 graisses pour le web
-- `SansRire.zip` : les 5 graisses (OTF) + la licence
+- `DrasticSans.zip` : les 5 graisses (OTF) + la licence
 - `LICENCE.txt` : la licence
 
 ## Licence
