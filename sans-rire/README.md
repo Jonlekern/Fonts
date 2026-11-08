@@ -10,6 +10,7 @@ Le nom : *sans rire*, c'est une police comique. Et c'est une sans.
 - **Les formes** : des bols en « squircle », ni ronds ni carrés ; une grande hauteur d'x ; un a et un g à un seul étage ; un l et un t qui finissent par une petite virgule.
 - **Trois prises par lettre** : chaque lettre et chaque chiffre est tracé trois fois. Dans le texte, les trois versions tournent (fonction `calt`, active par défaut) : les lettres penchent, sautillent et changent un peu de taille. Deux lettres pareilles côte à côte ne sont jamais identiques.
 - **Hauteurs** : minuscules à 520, capitales à 712, montantes à 770, descendantes à −235.
+- **La triche des grosses graisses** : dans les graisses épaisses, quelques traits intérieurs (barres du €, du e et du $, ß, §, ¶, ‽, 8, ð, Þ…) sont tracés d'un feutre plus fin pour que les signes restent ouverts.
 - **Espacement** : crénage par familles (une lettre, ses accents et ses trois prises), vérifié pour que deux lettres qui penchent l'une vers l'autre ne se touchent jamais.
 
 ## Pas sérieux
@@ -23,7 +24,7 @@ Le nom : *sans rire*, c'est une police comique. Et c'est une sans.
 
 ## Les graisses
 
-Les graisses vont du petit rire au fou rire, de **Lol** à **Jpp** (« j'en peux plus »). Le dessin ne change pas, seul le feutre s'épaissit.
+Les graisses vont du petit rire au fou rire, de **Lol** à **Jpp** (« j'en peux plus »). Le dessin ne change pas : seul le feutre s'épaissit, et il triche un peu dans les plus grosses pour garder les signes ouverts.
 
 | Poids | Nom | Feutre | Fichier |
 | --- | --- | --- | --- |
