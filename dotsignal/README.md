@@ -22,7 +22,7 @@ Grille : 14 points de haut pour les majuscules, 10 pour les minuscules, un point
 ## Détails
 
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
-- `🚌` (U+1F68C) dessine le petit bus des tableaux.
+- U+1F68C (le bus) dessine le petit bus des tableaux.
 - Tous les chiffres ont la même largeur : les horaires restent alignés.
 - Crénage en points entiers (50 unités), pour que les points restent sur la grille. Les chiffres ne sont pas crénés.
 - Article Google Fonts : [`article/ARTICLE.en_us.html`](article/ARTICLE.en_us.html).

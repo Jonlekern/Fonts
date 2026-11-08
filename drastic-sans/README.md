@@ -20,7 +20,7 @@ Le nom : *Drastic Sans*, un comic sans qui ne fait pas dans la demi-mesure.
 | `calt` | Les 3 prises tournent : le texte danse (actif par défaut) | `font-feature-settings: "calt" 0` pour l'arrêter |
 | `ss01` Zinzin | Les lettres sautent beaucoup plus haut et plus bas | `font-feature-settings: "ss01"` |
 | `ss02` Cœurs | Des cœurs à la place des points sur les i et les j | `font-feature-settings: "ss02"` |
-| `liga` | `?!` et `!?` en un seul signe, `!!` → ‼, `<3` → ♥, `wtf` avec des traits de surprise | actif par défaut |
+| `liga` | `?!` et `!?` en un seul signe, `!!` en un seul signe, `<3` en cœur, `wtf` avec des traits de surprise | actif par défaut |
 
 ## Les graisses
 
@@ -36,7 +36,7 @@ Les graisses vont du petit rire au fou rire, de **Lol** à **Jpp** (« j'en peux
 
 ## Caractères
 
-Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin. En plus : ‽ ‼ ♥.
+Tout le jeu GF Latin Core : majuscules, minuscules, chiffres, ponctuation, signes et accents des langues d'Europe en alphabet latin. En plus : le point d'exclarrogation, le double point d'exclamation et le cœur.
 
 ## Fichiers
 

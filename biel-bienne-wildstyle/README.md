@@ -27,7 +27,7 @@ Page : https://jonlekern.github.io/Fonts/biel-bienne-wildstyle/
 - Les deux F et les deux Z alternent.
 - Variantes à la main (jeux stylistiques ss01–ss08) : A, B, F, H, I, K à flèche, Z, i et j à étoile.
 - Accents graffiti : ovale (tréma) et couronne (circonflexe) en majuscule ; auréole, couronne, goutte, éclat et étoile en bubble.
-- Emojis : ☭ ☺ 😉
+- Bonus dessinés dans la police : faucille et marteau (U+262D), smiley (U+263A), clin d'œil (U+1F609)
 
 ## Fichiers
 

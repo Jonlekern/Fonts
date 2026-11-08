@@ -22,7 +22,7 @@ Page : **https://jonlekern.github.io/Fonts/espresso-440/**
 - Tous les i accentués (î, ï, í, ì…) portent un petit cœur à la place de l'accent.
 - Deux e : rond et ouvert au milieu d'un mot, à longue sortie en fin de mot (fonction `calt`, accents compris).
 - Le f descend sous la ligne et se glisse sous la lettre d'avant ; ff s'écrit d'un seul geste (fonction `liga`).
-- `☀` (U+2600) dessine un soleil qui sourit.
+- U+2600 (le soleil) dessine un soleil qui sourit.
 - Jeu de caractères GF Latin Core complet (319 caractères), accents combinants compris.
 - Crénage calculé sur la forme de chaque lettre, pour chaque graisse.
 

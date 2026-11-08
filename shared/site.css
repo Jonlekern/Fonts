@@ -11,7 +11,7 @@
 :root[data-theme="dark"]{--bg:#121110;--surface:#1c1a18;--ink:#f1ece4;--muted:#a39b8f;--line:#2e2b27;--accent:#ef6a55}
 
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;font-variant-emoji:text}  /* règle du site : jamais d'emoji du téléphone, les signes restent du texte */
 body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-underline-offset:3px}
 img{max-width:100%;height:auto;display:block}
