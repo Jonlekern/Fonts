@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANISOTROPE</title>
+<meta name="description" content="ANISOTROPE : une serif de lecture à faible contraste, pensée pour que tout le monde lise mieux. Aucune lettre n'est le miroir d'une autre. 5 graisses, de 030 à 090. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"ANISOTROPE";font-weight:300;font-display:swap;src:url(fonts/woff2/ANISOTROPE-030.woff2) format("woff2")}
+@font-face{font-family:"ANISOTROPE";font-weight:400;font-display:swap;src:url(fonts/woff2/ANISOTROPE-040.woff2) format("woff2")}
+@font-face{font-family:"ANISOTROPE";font-weight:500;font-display:swap;src:url(fonts/woff2/ANISOTROPE-050.woff2) format("woff2")}
+@font-face{font-family:"ANISOTROPE";font-weight:700;font-display:swap;src:url(fonts/woff2/ANISOTROPE-070.woff2) format("woff2")}
+@font-face{font-family:"ANISOTROPE";font-weight:900;font-display:swap;src:url(fonts/woff2/ANISOTROPE-090.woff2) format("woff2")}
+/* ANISOTROPE partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"ANISOTROPE",var(--serif,Georgia),serif}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:21px;font-weight:600}
+section > .wrap > h2{font-weight:600;font-size:clamp(34px,6vw,68px);line-height:1.15}
+.step h3{font-weight:400;font-size:clamp(24px,2.8vw,34px)}
+.card b{font-weight:600;font-size:clamp(18px,4.8vw,28px);overflow-wrap:anywhere}
+.hero h1{font-family:"ANISOTROPE";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/7.6);line-height:1.15}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/8.2);line-height:1.4}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/8.2)}}
+.demo .row span{line-height:1.4;white-space:pre}
+.glyphs div{font-size:36px}
+#tester-text{line-height:1.5}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">ANISOTROPE</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Serif de lecture</p>
+      <h1 style="margin-top:18px">ANISOTROPE</h1>
+      <div class="lede">
+        <p><strong>Une serif de lecture pour tout le monde, dyslexiques compris.</strong> Aucune lettre n'est le miroir d'une autre. Faible contraste, empattements en coin, squelette de plume. <strong>5 graisses</strong>, de 030 à 090.</p>
+      </div>
+      <div class="facts">
+        <span>Serif de lecture</span><span>5 graisses</span><span>030 → 090</span><span>Aucune lettre en miroir</span><span>Faible contraste</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">030, 040, 050, 070, 090. Plus le chiffre monte, plus c'est gras. 040, c'est la normale.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">dyslexia</div>
+      </div>
+      <p class="hint">Une seule famille « ANISOTROPE » : 300, 400, 500, 700, 900.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, accents d'Europe.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Une étude sur les serifs.</strong> On a mélangé une serif vintage et une serif du futur, et on a regardé ce qui aide vraiment à lire quand on est dyslexique. Résultat : ANISOTROPE.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Aucune lettre en miroir</h3>
+            <p>Les lettres pièges se ressemblent trop dans une serif classique. Ici, <strong>b, d, p et q ont chacun leur bas</strong> : éperon, coup de pied, pied, coupe en biais. Le u n'est pas un n retourné. Le I a des barres, le l un crochet, le 1 un drapeau.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres pièges">
+            <div class="row"><small>040 (400)</small><span style="font-weight:400;font-size:calc(100cqw/7.2)">b d p q  n u</span></div>
+            <div class="row"><small>040 (400)</small><span style="font-weight:400;font-size:calc(100cqw/7.2)">I l 1  rn m</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Vintage et futur</h3>
+            <p>Le squelette vient de la plume : <strong>les ronds penchent, les têtes partent en biais</strong>. La peau vient d'aujourd'hui : faible contraste, <strong>empattements en coin coupés net</strong>.</p>
+          </div>
+          <div class="demo" aria-label="Vintage et futur">
+            <div class="row"><small>030 (300)</small><span style="font-weight:300;font-size:calc(100cqw/6.8)">Biel/Bienne</span></div>
+            <div class="row"><small>090 (900)</small><span style="font-weight:900;font-size:calc(100cqw/6.8)">Biel/Bienne</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les chiffres</h3>
+            <p><strong>Petite boucle, long fût.</strong> Le 0 est étroit à côtés droits, le 7 est barré, le 3 finit en flèche. Le 6, c'est le 9 retourné. Dessinés à la main, puis mis au net.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres">
+            <div class="row"><small>040 (400)</small><span style="font-weight:400;font-size:calc(100cqw/7.4)">0123456789</span></div>
+            <div class="row"><small>070 (700)</small><span style="font-weight:700;font-size:calc(100cqw/8.4)">Espresso 4.40.-</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>De l'air</h3>
+            <p>Lettres espacées, contreformes ouvertes, g à un étage. C'est ce qui a le plus de preuves pour la dyslexie : <strong>de l'espace entre les lettres</strong>. Pas d'italique penchée : elle brouille les formes.</p>
+          </div>
+          <div class="demo" aria-label="De l'air">
+            <div class="row"><small>040 (400)</small><span style="font-weight:400;font-size:calc(100cqw/8.6)">la gare de Bienne</span></div>
+            <div class="row"><small>050 (500)</small><span style="font-weight:500;font-size:calc(100cqw/8.6)">Grand Maquis 77</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="ANISOTROPE.zip" download><b>ANISOTROPE.zip</b><span>Les 5 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/anisotrope/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/anisotrope/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "ANISOTROPE"; font-weight: 400;
+  src: url(ANISOTROPE-040.woff2) format("woff2"); }
+/* … une règle par graisse : 030 → 300, 040 → 400, 050 → 500,
+   070 → 700, 090 → 900. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ANISOTROPE © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "ANISOTROPE",
+  sample: "dyslexia",
+  styles: [
+    {n:"030",w:300},{n:"040",w:400},{n:"050",w:500},{n:"070",w:700},{n:"090",w:900}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 1, 4],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
