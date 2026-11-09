@@ -90,6 +90,11 @@ def bowl(cx):
     """bol d'un o, b, d, p, q"""
     return ring(cx, XH / 2, BR, XH / 2 + OV)
 
+def arch_y(x0, x1, top, x, h=None):
+    """hauteur du bord extérieur de l'arche à l'abscisse x"""
+    h = h or round(0.46 * XH); cx = (x0 + x1) / 2; rx = (x1 - x0) / 2
+    return top - h + (h + OV) * math.sqrt(max(0.0, 1 - ((x - cx) / rx) ** 2))
+
 def arch(x0, x1, top, h=None):
     """arche du n : rejoint le fût de droite à pleine épaisseur, naît en encoche du fût de gauche"""
     h = h or round(0.46 * XH)
@@ -115,10 +120,148 @@ def cap_foot(x0, x1, left=True, right=True, y=0, top=False):
     if top: p = flipy(p, 0)
     return mv(p, 0, y)
 
-def head(x0, x1, top):
-    """tête de plume : coin en biais vers la gauche (vintage), arêtes nettes (futur)"""
-    a = round(W * 0.95); d = round(SH * 1.6)
-    return poly([(x0 - a - 10, top - round(SH * 0.73)), (x0 + 6, top + 8), (x1, top + 16),
+def pbar(x0, y0, x1, y1, w):
+    """trait droit de largeur w (mesurée perpendiculairement), bouts coupés d'équerre : aucune pointe"""
+    dx, dy = x1 - x0, y1 - y0; L = math.hypot(dx, dy); nx, ny = -dy / L * w / 2, dx / L * w / 2
+    return poly([(x0 + nx, y0 + ny), (x1 + nx, y1 + ny), (x1 - nx, y1 - ny), (x0 - nx, y0 - ny)])
+
+def stroke(pts, w):
+    """ligne brisée de largeur w : angles en onglet, bouts coupés d'équerre"""
+    n = len(pts); L, R = [], []
+    def off(p, q, s):
+        dx, dy = q[0] - p[0], q[1] - p[1]; l = math.hypot(dx, dy); nx, ny = -dy / l * s, dx / l * s
+        return (p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny)
+    def meet(a, b, c, d):
+        x1, y1 = a; x2, y2 = b; x3, y3 = c; x4, y4 = d
+        den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+        if abs(den) < 1e-9: return b
+        t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den
+        return (x1 + t * (x2 - x1), y1 + t * (y2 - y1))
+    for side, out_ in ((w / 2, L), (-w / 2, R)):
+        segs = [off(pts[i], pts[i + 1], side) for i in range(n - 1)]
+        out_.append(segs[0][0])
+        for i in range(n - 2): out_.append(meet(*segs[i], *segs[i + 1]))
+        out_.append(segs[-1][1])
+    return poly(L + R[::-1])
+
+def ncut(cx, cy, rx, ry, t, side, lim, L=4000):
+    """zone à retirer pour finir un rond (ellipse rx, ry) par une coupe d'équerre au paramètre t (degrés) :
+    la coupe suit la normale de l'ellipse. side=+1 garde la partie qui continue dans le sens direct, -1 l'autre.
+    lim : angle (polaire) jusqu'où la zone retirée s'étend de l'autre côté de la coupe."""
+    tr = math.radians(t); c, s = math.cos(tr), math.sin(tr)
+    P = (cx + rx * c, cy + ry * s)
+    T = (-rx * s, ry * c); lt = math.hypot(*T); T = (T[0] / lt * side, T[1] / lt * side)
+    n = (ry * c, rx * s); ln = math.hypot(*n); n = (n[0] / ln, n[1] / ln)
+    cutp = poly([(P[0] + L * n[0], P[1] + L * n[1]), (P[0] - L * n[0], P[1] - L * n[1]),
+                 (P[0] - L * n[0] - L * T[0], P[1] - L * n[1] - L * T[1]), (P[0] + L * n[0] - L * T[0], P[1] + L * n[1] - L * T[1])])
+    pol = math.degrees(math.atan2(ry * s, rx * c))
+    w = pie(cx, cy, lim, pol + 12) if side > 0 else pie(cx, cy, pol - 12, lim)
+    return I(cutp, w)
+
+def rcut(cx, cy, rx, ry, sx, sy, rot, t, side, lim, L=4000, dx=0, dy=0, deep=False):
+    """zone à retirer pour finir un rond épais : la coupe va du point du bord extérieur (paramètre t)
+    au point correspondant du bord intérieur. Les deux coins restent francs, même quand le trait est très épais.
+    side=+1 garde la suite dans le sens direct ; lim borne la zone retirée de l'autre côté (angle polaire)."""
+    tr = math.radians(t); c, s = math.cos(tr), math.sin(tr)
+    # la coupe suit la perpendiculaire à la ligne médiane du trait (ellipse à mi-épaisseur)
+    mx, my = rx - sx / 2, ry - sy / 2
+    M = (cx + mx * c, cy + my * s)
+    nm = (my * c, mx * s); l = math.hypot(*nm); d = (-nm[0] / l, -nm[1] / l)
+    P = (M[0] - d[0] * sx, M[1] - d[1] * sx)                 # côté extérieur
+    Q = (M[0] + d[0] * sx, M[1] + d[1] * sx)                 # côté intérieur
+    A = (P[0] - d[0] * L, P[1] - d[1] * L); B = (P[0] + d[0] * L, P[1] + d[1] * L)
+    T = (-rx * s * side, ry * c * side); lt = math.hypot(*T); T = (T[0] / lt, T[1] / lt)
+    cutp = poly([A, B, (B[0] - T[0] * L, B[1] - T[1] * L), (A[0] - T[0] * L, A[1] - T[1] * L)])
+    # deep : la zone retirée va jusqu'au bord intérieur (sinon, dans les blancs très plats, il reste un crochet)
+    pols = [math.degrees(math.atan2(p[1] - cy, p[0] - cx)) for p in ((P, M, Q) if deep else (P, M))]
+    if side > 0:
+        hi = max(pols) if max(pols) - min(pols) < 180 else min(pols) + 360
+        w = pie(cx, cy, lim, hi + 12)
+    else:
+        lo_ = min(pols) if max(pols) - min(pols) < 180 else max(pols) - 360
+        w = pie(cx, cy, lo_ - 12, lim)
+    return I(cutp, w)
+
+def icut(cx, cy, rx, ry, sx, sy, t, side, lim, L=4000):
+    """comme rcut, mais la coupe part d'équerre du bord intérieur (paramètre t) : dans un blanc très plat,
+    une coupe qui le frôle laisse un fil ou un crochet ; d'équerre, jamais."""
+    tr = math.radians(t); c, s = math.cos(tr), math.sin(tr)
+    rxi, ryi = rx - sx, ry - sy
+    Qi = (cx + rxi * c, cy + ryi * s)
+    n = (c / rxi, s / ryi); l = math.hypot(*n); n = (n[0] / l, n[1] / l)
+    # point du bord extérieur sur la normale
+    ox, oy = Qi[0] - cx, Qi[1] - cy
+    a_ = (n[0] / rx) ** 2 + (n[1] / ry) ** 2; b_ = 2 * (ox * n[0] / rx ** 2 + oy * n[1] / ry ** 2); c_ = (ox / rx) ** 2 + (oy / ry) ** 2 - 1
+    k = (-b_ + math.sqrt(max(0.0, b_ * b_ - 4 * a_ * c_))) / (2 * a_)
+    P = (Qi[0] + n[0] * k, Qi[1] + n[1] * k)
+    A = (P[0] + n[0] * L, P[1] + n[1] * L); B = (P[0] - n[0] * L, P[1] - n[1] * L)
+    T = (-rx * s * side, ry * c * side); lt = math.hypot(*T); T = (T[0] / lt, T[1] / lt)
+    cutp = poly([A, B, (B[0] - T[0] * L, B[1] - T[1] * L), (A[0] - T[0] * L, A[1] - T[1] * L)])
+    pols = [math.degrees(math.atan2(p[1] - cy, p[0] - cx)) for p in (P, Qi)]
+    if side > 0:
+        hi = max(pols) if max(pols) - min(pols) < 180 else min(pols) + 360
+        w = pie(cx, cy, lim, hi + 12)
+    else:
+        lo_ = min(pols) if max(pols) - min(pols) < 180 else max(pols) - 360
+        w = pie(cx, cy, lo_ - 12, lim)
+    return I(cutp, w)
+
+def bracket(cx, cy, rx, ry, xs, ys, toward, k=0.5):
+    """raccord tangent entre le bord extérieur d'un rond (ellipse droite cx, cy, rx, ry) et le coin (xs, ys) d'un fût.
+    Quand le coin du fût dépasse à peine du rond (moins de k fût), il fait une petite dent : on la comble par une
+    droite qui part du coin et touche le rond. toward = -1 si le rond est à gauche du fût, +1 s'il est à droite.
+    Rend None si la dent est assez haute pour se lire comme un bout de fût."""
+    u = (xs - cx) / rx
+    if abs(u) >= 1: return None
+    h = ry * math.sqrt(1 - u * u); low = ys < cy
+    yj = cy - h if low else cy + h
+    if abs(yj - ys) >= k * ST or (yj - ys) * (1 if low else -1) <= 0: return None
+    def f(t):
+        tx, ty = cx + rx * math.cos(t), cy + ry * math.sin(t)
+        return (tx - xs) * (ry * math.cos(t)) - (ty - ys) * (-rx * math.sin(t))
+    tj = math.atan2((yj - cy) / ry, (xs - cx) / rx); te = -math.pi / 2 if low else math.pi / 2
+    n = 400; a = tj; fa = f(a); T = None
+    for i in range(1, n + 1):
+        b = tj + (te - tj) * i / n; fb = f(b)
+        if fa * fb <= 0:
+            for _ in range(60):
+                m = (a + b) / 2; fm = f(m)
+                if fa * fm <= 0: b, fb = m, fm
+                else: a, fa = m, fm
+            T = (cx + rx * math.cos(a), cy + ry * math.sin(a)); break
+        a, fa = b, fb
+    if T is None: return None
+    e = -toward * 3
+    return poly([(xs, ys), T, (xs, yj), (xs + e, yj), (xs + e, ys)])
+
+def tparam(ry, dy):
+    """paramètre (degrés, côté gauche, sous le centre) du point d'une ellipse situé dy sous son centre"""
+    return 180 + math.degrees(math.asin(max(-1, min(1, dy / ry))))
+
+def halfplane(p, q, R=6000):
+    """tout ce qui est à droite de la droite orientée p → q"""
+    dx, dy = q[0] - p[0], q[1] - p[1]; l = math.hypot(dx, dy); ux, uy = dx / l, dy / l; nx, ny = uy, -ux
+    a = (p[0] - ux * R, p[1] - uy * R); b = (p[0] + ux * R, p[1] + uy * R)
+    return poly([a, b, (b[0] + nx * R, b[1] + ny * R), (a[0] + nx * R, a[1] + ny * R)])
+
+def dserif(xe, ye, xo, yo, t, left=True, right=True):
+    """empattement en coin posé au bout d'une diagonale (de (xe, ye) vers (xo, yo), épaisseur horizontale t) :
+    ses deux flancs suivent les bords du trait, il n'y a donc aucun cran entre le trait et l'empattement"""
+    sgn = 1 if yo > ye else -1
+    def xc(y): return xe + (xo - xe) * (y - ye) / (yo - ye)
+    e = max(10, round(SH * 0.2)); l = W if left else 0; r = W if right else 0
+    yS = ye + sgn * SH
+    xl0, xr0, xlS, xrS = xc(ye) - t / 2, xc(ye) + t / 2, xc(yS) - t / 2, xc(yS) + t / 2
+    pts = [(xl0 - l, ye), (xr0 + r, ye)] + ([(xr0 + r, ye + sgn * e)] if right else []) + [(xrS, yS), (xlS, yS)] \
+          + ([(xl0 - l, ye + sgn * e)] if left else [])
+    return poly(pts)
+
+def head(x0, x1, top, join=None):
+    """tête de plume : coin en biais vers la gauche (vintage), arêtes nettes (futur).
+    join : hauteur de l'arche au bord droit du fût ; si l'écart est petit, la tête s'y raccorde sans marche"""
+    a = round(W * 0.95); d = round(SH * 1.6); yr = top + 16
+    if join is not None and yr - join < 40: yr = join
+    return poly([(x0 - a - 10, top - round(SH * 0.73)), (x0 + 6, top + 8), (x1, yr),
                  (x1, top - d + 10), (x0, top - d), (x0 - a - 10, top - round(SH * 1.1))])
 
 def kick(x0, x1, y=0):
@@ -126,13 +269,16 @@ def kick(x0, x1, y=0):
     return poly([(x0, y + round(SH * 1.15)), (x0, y), (x1 + W, y), (x1 + W, y + max(10, round(SH * 0.2))), (x1, y + SH)])
 
 def spur(x0, x1, y=0):
-    """éperon à gauche sous le fût (b) : pointe vers le bas"""
-    return poly([(x0, y + round(SH * 1.35)), (x0 - round(W * 0.6), y - 8), (x1, y), (x1, y + 30)])
+    """éperon à gauche sous le fût (b) : posé sur la ligne, bout coupé net comme un empattement"""
+    e = max(10, round(SH * 0.2)); xt = x0 - round(W * 0.7)
+    return poly([(xt, y), (x1, y), (x1, y + 30), (x0, y + round(SH * 1.35)), (xt, y + e)])
 
-def ear(x0, y):
-    """oreille en haut à droite (q, g) : coupe nette qui monte"""
-    return poly([(x0, y - 24), (x0 + ST + round(W * 0.8), y + 24), (x0 + ST + round(W * 0.65), y - 6),
-                 (x0 + ST, y - 60), (x0, y - 60)])
+def ear(x0, y, join=None):
+    """oreille en haut à droite (q, g) : bout coupé à plat dessus et sur le côté, aucune pointe.
+    join : hauteur du rond au bord gauche du fût ; s'il arrive juste sous le départ de l'oreille, elle part de lui (pas de marche)"""
+    xt = x0 + ST + round(W * 0.75); e2 = max(12, round(SH * 0.35)); f = round(e2 * 0.7); ys = y - 24
+    if join is not None and 0 < ys - join < 0.5 * ST: ys = join
+    return poly([(x0, ys), (xt - f, y + 24), (xt, y + 24), (xt, y + 24 - e2), (x0 + ST, y - 60), (x0, min(ys, y - 60))])
 
 def dot(cx, cy, r=None):
     r = r or round(ST * 0.62 + 4)

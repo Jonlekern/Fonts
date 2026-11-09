@@ -98,9 +98,10 @@ def g_quotedblleft(): return out(pair(g_quoteleft()[0]), 'T', 'T')
 def g_quotedblbase(): return out(pair(comma_shape()), 'T', 'T')
 
 def chevron(w, h, t, x=0, y=None, left=True):
+    # ligne brisée : bouts coupés d'équerre, pointe en onglet un peu rabotée
     y = MY if y is None else y
-    p = U(bar(x, y, x + w, y + h, t), bar(x, y, x + w, y - h, t))
-    p = I(p, rect(x - t * 0.35, y - h, x + w + t, y + h))
+    tp = t * h / math.hypot(w, h)
+    p = I(stroke([(x + w, y + h), (x, y), (x + w, y - h)], tp), rect(x - t * 0.35, -2000, x + w + 2000, 2000))
     return p if left else flipx(p, x + w / 2)
 
 @reg('guilsinglleft', '‹')
@@ -155,7 +156,7 @@ def g_bracketright(): return out(bracket(False), 'T', 'P')
 
 def brace(left=True):
     t = round(ST * 0.9); w = round(190 + 0.3 * ST); cy = (PB + PT) / 2; xm = w * 0.45
-    up = U(rect(xm, cy + 70, xm + t, PT - 90), I(ring(xm + 90 + t / 2, PT - 90, 90 + t / 2, 90, sx=t, sy=TH, r=0), rect(xm, PT - 90, xm + 90 + t, PT + 5)))
+    up = U(rect(xm, cy + 70, xm + t, PT - 90), I(ring(xm + 90 + t / 2, PT - 90, 90 + t / 2, 90, sx=t, sy=TH, r=0), rect(xm, PT - 90, xm + 90 + t / 2, PT + 5)))
     lo = flipy(up, cy)
     mid = poly([(0, cy), (xm + t * 0.2, cy + 90), (xm + t, cy + 90), (xm + t, cy - 90), (xm + t * 0.2, cy - 90)])
     p = U(up, lo, mid)
@@ -199,8 +200,7 @@ def g_equal():
 @reg('multiply', '×')
 def g_multiply():
     s = round((MW - 120) * 0.72); t = round(TH * 1.15)
-    p = U(bar(0, MY - s / 2, s, MY + s / 2, t * 1.25), bar(s, MY - s / 2, 0, MY + s / 2, t * 1.25))
-    return out(I(p, rect(-100, MY - s / 2, s + 100, MY + s / 2)), 'T', 'T')
+    return out(U(pbar(0, MY - s / 2, s, MY + s / 2, t * 0.95), pbar(s, MY - s / 2, 0, MY + s / 2, t * 0.95)), 'T', 'T')
 
 @reg('divide', '÷')
 def g_divide():
@@ -224,8 +224,8 @@ def g_asciitilde():
 @reg('asciicircum', '^')
 def g_asciicircum():
     w = round(MW * 0.75); h = 230; t = round(TH * 1.2)
-    p = U(bar(0, CAP - h, w / 2, CAP, t), bar(w, CAP - h, w / 2, CAP, t))
-    return out(I(p, rect(-100, CAP - h, w + 100, CAP)), 'T', 'T')
+    p = I(stroke([(0, CAP - h), (w / 2, CAP), (w, CAP - h)], t * h / math.hypot(w / 2, h)), rect(-200, -2000, w + 200, CAP))
+    return out(p, 'T', 'T')
 
 @reg('asterisk', '*')
 def g_asterisk():
@@ -280,12 +280,13 @@ def g_trademark():
 
 @reg('section', '§')
 def g_section():
-    # deux s empilés qui se chevauchent à moitié : le classique
-    import lower
-    s = lower.g_s()[0]; b = s.bounds; h = b[3] - b[1]
-    sc = (CAP + 10) / (h * 1.5); s = xf(s, (sc, 0, 0, sc, 0, 0)); b = s.bounds; h = b[3] - b[1]
-    up = mv(s, 0, CAP + 10 - b[3]); lo = mv(s, 0, CAP + 10 - b[3] - h * 0.5)
-    return out(U(up, lo), 'T', 'T')
+    # trois ronds empilés comme dans le s : le rond du milieu se ferme tout seul ; bouts coupés de l'extérieur vers l'intérieur
+    rx = round(0.30 * NW + 0.15 * ST); ry = (CAP + 150 + 2 * TH) / 6; sx = ST * 0.9
+    c1 = CAP + OV - ry; c2 = c1 - (2 * ry - TH); c3 = c2 - (2 * ry - TH)
+    up = D(I(ring(rx, c1, rx, ry, sx=sx, r=0), pie(rx, c1, -20, 270)), icut(rx, c1, rx, ry, sx, TH, 24, 1, -20))
+    mid = ring(rx, c2, rx, ry, sx=sx, r=0)
+    lo = D(I(ring(rx, c3, rx, ry, sx=sx, r=0), pie(rx, c3, 160, 450)), icut(rx, c3, rx, ry, sx, TH, 204, 1, 160))
+    return out(U(up, mid, lo), 'T', 'T')
 
 @reg('paragraph', '¶')
 def g_paragraph():
@@ -308,15 +309,16 @@ def g_ampersand():
 
 @reg('at', '@')
 def g_at():
+    # l'anneau part de la queue du petit a : même épaisseur, même tangente, aucun raccord visible
     R = 430; cy = CAP / 2 - 40; cx = R
-    outer = I(ring(cx, cy, R, R, sx=TH * 1.05, sy=TH * 0.95, r=0), pie(cx, cy, -25, 305))
-    # un petit o et un fût, comme un a à un étage
-    r_ = 150; ox = cx - 30; oy = cy
-    o = ring(ox, oy, r_, r_ + 10, sx=ST * 0.72, sy=TH * 0.75, r=0)
-    xs = ox + r_ - ST * 0.72
-    st_ = rect(xs, cy - 150, xs + ST * 0.72, cy + 150)
-    tail = I(ring(xs + 150, cy - 60, 150 + ST * 0.36, 110, sx=ST * 0.72, sy=TH * 0.8, r=0), rect(xs - 10, cy - 200, cx + 450, cy - 60))
-    return out(U(outer, o, st_, tail), 'O', 'O')
+    Rs = TH * 1.15; Ls = ST * 0.72
+    outer = I(ring(cx, cy, R, R, sx=Rs, sy=TH * 1.05, r=0), pie(cx, cy, 0, 300))
+    rxo, ryo = 150, 160; ox = cx - 30
+    o = ring(ox, cy, rxo, ryo, sx=Ls, sy=TH * 0.75, r=0)
+    xs = ox + rxo - Ls
+    rt = (cx + R - xs) / 2; vt = 150
+    tail = I(ring(xs + rt, cy, rt, vt, sx=(Ls + Rs) / 2, sy=TH * 0.9, r=0, dx=(Ls - Rs) / 2), rect(xs - 10, cy - vt - 20, cx + R + 10, cy))
+    return out(U(outer, o, tail), 'O', 'O')
 
 @reg('dollar', '$')
 def g_dollar():
@@ -342,9 +344,10 @@ def g_yen():
 @reg('sterling', '£')
 def g_sterling():
     x0 = 90; top = CAP; h = 130; reach = round(120 + 0.4 * ST)
-    o = ellipse(x0 + ST + reach - 40, top - h, reach + ST - 40, h + OV)
-    i = ellipse(x0 + ST + reach - 40, top - h - 4, reach - 40, h + OV - TH)
-    crook = I(D(o, i), rect(x0, top - h, x0 + ST + reach + 10, top + OV + 5))
+    cxo = x0 + ST + reach - 40
+    o = ellipse(cxo, top - h, reach + ST - 40, h + OV)
+    i = ellipse(cxo, top - h - 4, reach - 40, h + OV - TH)
+    crook = I(D(o, i), rect(x0 - 50, top - h, cxo + 0.3 * (reach - 40), top + OV + 5))   # bout coupé à la verticale, au-dessus du blanc
     s = rect(x0, TH, x0 + ST, top - h + 2)
     w = round(0.95 * NW)
     base = rect(0, 0, w, TH); cross = rect(0, CAP * 0.40, x0 + ST + 160, CAP * 0.40 + TH)

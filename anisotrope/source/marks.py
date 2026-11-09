@@ -13,14 +13,16 @@ def _norm(p):
 
 def m_acute(cap, s=1):
     h = ah(cap); w = round(h * 0.95)
-    p = poly([(-w / 2 - AT * 0.36, 0), (-w / 2 + AT * 0.46, 0), (w / 2 + AT * 0.30, h), (w / 2 - AT * 0.42, h)])
+    p = pbar(-w / 2, 0, w / 2, h, AT * 0.62)                       # bouts d'équerre
     return _norm(p if s > 0 else flipx(p, 0))
+
 def m_grave(cap): return m_acute(cap, -1)
 def m_circ(cap, flip=False):
     h = round(ah(cap) * 0.82); w = round(h * 1.9)
-    p = U(poly([(-w / 2, 0), (-w / 2 + AT * 1.05, 0), (AT * 0.45, h), (-AT * 0.45, h)]),
-          poly([(w / 2 - AT * 1.05, 0), (w / 2, 0), (AT * 0.45, h), (-AT * 0.45, h)]))
+    p = stroke([(-w / 2 + AT * 0.4, 0), (0, h), (w / 2 - AT * 0.4, 0)], AT * 0.6)
+    p = I(p, rect(-w, 0, w, h))                                     # pointe et pieds rabotés à plat
     return _norm(flipy(p, h / 2) if flip else p)
+
 def m_caron(cap): return m_circ(cap, True)
 def m_dieresis(cap):
     r = round(ST * 0.52 + 4); g = round(r * 2 + 0.75 * ST)
@@ -46,10 +48,14 @@ def m_hung(cap):
 def m_commabelow(cap):
     p = signs.comma_shape(); return _norm(xf(p, (0.8, 0, 0, 0.8, 0, 0)))
 def m_cedilla(cap):
-    # un petit fût sous la lettre, puis une panse ouverte à gauche (comme le bas du 5)
-    t = round(AT * 0.72); h = round(0.30 * XH); r = round(h * 0.52); cy = -h * 0.36 - r + 4
-    s_ = rect(-t / 2, -h * 0.36, t / 2, 0)
-    panse = I(ring(0, cy, r + t * 0.15, r, sx=t, sy=round(TH * 0.58), r=0), pie(0, cy, -165, 90))
+    # petit fût qui descend, puis le crochet tourne à droite et revient à gauche ; il part du bord gauche du fût
+    # dans les gras le crochet grandit un peu et son trait plafonne, sinon le blanc se bouche
+    t0 = round(AT * 0.72); h = round(0.30 * XH); r = round(h * 0.52 + max(0, t0 - 40) * 0.4)
+    t = min(t0, round(0.62 * r)); sy = min(round(TH * 0.58), round(0.4 * r)); rx = r + t * 0.15
+    cy = -h * 0.30 - r
+    s_ = rect(-t / 2, cy + r - sy * 0.6, t / 2, 0)
+    panse = I(ring(0, cy, rx, r, sx=t, sy=sy, r=0), pie(0, cy, -160, 180))
+    panse = D(panse, rect(-1000, cy, -t / 2, 1000))                    # bout du haut dans l'axe du fût
     return U(s_, panse)
 
 def m_ogonek(cap):

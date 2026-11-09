@@ -67,7 +67,7 @@ def g_seven():
     d = I(bar(w - ST * 0.45, DH - TH, xb, 0, ST * 1.02), rect(-100, 0, w, DH - TH + 2))
     top = rect(0, DH - TH, w, DH)
     ym = DH * 0.44; xm = xb + (w - ST * 0.45 - xb) * ym / (DH - TH)
-    cross = rect(xm - 120, ym - TH / 2, xm + 110, ym + TH / 2)
+    cross = rect(xm - ST * 0.51 - 65, ym - TH / 2, xm + ST * 0.51 + 55, ym + TH / 2)   # dépasse franchement des deux côtés
     return out(U(d, top, cross), 'T', 'T')
 
 
@@ -82,27 +82,25 @@ BEAK = round(SH * 1.2)
 def _unit(v):
     L = math.hypot(*v); return (v[0] / L, v[1] / L)
 
-def fillet_out(p, Q, u, v, R):
-    """arrondit un coin saillant de l'encre en Q, entre les demi-droites u et v (unitaires), par un arc de rayon R tangent aux deux"""
+def _wedge(Q, u, v, R):
+    """coin entre Q et l'arc de rayon R tangent aux demi-droites u et v : une seule courbe, donc pas de cassure à l'arrondi"""
     u, v = _unit(u), _unit(v)
     cosang = u[0] * v[0] + u[1] * v[1]; ang = math.acos(max(-1, min(1, cosang)))
     d = R / math.tan(ang / 2)
     Tu = (Q[0] + u[0] * d, Q[1] + u[1] * d); Tv = (Q[0] + v[0] * d, Q[1] + v[1] * d)
-    bis = _unit((u[0] + v[0], u[1] + v[1])); h = R / math.sin(ang / 2)
-    C = (Q[0] + bis[0] * h, Q[1] + bis[1] * h)
-    tip = D(poly([Q, Tu, Tv]), ellipse(C[0], C[1], R, R))
-    return D(p, tip)
+    k = 4 / 3 * math.tan((math.pi - ang) / 4) * R
+    bis = _unit((u[0] + v[0], u[1] + v[1])); Qi = (Q[0] - bis[0] * 4, Q[1] - bis[1] * 4)
+    p = P(); pen = p.getPen(); pen.moveTo(Qi); pen.lineTo(Tu)
+    pen.curveTo((Tu[0] - u[0] * k, Tu[1] - u[1] * k), (Tv[0] - v[0] * k, Tv[1] - v[1] * k), Tv)
+    pen.closePath(); return p
+
+def fillet_out(p, Q, u, v, R):
+    """arrondit un coin saillant de l'encre en Q, entre les demi-droites u et v, par un arc de rayon R tangent aux deux"""
+    return D(p, _wedge(Q, u, v, R))
 
 def fillet_in(p, Q, u, v, R):
     """arrondit un coin rentrant de l'encre en Q (ajoute de l'encre)"""
-    u, v = _unit(u), _unit(v)
-    cosang = u[0] * v[0] + u[1] * v[1]; ang = math.acos(max(-1, min(1, cosang)))
-    d = R / math.tan(ang / 2)
-    Tu = (Q[0] + u[0] * d, Q[1] + u[1] * d); Tv = (Q[0] + v[0] * d, Q[1] + v[1] * d)
-    bis = _unit((u[0] + v[0], u[1] + v[1])); h = R / math.sin(ang / 2)
-    C = (Q[0] + bis[0] * h, Q[1] + bis[1] * h)
-    e = 2.5; sh = lambda P: (P[0] - bis[0] * e, P[1] - bis[1] * e)
-    return U(p, D(poly([sh(Q), sh(Tu), sh(Tv)]), ellipse(C[0], C[1], R, R)))
+    return U(p, _wedge(Q, u, v, R))
 
 def two_var(k=1.0, cut=0.36, bec_=True, A=-32):
     """k : taille de la boucle ; cut : hauteur du bout gauche (0 = au milieu) ; bec_ : bec au bout de la base"""
@@ -120,8 +118,8 @@ def two_var(k=1.0, cut=0.36, bec_=True, A=-32):
     base = rect(Q[0] + TH * dx / dy, 0, w + 20, TH)      # la base part du bord gauche de la diagonale
     p = U(arc, diag, base)
     p = fillet_out(p, Q, (pi_[0] - Q[0], pi_[1] - Q[1]), (1.0, 0.0), round(0.09 * DH + 0.3 * ST))
-    dxr, dyr = qr[0] - po[0], qr[1] - po[1]              # pente du bord droit (la diagonale s'affine : pas la même qu'à gauche)
-    Q2 = (qr[0] - dxr * (yb - TH) / dyr, TH)             # coin intérieur : bord droit de la diagonale et dessus de la base
+    R0 = (qr[0] - dx * yb / dy, 0.0)                     # bas du vrai bord droit de la diagonale
+    Q2 = (po[0] + (R0[0] - po[0]) * (po[1] - TH) / (po[1] - R0[1]), TH)   # coin intérieur : bord droit et dessus de la base
     p = fillet_in(p, Q2, (po[0] - Q2[0], po[1] - Q2[1]), (1.0, 0.0), round(0.04 * DH + 0.12 * ST))
     if bec_: p = U(p, poly([(w + 20, TH), (w + 20, TH + BEAK), (w + 10, TH + BEAK), (w + 20 - ST * 0.8, TH)]))
     return p
@@ -155,14 +153,18 @@ def g_four():
 
 @reg('five', '5')
 def g_five():
-    # la barre du 7 en haut, un fût court, la panse du 8 ouverte à gauche ; le bout finit par une coupe droite
+    # la barre du 7 en haut, un fût court, la panse du 8 ouverte à gauche ; le fût se pose pile sur la panse
     _, _, _, rxl, ryl, cyl = eight_dims(0.80); cx = rxl
-    A = 128
-    pan = I(loop(cx, cyl, rxl, ryl), pie(cx, cyl, -180, A))
-    pan = D(pan, rect(cx - rxl - 10, cyl - round(0.36 * ryl), cx, cyl + 10))
-    po, pi_ = ends(cx, cyl, rxl, ryl, A); x0 = po[0] - 4; yj = max(po[1], pi_[1])
-    fut = U(rect(x0, yj, x0 + ST, DH), poly([po, pi_, (x0 + ST, yj + 2), (x0, yj + 2)]))
-    fut = D(fut, ellipse(cx, cyl, rxl - ST, ryl - TH))             # le fût n'entre pas dans la panse
+    po, pi_ = ends(cx, cyl, rxl, ryl, 128); x0 = po[0] - 4
+    # le fût descend droit et s'arrête à plat là où l'encre fait encore wmin de large : ni pointe, ni fente
+    irx, iry = rxl - ST, ryl - TH; wmin = max(1.6 * TH, 0.6 * ST)
+    s_ = (cx - x0 - wmin) / irx
+    yc = cyl + iry * math.sqrt(1 - s_ * s_) if 0 < s_ < 1 else cyl
+    yc = max(yc, cyl + round(0.08 * ryl))
+    pan = loop(cx, cyl, rxl, ryl)
+    pan = D(pan, rect(cx - rxl - 10, cyl - round(0.36 * ryl), x0, cyl + ryl + 10))
+    pan = D(pan, rect(cx - rxl - 10, cyl - round(0.36 * ryl), cx, yc))
+    fut = D(rect(x0, yc, x0 + ST, DH), ellipse(cx, cyl, irx, iry))
     w = round(2 * rxl - 10)
     barre = rect(x0, DH - TH, w, DH)
     bec = poly([(w, DH - TH), (w, DH - TH - BEAK), (w - 10, DH - TH - BEAK), (w - ST * 0.8, DH - TH)])

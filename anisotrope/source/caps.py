@@ -19,7 +19,7 @@ def beak(x, y, dx=1, dy=-1, L=None, wb=None):
     L = L or round(SH * 1.25); wb = wb or round(SC * 0.9)
     return poly([(x, y), (x, y + dy * L), (x - dx * 10, y + dy * L), (x - dx * wb, y)])
 
-def cring(cx, rx, cy=CAP / 2, ry=CRY): return ring(cx, cy, rx, ry, sx=SC, sy=TC)
+def cring(cx, rx, cy=CAP / 2, ry=CRY, r=ROT): return ring(cx, cy, rx, ry, sx=SC, sy=TC, r=r)
 
 @reg('H', 'H')
 def g_H():
@@ -34,10 +34,10 @@ def g_I():
 
 @reg('J', 'J')
 def g_J():
-    h = 150; r = round(max(0.6 * SC + 60, SC + 50)); yb = -110
+    h = max(150, TC + 50); r = round(max(0.6 * SC + 60, SC + 50)); yb = -110; dc = min(40, (h + OV - TC) * 0.5)
     o = ellipse(-r + SC, yb + h, r, h + OV); i = ellipse(-r + SC, yb + h, r - SC, h + OV - TC)
     hook = I(D(o, i), rect(-2 * r - 10, yb - OV - 5, SC, yb + h))
-    hook = D(hook, rect(-2 * r - 20, yb + h - 40, -2 * r + SC + 4, yb + h + 10))
+    hook = D(hook, rect(-2 * r - 20, yb + h - dc, -r + SC, yb + h + 10))
     return out(U(cstem(0, yb + h, CAP), hook, cap_foot(0, SC, y=CAP, top=True)), 'T', 'S')
 
 @reg('L', 'L')
@@ -71,30 +71,34 @@ def g_O():
 @reg('Q', 'Q')
 def g_Q():
     rx = round(0.56 * HW + 0.1 * SC)
-    tail = poly([(rx - 40, 40), (rx + 20, 40 + TC * 0.4), (2 * rx + 60, -150), (2 * rx + 30, -170 - TC * 0.3)])
-    tail = U(tail, poly([(rx - 50, 70), (rx + 40, 70), (rx + 60, -10), (rx - 20, -10)]))
-    return out(U(cring(rx, rx), I(tail, rect(rx - 60, -200, 2 * rx + 80, 80))), 'O', 'D')
+    # queue d'un seul trait : elle part du bas du bol, coupée par le blanc du O, et finit coupée à plat
+    o = cring(rx, rx); inner = ellipse(rx, CAP / 2, rx - SC, CRY - TC, ROT)
+    tail = D(pbar(rx - 20, CAP * 0.16, 2 * rx + 20, -170, TC * 0.85), inner)
+    return out(U(o, tail), 'O', 'D')
 
 @reg('C', 'C')
 def g_C():
-    # un rond ouvert à droite par une fenêtre : les deux bouts finissent par une face horizontale, comme le crochet du 9
-    rx = round(0.53 * HW + 0.1 * SC); cx = rx; cy = CAP / 2; o = round(0.27 * CAP)
-    return out(D(cring(cx, rx), rect(cx + 0.15 * rx, cy - o, cx + rx + 10, cy + o)), 'O', 'T')
+    # bouts coupés de l'extérieur vers l'intérieur du trait : deux coins francs
+    rx = round(0.53 * HW + 0.1 * SC); cx = rx; cy = CAP / 2
+    return out(D(cring(cx, rx), rcut(cx, cy, rx, CRY, SC, TC, ROT, 38, 1, 0), rcut(cx, cy, rx, CRY, SC, TC, ROT, -38, -1, 0)), 'O', 'T')
 
 @reg('G', 'G')
 def g_G():
-    # le C, fermé en bas à droite par un fût qui monte jusqu'à la barre ; la fenêtre ne s'ouvre qu'au-dessus de la barre
-    rx = round(0.55 * HW + 0.1 * SC); cx = rx; cy = CAP / 2; o = round(0.27 * CAP); yb = round(CAP * 0.46)
-    r = D(cring(cx, rx), rect(cx + 0.15 * rx, yb - TC, cx + rx + 10, cy + o))
+    # le C, fermé en bas à droite par un fût qui monte jusqu'à la barre
+    rx = round(0.55 * HW + 0.1 * SC); cx = rx; cy = CAP / 2; yb = round(CAP * 0.46)
+    r = D(cring(cx, rx), rect(cx + 0.15 * rx, yb - TC, cx + rx + 10, cy), rcut(cx, cy, rx, CRY, SC, TC, ROT, 38, 1, 0))
     xs = cx + rx - SC
-    jamb = rect(xs, 30, xs + SC, yb)
+    # le pied du fût : s'il dépasse à peine sous le rond, il se pose sur le rond (pas de dent)
+    yj = cy - CRY * math.sqrt(max(0.0, 1 - ((xs - cx) / rx) ** 2))
+    jb = yj if 0 < yj - 30 < 0.5 * SC else 30
+    jamb = rect(xs, jb, xs + SC, yb)
     barre = rect(cx + 20, yb - TC, xs + SC, yb)
     return out(U(r, jamb, barre), 'O', 'S')
 
 @reg('D', 'D')
 def g_D():
     rx = round(0.48 * HW); cx = round(0.42 * HW)
-    half = I(cring(cx, rx, ry=CAP / 2), rect(cx, -OV - 5, cx + rx + 5, CAP + OV + 5))
+    half = I(cring(cx, rx, ry=CAP / 2, r=0), rect(cx, -OV - 5, cx + rx + 5, CAP + OV + 5))
     bars = U(rect(0, CAP - TC, cx + 2, CAP), rect(0, 0, cx + 2, TC))
     return out(U(cstem(0), half, bars, cap_foot(0, SC, right=False), cap_foot(0, SC, right=False, y=CAP, top=True)), 'S', 'O')
 
@@ -114,7 +118,7 @@ def g_R():
     x1 = round(0.78 * HW); yb = round(CAP * 0.42)
     leg = I(bar(round(0.48 * HW), yb + 10, x1 + 20, 0, SC * 1.02), rect(SC, 0, x1 + 200, yb + TC))
     return out(U(cstem(0), bowl_r(0, yb, CAP, x1), leg, cap_foot(0, SC), cap_foot(0, SC, right=False, y=CAP, top=True),
-                 cap_foot(x1 + 20 - SC * 0.5, x1 + 20 + SC * 0.52, left=False)), 'S', 'D')
+                 dserif(x1 + 20, 0, round(0.48 * HW), yb + 10, SC * 1.02, left=False)), 'S', 'D')
 
 @reg('B', 'B')
 def g_B():
@@ -133,52 +137,58 @@ def g_U():
 
 def vee(x0, x1, top, t1, t2, bot=0):
     m = (x0 + x1) / 2
-    return I(U(bar(x0, top, m - 4, bot, t1), bar(x1, top, m + 4, bot, t2)), rect(x0 - 300, bot, x1 + 300, top))
+    a = D(bar(x0, top, m - 4, bot, t1), halfplane((m + 4 + t2 / 2, bot), (x1 + t2 / 2, top)))   # rien ne dépasse au fond
+    return I(U(a, bar(x1, top, m + 4, bot, t2)), rect(x0 - 300, bot, x1 + 300, top))
 
 @reg('V', 'V')
 def g_V():
     x1 = round(0.96 * HW); t1 = SC * 1.06; t2 = SC * 0.72
-    return out(U(vee(0, x1, CAP, t1, t2), cap_foot(-t1 / 2, t1 / 2, y=CAP, top=True), cap_foot(x1 - t2 / 2, x1 + t2 / 2, y=CAP, top=True)), 'D', 'D')
+    m = x1 / 2
+    return out(U(vee(0, x1, CAP, t1, t2), dserif(0, CAP, m - 4, 0, t1), dserif(x1, CAP, m + 4, 0, t2)), 'D', 'D')
 
 @reg('A', 'A')
 def g_A():
     x1 = round(0.96 * HW); m = x1 / 2; t1 = SC * 0.72; t2 = SC * 1.06
-    a = I(U(bar(0, 0, m - 6, CAP, t1), bar(x1, 0, m + 6, CAP, t2)), rect(-300, 0, x1 + 300, CAP + 10))
-    apex = rect(m - t1 / 2 - 8, CAP - 6, m + t2 / 2 + 8, CAP + 10)
+    thick = D(bar(x1, 0, m + 6, CAP, t2), halfplane((m - 6 - t1 / 2, CAP), (-t1 / 2, 0)))       # rien ne dépasse au sommet
+    a = I(U(bar(0, 0, m - 6, CAP, t1), thick), rect(-300, 0, x1 + 300, CAP))      # sommet coupé à plat, sans plaque rapportée
     yb = round(CAP * 0.30); xl = yb / CAP * (m - 6); xr = x1 - yb / CAP * (x1 - m - 6)
     cross = rect(xl, yb, xr, yb + TC)
-    return out(U(a, apex, cross, cap_foot(-t1 / 2 - 4, t1 / 2 + 4), cap_foot(x1 - t2 / 2, x1 + t2 / 2)), 'D', 'D')
+    return out(U(a, cross, dserif(0, 0, m - 6, CAP, t1), dserif(x1, 0, m + 6, CAP, t2)), 'D', 'D')
 
 @reg('W', 'W')
 def g_W():
     s = round(0.70 * HW); t1 = SC * 1.0; t2 = SC * 0.70
     w = U(vee(0, s, CAP, t1, t2), vee(s, 2 * s, CAP, t1, t2))
     w = D(w, rect(s - t1, CAP - round(SH * 0.9), s + t2, CAP + 50))                # sommet du milieu coupé droit, un peu plus bas
-    return out(U(w, cap_foot(-t1 / 2, t1 / 2, y=CAP, top=True), cap_foot(2 * s - t2 / 2, 2 * s + t2 / 2, y=CAP, top=True)), 'D', 'D')
+    return out(U(w, dserif(0, CAP, s / 2 - 4, 0, t1), dserif(2 * s, CAP, 1.5 * s + 4, 0, t2)), 'D', 'D')
 
 @reg('X', 'X')
 def g_X():
     x1 = round(0.90 * HW); t1 = SC * 1.04; t2 = SC * 0.72
     x = I(U(bar(0, CAP, x1, 0, t1), bar(x1, CAP, 0, 0, t2)), rect(-300, 0, x1 + 300, CAP))
-    return out(U(x, cap_foot(-t1 / 2, t1 / 2, y=CAP, top=True), cap_foot(x1 - t2 / 2, x1 + t2 / 2, y=CAP, top=True),
-                 cap_foot(-t2 / 2, t2 / 2), cap_foot(x1 - t1 / 2, x1 + t1 / 2)), 'D', 'D')
+    return out(U(x, dserif(0, CAP, x1, 0, t1), dserif(x1, CAP, 0, 0, t2),
+                 dserif(0, 0, x1, CAP, t2), dserif(x1, 0, 0, CAP, t1)), 'D', 'D')
 
 @reg('Y', 'Y')
 def g_Y():
     x1 = round(0.92 * HW); m = x1 / 2; t1 = SC * 1.04; t2 = SC * 0.72; yj = round(CAP * 0.42)
     arms = I(U(bar(0, CAP, m - 2, yj, t1), bar(x1, CAP, m + 2, yj, t2)), rect(-300, yj - 20, x1 + 300, CAP))
     s = cstem(m - SC / 2, 0, yj + 30)
-    return out(U(arms, s, cap_foot(m - SC / 2, m + SC / 2), cap_foot(-t1 / 2, t1 / 2, y=CAP, top=True),
-                 cap_foot(x1 - t2 / 2, x1 + t2 / 2, y=CAP, top=True)), 'D', 'D')
+    return out(U(arms, s, cap_foot(m - SC / 2, m + SC / 2), dserif(0, CAP, m - 2, yj, t1),
+                 dserif(x1, CAP, m + 2, yj, t2)), 'D', 'D')
 
 @reg('K', 'K')
 def g_K():
     x1 = round(0.84 * HW); t = SC * 0.9
     arm = I(bar(SC + 10, round(CAP * 0.30), x1 - 10, CAP, t), rect(SC - 20, 0, x1 + 200, CAP))
     yj = round(CAP * 0.46); xj = SC + 10 + (yj - CAP * 0.30) / (CAP * 0.70) * (x1 - 20 - SC)
-    leg = I(bar(xj, yj, x1 + 20, 0, SC * 1.04), rect(SC - 20, 0, x1 + 200, CAP))
-    return out(U(cstem(0), arm, leg, serifs(0, SC), cap_foot(x1 - 10 - t / 2, x1 - 10 + t / 2, y=CAP, top=True),
-                 cap_foot(x1 + 20 - SC * 0.52, x1 + 20 + SC * 0.52, left=False)), 'S', 'D')
+    tl = SC * 1.04; ux, uy = (x1 + 20 - xj), -yj; ul = math.hypot(ux, uy); e_ = tl * 0.7
+    leg = bar(xj - ux / ul * e_, yj - uy / ul * e_, x1 + 20, 0, tl)
+    leg = D(leg, halfplane((x1 - 10 - t / 2, CAP), (SC + 10 - t / 2, round(CAP * 0.30))))     # rien au-dessus du bras
+    leg = I(leg, rect(SC - 20, 0, x1 + 200, CAP))
+    arm = D(arm, I(halfplane((xj - tl / 2, yj), (x1 + 20 - tl / 2, 0)), rect(SC - 40, -100, x1 + 400, yj)))  # rien dans le creux
+    return out(U(cstem(0), arm, leg, serifs(0, SC), dserif(x1 - 10, CAP, SC + 10, round(CAP * 0.30), t),
+                 dserif(x1 + 20, 0, xj, yj, SC * 1.04, left=False)), 'S', 'D')
 
 @reg('N', 'N')
 def g_N():
@@ -192,6 +202,7 @@ def g_M():
     x1 = round(1.20 * HW); tn = round(SC * 0.70); m = x1 / 2
     d1 = poly([(0, CAP), (SC * 1.15, CAP), (m + SC * 0.4, 0), (m - SC * 0.6, 0)])
     d2 = poly([(x1 - tn, CAP), (x1, CAP), (m + tn * 0.5, 0), (m - tn * 0.5, 0)])
+    d1 = D(d1, halfplane((m + tn * 0.5, 0), (x1, CAP)))
     body = I(U(d1, d2), rect(0, 0, x1, CAP))
     return out(U(rect(0, 0, tn, CAP), rect(x1 - SC, 0, x1, CAP), body,
                  cap_foot(0, tn), cap_foot(0, tn, right=False, y=CAP, top=True), cap_foot(x1 - SC, x1),
@@ -206,9 +217,10 @@ def g_Z():
 
 @reg('S', 'S')
 def g_S():
-    rx = round(0.42 * HW + 0.2 * SC); ry = (CAP + TC) / 4 + OV / 2; cx = rx
-    up = I(ring(cx, CAP + OV - ry, rx, ry, sx=SC * 0.92, sy=TC, r=0), pie(cx, CAP + OV - ry, 30, 270))
-    lo = I(ring(cx, -OV + ry, rx, ry, sx=SC * 0.92, sy=TC, r=0), pie(cx, -OV + ry, 210, 450))
+    rx = round(0.42 * HW + 0.2 * SC); ry = (CAP + TC) / 4 + OV / 2; cx = rx; sx = SC * 0.92
+    cu, cl = CAP + OV - ry, -OV + ry
+    up = D(I(ring(cx, cu, rx, ry, sx=sx, sy=TC, r=0), pie(cx, cu, -20, 270)), icut(cx, cu, rx, ry, sx, TC, 26, 1, -20))
+    lo = D(I(ring(cx, cl, rx, ry, sx=sx, sy=TC, r=0), pie(cx, cl, 160, 450)), icut(cx, cl, rx, ry, sx, TC, 206, 1, 160))
     return out(U(up, lo), 'T', 'T')
 
 # lettres de plus
@@ -220,7 +232,7 @@ def g_AE():
     e = U(cstem(xs), rect(xs, 0, x1, TC), rect(m - 20, CAP - TC, x1 - 20, CAP), rect(xs, my - TC / 2, x1 - 90, my + TC / 2),
           beak(x1, TC, dy=1), beak(x1 - 20, CAP - TC, dy=-1), cap_foot(xs, xs + SC, right=False))
     cross = rect(yb / CAP * m, yb, xs + 2, yb + TC)
-    return out(U(diag, e, cross, cap_foot(-t1 / 2 - 4, t1 / 2 + 4)), 'D', 'T')
+    return out(U(diag, e, cross, dserif(0, 0, m, CAP, t1)), 'D', 'T')
 
 @reg('OE', 'Œ')
 def g_OE():
@@ -234,7 +246,7 @@ def g_OE():
 @reg('Oslash', 'Ø')
 def g_Oslash():
     rx = round(0.56 * HW + 0.1 * SC)
-    return out(U(cring(rx, rx), bar(2 * rx - 20, CAP + 50, 20, -50, TC * 1.05)), 'O', 'O')
+    return out(U(cring(rx, rx), pbar(2 * rx - 20, CAP + 50, 20, -50, TC * 0.9)), 'O', 'O')
 
 @reg('Eth', 'Ð')
 def g_Eth():
@@ -248,7 +260,7 @@ def g_Thorn():
 
 @reg('Lslash', 'Ł')
 def g_Lslash():
-    return out(U(g_L()[0], poly([(-90, CAP * 0.36), (SC + 120, CAP * 0.56), (SC + 120, CAP * 0.56 + TC), (-90, CAP * 0.36 + TC)])), 'T', 'T')
+    return out(U(g_L()[0], pbar(-90, CAP * 0.36 + TC / 2, SC + 120, CAP * 0.56 + TC / 2, TC)), 'T', 'T')
 
 @reg('Dcroat', 'Đ')
 def g_Dcroat(): return g_Eth()
@@ -262,8 +274,9 @@ def g_Hbar():
 def g_capsharps():
     x1 = round(0.80 * HW); top = CAP
     t = rect(0, top - TC, x1 - 30, top)
-    d = I(bar(x1 - 40, top - TC / 2, round(0.42 * HW), round(CAP * 0.56), SC * 0.95), rect(0, CAP * 0.5, x1, top))
+    d = I(bar(x1 - 40, top - TC / 2, round(0.42 * HW), round(CAP * 0.56), SC * 0.95), rect(0, CAP * 0.5, x1 - 30, top))
     lo = bowl_r(SC, 0, round(CAP * 0.60), x1 + 20)
-    lo = D(lo, rect(SC - 5, -10, round(0.30 * HW), round(CAP * 0.60) + 10))
+    xg = max(round(0.30 * HW), SC + W + round(0.25 * SC))          # le blanc du bas laisse passer l'empattement du fût
+    lo = D(lo, rect(SC - 5, -10, xg, round(CAP * 0.60) + 10))
     lo = U(lo, rect(round(0.30 * HW) - 2, round(CAP * 0.60) - TC, round(0.46 * HW), round(CAP * 0.60)))
     return out(U(cstem(0), t, d, lo, cap_foot(0, SC), cap_foot(0, SC, right=False, y=CAP, top=True)), 'S', 'O')
