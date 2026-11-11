@@ -19,13 +19,17 @@ def build_lower(w):
     ST, R, Wd, J, TD = w.ST, w.R, w.W, w.J, w.TD
     cy = XH / 2; G = {}
     bowl = ring(R, cy, R, ST)
+    # en italique, un rond ne dépasse jamais du bord extérieur du fût penché auquel il s'accroche
+    inR = lambda x: half((x, 0), (x, 1000), 1)     # à gauche du bord droit d'un fût en x
+    inL = lambda x: half((x, 0), (x, 1000), -1)    # à droite du bord gauche d'un fût en x
+    bowlR = I(bowl, inR(Wd)); bowlL = I(bowl, inL(0))
     # o a b d p q
     G['o'] = Gl(bowl, [], [(R, cy, R)], 'OO')
-    G['a'] = Gl(U(bowl, rect(Wd - ST, 0, Wd, XH)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
-    G['d'] = Gl(U(bowl, rect(Wd - ST, 0, Wd, ASC)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
-    G['q'] = Gl(U(bowl, rect(Wd - ST, DESC, Wd, XH)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
-    G['b'] = Gl(U(bowl, rect(0, 0, ST, ASC)), [rect(ST, -30, ST + J, XH + 30)], [(R, cy, R)], 'SO')
-    G['p'] = Gl(U(bowl, rect(0, DESC, ST, XH)), [rect(ST, -30, ST + J, XH + 30)], [(R, cy, R)], 'SO')
+    G['a'] = Gl(U(bowlR, rect(Wd - ST, 0, Wd, XH)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
+    G['d'] = Gl(U(bowlR, rect(Wd - ST, 0, Wd, ASC)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
+    G['q'] = Gl(U(bowlR, rect(Wd - ST, DESC, Wd, XH)), [rect(Wd - ST - J, -30, Wd - ST, XH + 30)], [(R, cy, R)], 'OS')
+    G['b'] = Gl(U(bowlL, rect(0, 0, ST, ASC)), [rect(ST, -30, ST + J, XH + 30)], [(R, cy, R)], 'SO')
+    G['p'] = Gl(U(bowlL, rect(0, DESC, ST, XH)), [rect(ST, -30, ST + J, XH + 30)], [(R, cy, R)], 'SO')
     # c e : coupes au rayon
     G['c'] = Gl(arc(R, cy, R, ST, 42, 318), [], [(R, cy, R)], 'OO')
     opening = I(sector(R, cy, -42, 20), rect(-10, -100, Wd + 10, cy - ST / 2))
@@ -34,22 +38,22 @@ def build_lower(w):
     e_c = U(ering_, I(rect(ST / 2, cy - ST / 2, R + 1, cy + ST / 2), circ(R, cy, R - ST - J)), rect(R, cy - ST / 2, Wd - ST / 2, cy + ST / 2))
     G['e'] = Gl(e, [rect(R, cy + ST / 2, Wd + 10, cy + ST / 2 + J)], [(R, cy, R)], 'OO', alt=e_c)
     # n h m u r : arches
-    arch = arc(R, cy, R, ST, 0, 180)
+    arch = I(arc(R, cy, R, ST, 0, 180), inL(0))
     nj = rect(ST, cy - 1, ST + J, XH + 60)
     G['n'] = Gl(U(rect(0, 0, ST, XH), arch, rect(Wd - ST, 0, Wd, cy + 1)), [nj], [(R, cy, R)], 'SS')
     G['h'] = Gl(U(rect(0, 0, ST, ASC), arch, rect(Wd - ST, 0, Wd, cy + 1)), [nj], [(R, cy, R)], 'SS')
-    G['u'] = Gl(U(rect(0, cy - 1, ST, XH), arc(R, cy, R, ST, 180, 360), rect(Wd - ST, 0, Wd, XH)),
+    G['u'] = Gl(U(rect(0, cy - 1, ST, XH), I(arc(R, cy, R, ST, 180, 360), inR(Wd)), rect(Wd - ST, 0, Wd, XH)),
                 [rect(Wd - ST - J, -60, Wd - ST, cy + 1)], [(R, cy, R)], 'SS')
     ra = round(0.39 * Wd + ST / 4); ca = XH + OV - ra
-    m = U(rect(0, 0, ST, XH), arc(ra, ca, ra, ST, 0, 180), rect(2 * ra - ST, 0, 2 * ra, ca + 1),
+    m = U(rect(0, 0, ST, XH), I(arc(ra, ca, ra, ST, 0, 180), inL(0)), rect(2 * ra - ST, 0, 2 * ra, ca + 1),
           arc(3 * ra - ST, ca, ra, ST, 0, 180), rect(4 * ra - 2 * ST, 0, 4 * ra - ST, ca + 1))
     G['m'] = Gl(m, [rect(ST, ca - 1, ST + J, XH + 60), rect(2 * ra, ca - 1, 2 * ra + J, XH + 60)],
                 [(ra, ca, ra), (3 * ra - ST, ca, ra)], 'SS')
-    G['r'] = Gl(U(rect(0, 0, ST, XH), arc(R, cy, R, ST, 62, 180)), [nj], [(R, cy, R)], 'SD')
+    G['r'] = Gl(U(rect(0, 0, ST, XH), I(arc(R, cy, R, ST, 62, 180), inL(0))), [nj], [(R, cy, R)], 'SD')
     # g
     cg = DESC + R - OV
     hook = arc(R, cg, R, ST, 198, 360)
-    G['g'] = Gl(U(bowl, rect(Wd - ST, cg, Wd, XH), hook),
+    G['g'] = Gl(U(bowlR, rect(Wd - ST, cg, Wd, XH), hook),
                 [rect(Wd - ST - J, cg + 20, Wd - ST, XH + 30), rect(Wd - ST - 10, cg - J, Wd + 10, cg)],
                 [(R, cy, R), (R, cg, R)], 'OS')
     # i j l : point rond

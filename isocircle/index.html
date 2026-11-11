@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISOCIRCLE</title>
-<meta name="description" content="ISOCIRCLE : une sans géométrique dessinée au compas et à la règle. Ronds parfaits, a à un étage, et une version construction rangée derrière le gras. 5 graisses, de 030 à 090. Gratuit en perso. Par LaFleurStudio.">
+<meta name="description" content="ISOCIRCLE : une sans géométrique dessinée au compas et à la règle. Ronds parfaits, a à un étage, une italique qui garde ses cercles, et une version construction rangée derrière le gras. 5 graisses, de 030 à 090, 4 styles chacune. Gratuit en perso. Par LaFleurStudio.">
 <link rel="stylesheet" href="../shared/site.css">
 <style>
 @font-face{font-family:"ISOCIRCLE 030";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-030.woff2) format("woff2")}
@@ -22,6 +22,26 @@
 @font-face{font-family:"ISOCIRCLE";font-weight:500;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-050.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-070.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE";font-weight:900;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 030";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-030Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 030";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-030ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 030 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-030Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 030 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-030ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 040";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-040Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 040";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-040ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 040 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-040Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 040 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-040ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 050";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-050Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 050";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-050ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 050 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-050Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 050 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-050ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 070";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-070Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 070";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-070ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 070 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-070Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 070 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-070ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 090";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 090";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 090 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090Italic.woff2) format("woff2")}
+@font-face{font-family:"ISOCIRCLE 090 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090ConstructionItalic.woff2) format("woff2")}
 /* ISOCIRCLE partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"ISOCIRCLE",var(--sans),sans-serif}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -29,17 +49,14 @@
 section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:1.15}
 .step h3{font-weight:500;font-size:clamp(24px,2.8vw,34px)}
 .card b{font-weight:700;font-size:clamp(18px,4.8vw,28px);overflow-wrap:anywhere}
-.hero h1{font-family:"ISOCIRCLE";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.4);line-height:1.1}
+.hero h1{font-family:"ISOCIRCLE 090";font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.4);line-height:1.1}
 .titres{margin:10px 0 6px}
-.titres span{display:block;font-family:"ISOCIRCLE 090";font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.9);line-height:1.15;white-space:nowrap}
+.titres span{display:block;font-family:"ISOCIRCLE 090";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/6.9);line-height:1.15;white-space:nowrap}
 .wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/8.6);line-height:1.3;white-space:nowrap}
 @media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/8.6)}}
 .demo .row span{line-height:1.3;white-space:pre}
 .glyphs div{font-size:36px}
 #tester-text{line-height:1.35}
-.bascule{display:inline-flex;gap:0;margin-left:8px}
-.bascule button{font:inherit;font-size:14px;padding:6px 12px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
-.bascule button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .how li{margin:6px 0}
 </style>
 </head>
@@ -65,12 +82,12 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
     <div class="wrap">
       <p class="label">LaFleurStudio · 2026 · Sans géométrique</p>
       <h1 style="margin-top:18px">ISOCIRCLE</h1>
-      <div class="titres" aria-label="Exemple en construction"><span>BLUEPRINT</span></div>
+      <div class="titres" aria-label="Exemple"><span>BLUEPRINT</span></div>
       <div class="lede">
-        <p><strong>La sans de base, tracée au compas et à la règle.</strong> Des ronds parfaits, un a à un étage, un t étroit. Et derrière le gras, <strong>la version construction</strong> : les jonctions entre les pièces, les cercles et les lignes du tracé. <strong>5 graisses</strong>, de 030 à 090, chacune avec sa construction.</p>
+        <p><strong>La sans de base, tracée au compas et à la règle.</strong> Des ronds parfaits, un a à un étage, un t étroit. Et derrière le gras, <strong>la version construction</strong> : les jonctions entre les pièces, les cercles et les lignes du tracé. <strong>5 graisses</strong>, de 030 à 090, chacune en 4 styles : droite, italique, construction, construction italique.</p>
       </div>
       <div class="facts">
-        <span>Sans géométrique</span><span>5 graisses</span><span>030 → 090</span><span>Gras = construction</span><span>Ronds parfaits</span><span>a et g à deux étages en option</span><span>0 barré en option</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+        <span>Sans géométrique</span><span>5 graisses</span><span>030 → 090</span><span>Gras = construction</span><span>Italique au compas</span><span>Ronds parfaits</span><span>a et g à deux étages en option</span><span>0 barré en option</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
       </div>
     </div>
   </div>
@@ -90,23 +107,22 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
       <div class="tester">
         <div class="controls">
           <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
-          <span class="bascule" role="group" aria-label="Pleine ou construction"><button type="button" data-c="0" aria-pressed="true">Pleine</button><button type="button" data-c="1" aria-pressed="false">Construction</button></span>
           <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
         </div>
         <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
       </div>
-      <p class="hint">Cinq familles « ISOCIRCLE 030 » à « ISOCIRCLE 090 » : normal = pleine, gras = construction.</p>
+      <p class="hint">Cinq familles « ISOCIRCLE 030 » à « ISOCIRCLE 090 » : normal = pleine, gras = construction, italique = italique, gras + italique = construction italique.</p>
     </div>
   </section>
 
   <section id="construction">
     <div class="wrap">
       <h2>Comment avoir la construction</h2>
-      <p class="intro">Chaque graisse a sa version construction, cachée derrière le gras.</p>
+      <p class="intro">Chaque graisse a sa version construction, cachée derrière le gras. Et son italique, derrière le bouton italique.</p>
       <ul class="how">
-        <li><strong>Word, PowerPoint, Pages, Keynote, Canva, LibreOffice :</strong> sélectionne ton texte et appuie sur Gras (Ctrl+B ou ⌘B).</li>
-        <li><strong>InDesign, Illustrator, Figma, Photoshop :</strong> choisis le style « Construction » dans le menu des styles. N'utilise pas le faux gras de Photoshop.</li>
-        <li><strong>Sur un site :</strong> <code>font-weight: bold</code> ou <code>&lt;strong&gt;</code>.</li>
+        <li><strong>Word, PowerPoint, Pages, Keynote, Canva, LibreOffice :</strong> sélectionne ton texte et appuie sur Gras (Ctrl+B ou ⌘B). Ajoute Italique (Ctrl+I ou ⌘I) pour la construction italique.</li>
+        <li><strong>InDesign, Illustrator, Figma, Photoshop :</strong> choisis le style « Construction » ou « Construction Italic » dans le menu des styles. N'utilise pas le faux gras ni le faux italique de Photoshop.</li>
+        <li><strong>Sur un site :</strong> <code>font-weight: bold</code> ou <code>&lt;strong&gt;</code>, et <code>font-style: italic</code> ou <code>&lt;em&gt;</code> pour l'italique.</li>
       </ul>
       <p class="intro">En 030 et 040, la construction montre juste les jonctions entre les pièces. À partir de 050, elle ajoute les cercles et les lignes de construction.</p>
     </div>
@@ -152,6 +168,17 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
 
         <div class="step">
           <div>
+            <h3>L'italique au compas</h3>
+            <p>Les fûts et les obliques penchent de 12°, mais <strong>les ronds restent des cercles parfaits</strong>. En construction, les axes du compas penchent avec la lettre et deviennent des lignes de pente.</p>
+          </div>
+          <div class="demo" aria-label="L'italique au compas">
+            <div class="row"><small>040</small><span style="font-family:'ISOCIRCLE 040';font-style:italic;font-size:calc(100cqw/4.6)">cocoon</span></div>
+            <div class="row"><small>090</small><span style="font-family:'ISOCIRCLE 090';font-style:italic;font-weight:700;font-size:calc(100cqw/6.8)">COMPASS</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
             <h3>Les chiffres</h3>
             <p><strong>Tous de la même chasse</strong> : les nombres tombent en colonne. Le 0 est ovale pour ne jamais le confondre avec le O, le 3 a une tête plate, le 6 et le 9 une hampe au compas.</p>
           </div>
@@ -181,7 +208,7 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
       <h2>Télécharger</h2>
       <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
       <div class="dl">
-        <a class="card" href="ISOCIRCLE.zip" download><b>ISOCIRCLE.zip</b><span>Les 10 fichiers (OTF) + licence + À LIRE</span></a>
+        <a class="card" href="ISOCIRCLE.zip" download><b>ISOCIRCLE.zip</b><span>Les 20 fichiers (OTF) + licence + À LIRE</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/isocircle/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
         <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/isocircle/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
       </div>
@@ -191,8 +218,12 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
   src: url(ISOCIRCLE-040.woff2) format("woff2"); }
 @font-face { font-family: "ISOCIRCLE 040"; font-weight: 700;
   src: url(ISOCIRCLE-040Construction.woff2) format("woff2"); }
+@font-face { font-family: "ISOCIRCLE 040"; font-style: italic;
+  src: url(ISOCIRCLE-040Italic.woff2) format("woff2"); }
+@font-face { font-family: "ISOCIRCLE 040"; font-weight: 700; font-style: italic;
+  src: url(ISOCIRCLE-040ConstructionItalic.woff2) format("woff2"); }
 /* … pareil pour 030, 050, 070, 090.
-   &lt;strong&gt; ou font-weight: bold → la construction. */</code></pre>
+   &lt;strong&gt; → la construction, &lt;em&gt; → l'italique. */</code></pre>
 </details>
     </div>
   </section>
@@ -212,6 +243,7 @@ window.SPECIMEN = {
   styles: [
     {n:"030",w:400,fam:"ISOCIRCLE 030",label:"pleine"},{n:"030 Construction",w:700,fam:"ISOCIRCLE 030",label:"gras"},{n:"040",w:400,fam:"ISOCIRCLE 040",label:"pleine"},{n:"040 Construction",w:700,fam:"ISOCIRCLE 040",label:"gras"},{n:"050",w:400,fam:"ISOCIRCLE 050",label:"pleine"},{n:"050 Construction",w:700,fam:"ISOCIRCLE 050",label:"gras"},{n:"070",w:400,fam:"ISOCIRCLE 070",label:"pleine"},{n:"070 Construction",w:700,fam:"ISOCIRCLE 070",label:"gras"},{n:"090",w:400,fam:"ISOCIRCLE 090",label:"pleine"},{n:"090 Construction",w:700,fam:"ISOCIRCLE 090",label:"gras"}
   ],
+  testerExtra: [{n:"030 Italique",w:400,fam:"ISOCIRCLE 030 Italique"},{n:"030 Construction Italique",w:700,fam:"ISOCIRCLE 030 Italique"},{n:"040 Italique",w:400,fam:"ISOCIRCLE 040 Italique"},{n:"040 Construction Italique",w:700,fam:"ISOCIRCLE 040 Italique"},{n:"050 Italique",w:400,fam:"ISOCIRCLE 050 Italique"},{n:"050 Construction Italique",w:700,fam:"ISOCIRCLE 050 Italique"},{n:"070 Italique",w:400,fam:"ISOCIRCLE 070 Italique"},{n:"070 Construction Italique",w:700,fam:"ISOCIRCLE 070 Italique"},{n:"090 Italique",w:400,fam:"ISOCIRCLE 090 Italique"},{n:"090 Construction Italique",w:700,fam:"ISOCIRCLE 090 Italique"}],
   testerDefault: 2,
   glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
@@ -221,16 +253,5 @@ window.SPECIMEN = {
 };
 </script>
 <script src="../shared/specimen.js"></script>
-<script>
-/* bouton Pleine / Construction du testeur : passe au style voisin (même graisse) */
-(function () {
-  const sel = document.getElementById("tw"), b = document.querySelector(".bascule");
-  if (!sel || !b) return;
-  const sync = () => b.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(+sel.value % 2 == +x.dataset.c)));
-  b.addEventListener("click", e => { const x = e.target.closest("button"); if (!x) return;
-    sel.value = String(+sel.value - (+sel.value % 2) + (+x.dataset.c)); sel.dispatchEvent(new Event("change")); sync(); });
-  sel.addEventListener("change", sync); sync();
-})();
-</script>
 </body>
 </html>

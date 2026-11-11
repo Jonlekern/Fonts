@@ -6,9 +6,7 @@ def mv(p, dx, dy=0): return xf(p, (1, 0, 0, 1, dx, dy))
 def shift(g, dx):
     """une lettre décalée (encre, coupes, centres)"""
     return mv(g.ink, dx), [mv(c, dx) for c in g.cuts], [(c[0] + dx,) + tuple(c[1:]) for c in g.centers], (g.alt and mv(g.alt, dx))
-def bar_(p, q, t):
-    dx, dy = q[0] - p[0], q[1] - p[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * t / 2, dx / L * t / 2
-    return poly([(p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny)])
+bar_ = rbar
 def cross_cuts(piece, through, e):
     """jonction : le morceau « piece » s'arrête à e de part et d'autre du trait « through »"""
     return I(piece, D(dilate(through, e), through))
@@ -28,11 +26,13 @@ def build_extras(w, G):
     # æ œ : a + e et o + e qui partagent un trait
     for nm, a_, b_ in (('ae', 'a', 'e'), ('oe', 'o', 'e')):
         A_, Bg = G[a_], G[b_]; ink, cu, ce, al = shift(Bg, Wd - ST)
+        if a_ == 'a':                                     # le rond du e ne dépasse pas du fût du a
+            ink = I(ink, half((Wd - ST, 0), (Wd - ST, 1000), -1)); al = al if al is None else I(al, half((Wd - ST, 0), (Wd - ST, 1000), -1))
         alt = U(A_.alt if A_.alt is not None else A_.ink, al if al is not None else ink)
         E[nm] = gl(U(A_.ink, ink), A_.cuts + cu, A_.centers + ce, 'OO', 0, 2 * Wd - ST, alt=alt)
     # ø Ø : barre oblique qui traverse le rond
     for nm, base, h0, h1, t in (('oslash', 'o', -0.06 * XH, 1.06 * XH, round(0.82 * ST)), ('Oslash', 'O', -0.05 * CAP, 1.05 * CAP, round(0.82 * S))):
-        g = G[base]; b = g.ink.bounds
+        g = G[base]; b = ubounds(g.ink)
         sl = bar_((b[0] + 0.10 * (b[2] - b[0]), h0), (b[2] - 0.10 * (b[2] - b[0]), h1), t)
         E[nm] = gl(U(g.ink, sl), g.cuts + [cross_cuts(g.ink, sl, e)], g.centers, 'OO', b[0], b[2], sbk=getattr(g, 'sbk', 1.0))
     # þ : p avec hampe
@@ -47,7 +47,7 @@ def build_extras(w, G):
     E['Lslash'] = gl(U(Lk, Lsl), Lc + [D(cross_cuts(Lsl, rect(lb2, 0, lb2 + S, CAP), e), rect(lb2, 0, lb2 + S, CAP))], [], 'SS', 0, L_.x1 + lb2, sbk=1.3)
     # đ ħ : barre droite à travers le fût
     tb = round(0.75 * ST); yb = round(min(XH + 0.55 * (ASC - XH), ASC - 0.6 * tb - tb / 2) - tb / 2)
-    d = G['d']; db = d.ink.bounds; xs = Wd - ST
+    d = G['d']; db = ubounds(d.ink); xs = Wd - ST
     dbar = rect(xs - 0.32 * Wd, yb, Wd + 0.12 * Wd, yb + tb); dst = rect(xs, 0, Wd, ASC)
     E['dcroat'] = gl(U(d.ink, dbar), d.cuts + [D(cross_cuts(dbar, dst, e), dst)], d.centers, 'OS', 0, Wd + 0.12 * Wd)
     h = G['h']; hb = round(0.16 * Wd)
@@ -71,7 +71,7 @@ def build_extras(w, G):
     E['eth'] = gl(U(o.ink, hamp, ebar), [D(cross_cuts(ebar, hamp, e), hamp)], o.centers, 'OO', 0, max(Wd, xb_ + 0.19 * Wd))
     # Þ : fût + panse au milieu
     yb0, yb1 = round(0.17 * CAP), round(0.83 * CAP); rp = (yb1 - yb0) / 2; pw = round(0.56 * CAP + 0.4 * S); xc = pw - rp
-    Tp = U(rect(0, 0, S, CAP), rect(0, yb1 - S, xc, yb1), rect(0, yb0, xc, yb0 + S), arc(xc, yb0 + rp, rp, S, -90, 90))
+    Tp = U(rect(0, 0, S, CAP), tbar(0, yb1 - S, xc, yb1, xc, yb0 + rp, rp), tbar(0, yb0, xc, yb0 + S, xc, yb0 + rp, rp), I(ring(xc, yb0 + rp, rp, S), vreal(xc, yb0 + rp, -1)))
     E['Thorn'] = gl(Tp, [rect(S, yb0 - 10, S + J, yb1 + 10)], [(xc, yb0 + rp, rp)], 'SO', sbk=1.3)
     # Æ Œ : un E accolé
     Eg = G['E']; ewd = Eg.x1
@@ -83,15 +83,16 @@ def build_extras(w, G):
     abar = I(rect(0, ya, xe + 1, ya + tb3), half(lA[0], lA[1], -1))
     Ek, Ec, Ece, _ = shift(Eg, xe)
     E['AE'] = gl(U(diag, Ek, abar), Ec + [D(cross_cuts(abar, diag, e), diag)], [], 'DS', 0, xe + ewd, sbk=1.3)
-    rq = CAP / 2; lo = U(arc(rq, rq, rq, S, 90, 270), rect(rq, 0, rq + 1, S), rect(rq, CAP - S, rq + 1, CAP))
+    rq = CAP / 2; lo = U(I(ring(rq, rq, rq, S), vreal(rq, rq, 1)), tbarL(rq, 0, rq + S, S, rq, rq, rq), tbarL(rq, CAP - S, rq + S, CAP, rq, rq, rq))
     Ek2, Ec2, _, _ = shift(Eg, rq)
+    Ek2 = I(Ek2, U(circ(rq, rq, rq), vreal(rq, rq, -1)))          # penché, le pied du E ne dépasse pas sous le rond
     E['OE'] = gl(U(lo, Ek2), Ec2 + [rect(rq - J, -10, rq, S + 10), rect(rq - J, CAP - S - 10, rq, CAP + 10)], [(rq, rq, rq)], 'OS', 0, rq + ewd, sbk=1.3)
     # ß : fût + arche + panse
     r1 = round(0.24 * Wd + 0.45 * ST); ya_ = ASC + OV - r1
     yt = round(0.60 * ASC); rb = yt / 2; xb2 = max(round(2 * r1 + 0.12 * Wd - rb), 2 * r1 - ST)
     foot = rect(2 * r1 - ST, yt - ST, 2 * r1, ya_ + 1)
     ss = U(rect(0, 0, ST, ya_ + 1), arc(r1, ya_, r1, ST, 0, 180), foot,
-           rect(min(2 * r1 - ST, xb2), yt - ST, max(2 * r1 - ST, xb2), yt), arc(xb2, rb, rb, ST, -90, 90), rect(ST + round(0.12 * Wd), 0, xb2, ST))
+           tbar(min(2 * r1 - ST, xb2), yt - ST, max(2 * r1 - ST, xb2), yt, xb2, rb, rb), I(ring(xb2, rb, rb, ST), vreal(xb2, rb, -1)), tbar(ST + round(0.12 * Wd), 0, xb2, ST, xb2, rb, rb))
     E['germandbls'] = gl(ss, [rect(ST, ya_ - 1, ST + J, ASC + 60), rect(2 * r1 - ST - 10, ya_ - J, 2 * r1 + 10, ya_)], [(r1, ya_, r1), (xb2, rb, rb)], 'SO')
     # ẞ : fût, barre de tête, oblique, panse
     tw_ = round(0.52 * CAP + 0.3 * S); ym_ = round(0.56 * CAP); rb2 = ym_ / 2; xb3 = tw_ + round(0.06 * CAP) - rb2
@@ -99,7 +100,7 @@ def build_extras(w, G):
     dg = poly(para2(xb3 - 0.04 * CAP - hd * 0.5, tw_ - hd, hd, ym_ - S, CAP))
     pd_ = para2(xb3 - 0.04 * CAP - hd * 0.5, tw_ - hd, hd, ym_ - S, CAP); ld_ = pedges(pd_)[0]
     sbar = I(rect(pd_[0][0], ym_ - S, xb3, ym_), half(ld_[0], ld_[1], -1))
-    SS_ = U(rect(0, 0, S, CAP), rect(0, CAP - S, tw_, CAP), dg, sbar, arc(xb3, rb2, rb2, S, -90, 90), rect(S + round(0.10 * CAP), 0, xb3, S))
+    SS_ = U(rect(0, 0, S, CAP), rect(0, CAP - S, tw_, CAP), dg, sbar, I(ring(xb3, rb2, rb2, S), vreal(xb3, rb2, -1)), tbar(S + round(0.10 * CAP), 0, xb3, S, xb3, rb2, rb2), I(rect(xb3 - 1, ym_ - S, xb3 + 0.45 * rb2, ym_), circ(xb3, rb2, rb2)))
     E['uni1E9E'] = gl(SS_, [rect(S, -10, S + J, CAP + 10), rect(0, ym_, tw_ + 50, ym_ + J) and I(dg, rect(-10, ym_, 2000, ym_ + J))], [(xb3, rb2, rb2)], 'SO', sbk=1.3)
     return E
 
@@ -128,13 +129,13 @@ def build_marks(w, H):
         rb = round((0.22 * Wd + 0.15 * ST)); tb_ = round(0.85 * t)
         M['breve' + tag] = (I(arc(0, rb, rb, tb_, 180, 360), rect(-2000, 0, 2000, round(rb * 0.75 * k + tb_ * 0.4))), [])
         rt = round(0.10 * Wd + 0.2 * ST); tt = round(0.8 * t)
-        til = U(arc(-rt + tt / 2, 0, rt, tt, 0, 180), arc(rt - tt / 2, 0, rt, tt, 180, 360)); bt = til.bounds
+        til = U(arc(-rt + tt / 2, 0, rt, tt, 0, 180), arc(rt - tt / 2, 0, rt, tt, 180, 360)); bt = ubounds(til)
         M['tilde' + tag] = (mv(til, -(bt[0] + bt[2]) / 2, -bt[1]), [])
     # dessous
     rr_ = dd / 2 * 0.85
-    cm = drop(0, 0, rr_, (-0.30 * 2 * rr_, -0.85 * 2 * rr_)); b = cm.bounds
+    cm = drop(0, 0, rr_, (-0.30 * 2 * rr_, -0.85 * 2 * rr_)); b = ubounds(cm)
     M['commabelow'] = (mv(cm, 0, -45 - b[3]), [])
-    ct = rot(cm, 180, 0, 0); b = ct.bounds; M['commaturned'] = (mv(ct, -(b[0] + b[2]) / 2 * 0, -b[1]), [])
+    ct = rot(cm, 180, 0, 0); b = ubounds(ct); M['commaturned'] = (mv(ct, -(b[0] + b[2]) / 2 * 0, -b[1]), [])
     tc = round(0.62 * ST); rc = round(0.11 * XH + 0.25 * ST); cyr = -round(0.10 * XH) - rc
     ced = U(rect(-tc / 2, cyr + rc - tc, tc / 2, 12), arc(0, cyr, rc, tc, -150, 90))
     M['cedilla'] = (ced, [rect(-tc, -round(0.10 * XH) - J * 0 - 1, tc, -round(0.10 * XH) + J)] if False else [])
@@ -156,13 +157,13 @@ def build_accented(w, G, H):
     for n, sp in SPACING.items():
         ink, cu = M[n]
         if n not in ('cedilla', 'ogonek'): ink, cu = mv(ink, 0, XH + ABOVE_GAP), [mv(c, 0, XH + ABOVE_GAP) for c in cu]
-        b = ink.bounds; A['_sp_' + n] = Gl(ink, cu, [], 'OO', b[0], b[2])
+        b = ubounds(ink); A['_sp_' + n] = Gl(ink, cu, [], 'OO', b[0], b[2])
     for cp, n in MARK_OF.items():
         ink, cu = M[n]
         if n not in ('cedilla', 'ogonek', 'commabelow'): ink, cu = mv(ink, 0, XH + ABOVE_GAP), [mv(c, 0, XH + ABOVE_GAP) for c in cu]
         A['uni%04X' % cp] = Gl(ink, cu, [], 'NN', 0, 0)
     def center(bn, g):
-        b = g.ink.bounds if bn not in ('dotlessi', 'uni0237', 'i', 'j') else (g.x0, 0, g.x1, 0); c = (b[0] + b[2]) / 2
+        b = ubounds(g.ink) if bn not in ('dotlessi', 'uni0237', 'i', 'j') else (g.x0, 0, g.x1, 0); c = (b[0] + b[2]) / 2
         if bn in ('a', 'd', 'q', 'g'): c = w.R - 0.0 * ST + (0.5 * ST if bn != 'g' else 0.5 * ST)
         if bn in ('b', 'p'): c = w.W - w.R - 0.5 * ST
         if bn in ('h', 'n', 'm', 'r', 'k'): c = (b[0] + b[2]) / 2
@@ -180,7 +181,7 @@ def build_accented(w, G, H):
         if bn not in G: print('base manquante', ch); continue
         g = G[bn]; isc = base in CAPS
         ink = g.ink; alt = g.alt; cuts = list(g.cuts); x1 = g.x1
-        b0 = g.ink.bounds; cx = center(bn, g); ytop = b0[3] if bn not in ('dotlessi',) else XH
+        b0 = ubounds(g.ink); cx = center(bn, g); ytop = b0[3] if bn not in ('dotlessi',) else XH
         stem_x = S / 2 if isc else ST / 2
         def add(mk, dx, dy):
             nonlocal ink, alt, cuts
@@ -188,7 +189,7 @@ def build_accented(w, G, H):
         for m in marks:
             mn = MARK_OF[m]
             if m in (0x326, 0x327) and base == 'g':
-                mi, mc = M['commaturned']; b = mi.bounds; add((mi, mc), cx - (b[0] + b[2]) / 2, ytop + ABOVE_GAP); continue
+                mi, mc = M['commaturned']; b = ubounds(mi); add((mi, mc), cx - (b[0] + b[2]) / 2, ytop + ABOVE_GAP); continue
             if m in (0x326, 0x327):
                 use = 'commabelow' if (m == 0x326 or base in 'GKLNRgklnr') else 'cedilla'
                 xb = cx
@@ -207,14 +208,14 @@ def build_accented(w, G, H):
                     add((og, []), xa, 0); continue
                 add(M['ogonek'], xa, 0); continue
             if m == 0x30C and base in 'dltL':
-                ap = H['quoteright'].ink; ba = ap.bounds; sc_ = 0.85
-                ap = xf(ap, (sc_, 0, 0, sc_, 0, 0)); ba = ap.bounds
+                ap = H['quoteright'].ink; ba = ubounds(ap); sc_ = 0.85
+                ap = xf(ap, (sc_, 0, 0, sc_, 0, 0)); ba = ubounds(ap)
                 if base == 'd': xr, yt = b0[2] + 0.06 * w.W, ASC
                 elif base == 'l': xr, yt = ST + 0.06 * w.W, ASC
                 elif base == 't': xr, yt = b0[2] + 0.03 * w.W, XH + round(0.30 * (ASC - XH))
                 else: xr, yt = S + 0.08 * CAP, CAP
                 add((ap, []), xr - ba[0], yt - ba[3]); x1 = max(x1, xr + (ba[2] - ba[0])); continue
-            mi, mc = M[mn + ('.cap' if isc else '')]; mb = mi.bounds
+            mi, mc = M[mn + ('.cap' if isc else '')]; mb = ubounds(mi)
             gap = round(0.06 * CAP) if isc else (ABOVE_GAP if bn not in ('l', 'h', 'k', 'b', 'd', 't') else ABOVE_GAP)
             add((mi, mc), cx, ytop + gap - mb[1]); ytop = ytop + gap + (mb[3] - mb[1])
         gg = Gl(ink, cuts, g.centers, g.sides, g.x0, x1, alt); gg.sbk = getattr(g, 'sbk', 1.0)

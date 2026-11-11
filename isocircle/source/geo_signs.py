@@ -42,7 +42,7 @@ def build_signs(w, G):
     H['question'] = Gl(U(arcq, stq, qd), [rect(xq - ST - 10, cq - rq - J, xq + 10, cq - rq)], [(xq, cq, rq)], 'OO')
     def flip(g, dy):
         """signe renversé (¡ ¿) : tourné d'un demi-tour, la pointe en bas, le point à hauteur d'x"""
-        b = g.ink.bounds; cx_ = (b[0] + b[2]) / 2
+        b = ubounds(g.ink); cx_ = (b[0] + b[2]) / 2
         m = lambda p: xf(rot(p, 180, cx_, 0), (1, 0, 0, 1, 0, dy))
         return Gl(m(g.ink), [m(c) for c in g.cuts], [(2 * cx_ - c[0], -c[1] + dy) + tuple(c[2:]) for c in g.centers], g.sides[::-1], 2 * cx_ - g.x1, 2 * cx_ - g.x0)
     H['exclamdown'] = flip(H['exclam'], XH)
@@ -51,7 +51,7 @@ def build_signs(w, G):
     yb, yt = round(-0.20 * CAP), round(1.10 * CAP); hc = (yt - yb) / 2; ym = (yt + yb) / 2
     rp = round(0.95 * CAP); hal = math.degrees(math.asin(hc / rp))
     xc = rp; par = arc(xc, ym, rp, ST, 180 - hal, 180 + hal)
-    b = par.bounds
+    b = ubounds(par)
     H['parenleft'] = Gl(par, [], [], 'SO', b[0], b[2])
     H['parenright'] = Gl(mirror(par, (b[0] + b[2]) / 2), [], [], 'OS', b[0], b[2])
     bw = round(0.24 * CAP + 0.3 * ST)
@@ -64,7 +64,7 @@ def build_signs(w, G):
     br = U(arc(a + rbr, yt - rbr, rbr, t, 90, 180), rect(a, mid + rbr, a + t, yt - rbr),
            arc(a + t - rbr, mid + rbr, rbr, t, 270, 360), arc(a + t - rbr, mid - rbr, rbr, t, 0, 90),
            rect(a, yb + rbr, a + t, mid - rbr), arc(a + rbr, yb + rbr, rbr, t, 180, 270))
-    b = br.bounds
+    b = ubounds(br)
     H['braceleft'] = Gl(br, [], [], 'OO', b[0], b[2])
     H['braceright'] = Gl(mirror(br, (b[0] + b[2]) / 2), [], [], 'OO', b[0], b[2])
     # / \ |
@@ -101,7 +101,7 @@ def build_signs(w, G):
     pL, pR, hv = vpair_pts(0, 0, mw, vh / 2, f, tb); L_, R_ = clip_pair(pL, pR)
     chev = U(L_, R_); chev_cut = I(L_, band(pR, -1, e))
     lt = rot(chev, -90, 0, 0); ltc = rot(chev_cut, -90, 0, 0)
-    bl = lt.bounds; dx_, dy_ = -bl[0], ma - (bl[1] + bl[3]) / 2
+    bl = ubounds(lt); dx_, dy_ = -bl[0], ma - (bl[1] + bl[3]) / 2
     mv = lambda p: xf(p, (1, 0, 0, 1, dx_, dy_))
     H['less'] = Gl(mv(lt), [mv(ltc)], [], 'DD', 0, bl[2] - bl[0])
     H['greater'] = Gl(mirror(mv(lt), (bl[2] - bl[0]) / 2), [mirror(mv(ltc), (bl[2] - bl[0]) / 2)], [], 'DD', 0, bl[2] - bl[0])
@@ -114,7 +114,7 @@ def build_signs(w, G):
     # guillemets : petits chevrons à hauteur d'x
     gw = round(0.40 * XH + 0.3 * ST); gh = round(0.21 * XH + 0.25 * ST); gt = round(0.66 * tb)
     pL, pR, hg = vpair_pts(0, 0, gw, gh, round(0.3 * gt), gt); L_, R_ = clip_pair(pL, pR)
-    gch = rot(U(L_, R_), -90, 0, 0); gcc = rot(I(L_, band(pR, -1, e)), -90, 0, 0); bg = gch.bounds
+    gch = rot(U(L_, R_), -90, 0, 0); gcc = rot(I(L_, band(pR, -1, e)), -90, 0, 0); bg = ubounds(gch)
     mvg = lambda p, dx=0: xf(p, (1, 0, 0, 1, -bg[0] + dx, XH / 2 - (bg[1] + bg[3]) / 2))
     gwid = bg[2] - bg[0]; gstep = round(0.62 * gwid + 0.6 * ST)
     H['guilsinglleft'] = Gl(mvg(gch), [mvg(gcc)], [], 'DD', 0, gwid)
@@ -132,7 +132,7 @@ def build_signs(w, G):
     H['numbersign'] = Gl(U(v1, v2, h1, h2), [I(U(h1, h2), c) for c in hcut], [], 'SS', 0, hw_)
     # @ : un a dans un rond ouvert
     ta = round(0.78 * ST); ro = round(0.42 * CAP + 0.4 * ST); ri = round(0.46 * ro); cyat = round(0.42 * CAP)
-    inner = U(ring(ro, cyat, ri, ta), rect(ro + ri - ta, cyat - ri + OV, ro + ri, cyat + ri - OV))
+    inner = U(I(ring(ro, cyat, ri, ta), half((ro + ri, 0), (ro + ri, 1000), 1)), rect(ro + ri - ta, cyat - ri + OV, ro + ri, cyat + ri - OV))
     outer = arc(ro, cyat, ro, ta, 0, 300)
     H['at'] = Gl(U(inner, outer), [rect(ro + ri - ta - J, cyat - ri - 10, ro + ri - ta, cyat + ri + 10)], [(ro, cyat, ri), (ro, cyat, ro)], 'OO')
     # & : boucle au compas, panse ouverte, jambe à la règle
@@ -146,9 +146,7 @@ def build_signs(w, G):
         dxl, dyl = xb_ - p0[0], -p0[1]; hb = T * math.hypot(dxl, dyl) / abs(dyl); xb_ = amw - hb / 2
     p1 = (xb_, 0.0)
     d_ = (p1[0] - p0[0], p1[1] - p0[1]); Ld = math.hypot(*d_)
-    def bar_(p, q, tt):
-        dx, dy = q[0] - p[0], q[1] - p[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * tt / 2, dx / L * tt / 2
-        return poly([(p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny)])
+    bar_ = rbar
     far = (p1[0] + d_[0] / Ld * 300, p1[1] + d_[1] / Ld * 300)
     rm_ = r2 - S / 2
     def cross(k0, k1):
@@ -191,7 +189,7 @@ def build_signs(w, G):
     ster = U(rect(xsL, S, xsL + S, cl), arc(xsL + rl, cl, rl, S, 30, 180), rect(0, 0, lw, S), rect(0, 0.42 * CAP, xsL + S + round(0.18 * CAP), 0.42 * CAP + 0.85 * S))
     H['sterling'] = Gl(ster, [rect(xsL - 10, S, xsL + S + 10, S + J), rect(xsL - 10, cl - J, xsL + S + 10, cl)], [(xsL + rl, cl, rl)], 'SD')
     H['sterling'].sbk = 1.3
-    Yg = G['Y']; yb_ = Yg.ink.bounds; ycx = (yb_[0] + yb_[2]) / 2; yl = round(0.30 * CAP)
+    Yg = G['Y']; yb_ = ubounds(Yg.ink); ycx = (yb_[0] + yb_[2]) / 2; yl = round(0.30 * CAP)
     tb2 = round(0.5 * S); yc1 = round(0.12 * CAP); yc2 = yc1 + tb2 + max(0.6 * tb2, 40)
     ybars = [rect(ycx - 0.30 * CAP, yc - tb2 / 2, ycx + 0.30 * CAP, yc + tb2 / 2) for yc in (yc1, yc2)]
     H['yen'] = Gl(U(Yg.ink, *ybars), Yg.cuts + [D(rect(ycx - S / 2 - J, 0, ycx + S / 2 + J, 0.42 * CAP - J), rect(ycx - S / 2, -10, ycx + S / 2, CAP)) and I(U(*ybars), D(rect(ycx - S / 2 - J, -10, ycx + S / 2 + J, CAP), rect(ycx - S / 2, -20, ycx + S / 2, CAP + 10)))], [], 'DD', yb_[0], yb_[2])
@@ -218,7 +216,7 @@ def build_signs(w, G):
     H['section'] = Gl(sec, [], [(rxs, y2, rxs, rys, 'point', ty)], 'OO')
     pw_ = round(0.50 * CAP + 0.2 * ST); rpb = round(0.24 * CAP); x1p = pw_ - 2.2 * ST - round(0.06 * CAP)
     para_ = U(rect(x1p, DESC * 0.5, x1p + ST, CAP), rect(pw_ - ST, DESC * 0.5, pw_, CAP), rect(x1p, CAP - ST, pw_, CAP),
-              I(circ(x1p, CAP - rpb, rpb), rect(x1p - rpb - 5, 0, x1p + 1, CAP + 5)))
+              I(circ(x1p, CAP - rpb, rpb), rect(x1p - rpb - 5, 0, x1p + 1, CAP + 5)), tbarL(x1p, CAP - ST, x1p + ST, CAP, x1p, CAP - rpb, rpb))
     H['paragraph'] = Gl(para_, [rect(x1p + ST, CAP - ST - J, pw_ - ST, CAP - ST) and rect(pw_ - ST - 10, CAP - ST - J, pw_ + 10, CAP - ST)], [], 'OS', x1p - rpb, pw_)
     rdg = round(0.13 * CAP + 0.2 * ST)
     H['degree'] = Gl(ring(rdg, CAP - rdg, rdg, round(0.62 * ST)), [], [], 'OO')

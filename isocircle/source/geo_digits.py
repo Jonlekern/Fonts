@@ -9,13 +9,15 @@ def build_digits(w, piste='M'):
     p3 = 'B' if piste in ('B', 'M') else 'A'; p6 = 'A' if piste in ('A', 'M') else 'B'
     S, T, J = w.STC, w.TDC, w.J; e = 1.15 * J
     fw = round(0.56 * CAP + 0.5 * S); cx = fw / 2; G = {}
-    def bar_(p, q, t):
-        dx, dy = q[0] - p[0], q[1] - p[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * t / 2, dx / L * t / 2
-        return poly([(p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny)])
+    bar_ = rbar
     def tangent(C, rm, B, side):
-        """point où la droite issue de B touche le cercle (C, rm) ; side=+1/-1 choisit lequel"""
-        dx, dy = B[0] - C[0], B[1] - C[1]; d = math.hypot(dx, dy); a = math.atan2(dy, dx); ph = math.acos(rm / d)
-        th = a + side * ph; return (C[0] + rm * math.cos(th), C[1] + rm * math.sin(th)), math.degrees(th)
+        """point où la droite issue de B touche le cercle (C, rm), calculé sur la lettre penchée ;
+        renvoie le point (en dessin) et l'angle de dessin du rayon (le secteur sera penché avec la lettre)"""
+        Cr, Br = to_real(C), to_real(B)
+        dx, dy = Br[0] - Cr[0], Br[1] - Cr[1]; d = math.hypot(dx, dy); a = math.atan2(dy, dx); ph = math.acos(rm / d)
+        th = a + side * ph; P_ = (Cr[0] + rm * math.cos(th), Cr[1] + rm * math.sin(th))
+        thd = math.degrees(math.atan2(math.sin(th), math.cos(th) - SL[0] * math.sin(th)))   # angle qui, penché, donne th
+        return to_design(P_), thd
     # deux cercles empilés (3, 8) : la taille du bas fixe celle du haut
     rb = min(fw / 2, (CAP + 2 * OVC + S) / 2 / 1.87); rt = (CAP + 2 * OVC + S) / 2 - rb
     cb = rb - OVC; ct = CAP + OVC - rt
@@ -47,7 +49,7 @@ def build_digits(w, piste='M'):
         yj = 2 * rb - OVC
         h3 = fit_h(T, fw - (cx - 0.05 * fw), CAP - S - (yj - S / 2))
         d3 = poly(para2(cx - 0.05 * fw - h3 / 2, fw - h3, h3, yj - S, CAP))
-        three = U(rect(0.06 * fw, CAP - S, fw, CAP), d3, rect(cx - 0.05 * fw - h3 / 2, yj - S, cx, yj), arc(cx, cb, rb, S, -150, 90))
+        three = U(rect(0.06 * fw, CAP - S, fw, CAP), d3, tbar(cx - 0.05 * fw - h3 / 2, yj - S, cx, yj, cx, cb, rb), arc(cx, cb, rb, S, -150, 0), I(arc(cx, cb, rb, S, 0, 120), vreal(cx, cb, -1)))
         G['three'] = Gl(three, [rect(-10, CAP - S - J, fw + 10, CAP - S)], [(cx, cb, rb)], 'NN', 0, fw)
     # 4
     x4 = fw - S - 0.06 * fw; yb4 = round(0.25 * CAP); hd = fit_h(T, x4 + S, CAP - yb4)
@@ -55,7 +57,7 @@ def build_digits(w, piste='M'):
     G['four'] = Gl(U(d4, st4, bar4), [D(I(bar4, rect(x4 - J, -10, x4, CAP)), st4), I(d4, rect(-10, yb4 + 0.9 * S, fw, yb4 + 0.9 * S + J))], [], 'NN', 0, fw)
     # 5 : drapeau, fût, panse
     ytop = 2 * rb - OVC; xs5 = round(0.08 * fw)
-    five = U(rect(xs5, CAP - S, fw - 0.02 * fw, CAP), rect(xs5, ytop - S, xs5 + S, CAP), rect(xs5, ytop - S, cx, ytop), arc(cx, cb, rb, S, -150, 90))
+    five = U(rect(xs5, CAP - S, fw - 0.02 * fw, CAP), rect(xs5, ytop - S, xs5 + S, CAP), tbar(xs5, ytop - S, cx, ytop, cx, cb, rb), arc(cx, cb, rb, S, -150, 0), I(arc(cx, cb, rb, S, 0, 120), vreal(cx, cb, -1)))
     G['five'] = Gl(five, [rect(xs5 - 10, CAP - S - J, xs5 + S + 10, CAP - S)], [(cx, cb, rb)], 'NN', 0, fw)
     # 6 9 : panse ronde + hampe
     if p6 == 'A':
@@ -83,9 +85,7 @@ def build_variants(w, G):
     ST, S, J, Wd = w.ST, w.STC, w.J, w.W; e = 1.15 * J; V = {}
     z = G['zero']; fw = z.x1; cx = fw / 2; tv = round(0.9 * S)
     ia, ib = fw / 2 - S, CAP / 2 + OVC - tv                      # contreforme du 0
-    def bar_(p, q, t):
-        dx, dy = q[0] - p[0], q[1] - p[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * t / 2, dx / L * t / 2
-        return poly([(p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny)])
+    bar_ = rbar
     sl = bar_((cx - ia, CAP / 2 - ib), (cx + ia, CAP / 2 + ib), round(0.72 * S))
     V['zero.zero'] = Gl(U(z.ink, I(sl, ell(cx, CAP / 2, ia + 2, ib + 2))), [], z.centers, 'NN', 0, fw,
                         alt=U(z.ink, I(sl, ell(cx, CAP / 2, ia - J, ib - J))))
@@ -93,7 +93,7 @@ def build_variants(w, G):
     wa = round(0.86 * Wd); rt = wa / 2; ct = XH + OV - rt
     ry = round(0.30 * XH + 0.12 * ST); cb = ry - OV; tvb = round(0.9 * ST)
     bowl = ering(wa / 2, cb, wa / 2, ry, ST, tvb)
-    a2 = U(arc(wa / 2, ct, rt, ST, 0, 152), rect(wa - ST, 0, wa, ct + 1), bowl)
+    a2 = U(arc(wa / 2, ct, rt, ST, 0, 152), rect(wa - ST, 0, wa, ct + 1), I(bowl, half((wa, 0), (wa, 1000), 1)))
     V['a.ss01'] = Gl(a2, [D(rect(wa - ST - J, -20, wa - ST, 2 * ry), rect(wa - ST, -30, wa, XH), arc(wa / 2, ct, rt, ST, 0, 152))], [(wa / 2, ct, rt), (wa / 2, cb, wa / 2, ry, 'point', tvb)], 'OS', 0, wa)
     # g à deux étages : petit rond, attache, boucle ovale, oreille
     rg = round(0.33 * XH + 0.1 * ST); cg = XH + OV - rg; gx = round(0.48 * Wd)
@@ -102,7 +102,7 @@ def build_variants(w, G):
     link = rect(gx - ST / 2, ly0 - tvb, gx + ST / 2, cg - rg + ST)
     ear = rect(gx + rg - ST, XH - round(0.85 * ST), gx + rg + round(0.20 * Wd), XH)
     g2 = U(ring(gx, cg, rg, ST), link, loop, ear)
-    b = g2.bounds
+    b = ubounds(g2)
     V['g.ss02'] = Gl(g2, [rect(gx - ST, ly0 - J * 0 + 1, gx + ST, ly0 + J) if False else rect(gx - ST, lcy + lry * math.sqrt(1 - (ST / 2 / lx) ** 2) - 0.5, gx + ST, lcy + lry * math.sqrt(1 - (ST / 2 / lx) ** 2) + J),
                           D(rect(gx + rg - ST - J, XH - ST - 10, gx + rg - ST, XH + 10), ring(gx, cg, rg, ST))],
                      [(gx, cg, rg), (gx, lcy, lx, lry, 'point', tvb)], 'OO', b[0], b[2])

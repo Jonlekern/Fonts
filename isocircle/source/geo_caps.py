@@ -13,9 +13,7 @@ def build_caps(w):
     gr = arc(R, cy, R, S, 44, 360)
     G['G'] = Gl(U(gr, rect(R, cy - S, W2 - S / 2, cy)), [], [(R, cy, R)], 'OO',
                 alt=U(gr, I(rect(R, cy - S, W2 - S / 2, cy), circ(R, cy, R - S - J))))
-    def bar_(p, q, t):
-        dx, dy = q[0] - p[0], q[1] - p[1]; L = math.hypot(dx, dy); nx, ny = -dy / L * t / 2, dx / L * t / 2
-        return poly([(p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny)])
+    bar_ = rbar
     u = (math.cos(math.radians(-50)), math.sin(math.radians(-50))); r0 = min(R - 1.6 * S, 0.75 * (R - S))
     p0 = (R + r0 * u[0], cy + r0 * u[1]); p1 = (R + 1.40 * R * u[0], cy + 1.40 * R * u[1])
     d = (p1[0] - p0[0], p1[1] - p0[1]); Ld = math.hypot(*d)
@@ -26,7 +24,7 @@ def build_caps(w):
     def panse(x0, xc, yb, yt):
         """panse : barres haut et bas du fût jusqu'à xc, puis demi-anneau à droite"""
         r = (yt - yb) / 2
-        return U(rect(x0, yt - S, xc, yt), rect(x0, yb, xc, yb + S), arc(xc, yb + r, r, S, -90, 90)), (xc, yb + r, r)
+        return U(tbar(x0, yt - S, xc, yt, xc, yb + r, r), tbar(x0, yb, xc, yb + S, xc, yb + r, r), I(ring(xc, yb + r, r, S), vreal(xc, yb + r, -1))), (xc, yb + r, r)
     sj = rect(S, -10, S + J, CAP + 10)
     dw = round(0.70 * CAP + 0.3 * S); pD, cD = panse(0, dw - CAP / 2, 0, CAP)
     G['D'] = Gl(U(stem(0), pD), [sj], [cD], 'SO')
