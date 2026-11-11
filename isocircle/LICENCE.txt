@@ -1,0 +1,146 @@
+LICENCE D'UTILISATION — ISOCIRCLE
+© 2026 LaFleurStudio. Tous droits réservés.
+Cette licence couvre la police ISOCIRCLE.
+
+1. Usage personnel : gratuit
+Vous pouvez télécharger, installer et utiliser ISOCIRCLE gratuitement pour un usage
+personnel et non commercial : projets personnels, études, essais, maquettes, site
+personnel sans activité commerciale.
+
+2. Usage commercial : sur autorisation
+Tout usage commercial demande l'autorisation écrite préalable de LaFleurStudio.
+Est commercial tout usage lié à une activité rémunérée, à une entreprise ou à une
+association, par exemple : logo et identité visuelle, produit vendu (vêtements,
+affiches, emballages, objets…), publicité, site ou application d'entreprise, travail
+réalisé pour un client, édition, vidéo ou contenu monétisé.
+LaFleurStudio étudie chaque projet et décide, au cas par cas, si l'autorisation est
+accordée et à quelles conditions : gratuite ou payante, et à quel prix. L'autorisation
+est donnée par écrit et précise le projet qu'elle couvre.
+
+3. Ce qui est interdit (sauf accord écrit de LaFleurStudio)
+- Vendre, louer, redistribuer ou partager les fichiers de la police, seuls ou dans un
+  ensemble, gratuitement ou non.
+- Modifier la police, la convertir ou en tirer une autre police.
+- Retirer ou changer les mentions de droits et de licence contenues dans les fichiers.
+- Intégrer les fichiers dans un logiciel, une application ou un site d'une façon qui
+  permette de les récupérer.
+
+4. Propriété
+ISOCIRCLE reste la propriété de LaFleurStudio. Cette licence donne un droit
+d'utilisation, pas un droit de propriété.
+
+5. Aucune garantie
+La police est fournie telle quelle, sans garantie d'aucune sorte. LaFleurStudio ne
+peut être tenu responsable des dommages liés à son utilisation.
+
+6. Contact
+Pour un usage commercial ou toute question : info@lafleurstudio.ch.
+
+Signé : Jonathan Kern
+
+-----------------------------------------------------------------------------------
+
+END USER LICENSE — ISOCIRCLE
+© 2026 LaFleurStudio. All rights reserved.
+This license covers ISOCIRCLE.
+
+1. Personal use: free
+You may download, install and use ISOCIRCLE free of charge for personal,
+non-commercial use: personal projects, studies, tests, mock-ups, a personal website
+with no commercial activity.
+
+2. Commercial use: by permission
+Any commercial use requires prior written permission from LaFleurStudio.
+Commercial use means any use connected to paid work, a business or an organisation,
+for example: logo and brand identity, products for sale (clothing, posters, packaging,
+goods…), advertising, company websites or apps, work done for a client, publishing,
+monetised videos or content.
+LaFleurStudio reviews each project and decides, case by case, whether permission is
+granted and on what terms: free or paid, and at what price. Permission is given in
+writing and names the project it covers.
+
+3. Not allowed (unless agreed in writing by LaFleurStudio)
+- Selling, renting, redistributing or sharing the font files, alone or in a bundle,
+  for free or not.
+- Modifying the font, converting it or deriving another font from it.
+- Removing or changing the copyright and license notices in the files.
+- Embedding the files in software, an app or a website in a way that lets them be
+  extracted.
+
+4. Ownership
+ISOCIRCLE remains the property of LaFleurStudio. This license grants a right of use,
+not ownership.
+
+5. No warranty
+The font is provided as is, without warranty of any kind. LaFleurStudio is not liable
+for any damage arising from its use.
+
+6. Contact
+For commercial use or any question: info@lafleurstudio.ch.
+
+Signed: Jonathan Kern
+
+-----------------------------------------------------------------------------------
+
+                  ████   ▄█████▀  █████████████ ████████████▄  ██████▄     ████
+                  ████▄▄█████▀    █████▀▀▀▀▀▀▀  ████▀▀▀▀▀████  ████████▄   ████
+                  █████████▀      ████████████  ████████████▀  █████████▄  ████
+                  █████████▄      █████▀▀▀▀▀▀▀  ████ ▀█████▄   █████ ▀█████████
+                  ████▀▀█████▄    █████▄▄▄▄▄▄▄▄ ████   ▀████▄  █████   ▀███████
+                  ████   ▀█████▄  █████████████ ████    ▀████  █████    ▀██████
+
+                  ████████████████████████████████████████████
+                  ████████████████████████████████████████████
+                  █████████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                  █████████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                  █████████████   █   █   █   █   █   █████████   █   █   █   █
+                  █████████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                C █████████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                E █████████████   █   █   █   █   █   █████████   █   █   █   █
+                R █████████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                T ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                I ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                F ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                I ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                C ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                A ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                T ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                E ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                  ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                O ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                F ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                  ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                A ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                U ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                T ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                H ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                E ███████     █   █   █   █   █   █   █████████   █   █   █   █
+                N ███████▄▄▄▄▄█████████████████████████████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                T █████████████████████████████████████████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                I █████████████   █   █   █   █   █   █████████   █   █   █   █
+                C █████████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█
+                I █████████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█
+                T ███████▀▀▀▀▀█   █   █   █   █   █   █████████   █   █   █   █
+                Y ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀█     ▄▄
+                  ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄█ ▄▄█████
+                  ███████     █   █   █   █   █   █   █████████   █   █   █   ██████ ▀█▄
+                  ███████     █▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█▀▀▀█████████▀▀▀█▀▀▀█▀▀▀█▀▀▀████▀   ██▄
+                  ███████     █▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█▄▄▄█████████▄▄▄█▄▄▄█▄▄▄█▄▄▄███▀▄  ▄ ██
+                  ███████     █   █   █   █   █   █   █████████   █   █   █   ██▀ █  █ ▀██
+    ▄▄▄▄▄▄        ███████     ▀█▀▀▀▀▀▀█▀▀▀▀▀▀▀█▀▀▀▀▀▀▀▀███████▀▀▀▀▀▀▀█▀▀▀▀▀▀█▀▀   █  █  ███
+    ▀▀███████████████████      █      █       █        ███████       █      █  ▄▄▄█▄▄█▄▄▄██▄
+     ▄▀▀██▄      ▀███████      █      █       █        ███████       █      █     █  █   ▀██▄
+     ██  ▀██▄ █   █████████████████████████████████████████████████████████████   █  █    ███
+    █ █   █▀███   ██████      █       █       █       █████████       █       █▄▄▄█▄▄█▄▄▄▄▄███
+   ██▄█▄▄▄█▄▄██▄  ██████      █       █       █       █████████       █       █      █     █
+  ▄▀  █   █   █▀█▄██████▀▀▀▀▀▀█▀▀▀▀▀▀▀█▀▀▀▀▀▀▀█▀▀▀▀▀▀▀█████████▀▀▀▀▀▀▀█▀▀▀▀▀▀▀█      █     █
+  █   █   █   █  ▀██████      █       █       █       █████████       █       █      █     █
+ █▄▄▄▄█▄▄▄█▄▄▄█▄▄▄██████▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█████████▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄█▄▄▄▄▄█
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+       ▄▄   ▄▄▄▄▄▄▄▄▄   ▄▄▄▄      ▄▄▄      ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄       ▄▄      ▄▄      ▄▄▄       ▄▄
+       ██ ▄██▀▀▀▀▀▀▀▀██ ████▄     ███     ███   ▀▀▀▀▀██▀▀▀▀ ██       ██     ▄███     ████▄     ██
+       ██ ██         ██ ███ ▀█▄   ███   ▄█▀▀██       ██     ██▄▄▄▄▄▄▄██    ▄█▀▀██    ██ ▀██▄   ██
+       ██ ██         ██ ███   ▀█▄ ███  ▄██▄▄▄██▄     ██     ██▀▀▀▀▀▀▀██   ███▄▄▄██▄  ██   ▀██▄ ██
+██▄▄▄▄▄██ ▀██▄▄▄▄▄▄▄▄██ ███     ▀████ ██▀▀▀▀▀▀██▄    ██     ██       ██  ██▀▀▀▀▀▀██▄ ██     ▀████
+ ▀▀▀▀▀▀▀    ▀▀▀▀▀▀▀▀▀   ▀▀▀      ▀▀▀▀▀▀        ▀▀    ▀▀     ▀▀       ▀▀ ▀▀        ▀▀ ▀▀       ▀▀▀
