@@ -32,6 +32,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Drastic Sans** | Comic sans au feutre dessinée à neuf : pâté d'encre au départ, bols en squircle, 3 versions par lettre qui tournent et sautillent, Zinzin (ss01), cœurs sur les i (ss02), ligatures ?! !! <3 | 5 (Lol → Jpp, du petit rire au fou rire) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/drastic-sans/) · [Zip](drastic-sans/DrasticSans.zip) · [Dossier](drastic-sans/) |
 | **BARYCENTRE-032** | Serif de lecture dessinée à neuf, centre de gravité en bas : même trait partout, têtes fines, le poids tombe dans le bas des courbes | 5 (020 → 080) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/barycentre-032/) · [Zip](barycentre-032/BARYCENTRE032.zip) · [Dossier](barycentre-032/) |
 | **ANISOTROPE** | Serif de lecture dessinée à neuf, pensée pour tous les lecteurs, dyslexiques compris : aucune lettre n'est le miroir d'une autre, faible contraste, empattements en coin, squelette de plume | 5 (030 → 090) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/anisotrope/) · [Zip](anisotrope/ANISOTROPE.zip) · [Dossier](anisotrope/) |
+| **ISOSLAB** | Slab étroite d'affiche dessinée à neuf, mélange de slab mécanique, d'affiche de combat et de Clarendon : fûts presque égaux, empattements carrés raccordés, gouttes, VS en cartouche | 3 (050 → 090) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/isoslab/) · [Zip](isoslab/ISOSLAB.zip) · [Dossier](isoslab/) |
 
 ## Organisation
 
@@ -47,10 +48,10 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-drastic-sans/, barycentre-032/, anisotrope/
+drastic-sans/, barycentre-032/, anisotrope/, isoslab/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BARYCENTRE-032 et ANISOTROPE : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BARYCENTRE-032, ANISOTROPE et ISOSLAB : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web

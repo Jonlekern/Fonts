@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISOSLAB</title>
+<meta name="description" content="ISOSLAB : une slab étroite d'affiche, mélange de mécanique, d'affiche de combat et de Clarendon. Fûts égaux, empattements carrés raccordés, gouttes. 3 graisses, de 050 à 090. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"ISOSLAB";font-weight:500;font-display:swap;src:url(fonts/woff2/ISOSLAB-050.woff2) format("woff2")}
+@font-face{font-family:"ISOSLAB";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOSLAB-070.woff2) format("woff2")}
+@font-face{font-family:"ISOSLAB";font-weight:900;font-display:swap;src:url(fonts/woff2/ISOSLAB-090.woff2) format("woff2")}
+/* ISOSLAB partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"ISOSLAB",var(--serif,Georgia),serif}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:21px;font-weight:700}
+section > .wrap > h2{font-weight:900;font-size:clamp(34px,6vw,68px);line-height:1.1}
+.step h3{font-weight:700;font-size:clamp(24px,2.8vw,34px)}
+.card b{font-weight:700;font-size:clamp(18px,4.8vw,28px);overflow-wrap:anywhere}
+.hero h1{font-family:"ISOSLAB";font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/5.9);line-height:1}
+.titres{display:flex;flex-direction:column;gap:2px;margin:18px 0 6px}
+.titres span{line-height:1.02;white-space:nowrap}
+.titres .t1{font-weight:500;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/8.2)}
+.titres .t2{font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/8.6)}
+.titres .t3{font-weight:900;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/11.4)}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/11.6);line-height:1.15}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/11.6)}}
+.demo .row span{line-height:1.15;white-space:pre}
+.glyphs div{font-size:36px}
+#tester-text{line-height:1.25}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">ISOSLAB</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Slab d'affiche</p>
+      <h1 style="margin-top:18px">ISOSLAB</h1>
+      <div class="titres" aria-label="Exemples">
+        <span class="t1">KNOCKOUT</span>
+        <span class="t2">UPPERCUT</span>
+        <span class="t3">HEAVYWEIGHT</span>
+      </div>
+      <div class="lede">
+        <p><strong>Une slab étroite pour les affiches qui cognent.</strong> Trois styles en un : des fûts presque égaux comme une slab mécanique, des empattements carrés un poil plus gras que les fûts comme sur les affiches de combat, et les raccords arrondis et les gouttes d'une Clarendon. <strong>3 graisses</strong>, de 050 à 090.</p>
+      </div>
+      <div class="facts">
+        <span>Slab étroite</span><span>3 graisses</span><span>050 → 090</span><span>Empattements raccordés</span><span>Gouttes</span><span>★ ☞ VS</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">050, 070, 090. Plus le chiffre monte, plus ça cogne.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">Une seule famille « ISOSLAB » : 500, 700, 900. Tape VS entre deux mots : il devient un cartouche.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, accents d'Europe, et les signes d'affiche.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Trois slabs mélangées dans chaque lettre.</strong> La mécanique pour la rigueur, l'affiche de combat pour le punch, la Clarendon pour le vintage. Le tout serré, pour mettre de grands mots sur de petites largeurs.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Trois styles en un</h3>
+            <p>Les fûts ont presque tous la même épaisseur. <strong>Les empattements sont carrés et un poil plus gras que les fûts</strong>, et ils rejoignent le fût par un petit arrondi. Deux empattements voisins gardent toujours un vrai jour entre eux.</p>
+          </div>
+          <div class="demo" aria-label="Trois styles en un">
+            <div class="row"><small>050 (500)</small><span style="font-weight:500;font-size:calc(100cqw/5.2)">MINIMUM</span></div>
+            <div class="row"><small>090 (900)</small><span style="font-weight:900;font-size:calc(100cqw/6.6)">HAMMER</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les gouttes</h3>
+            <p>Le a, le c, le r, le f, le j et le g finissent en <strong>goutte</strong>, comme les vieilles Clarendon. La goutte affleure le bord du trait et s'y raccorde par une tangente : une larme, pas une bille collée.</p>
+          </div>
+          <div class="demo" aria-label="Les gouttes">
+            <div class="row"><small>050 (500)</small><span style="font-weight:500;font-size:calc(100cqw/4.6)">jogging</span></div>
+            <div class="row"><small>090 (900)</small><span style="font-weight:900;font-size:calc(100cqw/4.2)">raffle</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les chiffres</h3>
+            <p><strong>Tous de la même chasse</strong> : les dates, les horaires et les poids tombent en colonne. Le 2, le 3, le 5, le 6 et le 9 finissent en goutte, le 1 et le 4 sont posés sur un empattement.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres">
+            <div class="row"><small>070 (700)</small><span style="font-weight:700;font-size:calc(100cqw/6.4)">12 ROUNDS</span></div>
+            <div class="row"><small>050 (500)</small><span style="font-weight:500;font-size:calc(100cqw/9.6)">08:30 PM · 99.5 KG</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les signes d'affiche</h3>
+            <p>Une étoile ★ ☆, une main qui pointe ☞ ☜, des flèches, des séparateurs ◆ ● ■, et <strong>un VS en cartouche</strong> qui se forme tout seul quand on tape VS entre deux mots.</p>
+          </div>
+          <div class="demo" aria-label="Les signes d'affiche">
+            <div class="row"><small>090 (900)</small><span style="font-weight:900;font-size:calc(100cqw/11.2)">★ MAIN EVENT ★</span></div>
+            <div class="row"><small>070 (700)</small><span style="font-weight:700;font-size:calc(100cqw/14.6)">CHAMPION VS CHALLENGER</span></div>
+            <div class="row"><small>050 (500)</small><span style="font-weight:500;font-size:calc(100cqw/9.2)">☞ RINGSIDE → ◆ ● ■</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="ISOSLAB.zip" download><b>ISOSLAB.zip</b><span>Les 3 graisses (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/isoslab/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/isoslab/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "ISOSLAB"; font-weight: 500;
+  src: url(ISOSLAB-050.woff2) format("woff2"); }
+/* … une règle par graisse : 050 → 500,
+   070 → 700, 090 → 900. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ISOSLAB © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "ISOSLAB",
+  sample: "HEAVYWEIGHT",
+  styles: [
+    {n:"050",w:500},{n:"070",w:700},{n:"090",w:900}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%‰$€£¥¢©®™§¶°+−×÷=<>~^¹²³¼½¾№" +
+    "★☆☞☜→←↑↓◆●■",
+  glyphChips: [0, 1, 2],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+</body>
+</html>
