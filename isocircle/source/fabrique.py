@@ -139,17 +139,22 @@ def outlines(num, construction):
     return out, w
 
 def construction_lines(w, adv):
+    import geo_core
+    if not geo_core.GUIDES[0]: return P()
     h = w.HL; return U(*[rect(0, y - h / 2, adv, y + h / 2) for y in (0, XH, CAP, DESC)])
 
 ANGLE = 12
-def write(num, construction, outf, italic=False):
+def write(num, construction, outf, italic=False, compas=False):
     import geo_core
     geo_core.SL[0] = math.tan(math.radians(ANGLE)) if italic else 0.0
+    geo_core.GUIDES[0] = not compas                  # bonus Compass : la construction sans les lignes du cahier
     st, wt = WEIGHTS[num]; gl, w = outlines(num, construction)
     style = {(0, 0): 'Regular', (1, 0): 'Bold', (0, 1): 'Italic', (1, 1): 'Bold Italic'}[(int(construction), int(italic))]
     sub = {(0, 0): 'Regular', (1, 0): 'Construction', (0, 1): 'Italic', (1, 1): 'Construction Italic'}[(int(construction), int(italic))]
     fam = f'{FAMILY} {num}'; full = fam + (' Construction' if construction else '') + (' Italic' if italic else '')
     psn = f'{FAMILY}-{num}' + ('Construction' if construction else '') + ('Italic' if italic else '')
+    if compas:                                       # bonus « Compass » : sa propre famille, une graisse par fichier
+        fam = f'Compass {num}'; full = fam; psn = f'Compass-{num}'; style = 'Regular'; sub = num
     names = sorted(gl, key=lambda n: (unicode_of(n) or 0x10FFFF, n))
     order = ['.notdef'] + [n for n in names if n != '.notdef']
     cs, hmtx, cmap = {}, {}, {}
@@ -177,11 +182,11 @@ def write(num, construction, outf, italic=False):
           'uniqueFontIdentifier': f'{VERSION};LFST;{psn}', 'fullName': full, 'version': f'Version {VERSION}', 'psName': psn,
           'manufacturer': 'LaFleurStudio', 'designer': 'Jonathan Kern', 'vendorURL': 'https://jonlekern.github.io/Fonts/',
           'licenseDescription': lic, 'licenseInfoURL': f'https://github.com/Jonlekern/Fonts/blob/main/{SLUG}/LICENCE.txt'}
-    nm.update({'typographicFamily': fam, 'typographicSubfamily': sub})
+    nm.update({'typographicFamily': 'Compass' if compas else fam, 'typographicSubfamily': sub})
     fb.setupNameTable(nm, mac=False)
     fb.setupOS2(sTypoAscender=TYPO_ASC, sTypoDescender=TYPO_DESC, sTypoLineGap=0, usWinAscent=win_asc, usWinDescent=win_desc,
                 sCapHeight=CAP, usWeightClass=wt, sxHeight=XH, version=4, achVendID='LFST',
-                fsSelection=(0x20 if construction else 0) | (0x01 if italic else 0) | (0x40 if not (construction or italic) else 0) | 0x80)
+                fsSelection=((0x40 if compas else 0x20) if construction else 0) | (0x01 if italic else 0) | (0x40 if not (construction or italic) else 0) | 0x80)
     fb.setupPost(italicAngle=-ANGLE if italic else 0)
     if italic: fb.font['hhea'].caretSlopeRise = 1000; fb.font['hhea'].caretSlopeRun = round(1000 * math.tan(math.radians(ANGLE)))
     fb.font['OS/2'].recalcUnicodeRanges(fb.font)
@@ -192,7 +197,7 @@ def write(num, construction, outf, italic=False):
     if 0x113 in cps and 0x12B in cps: cpr |= 1 << 7
     cpr |= 1 << 29
     fb.font['OS/2'].ulCodePageRange1 = cpr; fb.font['OS/2'].ulCodePageRange2 = 0
-    fb.font['head'].macStyle = (1 if construction else 0) | (2 if italic else 0); fb.font['head'].fontRevision = float(VERSION)
+    fb.font['head'].macStyle = (1 if construction and not compas else 0) | (2 if italic else 0); fb.font['head'].fontRevision = float(VERSION)
     fb.font['OS/2'].usDefaultChar = 0; fb.font['OS/2'].usBreakChar = 32
     fb.save(outf)
     # variantes : ss01 (a), ss02 (g), zero
@@ -212,6 +217,14 @@ def write(num, construction, outf, italic=False):
 
 if __name__ == '__main__':
     num, out = sys.argv[1], sys.argv[2]; it = len(sys.argv) > 3 and sys.argv[3] == 'italic'; os.makedirs(out, exist_ok=True)
+    if len(sys.argv) > 3 and sys.argv[3] == 'compas':          # bonus Compass : la construction sans les lignes du cahier, crénage de la pleine
+        import tempfile, shutil, geo_kshim, geo_kern
+        cp = os.path.join(out, f'Compass-{num}.otf'); r = write(num, True, cp, False, compas=True)
+        with tempfile.TemporaryDirectory() as td:
+            tp = os.path.join(td, 'p.otf'); write(num, False, tp)
+            geo_kshim.ST = WEIGHTS[num][0]; geo_kern.CAP = CAP
+            k = geo_kern.kern_font(tp, targets=[(cp, False)])
+        print(num, 'compas', r, k, 'paires'); sys.exit(0)
     suf = 'Italic' if it else ''
     p = os.path.join(out, f'{FAMILY}-{num}{suf}.otf'); c = os.path.join(out, f'{FAMILY}-{num}Construction{suf}.otf')
     r1 = write(num, False, p, it); r2 = write(num, True, c, it)

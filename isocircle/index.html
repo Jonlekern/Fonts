@@ -42,6 +42,9 @@
 @font-face{font-family:"ISOCIRCLE 090";font-weight:700;font-style:italic;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090ConstructionItalic.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE 090 Italique";font-weight:400;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090Italic.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE 090 Italique";font-weight:700;font-display:swap;src:url(fonts/woff2/ISOCIRCLE-090ConstructionItalic.woff2) format("woff2")}
+@font-face{font-family:"Compass 050";font-display:swap;src:url(bonus/Compass-050.woff2) format("woff2")}
+@font-face{font-family:"Compass 070";font-display:swap;src:url(bonus/Compass-070.woff2) format("woff2")}
+@font-face{font-family:"Compass 090";font-display:swap;src:url(bonus/Compass-090.woff2) format("woff2")}
 /* ISOCIRCLE partout sur sa propre page */
 .brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"ISOCIRCLE",var(--sans),sans-serif}
 .label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
@@ -58,6 +61,16 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
 .glyphs div{font-size:36px}
 #tester-text{line-height:1.35}
 .how li{margin:6px 0}
+/* bonus caché en bas des téléchargements */
+.bonus{margin-top:56px}
+.bonus summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:14px}
+.bonus summary::-webkit-details-marker{display:none}
+.bonus summary .mot{font-family:"Compass 090";font-size:clamp(40px,7vw,72px);line-height:1.2}
+.bonus summary svg{width:30px;height:30px;transition:transform .2s}
+.bonus[open] summary svg{transform:rotate(180deg)}
+.bonus .dedans{margin-top:18px}
+.bonus .dedans .ech{font-family:"Compass 070";font-size:clamp(28px,5vw,48px);line-height:1.25;margin:10px 0 18px}
+
 </style>
 </head>
 <body>
@@ -225,6 +238,16 @@ section > .wrap > h2{font-weight:700;font-size:clamp(34px,6vw,68px);line-height:
 /* … pareil pour 030, 050, 070, 090.
    &lt;strong&gt; → la construction, &lt;em&gt; → l'italique. */</code></pre>
 </details>
+      <details class="bonus">
+        <summary aria-label="Bonus : Compass"><span class="mot">Compass</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></summary>
+        <div class="dedans">
+          <p class="intro">En bonus : la construction sans les lignes du cahier. Les jonctions, les cercles et les croix du compas, rien d'autre. En 050, 070 et 090.</p>
+          <p class="ech">LAFLEURSTUDIO création graphique</p>
+          <div class="dl">
+            <a class="card" href="bonus/Compass.zip" download><b>Compass.zip</b><span>Les 3 graisses (OTF) + licence</span></a>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 </main>

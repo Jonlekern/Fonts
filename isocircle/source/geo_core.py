@@ -5,6 +5,7 @@ import pathops
 XH, ASC, DESC, CAP, OV, OVC = 500, 740, -220, 700, 8, 10
 
 SL = [0.0]                                 # pente de l'italique (tangente) : les droites penchent, les cercles restent ronds
+GUIDES = [True]                            # lignes du cahier (base, x, capitales, jambages) dans la construction
 def P(): return pathops.Path()
 def poly(pts):
     t = SL[0]
@@ -96,7 +97,7 @@ def finish(g, w, joints=True):
 def construction(w, centers, adv):
     """filets : lignes de base, d'x, de hampe et de jambage sur toute la chasse ; cercles entiers ; croix de compas.
     centre : (cx, cy, r) ou (cx, cy, rx, ry, 'point') pour un rond sans axes (ellipse du s)"""
-    h = w.HL; parts = [rect(0, y - h / 2, adv, y + h / 2) for y in (0, XH, CAP, DESC)]
+    h = w.HL; parts = [rect(0, y - h / 2, adv, y + h / 2) for y in (0, XH, CAP, DESC)] if GUIDES[0] else []
     for ce in centers:
         cx, cy = ce[0], ce[1]
         if ce[-1] == 'sh':                                  # lettre penchée en bloc (s, S…) : son ellipse aussi
