@@ -71,6 +71,8 @@
 .catalogue{grid-auto-rows:1fr}
 .font-card{grid-template-rows:1fr auto auto}
 .font-card .name{align-self:center}
+/* marge invisible autour du nom et du sous-titre : les jambages et les débords ne sont jamais coupés */
+.font-card .name,.font-card .sample{padding:.3em .2em;margin:-.3em -.2em}
 .font-card .sample{white-space:normal}
 /* étiquettes gardées dans la page (pour un futur filtre), pas affichées */
 .font-card .meta{display:none}
