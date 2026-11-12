@@ -1,9 +1,9 @@
-LICENCE D'UTILISATION — BARYCENTRE-032
+LICENCE D'UTILISATION — BALLASTLINE
 © 2026 LaFleurStudio. Tous droits réservés.
-Cette licence couvre la police BARYCENTRE-032.
+Cette licence couvre la police BALLASTLINE.
 
 1. Usage personnel : gratuit
-Vous pouvez télécharger, installer et utiliser BARYCENTRE-032 gratuitement pour un usage
+Vous pouvez télécharger, installer et utiliser BALLASTLINE gratuitement pour un usage
 personnel et non commercial : projets personnels, études, essais, maquettes, site
 personnel sans activité commerciale.
 
@@ -26,7 +26,7 @@ est donnée par écrit et précise le projet qu'elle couvre.
   permette de les récupérer.
 
 4. Propriété
-BARYCENTRE-032 reste la propriété de LaFleurStudio. Cette licence donne un droit
+BALLASTLINE reste la propriété de LaFleurStudio. Cette licence donne un droit
 d'utilisation, pas un droit de propriété.
 
 5. Aucune garantie
@@ -40,12 +40,12 @@ Signé : Jonathan Kern
 
 -----------------------------------------------------------------------------------
 
-END USER LICENSE — BARYCENTRE-032
+END USER LICENSE — BALLASTLINE
 © 2026 LaFleurStudio. All rights reserved.
-This license covers BARYCENTRE-032.
+This license covers BALLASTLINE.
 
 1. Personal use: free
-You may download, install and use BARYCENTRE-032 free of charge for personal,
+You may download, install and use BALLASTLINE free of charge for personal,
 non-commercial use: personal projects, studies, tests, mock-ups, a personal website
 with no commercial activity.
 
@@ -68,7 +68,7 @@ writing and names the project it covers.
   extracted.
 
 4. Ownership
-BARYCENTRE-032 remains the property of LaFleurStudio. This license grants a right of use,
+BALLASTLINE remains the property of LaFleurStudio. This license grants a right of use,
 not ownership.
 
 5. No warranty
