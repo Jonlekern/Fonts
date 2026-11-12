@@ -63,6 +63,8 @@
 @font-face{font-family:"ISOCIRCLE";font-weight:900;font-display:swap;src:url(isocircle/fonts/woff2/ISOCIRCLE-090.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE C";font-weight:700;font-display:swap;src:url(isocircle/fonts/woff2/ISOCIRCLE-090Construction.woff2) format("woff2")}
 @font-face{font-family:"LAMINAR";font-weight:600;font-display:swap;src:url(laminar/fonts/woff2/LAMINAR-060.woff2) format("woff2")}
+@font-face{font-family:"SHEARLINE";font-weight:900;font-display:swap;src:url(shearline/fonts/woff2/SHEARLINE-Aplat.woff2) format("woff2")}
+@font-face{font-family:"SHEARLINE";font-weight:600;font-display:swap;src:url(shearline/fonts/woff2/SHEARLINE-Tirage.woff2) format("woff2")}
 @font-face{font-family:"LAMINAR V";font-display:swap;src:url(laminar/fonts/woff2/LAMINAR-090Italic.woff2) format("woff2")}
 /* Firefox ne lit pas les images des polices : il prend les versions Vecteur (couches de gris) */
 @supports (-moz-appearance:none){@font-face{font-family:"The Forever Font";font-weight:400;font-display:swap;src:url(the-forever-font/fonts/woff2/TheForeverFontVecteur-Apercu.woff2) format("woff2")}@font-face{font-family:"Typefive";font-weight:400;font-display:swap;src:url(typefive/fonts/woff2/TypefiveVecteur-Apercu.woff2) format("woff2")}}
@@ -112,11 +114,11 @@
       <h2>Polices</h2>
       <p class="intro">Clique sur une police pour voir toutes ses graisses, la tester et la télécharger.</p>
       <div class="glyph-controls filtre" role="group" aria-label="Filtrer les polices">
-        <button class="chip" type="button" data-f="tout" aria-pressed="true">Tout <small>27</small></button>
+        <button class="chip" type="button" data-f="tout" aria-pressed="true">Tout <small>28</small></button>
         <button class="chip" type="button" data-f="sans" aria-pressed="false">Sans <small>6</small></button>
         <button class="chip" type="button" data-f="serif" aria-pressed="false">Serif <small>5</small></button>
         <button class="chip" type="button" data-f="display" aria-pressed="false">Display <small>8</small></button>
-        <button class="chip" type="button" data-f="main" aria-pressed="false">Écrite à la main <small>6</small></button>
+        <button class="chip" type="button" data-f="main" aria-pressed="false">Écrite à la main <small>7</small></button>
         <button class="chip" type="button" data-f="machine" aria-pressed="false">Machine à écrire <small>3</small></button>
         <button class="chip" type="button" data-f="experimental" aria-pressed="false">Expérimental <small>8</small></button>
       </div>
@@ -188,6 +190,13 @@
           <div class="name" style="font-family:'Falsard XXXXL';font-weight:1000">FALSARD</div>
           <div class="sample" style="--k:0.99;font-family:'Falsard';font-weight:400">Géométrique techno · centre de gravité bas</div>
           <div class="meta"><span>10 graisses</span><span>+ 10 italiques</span><span>XXXS → XXXXL</span><span>SIL OFL 1.1</span><span>2026</span></div>
+          <div class="go">Voir la police →</div>
+        </a>
+
+        <a class="font-card" href="shearline/" data-fam="main">
+          <div class="name" style="font-family:'SHEARLINE';font-weight:900;line-height:1.3">Shearline</div>
+          <div class="sample" style="--k:1.0;font-family:'SHEARLINE';font-weight:600;line-height:1.4">Fraktur · plume à 40° · croix liturgiques</div>
+          <div class="meta"><span>Fraktur</span><span>3 graisses</span><span>Italique = lettrines</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 

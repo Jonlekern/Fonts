@@ -35,6 +35,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **ISOSLAB** | Slab étroite d'affiche dessinée à neuf, mélange de slab mécanique, d'affiche de combat et de Clarendon : fûts presque égaux, empattements carrés raccordés, gouttes, VS en cartouche | 3 (050 → 090) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/isoslab/) · [Zip](isoslab/ISOSLAB.zip) · [Dossier](isoslab/) |
 | **ISOCIRCLE** | Sans géométrique dessinée à neuf au compas et à la règle : ronds parfaits, a à un étage, une italique au compas qui garde ses cercles, et une version construction rangée derrière le gras (jonctions, cercles, lignes du tracé) ; a et g à deux étages et 0 barré en option | 5 (030 → 090), chacune en droite, italique, construction et construction italique | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/isocircle/) · [Zip](isocircle/ISOCIRCLE.zip) · [Dossier](isocircle/) |
 | **LAMINAR** | Art déco dessinée à neuf, haute et étroite : pleins et déliés, ronds au compas, barres hautes, coins profilés ; capitales et petites capitales (les minuscules donnent les petites capitales) ; derrière l'italique, une version vitesse traversée de trois lignes avec traîne et bout rond ; 16 ligatures | 3 (030 → 090), chacune en sobre et vitesse | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/laminar/) · [Zip](laminar/LAMINAR.zip) · [Dossier](laminar/) |
+| **SHEARLINE** | Fraktur dessinée à neuf, tracée à la plume large : rondes cassées, têtes en losange, capitales à trompe, croix dans les lettres (latines, patriarcales, pattées, en options) ; ſ long automatique, ligatures ch ck tz ſt ſſ, signes liturgiques ; derrière l'italique, les capitales deviennent des lettrines | 3 (Épreuve, Tirage, Aplat), chacune en regular et lettrines | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/shearline/) · [Zip](shearline/SHEARLINE.zip) · [Dossier](shearline/) |
 
 ## Organisation
 
@@ -50,10 +51,10 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-drastic-sans/, barycentre-032/, anisotrope/, isoslab/, isocircle/, laminar/
+drastic-sans/, barycentre-032/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
-  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BARYCENTRE-032, ANISOTROPE, ISOSLAB, ISOCIRCLE et LAMINAR : LICENCE.txt)
+  OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BARYCENTRE-032, ANISOTROPE, ISOSLAB, ISOCIRCLE, LAMINAR et SHEARLINE : LICENCE.txt)
   Calebard.zip          Toutes les graisses en TTF + licence
   fonts/ttf/            Polices à installer
   fonts/woff2/          Polices pour le web
