@@ -2,7 +2,7 @@
 import os, sys, subprocess
 from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, '..', 'fonts', 'otf')
-BONUS = os.path.join(OUT, '..', 'bonus')          # le bonus Compass (050, 070, 090) : il va dans le zip, pas sur le site
+BONUS = os.path.join(OUT, '..', '..', 'bonus', 'otf')   # le bonus Compass (050, 070, 090) : caché en bas des téléchargements
 def one(job):
     num, it = job
     r = subprocess.run([sys.executable, os.path.join(HERE, 'fabrique.py'), num, BONUS if it == 'compas' else OUT] + ([it] if it else []), capture_output=True, text=True)
