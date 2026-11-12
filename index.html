@@ -69,8 +69,11 @@
 /* Polices à l'encre (images avec halo) : encre noire en clair, retournée en blanc en sombre (le halo suit) */
 /* toutes les cartes de la même hauteur (celle de la plus haute), le nom centré dans sa place */
 .catalogue{grid-auto-rows:1fr}
-.font-card{grid-template-rows:1fr auto auto auto}
+.font-card{grid-template-rows:1fr auto auto}
 .font-card .name{align-self:center}
+.font-card .sample{white-space:normal}
+/* étiquettes gardées dans la page (pour un futur filtre), pas affichées */
+.font-card .meta{display:none}
 .encre{color:#141414}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .encre{filter:invert(1)}}
 :root[data-theme="dark"] .encre{filter:invert(1)}
@@ -103,189 +106,189 @@
       <div class="catalogue">
         <a class="font-card" href="typefive/">
           <div class="name encre" style="font-family:'Typefive';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/7)">TypeFive</div>
-          <div class="sample encre" style="font-family:'Typefive';font-weight:400;line-height:1.4">Tapé à la machine</div>
+          <div class="sample encre" style="font-family:'Typefive';font-weight:400;line-height:1.4">Chasse fixe · frappe dactylographique · grain du ruban</div>
           <div class="meta"><span>1 style</span><span>5 versions de chaque signe</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="jalousia/">
           <div class="name" style="font-family:'Jalousia Net';font-weight:400">JALOUSIA</div>
-          <div class="sample" style="font-family:'Jalousia Craie';font-weight:300">Chiffres romains, net ou à la craie</div>
+          <div class="sample" style="font-family:'Jalousia Craie';font-weight:300">Chiffres romains · néo-gothique · tracé à la main</div>
           <div class="meta"><span>Net et Craie</span><span>4 graisses + 4 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="nexum/">
           <div class="name" style="font-family:'Nexum';font-weight:900;line-height:1.3;padding-top:.35em">NEXUM</div>
-          <div class="sample" style="font-family:'Nexum';font-weight:400;line-height:1.4">Techno gothique, croix partout</div>
+          <div class="sample" style="font-family:'Nexum';font-weight:400;line-height:1.4">Techno gothique · géométrie stricte · terminaisons en pointe</div>
           <div class="meta"><span>9 graisses</span><span>Hairline → Black</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="clebard/">
           <div class="name" style="font-family:'Clebard';font-weight:1000">CLEBARD</div>
-          <div class="sample" style="font-family:'Clebard';font-weight:600">Néo-grotesque suisse</div>
+          <div class="sample" style="font-family:'Clebard';font-weight:600">Néo-grotesque · chasse extra-large · squelette suisse</div>
           <div class="meta"><span>6 graisses + italiques</span><span>Demi → Trenta</span><span>GUST Font License</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="longhand/">
           <div class="name" style="font-family:'Longhand';font-weight:800;line-height:1.2">Longhand</div>
-          <div class="sample" style="font-family:'Longhand';font-weight:400;line-height:1.4">Écrit à la main, à Bienne</div>
+          <div class="sample" style="font-family:'Longhand';font-weight:400;line-height:1.4">Chancellerie · plume large · arches issues du fût</div>
           <div class="meta"><span>Plume large</span><span>5 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="drastic-sans/">
           <div class="name" style="font-family:'Drastic Sans';font-weight:900;line-height:1.2">Drastic Sans</div>
-          <div class="sample" style="font-family:'Drastic Sans';font-weight:400;line-height:1.4">Bonne journée !!</div>
+          <div class="sample" style="font-family:'Drastic Sans';font-weight:400;line-height:1.4">Casual au feutre · bols en squircle · pâté au départ</div>
           <div class="meta"><span>Comic sans</span><span>5 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="espresso-440/">
           <div class="name" style="font-family:'Espresso440';font-weight:500;line-height:1.2">ESPRESSO 4.40.-</div>
-          <div class="sample" style="font-family:'Espresso440';font-weight:400;line-height:1.3;padding:.5em 0 .1em">Un café, s'il vous plaît ☀</div>
+          <div class="sample" style="font-family:'Espresso440';font-weight:400;line-height:1.3;padding:.5em 0 .1em">Manuscrite · craie sur ardoise · ductus rapide</div>
           <div class="meta"><span>Projet artistique</span><span>5 graisses</span><span>Lungo → Moka</span><span>SIL OFL 1.1</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="calebard/">
           <div class="name" style="font-family:'Calebard Extreme','Calebard';font-weight:1000">CALEBARD</div>
-          <div class="sample" style="font-family:'Calebard';font-weight:400">Large du calbar</div>
+          <div class="sample" style="font-family:'Calebard';font-weight:400">Grotesque super étendue · contre-formes larges</div>
           <div class="meta"><span>11 graisses</span><span>Hairline → Extreme Black</span><span>+ Goofy</span><span>SIL OFL 1.1</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="the-forever-font/">
           <div class="name encre" style="font-family:'The Forever Font';font-weight:400;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/8.6)">THE FOREVER FONT</div>
-          <div class="sample encre" style="font-family:'The Forever Font';font-weight:400;line-height:1.4">Écrit à l'encre, pour toujours</div>
+          <div class="sample encre" style="font-family:'The Forever Font';font-weight:400;line-height:1.4">Chasse fixe / encre diffuse / frappe et tatouage</div>
           <div class="meta"><span>1 style</span><span>3 versions de chaque signe</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="falsard/">
           <div class="name" style="font-family:'Falsard XXXXL';font-weight:1000">FALSARD</div>
-          <div class="sample" style="font-family:'Falsard';font-weight:400">Techno, taille basse</div>
+          <div class="sample" style="font-family:'Falsard';font-weight:400">Géométrique techno · centre de gravité bas</div>
           <div class="meta"><span>10 graisses</span><span>+ 10 italiques</span><span>XXXS → XXXXL</span><span>SIL OFL 1.1</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="laminar/">
           <div class="name" style="font-family:'LAMINAR V';font-weight:400;line-height:1.3">LAMINAR</div>
-          <div class="sample" style="font-family:'LAMINAR';font-weight:600;line-height:1.2">Grand Café</div>
+          <div class="sample" style="font-family:'LAMINAR';font-weight:600;line-height:1.2">ART DÉCO · PLEINS ET DÉLIÉS · BARRES HAUTES</div>
           <div class="meta"><span>Art déco</span><span>3 graisses</span><span>Italique = vitesse</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="isocircle/">
           <div class="name" style="font-family:'ISOCIRCLE C';font-weight:700;line-height:1.3">ISOCIRCLE</div>
-          <div class="sample" style="font-family:'ISOCIRCLE';font-weight:900;line-height:1.2">BLUEPRINT</div>
+          <div class="sample" style="font-family:'ISOCIRCLE';font-weight:900;line-height:1.2">Géométrique · ronds au compas · a à un étage</div>
           <div class="meta"><span>Sans géométrique</span><span>5 graisses</span><span>Italique</span><span>Gras = construction</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="isoslab/">
           <div class="name" style="font-family:'ISOSLAB';font-weight:900;line-height:1.1">ISOSLAB</div>
-          <div class="sample" style="font-family:'ISOSLAB';font-weight:700;line-height:1.2">KNOCKOUT</div>
+          <div class="sample" style="font-family:'ISOSLAB';font-weight:700;line-height:1.2">Slab étroite · empattements carrés raccordés · gouttes</div>
           <div class="meta"><span>Slab d'affiche</span><span>3 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="anisotrope/">
           <div class="name" style="font-family:'ANISOTROPE';font-weight:900;line-height:1.2">ANISOTROPE</div>
-          <div class="sample" style="font-family:'ANISOTROPE';font-weight:400;line-height:1.4">dyslexia</div>
+          <div class="sample" style="font-family:'ANISOTROPE';font-weight:400;line-height:1.4">Serif de lecture · faible contraste · empattements en coin</div>
           <div class="meta"><span>Serif</span><span>Lisible par tous</span><span>5 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="barycentre-032/">
           <div class="name" style="font-family:'BARYCENTRE-032';font-weight:800;line-height:1.2">BARYCENTRE-032</div>
-          <div class="sample" style="font-family:'BARYCENTRE-032';font-weight:400;line-height:1.4">Un café à Bienne</div>
+          <div class="sample" style="font-family:'BARYCENTRE-032';font-weight:400;line-height:1.4">Serif de lecture · monolinéaire · poids en bas des courbes</div>
           <div class="meta"><span>Serif</span><span>5 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="psalter/">
           <div class="name" style="font-family:'Psalter';font-weight:800;line-height:1.15">Psalter</div>
-          <div class="sample" style="font-family:'Psalter';font-weight:400;line-height:1.3">Biel/Bienne</div>
+          <div class="sample" style="font-family:'Psalter';font-weight:400;line-height:1.3">Textura · plume tenue droite · jambages en losange</div>
           <div class="meta"><span>Gothique</span><span>5 graisses</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="last-call/">
           <div class="name" style="font-family:'Last Call';font-weight:900;line-height:1.15">LAST CALL</div>
-          <div class="sample" style="font-family:'Last Call';font-weight:400;line-height:1.3">Bienne by night</div>
+          <div class="sample" style="font-family:'Last Call';font-weight:400;line-height:1.3">Monolinéaire néon · tubes ronds · coudes arrondis</div>
           <div class="meta"><span>Néon</span><span>7 graisses</span><span>+ 7 italiques</span><span>He → Og</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="small-hours/">
           <div class="name" style="font-family:'Small Hours';font-weight:900;line-height:1.1">SMALL HOURS</div>
-          <div class="sample" style="font-family:'Small Hours';font-weight:400;line-height:1.3">logo_final_v3</div>
+          <div class="sample" style="font-family:'Small Hours';font-weight:400;line-height:1.3">Grotesk à chasse fixe · rondes presque carrées</div>
           <div class="meta"><span>Mono</span><span>9 graisses</span><span>+ 9 italiques</span><span>20h → 4h</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="contrepied/">
           <div class="name" style="font-family:'Contrepied';font-weight:900;line-height:1.15">CONTREPIED</div>
-          <div class="sample" style="font-family:'Contrepied';font-weight:400;line-height:1.3">Café de la Gare</div>
+          <div class="sample" style="font-family:'Contrepied';font-weight:400;line-height:1.3">Italienne · contraste inversé · empattements épais</div>
           <div class="meta"><span>Italienne</span><span>9 graisses</span><span>+ 9 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="cortisol/">
           <div class="name" style="font-family:'Cortisol';font-weight:900;line-height:1.25;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/8.5)">CORTISOL</div>
-          <div class="sample" style="font-family:'Cortisol';font-weight:400;line-height:1.3">Deadline demain</div>
+          <div class="sample" style="font-family:'Cortisol';font-weight:400;line-height:1.3">Didone · fort contraste · terminaisons en boule</div>
           <div class="meta"><span>Serif</span><span>9 graisses</span><span>+ 9 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="trap/">
           <div class="name" style="font-family:'Trap';font-weight:900;line-height:1.1">TRAP</div>
-          <div class="sample" style="font-family:'Trap';font-weight:400;line-height:1.25">Braderie</div>
+          <div class="sample" style="font-family:'Trap';font-weight:400;line-height:1.25">Grotesque étroite · pièges à encre</div>
           <div class="meta"><span>Étroite</span><span>9 graisses</span><span>+ 9 italiques</span><span>ppp → ffff</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="overshoot/">
           <div class="name" style="font-family:'Overshoot';font-weight:900;line-height:1.2;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/12)">OVERSHOOT</div>
-          <div class="sample" style="font-family:'Overshoot';font-weight:400;line-height:1.3">Jaguar majeur</div>
+          <div class="sample" style="font-family:'Overshoot';font-weight:400;line-height:1.3">Grotesque extra-large · bouts coupés à l'horizontale</div>
           <div class="meta"><span>Extra-large</span><span>9 graisses</span><span>+ 9 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="turbo-72/">
           <div class="name" style="font-family:'Turbo72';font-weight:900;line-height:1.3;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/13)">TURBO 72°</div>
-          <div class="sample" style="font-family:'Turbo72';font-weight:400;line-height:1.35;white-space:normal">DEUX FOIS PLUS HAUTE.<br>DEUX FOIS PLUS RAPIDE.</div>
+          <div class="sample" style="font-family:'Turbo72';font-weight:400;line-height:1.35">Rétro-futuriste · haute et penchée · tracé de course</div>
           <div class="meta"><span>Rallye</span><span>12 graisses</span><span>Reco → Groupe B</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="biel-bienne-wildstyle/">
           <div class="name" style="font-family:'BielBienneWildStyle';font-weight:700;line-height:1.3;padding-top:.2em">BIEL/BIENNE WILDSTYLE</div>
-          <div class="sample" style="font-family:'BielBienneWildStyle';font-weight:400;line-height:1.4">bonne journée</div>
+          <div class="sample" style="font-family:'BielBienneWildStyle';font-weight:400;line-height:1.4">Wildstyle - capitales imbriquées - minuscules bubble</div>
           <div class="meta"><span>Graffiti</span><span>4 graisses</span><span>Toy → Legend</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="dotsignal/">
           <div class="name" style="font-family:'DOTSIGNAL';font-weight:900;line-height:1.25;font-size:max(52px,calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/11.6));color:var(--ink)">DOTSIGNAL</div>
-          <div class="sample" style="font-family:'DOTSIGNAL Italic','DOTSIGNAL';font-weight:400;line-height:1.35;font-size:clamp(24px,2.6vw,32px);color:var(--ink)">🚌 PLACE CENTRALE 3'</div>
+          <div class="sample" style="font-family:'DOTSIGNAL Italic','DOTSIGNAL';font-weight:400;line-height:1.35;font-size:clamp(24px,2.6vw,32px);color:var(--ink)">Matrice de points · affichage LED · italique glitch</div>
           <div class="meta"><span>6 graisses</span><span>Thin → Black</span><span>+ 6 italiques glitch</span><span>SIL OFL 1.1</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="dihedron-008/">
           <div class="name" style="font-family:'DIHEDRON-008';font-weight:900;line-height:1.25">DIHEDRON-008</div>
-          <div class="sample" style="font-family:'DIHEDRON-008';font-weight:500">tlhIngan Hol Dajatlh'a'?</div>
+          <div class="sample" style="font-family:'DIHEDRON-008';font-weight:500">Display à facettes · losanges · poids en haut</div>
           <div class="meta"><span>9 graisses</span><span>+ 9 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 
         <a class="font-card" href="malabard/">
           <div class="name" style="font-family:'Malabard';font-weight:800">MALABARD</div>
-          <div class="sample" style="font-family:'Malabard';font-weight:500">Art déco, années 70</div>
+          <div class="sample" style="font-family:'Malabard';font-weight:500">Display de course · chasse allongée</div>
           <div class="meta"><span>7 graisses</span><span>ExtraLight → ExtraBold</span><span>+ 7 italiques</span><span>SIL OFL 1.1</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
