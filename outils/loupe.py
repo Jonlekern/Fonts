@@ -31,12 +31,16 @@ except OSError:
 asc = t['OS/2'].sTypoAscender; desc = t['OS/2'].sTypoDescender
 
 def contours(g):
-    rp = DecomposingRecordingPen(gs); gs[g].draw(rp); out = []; cur = []   # les lettres composées (accents) sont dépliées
+    rp0 = DecomposingRecordingPen(gs); gs[g].draw(rp0)          # les lettres composées (accents) sont dépliées
+    rp = rp0
+    out = []; cur = []
     for op, a in rp.value:
         if op == 'moveTo': cur = [a[0]]
         elif op == 'lineTo': cur.append(a[0])
         elif op in ('curveTo', 'qCurveTo'):
             # TrueType : une courbe peut porter plusieurs points de contrôle, on la découpe en morceaux simples
+            if op == 'qCurveTo' and a[-1] is None:                # contour fait seulement de points hors courbe
+                dep = tuple((a[-2][i] + a[0][i]) / 2 for i in (0, 1)); cur = [dep]; a = a[:-1] + (dep,)
             morceaux = decomposeQuadraticSegment(a) if op == 'qCurveTo' else [a]
             for mc in morceaux:
                 p0 = cur[-1]

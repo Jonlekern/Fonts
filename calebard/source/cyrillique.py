@@ -43,7 +43,7 @@ def transf(p, sx=1, sy=1, dx=0, dy=0):
     rp = RecordingPen(); p.draw(rp)
     q = pathops.Path(); pen = q.getPen()
     for op, a in rp.value:
-        getattr(pen, op)(*[(x * sx + dx, y * sy + dy) for x, y in a])
+        getattr(pen, op)(*[None if q is None else (q[0] * sx + dx, q[1] * sy + dy) for q in a])
     return pathops.simplify(q, fix_winding=True)
 
 def bornes(p):
@@ -222,10 +222,11 @@ class Graisse:
             O = self.lat(rO); ox0, oy0, ox1, oy1 = bornes(O); wO = ox1 - ox0
             ho = coupes_y(O, (ox0 + ox1) / 2); epO = self.larg(ho[-1])
             if maj:
-                ha = h * 0.70; y0 = (h - ha) / 2
+                ha = h * 0.74; y0 = (h - ha) / 2
                 ep = min(epO, ha * 0.36)                                 # on garde un blanc dans les graisses noires
                 wF = round(wO * 0.96); fut = st if ep == epO else st * 0.92
-                p = union(self.anneau(rO, 0, y0, wF, y0 + ha, haut=ep), rect(wF / 2 - fut / 2, 0, wF / 2 + fut / 2, h))
+                cote = min(self.larg(coupes_x(O, (oy0 + oy1) / 2)[0]), st * 0.78)
+                p = union(self.anneau(rO, 0, y0, wF, y0 + ha, cote=cote, haut=ep), rect(wF / 2 - fut / 2, 0, wF / 2 + fut / 2, h))
                 self.pose('uni0424', 0x424, transf(p, dx=aO), wF + 2 * aO)
             else:
                 p = union(transf(O, dx=-ox0), rect(wO / 2 - st / 2, self.DESC, wO / 2 + st / 2, self.ASC))
@@ -254,10 +255,6 @@ class Graisse:
                 # Я : le R en miroir
                 R = self.lat('R'); x0, _, x1, _ = bornes(R)
                 self.pose('uni042F', 0x42F, transf(R, sx=-1, dx=x0 + x1 + (self.chasse('R') - x1 - x0)), self.chasse('R'))
-                # Б : le P retourné (Ь) et la barre du haut
-                P = self.lat('P'); x0, _, x1, _ = bornes(P)
-                p = union(transf(P, sy=-1, dy=h), rect(x0, h - br, x0 + (x1 - x0) * 0.90, h))
-                self.pose('uni0411', 0x411, p, self.chasse('P'))
 
         # les lettres qui existent déjà en latin
         for code, lat in ((0x410, 'A'), (0x420, 'P'), (0x421, 'C'), (0x422, 'T'), (0x41E, 'O'), (0x401, 'Edieresis'),
@@ -393,6 +390,88 @@ class Graisse:
                           (0x443, 'y'), (0x445, 'x')):
             pose(code, self.lat(lat), self.chasse(lat))
 
+    def capitales(self):
+        """Les 33 capitales russes (И Л Д Ф У Ж Ш Я sont déjà dans dessine)."""
+        h, st, br = self.CH, self.S, self.B
+        Hl = self.lat('H'); hx0, _, hx1, _ = bornes(Hl); wH = hx1 - hx0
+        g, d = self.dH, self.chasse('H') - hx1
+        def pose(code, p, chasse): self.pose('uni%04X' % code, code, p, chasse)
+        def droit(code, p, w, ag=1.0, ad=1.0): pose(code, transf(p, dx=g * ag), w + g * ag + d * ad)
+        # les trois barres du B : le modèle des panses
+        B = self.brut('B'); pB = chemin(B); bx0, _, bx1, _ = bornes(pB)
+        za, zb = zone_x(B, bx0 + st, (bx1 - bx0) * 0.15)
+        bB = coupes_y(pB, (za + zb) / 2)
+        tb, (m0, m1), tt = bB[0][1], bB[1], h - bB[2][0]
+        desc = round(h * 0.19); dep = round(wH * 0.06 + st * 0.25); pied = round(st * 0.85)
+
+        # П Ц Щ : des fûts et des barres
+        droit(0x41F, union(rect(0, 0, st, h), rect(wH - st, 0, wH, h), rect(0, h - br, wH, h)), wH)
+        droit(0x426, union(rect(0, 0, st, h), rect(wH - st, 0, wH, h), rect(0, 0, wH + dep, br),
+                           rect(wH + dep - pied, -desc, wH + dep, br)), wH + dep, ad=0.6)
+        w = round(wH * 1.2)
+        droit(0x429, union(rect(0, 0, st, h), rect(w / 2 - st / 2, 0, w / 2 + st / 2, h), rect(w - st, 0, w, h),
+                           rect(0, 0, w + dep, br), rect(w + dep - pied, -desc, w + dep, br)), w + dep, ad=0.6)
+
+        # Г : le fût et le bras du haut du E
+        Ee = self.lat('E'); ex0 = bornes(Ee)[0]
+        bras = inter(Ee, rect(-9000, h - br - 1, 9000, 9000)); xb = bornes(bras)[2]
+        p = union(bras, rect(ex0, 0, ex0 + st, h))
+        pose(0x413, p, xb + g * self.kT)
+
+        # Ь Ъ Ы Б : le P retourné, sa panse à la hauteur de la panse basse du B
+        P = bouge(self.brut('P'), lambda q: (q[0], h - q[1])); pP = chemin(P); x0, _, x1, H = bornes(pP)
+        za, zb = zone_x(P, x0 + st, (x1 - x0) * 0.15)
+        bb = coupes_y(pP, (za + zb) / 2)
+        ky = [(0, 0), (bb[0][1], tb), (bb[1][0], m0), (bb[1][1], m1), (H, h)]
+        def mou(coef):
+            dx = min((x1 - x0) * coef, zb - za - 40)
+            return chemin(recale(P, [(za + 10, za + 10), (za + 10 + dx, za + 10)], ky)), dx
+        p, dx = mou(0.10)
+        pose(0x42C, p, self.chasse('P') - dx)
+        pose(0x411, union(p, rect(x0, h - tt, x0 + (x1 - dx - x0) * 0.92, h)), self.chasse('P') - dx)
+        drap = round(wH * 0.11 + st * 0.3)
+        pose(0x42A, transf(union(p, rect(x0 - drap, h - br, x0 + st, h)), dx=drap * 0.8), self.chasse('P') - dx + drap * 0.8)
+        p, dx = mou(0.26); wb = x1 - dx; esp = round(wH * 0.06 + st * 0.35)
+        pose(0x42B, union(p, rect(wb + esp, 0, wb + esp + st, h)), wb + esp + st + d)
+
+        # Ч : le U remonté, coupé, avec le fût de droite jusqu'en bas
+        U = self.lat('U'); ux0, uy0, ux1, _ = bornes(U)
+        p = inter(transf(U, dy=h * 0.40 - uy0), rect(-9000, 0, 9000, h))
+        fa, fb = coupes_x(p, h - 5)[-1]
+        p = union(p, rect(fa, 0, fb, h))
+        pose(0x427, p, self.chasse('U'))
+
+        # Э : le C en miroir et sa barre
+        C = self.lat('C'); x0, _, x1, _ = bornes(C)
+        cc = coupes_y(C, (x0 + x1) / 2); cy = (cc[0][1] + cc[-1][0]) / 2
+        ep = min(m1 - m0, (cc[-1][0] - cc[0][1]) * 0.36)
+        cote = self.larg(coupes_x(C, cy)[0])
+        p = union(transf(C, sx=-1, dx=x0 + x1), rect(x0 + (x1 - x0) * 0.40, cy - ep / 2, x1 - cote / 2, cy + ep / 2))
+        rc = self.chasse('C') - x1
+        pose(0x42D, transf(p, dx=rc - x0), self.chasse('C'))
+
+        # Ю : un fût, une barre, un O plus étroit
+        O = self.lat('O'); x0, y0, x1, y1 = bornes(O); wo = (x1 - x0) * 0.76
+        esp = round(wH * 0.06 + st * 0.3); xo = st + esp; c = self.cH * h
+        cote = self.larg(coupes_x(O, (y0 + y1) / 2)[0])
+        p = union(rect(0, 0, st, h), rect(0, c - self.tH / 2, xo + cote / 2, c + self.tH / 2),
+                  self.anneau('O', xo, y0, xo + wo, y1))
+        pose(0x42E, transf(p, dx=g), xo + wo + g + (self.chasse('O') - x1))
+
+        # Й : le И et la brève des capitales
+        comp = self.t['glyf']['Abreve']
+        if comp.isComposite():
+            nomb, bx, by = [(k.glyphName, k.x, k.y) for k in comp.components][-1]
+            br_ = transf(self.lat(nomb), dx=bx, dy=by)
+            a = self.lat('A'); ca = (bornes(a)[0] + bornes(a)[2]) / 2; cb = (bornes(br_)[0] + bornes(br_)[2]) / 2
+            _, pi, chi = self.neufs['uni0418']; ci = (bornes(pi)[0] + bornes(pi)[2]) / 2
+            pose(0x419, union(pi, transf(br_, dx=ci - cb + (cb - ca))), chi)
+
+        # celles qui existent déjà en latin
+        for code, lat in ((0x410, 'A'), (0x412, 'B'), (0x415, 'E'), (0x401, 'Edieresis'), (0x417, 'three'), (0x41A, 'K'),
+                          (0x41C, 'M'), (0x41D, 'H'), (0x41E, 'O'), (0x420, 'P'), (0x421, 'C'), (0x422, 'T'), (0x425, 'X')):
+            pose(code, self.lat(lat), self.chasse(lat))
+
     def ecrit(self, sortie):
         t = self.t; glyf = t['glyf']; ordre = t.getGlyphOrder()
         for nom, (code, p, ch) in self.neufs.items():
@@ -417,6 +496,6 @@ class Graisse:
 
 if __name__ == '__main__':
     g = Graisse(sys.argv[1])
-    g.dessine(); g.minuscules()
+    g.dessine(); g.minuscules(); g.capitales()
     g.ecrit(sys.argv[2])
     print(sys.argv[2], len(g.neufs), 'signes')
