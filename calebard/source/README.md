@@ -27,6 +27,9 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `j102.py` | Version 1.0.2 : bout du crochet du j coupé en biais |
 | `f102.py` | Version 1.0.2 : F à la largeur du logo |
 | `post102.sh` | Version 1.0.2 : enchaîne les cinq scripts ci-dessus sur les 11 graisses de la 1.0.1, puis pose le numéro de version |
+| `cyrillique.py` | Version 1.0.3 : les 66 lettres russes d'une graisse, mesurées sur ses lettres latines (fût, barres, diagonales, approches), le script `cyrl` et le crénage repris des lettres latines jumelles |
+| `cyrillique_goofy.py` | Version 1.0.3 : les lettres russes du Black penchées (Goofy) ou tournées (Extra Goofy), avec leurs variantes contextuelles |
+| `post103.sh` | Version 1.0.3 : le cyrillique dans les 13 fichiers de la 1.0.2, puis le numéro de version |
 
 ## Refaire la version 1.0.1
 
@@ -41,6 +44,14 @@ STRETCH=1.209 OVR1000=overrides-1000-120.json OVR1100=overrides-1100-120.json ./
 Variables : `PY` (Python à utiliser), `VF` (chemin d'Anybody). La fleur lit `logo-fleur.svg` (dépôt lafleurstudio : `images/logo-fleur.svg`). Le numéro de version se pose à la fin : `set_version.py 1.001 out/ttf/*.ttf`.
 
 Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` redonnent la version 1.0.
+
+## Refaire la version 1.0.3
+
+À partir des 13 fichiers de la version 1.0.2 :
+
+```sh
+./post103.sh dossier-ttf
+```
 
 ## Refaire la version 1.0.2
 

@@ -2,13 +2,14 @@
 #  - écharde : morceau d'encre plus fin que 2r (ouverture morphologique)
 #  - fente   : blanc plus étroit que 2r qui entre dans l'encre (fermeture morphologique)
 #  - marche  : petit segment droit entre deux bords parallèles (zigzag)
-# python3 defauts.py police.otf [r] [sortie.json]
+# python3 defauts.py police.otf [r] [sortie.json] [glyphes...]   (sans liste : tous les glyphes)
 import sys, math, json
 import numpy as np
 from scipy import ndimage as ndi
 from PIL import Image, ImageDraw, ImageChops
 from fontTools.ttLib import TTFont
-from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
+from fontTools.pens.basePen import decomposeQuadraticSegment
 
 path = sys.argv[1]; R = float(sys.argv[2]) if len(sys.argv) > 2 else 5.0
 OUT = sys.argv[3] if len(sys.argv) > 3 else None
@@ -16,17 +17,27 @@ t = TTFont(path); gs = t.getGlyphSet()
 PAD = 40
 
 def contours(g):
-    rp = RecordingPen(); gs[g].draw(rp); cs = []; cur = []; segs = []; cs_segs = []
+    rp = DecomposingRecordingPen(gs); gs[g].draw(rp); cs = []; cur = []; segs = []; cs_segs = []
     for op, a in rp.value:
         if op == 'moveTo':
             cur = [a[0]]; segs = []
         elif op == 'lineTo':
             segs.append(('L', cur[-1], a[0])); cur.append(a[0])
-        elif op == 'curveTo':
-            p0 = cur[-1]; p1, p2, p3 = a; segs.append(('C', p0, p1, p2, p3))
-            for i in range(1, 25):
-                s = i / 24; m = 1 - s
-                cur.append(tuple(m**3*p0[j] + 3*m*m*s*p1[j] + 3*m*s*s*p2[j] + s**3*p3[j] for j in (0, 1)))
+        elif op in ('curveTo', 'qCurveTo'):
+            # TrueType : courbes à plusieurs points de contrôle, et contours sans point sur la courbe
+            if op == 'qCurveTo' and a[-1] is None:
+                dep = tuple((a[-2][j] + a[0][j]) / 2 for j in (0, 1)); cur = [dep]; segs = []; a = a[:-1] + (dep,)
+            morceaux = decomposeQuadraticSegment(a) if op == 'qCurveTo' else [a]
+            for mc in morceaux:
+                p0 = cur[-1]
+                if op == 'qCurveTo':
+                    q1, p3 = mc; p1 = tuple(p0[j] + 2 / 3 * (q1[j] - p0[j]) for j in (0, 1)); p2 = tuple(p3[j] + 2 / 3 * (q1[j] - p3[j]) for j in (0, 1))
+                else:
+                    p1, p2, p3 = mc
+                segs.append(('C', p0, p1, p2, p3))
+                for i in range(1, 25):
+                    s = i / 24; m = 1 - s
+                    cur.append(tuple(m**3*p0[j] + 3*m*m*s*p1[j] + 3*m*s*s*p2[j] + s**3*p3[j] for j in (0, 1)))
         elif op in ('closePath', 'endPath'):
             if len(cur) > 2:
                 if math.dist(cur[-1], cur[0]) > 1e-6: segs.append(('L', cur[-1], cur[0]))
@@ -80,7 +91,9 @@ def jogs(cs_segs, maxlen=34):
     return found
 
 res = {}
+SEULS = set(sys.argv[4:])
 for g in t.getGlyphOrder():
+    if SEULS and g.split('.')[0] not in SEULS: continue
     if g in ('.notdef', 'space', 'uni00A0'): continue
     cs, cs_segs = contours(g)
     if not cs: continue

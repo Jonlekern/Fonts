@@ -1,6 +1,6 @@
 # Calebard
 
-Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, plus deux styles bonus **Goofy** et **Extra Goofy**, par **LaFleurStudio**.
+Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, plus deux styles bonus **Goofy** et **Extra Goofy**, par **LaFleurStudio**. Latin et **cyrillique russe** : en russe, elle s'appelle **Треники** (« le bas de jogging »).
 
 Page : **https://jonlekern.github.io/Fonts/calebard/**
 
@@ -63,6 +63,7 @@ Le logo fleur du studio est inclus dans toutes les polices :
 
 ## Versions
 
+- **1.0.3** : le cyrillique russe, dans les 13 fichiers. Les 33 capitales et les 33 minuscules, construites avec les traits de chaque graisse (Л et Д droits, avec une barre en haut) ; Goofy et Extra Goofy les penchent et les tournent comme les autres ; le crénage reprend celui des lettres latines qui ont le même bord.
 - **1.0.2** : réglée sur le vrai logo LAFLEURSTUDIO (celui du t-shirt). L, U, R et F à la largeur du logo ; C, G, J, O, Q, S, U dépassent de la ligne comme dans le logo ; espacement recalculé sur les espaces du logo (A et T plus aérés) ; Ų, Ư, Ứ, Ừ, Ử, Ữ, Ự ont le même U que le U ; bout du crochet du j coupé en biais. Goofy et Extra Goofy restent en 1.0.1.
 - **1.0.1** : largeur 120 % (LAFLEURSTUDIO tapé en Black a la largeur du logo du studio), espacement des capitales en 6 règles, U moins large, queue du J plus courte.
 - **1.0** : première version, étirée à 130 %.

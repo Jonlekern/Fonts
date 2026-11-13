@@ -25,7 +25,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | trap | Nidwald | Stanserhorn | BÜRGENSTOCK · Stans · Hergiswil ? · STANSERHORN |
 | dihedron-008 | Glaris | Glarus | DIHEDRON-008 |
 | falsard | Zoug | ZUGERBERG | FALSARD · FALSARD ©®™ |
-| calebard | Fribourg | GRUYÈRES | LAFLEURSTUDIO |
+| calebard | Fribourg | GRUYÈRES | LAFLEURSTUDIO · ТРЕНИКИ · Лафлёрстудио, графический дизайн |
 | small-hours | Soleure | Solothurn | iiiii · MMMMM · 0Oo 1lIi · { Weissenstein } |
 | isocircle | Bâle-Campagne | Augusta Raurica | Augusta · Liestal Liestal · Raurica · 1833 — 2026 · 08:30 · 12.50 CHF · 100 % · Augusta 2000 |
 | isoslab | Appenzell Rhodes-Extérieures | SCHWINGET | SCHWÄGALP · Appenzell · 6 GÄNGE · 08:30 · SCHWÄGALP · 120 KG · ★ SCHLUSSGANG ★ · KÖNIG VS BÖSER · ☞ SÄGEMEHL → ◆ ● ■ |

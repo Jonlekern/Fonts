@@ -5,7 +5,8 @@
 # Chaque graisse est mesurée (fût, barre, diagonale, hauteurs, approches) puis les lettres sont
 # construites avec ces mesures : les épaisseurs restent celles de la graisse.
 # Л et Д sont droits, comme le П (version B, validée).
-import sys
+import sys, copy
+from fontTools.ttLib.tables import otTables as ot
 import pathops
 from fontTools.ttLib import TTFont
 from fontTools.pens.ttGlyphPen import TTGlyphPen
@@ -107,8 +108,71 @@ def zone_y(rec, mini):
     return bas, min(v[1] for v in V)
 
 
+# ---------- crénage : chaque lettre russe reprend le crénage d'une lettre latine qui a le même bord ----------
+# code : (jumelle du bord gauche, jumelle du bord droit)
+JUMELLES = {
+    0x410: 'AA', 0x411: ('H', 'B'), 0x412: 'BB', 0x413: ('H', 'F'), 0x414: 'HH', 0x415: 'EE', 0x401: 'EE',
+    0x416: 'XX', 0x417: ('three', 'B'), 0x418: 'HH', 0x419: 'HH', 0x41A: 'KK', 0x41B: 'AH', 0x41C: 'MM',
+    0x41D: 'HH', 0x41E: 'OO', 0x41F: 'HH', 0x420: 'PP', 0x421: 'CC', 0x422: 'TT', 0x423: 'YY', 0x424: 'OO',
+    0x425: 'XX', 0x426: 'HH', 0x427: 'UH', 0x428: 'HH', 0x429: 'HH', 0x42A: 'TB', 0x42B: 'HH', 0x42C: 'HB',
+    0x42D: 'OO', 0x42E: 'HO', 0x42F: 'AH',
+    0x430: 'aa', 0x431: 'oo', 0x432: 'nb', 0x433: 'nr', 0x434: 'nn', 0x435: 'ee', 0x451: 'ee', 0x436: 'xx',
+    0x437: 'zo', 0x438: 'nn', 0x439: 'nn', 0x43A: 'kk', 0x43B: 'vn', 0x43C: 'nn', 0x43D: 'nn', 0x43E: 'oo',
+    0x43F: 'nn', 0x440: 'pp', 0x441: 'cc', 0x442: 'zz', 0x443: 'yy', 0x444: 'oo', 0x445: 'xx', 0x446: 'nn',
+    0x447: 'un', 0x448: 'nn', 0x449: 'nn', 0x44A: 'zb', 0x44B: 'nn', 0x44C: 'nb', 0x44D: 'oo', 0x44E: 'no',
+    0x44F: 'xn',
+}
+
+def crenage(t, jum):
+    """jum : {glyphe : (jumelle gauche, jumelle droite)}. Copie le crénage des jumelles latines."""
+    gid = t.getReverseGlyphMap(rebuild=True)
+    for lk in t['GPOS'].table.LookupList.Lookup:
+        for st in lk.SubTable:
+            st = st.ExtSubTable if lk.LookupType == 9 else st
+            if not hasattr(st, 'Coverage') or lk.LookupType not in (2, 9): continue
+            if st.Format == 1 and hasattr(st, 'PairSet'):
+                for ps in st.PairSet:                                       # la lettre russe en second
+                    extra = []
+                    for r in ps.PairValueRecord:
+                        for g, (L, R) in jum.items():
+                            if r.SecondGlyph == L:
+                                r2 = copy.deepcopy(r); r2.SecondGlyph = g; extra.append(r2)
+                    ps.PairValueRecord = sorted([r for r in ps.PairValueRecord if r.SecondGlyph not in jum] + extra,
+                                                key=lambda r: gid[r.SecondGlyph]); ps.PairValueCount = len(ps.PairValueRecord)
+                pairs = [(g, ps) for g, ps in zip(st.Coverage.glyphs, st.PairSet) if g not in jum]
+                d = dict(pairs)                                             # la lettre russe en premier
+                pairs += [(g, copy.deepcopy(d[R])) for g, (L, R) in jum.items() if R in d]
+                pairs.sort(key=lambda p: gid[p[0]])
+                st.Coverage.glyphs = [g for g, _ in pairs]; st.PairSet = [ps for _, ps in pairs]; st.PairSetCount = len(pairs)
+            elif st.Format == 2 and hasattr(st, 'ClassDef1'):
+                cov = set(st.Coverage.glyphs)
+                for g, (L, R) in jum.items():
+                    for cd, j in ((st.ClassDef1, R), (st.ClassDef2, L)):
+                        cd.classDefs.pop(g, None)
+                        if j in cd.classDefs: cd.classDefs[g] = cd.classDefs[j]
+                    if R in cov: cov.add(g)
+                st.Coverage.glyphs = sorted(cov, key=gid.get)
+
+def cyrl(t, neufs):
+    """Le script cyrillique dans GSUB et GPOS (les mêmes fonctions que DFLT), GDEF, OS/2."""
+    for tag in ('GSUB', 'GPOS'):
+        sl = t[tag].table.ScriptList
+        if any(sr.ScriptTag == 'cyrl' for sr in sl.ScriptRecord): continue
+        dflt = [sr for sr in sl.ScriptRecord if sr.ScriptTag == 'DFLT'][0]
+        sr = ot.ScriptRecord(); sr.ScriptTag = 'cyrl'; sr.Script = ot.Script()
+        sr.Script.DefaultLangSys = copy.deepcopy(dflt.Script.DefaultLangSys)
+        sr.Script.LangSysRecord = []; sr.Script.LangSysCount = 0
+        sl.ScriptRecord = sorted(sl.ScriptRecord + [sr], key=lambda r: r.ScriptTag); sl.ScriptCount = len(sl.ScriptRecord)
+    if 'GDEF' in t and t['GDEF'].table.GlyphClassDef:
+        for g in neufs: t['GDEF'].table.GlyphClassDef.classDefs[g] = 1
+    os2 = t['OS/2']
+    os2.ulUnicodeRange1 |= 1 << 9                                           # cyrillique
+    os2.ulCodePageRange1 |= 1 << 2                                          # page de code 1251
+
+
 class Graisse:
-    def __init__(self, chemin):
+    def __init__(self, chemin, pente=0.0):
+        self.pente = pente                                   # pente en plus sur la jambe de Л et Д (Goofy penché à gauche)
         self.t = TTFont(chemin); self.gs = self.t.getGlyphSet(); self.hm = self.t['hmtx']
         self.cm = self.t.getBestCmap()
         g = self.lat
@@ -207,12 +271,12 @@ class Graisse:
             # Л et Д
             V = self.lat(rV); vx0, _, vx1, _ = bornes(V); wV = vx1 - vx0
             if True:
-                w = round(wH * 0.98); xa = round(w * 0.20)
+                w = round(wH * 0.98); xa = round(w * 0.20 + self.pente * h)
                 jambe = poly((0, 0), (st, 0), (xa + st, h), (xa, h))
                 p = union(jambe, rect(xa, h - br, w, h), rect(w - st, 0, w, h))
                 self.pose(u('uni041B', 'uni043B'), u(0x41B, 0x43B), transf(p, dx=aV * 1.2), w + aV * 1.2 + aH)
                 deb = round(wH * 0.05 + st * 0.20); pied = round(st * 0.92)
-                wD = w + 2 * deb; xa = round(w * 0.16)
+                wD = w + 2 * deb; xa = round(w * 0.16 + self.pente * h)
                 jambe = poly((deb, 0), (deb + st, 0), (deb + xa + st, h), (deb + xa, h))
                 p = union(jambe, rect(deb + xa, h - br, deb + w, h), rect(deb + w - st, 0, deb + w, h),
                           rect(0, 0, wD, br), rect(0, -desc, pied, br), rect(wD - pied, -desc, wD, br))
@@ -491,6 +555,12 @@ class Graisse:
                 if tb.isUnicode(): tb.cmap[code] = nom
         t.setGlyphOrder(ordre)
         t['maxp'].numGlyphs = len(ordre)
+        cyrl(t, self.neufs)
+        jum = {}
+        for nom, (code, _, _) in self.neufs.items():
+            L, R = JUMELLES[code]; jum[nom] = (L, R)
+        crenage(t, jum)
+        t['OS/2'].recalcAvgCharWidth(t)
         t.save(sortie)
 
 
