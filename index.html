@@ -123,7 +123,7 @@
         <button class="chip" type="button" data-f="main" aria-pressed="false">Écrite à la main <small>7</small></button>
         <button class="chip" type="button" data-f="machine" aria-pressed="false">Machine à écrire <small>3</small></button>
         <button class="chip" type="button" data-f="experimental" aria-pressed="false">Expérimental <small>9</small></button>
-        <button class="chip" type="button" data-f="russe" aria-pressed="false">Russe <small>1</small></button>
+        <button class="chip" type="button" data-f="russe" aria-pressed="false" lang="ru">Русский <small>1</small></button>
       </div>
       <div class="catalogue">
         <a class="font-card" href="typefive/" data-fam="machine experimental">
@@ -336,7 +336,7 @@
 </footer>
 
 <script>
-/* filtre : une famille à la fois ; « Expérimental » et « Russe » montrent les polices expérimentales ou qui écrivent le russe, quelle que soit leur famille */
+/* filtre : une famille à la fois ; « Expérimental » et « Русский » montrent les polices expérimentales ou qui écrivent le russe, quelle que soit leur famille */
 (() => {
   const bar = document.querySelector('.filtre'); if (!bar) return;
   const cards = [...document.querySelectorAll('.catalogue .font-card')];

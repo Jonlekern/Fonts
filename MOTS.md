@@ -48,7 +48,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 
 ## Les pages en russe
 
-Une police russe porte l'étiquette `russe` dans `data-fam` sur l'accueil (filtre « Russe », penser à mettre le compte à jour), a sa page **écrite en russe** (dossier `ru/` de la police, lien depuis la page française), et suit les règles russes : à la place du canton suisse, **une région de Russie par police**, choisie selon le caractère de la police. Un vrai lieu ou une vraie chose de la région, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris.
+Une police russe porte l'étiquette `russe` dans `data-fam` sur l'accueil (filtre « Русский », écrit en russe, penser à mettre le compte à jour), a sa page **écrite en russe** (dossier `ru/` de la police, lien depuis la page française), et suit les règles russes : à la place du canton suisse, **une région de Russie par police**, choisie selon le caractère de la police. Un vrai lieu ou une vraie chose de la région, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris.
 
 | Police | Région | Graisses | Démos |
 | --- | --- | --- | --- |
