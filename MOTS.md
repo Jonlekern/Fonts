@@ -7,6 +7,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 - Thème suisse : un canton par police, choisi selon le caractère de la police.
 - Les polices inspirées de Bienne gardent Bienne et des lieux de Bienne (Biel/Bienne WildStyle, Espresso 4.40.-, DotSignal).
 - On ne touche pas à Espresso 4.40.- ni à DotSignal.
+- Polices russes (ШКВАЛ) : les mots sont des lieux russes, la page est entièrement en russe, et le testeur démarre sur « LAFLEURSTUDIO графический дизайн ». Voir « Les polices russes » dans MARCHE-A-SUIVRE.md.
 - Les sous-titres ne changent pas, le testeur non plus (« LAFLEURSTUDIO création graphique »).
 - Section Graisses : un seul mot par police, le même sur toutes les graisses.
 - Dans une boîte qui compare des graisses : le même mot partout.
@@ -44,14 +45,8 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | drastic-sans | Appenzell Rhodes-Intérieures | Appenzell ! | Appenzell · Ebenalp · Säntis !! · ?! !? !! <3 wtf · Appenzell, je t’aime · Seealpsee |
 | biel-bienne-wildstyle | Bienne | BIENNE coupole | LAFLEURSTUDIO · BIEL/BIENNE · rotonde · fête über naïve · ÄÊË ÉÈ · PLACE GUISAN · FIZZ FAZ · BIEL provi |
 | espresso-440 | Bienne (on ne touche pas) | Un espresso, s'il vous plaît | Café 4.20.- · Pain au chocolat 2.60.- · Bagel 6.50.- · abcdefghijklm nopqrstuvwxyz · ABCDEFGHIJKLM NOPQRSTUVWXYZ · 0123456789 Bagel 6.50.- · Caffè, così buono · S'il te plaît ☀ · Un café ☕ 4.40.- · Truffes, Lebkuchen · une tresse au beurre · CAFÉ, BAGEL · Tarte, Fondant |
+| shkval | Russie | Байкал | САРМА · ЭЛЬБРУС · ЮЖНО-САХАЛИНСК · Камчатка · Енисей, ёлка · Владивосток |
+| calebard/ru (Треники) | Russie | ТОЛЬЯТТИ | Тольятти, Самарская область |
 | dotsignal | Bienne (on ne touche pas) | Prochain bus : 3' | 1 Stades 3' · 6 Centre hospitalier 5' · 9 Ecoles Tilleul 10' · 8 Fuchsenried 4' · 🚌 Départ · 17:10 · 17:12 · 18:41 · 19:08 |
-
-## Les pages en russe
-
-Une police russe porte l'étiquette `russe` dans `data-fam` sur l'accueil (filtre « Русский », écrit en russe, penser à mettre le compte à jour), a sa page **écrite en russe** (dossier `ru/` de la police, lien depuis la page française), et suit les règles russes : à la place du canton suisse, **une région de Russie par police**, choisie selon le caractère de la police. Un vrai lieu ou une vraie chose de la région, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris.
-
-| Police | Région | Graisses | Démos |
-| --- | --- | --- | --- |
-| calebard (Треники), page `calebard/ru/` | Oblast de Samara | ТОЛЬЯТТИ | Тольятти, Самарская область · testeur : LAFLEURSTUDIO графический дизайн |
 
 Les 26 cantons sont pris. Pour une nouvelle police : une ville, un lac, une montagne ou une chose suisse pas encore dans cette liste.
