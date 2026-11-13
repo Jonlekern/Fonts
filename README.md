@@ -60,9 +60,14 @@ drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearl
   fonts/woff2/          Polices pour le web
   images/               Images de la page
   source/               Scripts de fabrication
+outils/                 La loupe (loupe.py), le détecteur de défauts (defauts.py) et les gros plans (zooms.py)
+MOTS.md                 Les mots d'exemple déjà pris, police par police
+MARCHE-A-SUIVRE.md      Comment on fait une police, de l'idée à la mise en ligne
 ```
 
 ## Ajouter une police
+
+Toute la marche à suivre, de l'idée à la mise en ligne, est dans **[MARCHE-A-SUIVRE.md](MARCHE-A-SUIVRE.md)**. La loupe sur chaque lettre y est obligatoire.
 
 1. Créer un dossier en minuscules à la racine (ex. `nouvelle-police/`) avec la même organisation que `calebard/`.
 2. Copier `calebard/index.html` comme modèle : adapter les `@font-face`, l'objet `window.SPECIMEN` (nom, graisses, texte d'exemple) et les textes.
