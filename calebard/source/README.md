@@ -27,6 +27,7 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `j102.py` | Version 1.0.2 : bout du crochet du j coupé en biais |
 | `f102.py` | Version 1.0.2 : F à la largeur du logo |
 | `post102.sh` | Version 1.0.2 : enchaîne les cinq scripts ci-dessus sur les 11 graisses de la 1.0.1, puis pose le numéro de version |
+| `dropout.py` | Smart dropout (table prep) : les traits fins ne disparaissent plus en très petite taille ; les contours ne changent pas. À passer en dernier sur les 13 fichiers |
 
 ## Refaire la version 1.0.1
 
@@ -48,4 +49,12 @@ Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` r
 
 ```sh
 ./post102.sh dossier-ttf
+```
+
+## Smart dropout
+
+En dernier, sur les 13 fichiers (les 11 graisses, Goofy et Extra Goofy), puis refaire les WOFF2 et le zip :
+
+```sh
+python3 dropout.py dossier-ttf/*.ttf
 ```
