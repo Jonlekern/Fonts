@@ -64,6 +64,8 @@
 @font-face{font-family:"ISOCIRCLE";font-weight:900;font-display:swap;src:url(isocircle/fonts/woff2/ISOCIRCLE-090.woff2) format("woff2")}
 @font-face{font-family:"ISOCIRCLE C";font-weight:700;font-display:swap;src:url(isocircle/fonts/woff2/ISOCIRCLE-090Construction.woff2) format("woff2")}
 @font-face{font-family:"LAMINAR";font-weight:600;font-display:swap;src:url(laminar/fonts/woff2/LAMINAR-060.woff2) format("woff2")}
+@font-face{font-family:"SHKVAL";font-weight:400;font-display:swap;src:url(shkval/fonts/woff2/SHKVAL-Slabyy.woff2) format("woff2")}
+@font-face{font-family:"SHKVAL";font-weight:900;font-display:swap;src:url(shkval/fonts/woff2/SHKVAL-Shtorm.woff2) format("woff2")}
 @font-face{font-family:"SHEARLINE";font-weight:900;font-display:swap;src:url(shearline/fonts/woff2/SHEARLINE-Aplat.woff2) format("woff2")}
 @font-face{font-family:"SHEARLINE";font-weight:600;font-display:swap;src:url(shearline/fonts/woff2/SHEARLINE-Tirage.woff2) format("woff2")}
 @font-face{font-family:"LAMINAR V";font-display:swap;src:url(laminar/fonts/woff2/LAMINAR-090Italic.woff2) format("woff2")}
@@ -116,13 +118,14 @@
       <h2>Polices</h2>
       <p class="intro">Clique sur une police pour voir toutes ses graisses, la tester et la télécharger.</p>
       <div class="glyph-controls filtre" role="group" aria-label="Filtrer les polices">
-        <button class="chip" type="button" data-f="tout" aria-pressed="true">Tout <small>28</small></button>
-        <button class="chip" type="button" data-f="sans" aria-pressed="false">Sans <small>6</small></button>
+        <button class="chip" type="button" data-f="tout" aria-pressed="true">Tout <small>29</small></button>
+        <button class="chip" type="button" data-f="sans" aria-pressed="false">Sans <small>7</small></button>
         <button class="chip" type="button" data-f="serif" aria-pressed="false">Serif <small>5</small></button>
         <button class="chip" type="button" data-f="display" aria-pressed="false">Display <small>8</small></button>
         <button class="chip" type="button" data-f="main" aria-pressed="false">Écrite à la main <small>7</small></button>
         <button class="chip" type="button" data-f="machine" aria-pressed="false">Machine à écrire <small>3</small></button>
         <button class="chip" type="button" data-f="experimental" aria-pressed="false">Expérimental <small>9</small></button>
+        <button class="chip" type="button" data-f="cyrillique" aria-pressed="false" lang="ru">Кириллица <small>1</small></button>
       </div>
       <div class="catalogue">
         <a class="font-card" href="typefive/" data-fam="machine experimental">
@@ -192,6 +195,13 @@
           <div class="name" style="font-family:'Falsard XXXXL';font-weight:1000">FALSARD</div>
           <div class="sample" style="--k:0.99;font-family:'Falsard';font-weight:400">Géométrique techno · centre de gravité bas</div>
           <div class="meta"><span>10 graisses</span><span>+ 10 italiques</span><span>XXXS → XXXXL</span><span>SIL OFL 1.1</span><span>2026</span></div>
+          <div class="go">Voir la police →</div>
+        </a>
+
+        <a class="font-card" href="shkval/" data-fam="sans cyrillique">
+          <div class="name" style="font-family:'SHKVAL';font-weight:900;line-height:1.2;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 80px)/12)">ШКВАЛ</div>
+          <div class="sample" style="--k:0.85;font-family:'SHKVAL';font-weight:400;line-height:1.3">Grotesque extra-large · cyrillique et latin</div>
+          <div class="meta"><span>Extra-large</span><span>Russe</span><span>9 graisses</span><span>+ 9 italiques</span><span>Usage perso gratuit</span><span>2026</span></div>
           <div class="go">Voir la police →</div>
         </a>
 

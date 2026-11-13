@@ -68,11 +68,22 @@ Tous, sur chaque fichier, avant de montrer et avant de publier :
 4. Sur chaque défaut, on zoome encore avec `outils/zooms.py`, on corrige dans `source/`, on refabrique, et **on repasse la loupe sur toute la police**.
 5. On ne montre une police que quand la loupe ne trouve plus rien.
 
+## Les polices russes
+
+Pour une police faite pour écrire le russe (comme ШКВАЛ) :
+
+- **Les lettres** : le russe complet (А–Я, а–я, Ё ё), le latin de base (A–Z, a–z), les chiffres, la ponctuation et les signes. **Pas d'accents latins** : on écrit du russe, pas du suédois.
+- **La page est entièrement en russe** : menus, titres, textes, testeur, téléchargement, pied de page. Les noms des graisses restent en lettres latines (ils s'affichent comme ça dans les menus des logiciels).
+- **Le testeur** démarre sur **« LAFLEURSTUDIO графический дизайн »** (au lieu de « LAFLEURSTUDIO création graphique »).
+- **Les mots d'exemple** sont des lieux russes, pas un canton suisse (voir `MOTS.md`).
+- **La carte de l'accueil** : sous-titre technique en français, écrit seulement avec des lettres que la police a (sans accents), puisqu'il s'affiche dans la police.
+- **Le filtre de l'accueil** : la carte porte aussi la famille `cyrillique` (`data-fam="sans cyrillique"`), et on met à jour le compteur du filtre « Кириллица ».
+
 ## 7. La publication
 
 - Le dossier de la police (en minuscules) : `fonts/otf/` (ou `fonts/ttf/`), `fonts/woff2/`, `source/`, `README.md`, `LICENCE.txt` (avec « Lafleur Certificat »), le zip.
 - La page `index.html` (spécimen commun `shared/specimen.js`) :
-  - le testeur sans boutons, avec « LAFLEURSTUDIO création graphique » par défaut ;
+  - le testeur sans boutons, avec « LAFLEURSTUDIO création graphique » par défaut (« LAFLEURSTUDIO графический дизайн » pour une police russe) ;
   - les mots d'exemple pris dans **`MOTS.md`** : un canton suisse par police, Bienne pour les polices biennoises, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris ;
   - les sous-titres ne changent pas une fois validés.
 - La carte sur l'accueil `index.html` : le nom, l'exemple, la famille pour le filtre (`data-fam`), à sa place dans l'ordre.
