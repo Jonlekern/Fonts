@@ -2,7 +2,7 @@
 
 Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, plus deux styles bonus **Goofy** et **Extra Goofy**, par **LaFleurStudio**. Latin et **cyrillique russe** : en russe, elle s'appelle **Треники** (« le bas de jogging »).
 
-Page : **https://jonlekern.github.io/Fonts/calebard/**
+Page : **https://jonlekern.github.io/Fonts/calebard/** · en russe : **https://jonlekern.github.io/Fonts/calebard/ru/**
 
 ## Graisses
 
