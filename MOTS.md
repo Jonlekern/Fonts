@@ -25,7 +25,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | trap | Nidwald | Stanserhorn | BÜRGENSTOCK · Stans · Hergiswil ? · STANSERHORN |
 | dihedron-008 | Glaris | Glarus | DIHEDRON-008 |
 | falsard | Zoug | ZUGERBERG | FALSARD · FALSARD ©®™ |
-| calebard | Fribourg | GRUYÈRES | LAFLEURSTUDIO · ГРЮЙЕР · Замок Грюйер, кантон Фрибур |
+| calebard | Fribourg | GRUYÈRES | LAFLEURSTUDIO |
 | small-hours | Soleure | Solothurn | iiiii · MMMMM · 0Oo 1lIi · { Weissenstein } |
 | isocircle | Bâle-Campagne | Augusta Raurica | Augusta · Liestal Liestal · Raurica · 1833 — 2026 · 08:30 · 12.50 CHF · 100 % · Augusta 2000 |
 | isoslab | Appenzell Rhodes-Extérieures | SCHWINGET | SCHWÄGALP · Appenzell · 6 GÄNGE · 08:30 · SCHWÄGALP · 120 KG · ★ SCHLUSSGANG ★ · KÖNIG VS BÖSER · ☞ SÄGEMEHL → ◆ ● ■ |
@@ -45,5 +45,13 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | biel-bienne-wildstyle | Bienne | BIENNE coupole | LAFLEURSTUDIO · BIEL/BIENNE · rotonde · fête über naïve · ÄÊË ÉÈ · PLACE GUISAN · FIZZ FAZ · BIEL provi |
 | espresso-440 | Bienne (on ne touche pas) | Un espresso, s'il vous plaît | Café 4.20.- · Pain au chocolat 2.60.- · Bagel 6.50.- · abcdefghijklm nopqrstuvwxyz · ABCDEFGHIJKLM NOPQRSTUVWXYZ · 0123456789 Bagel 6.50.- · Caffè, così buono · S'il te plaît ☀ · Un café ☕ 4.40.- · Truffes, Lebkuchen · une tresse au beurre · CAFÉ, BAGEL · Tarte, Fondant |
 | dotsignal | Bienne (on ne touche pas) | Prochain bus : 3' | 1 Stades 3' · 6 Centre hospitalier 5' · 9 Ecoles Tilleul 10' · 8 Fuchsenried 4' · 🚌 Départ · 17:10 · 17:12 · 18:41 · 19:08 |
+
+## Les pages en russe
+
+Une police russe suit les règles russes : à la place du canton suisse, **une région de Russie par police**, choisie selon le caractère de la police. Un vrai lieu ou une vraie chose de la région, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris.
+
+| Police | Région | Graisses | Démos |
+| --- | --- | --- | --- |
+| calebard (Треники) | Oblast de Samara | ТОЛЬЯТТИ | Тольятти, Самарская область |
 
 Les 26 cantons sont pris. Pour une nouvelle police : une ville, un lac, une montagne ou une chose suisse pas encore dans cette liste.
