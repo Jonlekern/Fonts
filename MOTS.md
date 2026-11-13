@@ -52,6 +52,6 @@ Une police russe a sa page **écrite en russe** (dossier `ru/` de la police, lie
 
 | Police | Région | Graisses | Démos |
 | --- | --- | --- | --- |
-| calebard (Треники), page `calebard/ru/` | Oblast de Samara | ТОЛЬЯТТИ | Тольятти, Самарская область · testeur : ЛАФЛЁРСТУДИО графический дизайн |
+| calebard (Треники), page `calebard/ru/` | Oblast de Samara | ТОЛЬЯТТИ | Тольятти, Самарская область · testeur : LAFLEURSTUDIO графический дизайн |
 
 Les 26 cantons sont pris. Pour une nouvelle police : une ville, un lac, une montagne ou une chose suisse pas encore dans cette liste.
