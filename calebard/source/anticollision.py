@@ -84,7 +84,7 @@ def traite(chemin):
             g = blanc(T(ga[0][0]), ga[0][1], T(gb[0][0]), gb[0][1])
             if g is not None and g < SEUIL:
                 k = (ga[0][0], gb[0][0]); besoin[k] = max(besoin.get(k, 0), int(np.ceil(SEUIL - g)))
-    if not besoin: print(chemin.split('/')[-1], 'aucune collision'); return
+    if not besoin: print(chemin.split('/')[-1], 'aucune collision'); return 0
     gpos = t['GPOS'].table; gid = t.getReverseGlyphMap(rebuild=True)
     st = ot.PairPos(); st.Format = 1; st.ValueFormat1 = 4; st.ValueFormat2 = 0
     prem = {}
@@ -104,5 +104,8 @@ def traite(chemin):
     t.save(chemin)
     pire = sorted(besoin.items(), key=lambda kv: -kv[1])[:6]
     print(chemin.split('/')[-1], len(besoin), 'paires écartées, les plus fortes :', pire)
+    return len(besoin)
 
-for p in sys.argv[1:]: traite(p)
+for p in sys.argv[1:]:
+    for _ in range(4):                          # on repasse : un écart peut en déplacer un autre (Goofy)
+        if not traite(p): break
