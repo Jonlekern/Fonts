@@ -8,7 +8,8 @@
 import sys, os, math
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 from fontTools.ttLib import TTFont
-from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
+from fontTools.pens.basePen import decomposeQuadraticSegment
 
 police, sortie = sys.argv[1], sys.argv[2]
 t = TTFont(police); gs = t.getGlyphSet(); upm = t['head'].unitsPerEm
@@ -30,21 +31,22 @@ except OSError:
 asc = t['OS/2'].sTypoAscender; desc = t['OS/2'].sTypoDescender
 
 def contours(g):
-    rp = RecordingPen(); gs[g].draw(rp); out = []; cur = []
+    rp = DecomposingRecordingPen(gs); gs[g].draw(rp); out = []; cur = []   # les lettres composées (accents) sont dépliées
     for op, a in rp.value:
         if op == 'moveTo': cur = [a[0]]
         elif op == 'lineTo': cur.append(a[0])
         elif op in ('curveTo', 'qCurveTo'):
-            if op == 'qCurveTo' and len(a) != 2:
-                cur.extend(a); continue
-            p0 = cur[-1]
-            if op == 'qCurveTo':
-                q1, p3 = a; p1 = tuple(p0[i] + 2 / 3 * (q1[i] - p0[i]) for i in (0, 1)); p2 = tuple(p3[i] + 2 / 3 * (q1[i] - p3[i]) for i in (0, 1))
-            else:
-                p1, p2, p3 = a
-            for k in range(1, 41):
-                s = k / 40; m = 1 - s
-                cur.append(tuple(m**3*p0[i] + 3*m*m*s*p1[i] + 3*m*s*s*p2[i] + s**3*p3[i] for i in (0, 1)))
+            # TrueType : une courbe peut porter plusieurs points de contrôle, on la découpe en morceaux simples
+            morceaux = decomposeQuadraticSegment(a) if op == 'qCurveTo' else [a]
+            for mc in morceaux:
+                p0 = cur[-1]
+                if op == 'qCurveTo':
+                    q1, p3 = mc; p1 = tuple(p0[i] + 2 / 3 * (q1[i] - p0[i]) for i in (0, 1)); p2 = tuple(p3[i] + 2 / 3 * (q1[i] - p3[i]) for i in (0, 1))
+                else:
+                    p1, p2, p3 = mc
+                for k in range(1, 41):
+                    s = k / 40; m = 1 - s
+                    cur.append(tuple(m**3*p0[i] + 3*m*m*s*p1[i] + 3*m*s*s*p2[i] + s**3*p3[i] for i in (0, 1)))
         elif op in ('closePath', 'endPath'):
             if len(cur) > 2: out.append(cur)
             cur = []

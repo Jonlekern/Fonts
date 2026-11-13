@@ -1,15 +1,15 @@
 # Cyrillique de Calebard : les lettres russes dessinées à partir des pièces latines de chaque graisse.
 #
-#   python3 cyrillique.py Calebard-Black.ttf sortie.ttf [A|B]
+#   python3 cyrillique.py Calebard-Black.ttf sortie.ttf
 #
 # Chaque graisse est mesurée (fût, barre, diagonale, hauteurs, approches) puis les lettres sont
-# construites avec ces mesures : rien n'est étiré, les épaisseurs restent celles de la graisse.
-# A ou B : la forme de Л et Д (A = en pointe comme le A, B = droite comme le П).
+# construites avec ces mesures : les épaisseurs restent celles de la graisse.
+# Л et Д sont droits, comme le П (version B, validée).
 import sys
 import pathops
 from fontTools.ttLib import TTFont
 from fontTools.pens.ttGlyphPen import TTGlyphPen
-from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.recordingPen import RecordingPen, DecomposingRecordingPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
 from fontTools.pens.boundsPen import BoundsPen
 
@@ -63,6 +63,50 @@ def coupes_y(p, x):
     return sorted(out)
 
 
+# ---------- outils sur les contours bruts (on garde les points de courbe d'origine) ----------
+def chemin(rec):
+    p = pathops.Path(); pen = p.getPen()
+    for op, a in rec: getattr(pen, op)(*a)
+    return pathops.simplify(p, fix_winding=True)
+
+def bouge(rec, f):
+    return [(op, tuple(f(q) for q in a)) for op, a in rec]
+
+def carte(k, v):
+    """Carte par morceaux : chaque (ancien, nouveau) est un repère, on glisse droit entre deux repères."""
+    if v <= k[0][0]: return v + k[0][1] - k[0][0]
+    if v >= k[-1][0]: return v + k[-1][1] - k[-1][0]
+    for (a, A), (b, B) in zip(k, k[1:]):
+        if a <= v <= b: return A if b == a else A + (v - a) * (B - A) / (b - a)
+
+def recale(rec, kx=None, ky=None):
+    """Déplace les traits sans changer leur épaisseur : seuls les blancs entre deux repères s'étirent."""
+    return bouge(rec, lambda q: (carte(kx, q[0]) if kx else q[0], carte(ky, q[1]) if ky else q[1]))
+
+def droites(rec):
+    """Les segments droits horizontaux et verticaux d'un contour."""
+    H = []; V = []; cur = dep = None
+    def seg(p, q):
+        if p[1] == q[1] and p[0] != q[0]: H.append((min(p[0], q[0]), max(p[0], q[0]), p[1]))
+        if p[0] == q[0] and p[1] != q[1]: V.append((min(p[1], q[1]), max(p[1], q[1]), p[0]))
+    for op, a in rec:
+        if op == 'moveTo': cur = dep = a[0]
+        elif op == 'lineTo': seg(cur, a[0]); cur = a[0]
+        elif op in ('qCurveTo', 'curveTo'): cur = a[-1]
+        elif op == 'closePath': seg(cur, dep)
+    return H, V
+
+def zone_x(rec, xfut, mini):
+    """La zone où toutes les barres sont droites, à droite du fût : on peut y raccourcir la lettre sans toucher aux courbes."""
+    H, _ = droites(rec); H = [h for h in H if h[0] <= xfut + 1 and h[1] >= xfut + mini]
+    return xfut, min(h[1] for h in H)
+
+def zone_y(rec, mini):
+    _, V = droites(rec); bas = min(v[0] for v in V)
+    V = [v for v in V if v[1] - v[0] >= mini and v[0] <= bas + 1]          # les fûts qui partent du pied
+    return bas, min(v[1] for v in V)
+
+
 class Graisse:
     def __init__(self, chemin):
         self.t = TTFont(chemin); self.gs = self.t.getGlyphSet(); self.hm = self.t['hmtx']
@@ -86,6 +130,13 @@ class Graisse:
         self.dn_ = self.DN * self.s / self.S
         self.dh = self.hm['n'][1]; self.dv = self.hm['v'][1]; self.do = self.hm['o'][1]
         self.ASC = bornes(g('l'))[3]; self.DESC = bornes(g('p'))[1]
+        # la structure à trois barres des minuscules : celle du e
+        e = g('e'); ex = (bornes(e)[0] + bornes(e)[2]) / 2; eb = coupes_y(e, ex)
+        self.tb = self.larg(eb[0]); self.m0, self.m1 = eb[1]; self.tt = self.larg(eb[2])
+        hb = coupes_y(H, (bornes(H)[0] + bornes(H)[2]) / 2)[0]
+        self.tH = self.larg(hb); self.cH = (hb[0] + hb[1]) / 2 / self.CH       # barre du H
+        self.kT = self.hm['T'][1] / self.dH                                      # approche d'une barre qui dépasse
+        self.rn = self.hm['n'][0] - bornes(n)[2]
         self.neufs = {}
 
     @staticmethod
@@ -96,6 +147,10 @@ class Graisse:
         return pathops.simplify(p, fix_winding=True)
 
     def chasse(self, nom): return self.hm[nom][0]
+
+    def brut(self, nom):
+        rp = DecomposingRecordingPen(self.gs); self.gs[nom].draw(rp)
+        return rp.value
 
     # ---------- pièces ----------
     def anneau(self, nom, x0, y0, x1, y1, cote=None, haut=None):
@@ -124,7 +179,7 @@ class Graisse:
         self.neufs[nom] = (code, p, chasse)
 
     # ---------- les lettres ----------
-    def dessine(self, variante='A'):
+    def dessine(self):
         for maj in (True, False):
             if maj:
                 h, st, br, dg, dn = self.CH, self.S, self.B, self.D, self.DN
@@ -151,21 +206,12 @@ class Graisse:
 
             # Л et Д
             V = self.lat(rV); vx0, _, vx1, _ = bornes(V); wV = vx1 - vx0
-            if variante == 'A':
-                lam = transf(V, sy=-1, dy=h, dx=-vx0)                    # le V retourné
-                self.pose(u('uni041B', 'uni043B'), u(0x41B, 0x43B), transf(lam, dx=aV), wV + 2 * aV)
-                deb = round(st * 0.30)                                    # la barre dépasse des jambes
-                corps = transf(lam, dx=deb)
-                pied = round(st * 0.92)
-                wD = wV + 2 * deb
-                p = union(corps, rect(0, 0, wD, br), rect(0, -desc, pied, br), rect(wD - pied, -desc, wD, br))
-                self.pose(u('uni0414', 'uni0434'), u(0x414, 0x434), transf(p, dx=aV * 0.8), wD + 2 * aV * 0.8)
-            else:
+            if True:
                 w = round(wH * 0.98); xa = round(w * 0.20)
                 jambe = poly((0, 0), (st, 0), (xa + st, h), (xa, h))
                 p = union(jambe, rect(xa, h - br, w, h), rect(w - st, 0, w, h))
                 self.pose(u('uni041B', 'uni043B'), u(0x41B, 0x43B), transf(p, dx=aV * 1.2), w + aV * 1.2 + aH)
-                deb = round(st * 0.30); pied = round(st * 0.92)
+                deb = round(wH * 0.05 + st * 0.20); pied = round(st * 0.92)
                 wD = w + 2 * deb; xa = round(w * 0.16)
                 jambe = poly((deb, 0), (deb + st, 0), (deb + xa + st, h), (deb + xa, h))
                 p = union(jambe, rect(deb + xa, h - br, deb + w, h), rect(deb + w - st, 0, deb + w, h),
@@ -195,7 +241,7 @@ class Graisse:
 
             # Ж : le X et son fût
             X = self.lat(rX); xx0, _, xx1, _ = bornes(X); wX = xx1 - xx0
-            fut = st * (0.86 if maj else 0.86)
+            fut = st * (0.86 - 0.30 * (st / 700) ** 2)              # le fût s'affine dans les graisses noires
             p = union(transf(X, dx=-xx0), rect(wX / 2 - fut / 2, 0, wX / 2 + fut / 2, h))
             self.pose(u('uni0416', 'uni0436'), u(0x416, 0x436), transf(p, dx=self.hm[rX][1]), self.chasse(rX))
 
@@ -203,12 +249,6 @@ class Graisse:
             w = round(wH * 1.2)
             p = union(rect(0, 0, st, h), rect(w / 2 - st / 2, 0, w / 2 + st / 2, h), rect(w - st, 0, w, h), rect(0, 0, w, br))
             self.pose(u('uni0428', 'uni0448'), u(0x428, 0x448), transf(p, dx=aH), w + 2 * aH)
-
-            # т minuscule : un petit T
-            if not maj:
-                w = round(wH * 0.9)
-                p = union(rect(0, h - br, w, h), rect(w / 2 - st / 2, 0, w / 2 + st / 2, h))
-                self.pose('uni0442', 0x442, transf(p, dx=aV * 1.3), w + 2 * aV * 1.3)
 
             if maj:
                 # Я : le R en miroir
@@ -223,6 +263,135 @@ class Graisse:
         for code, lat in ((0x410, 'A'), (0x420, 'P'), (0x421, 'C'), (0x422, 'T'), (0x41E, 'O'), (0x401, 'Edieresis'),
                           (0x430, 'a'), (0x440, 'p'), (0x441, 'c'), (0x43E, 'o'), (0x451, 'edieresis'), (0x443, 'y')):
             self.neufs['uni%04X' % code] = (code, self.lat(lat), self.chasse(lat))
+
+    def minuscules(self):
+        """Les 33 minuscules russes (л д и ж ф ш sont déjà dans dessine)."""
+        h, st, br = self.XH, self.s, self.b
+        n = self.lat('n'); wn = bornes(n)[2] - bornes(n)[0]
+        g, d = self.dh, self.rn                              # approches d'un fût, à gauche et à droite
+        m0, m1, tb, tt = self.m0, self.m1, self.tb, self.tt
+        def pose(code, p, chasse): self.pose('uni%04X' % code, code, p, chasse)
+        def droit(code, p, w, ag=1.0, ad=1.0): pose(code, transf(p, dx=g * ag), w + g * ag + d * ad)
+
+        # г п н м т ц щ : des fûts et des barres
+        w = round(wn * 0.72)
+        droit(0x433, union(rect(0, 0, st, h), rect(0, h - br, w, h)), w, ad=self.kT)
+        w = wn
+        droit(0x43F, union(rect(0, 0, st, h), rect(w - st, 0, w, h), rect(0, h - br, w, h)), w)
+        w = round(wn * 1.02); c = self.cH * h
+        droit(0x43D, union(rect(0, 0, st, h), rect(w - st, 0, w, h), rect(0, c - self.tH / 2, w, c + self.tH / 2)), w)
+        for code, lat, miroir, coef in ((0x43C, 'M', False, 0.90), (0x438, 'N', True, 0.92)):
+            M = self.brut(lat); pM = chemin(M); x0, y0, x1, y1 = bornes(pM); wm = (x1 - x0) * coef
+            kx = [(x0, x0), (x0 + self.S, x0 + st), (x1 - self.S, x0 + wm - st), (x1, x0 + wm)]
+            M = recale(M, kx, [(0, 0), (self.CH, h)])
+            if miroir: M = bouge(M, lambda q: (2 * x0 + wm - q[0], q[1]))
+            pose(code, transf(chemin(M), dx=g - x0), wm + g + d)
+        w = round(wn * 0.9)
+        droit(0x442, union(rect(0, h - br, w, h), rect(w / 2 - st / 2, 0, w / 2 + st / 2, h)), w, ag=self.kT, ad=self.kT)
+        desc = round(h * 0.19); dep = round(wn * 0.07 + st * 0.25); pied = round(st * 0.80)
+        w = wn
+        droit(0x446, union(rect(0, 0, st, h), rect(w - st, 0, w, h), rect(0, 0, w + dep, br),
+                           rect(w + dep - pied, -desc, w + dep, br)), w + dep, ad=0.6)
+        w = round(wn * 1.2)
+        droit(0x449, union(rect(0, 0, st, h), rect(w / 2 - st / 2, 0, w / 2 + st / 2, h), rect(w - st, 0, w, h),
+                           rect(0, 0, w + dep, br), rect(w + dep - pied, -desc, w + dep, br)), w + dep, ad=0.6)
+
+        # к : le k coupé à la hauteur des minuscules
+        pose(0x43A, inter(self.lat('k'), rect(-9000, -9000, 9000, h)), self.chasse('k'))
+
+        # в : le B ramené à la hauteur des minuscules, avec les trois barres du e
+        B = self.brut('B'); pB = chemin(B); x0, _, x1, H = bornes(pB)
+        za, zb = zone_x(B, x0 + self.S, (x1 - x0) * 0.15); xc = (za + zb) / 2
+        bb = coupes_y(pB, xc)
+        ky = [(0, 0), (bb[0][1], tb), (bb[1][0], m0), (bb[1][1], m1), (bb[2][0], h - tt), (H, h)]
+        dx = min((x1 - x0) * 0.10, zb - za - 40)
+        kx = [(za + 10, za + 10), (za + 10 + dx, za + 10)]
+        ve = chemin(recale(B, kx, ky))
+        pose(0x432, ve, self.chasse('B') - dx)
+
+        # ь ъ ы : le P retourné, sa panse à la hauteur de la panse basse du в
+        P = bouge(self.brut('P'), lambda q: (q[0], self.CH - q[1])); pP = chemin(P); x0, _, x1, H = bornes(pP)
+        za, zb = zone_x(P, x0 + self.S, (x1 - x0) * 0.15); xc = (za + zb) / 2
+        bb = coupes_y(pP, xc)
+        ky = [(0, 0), (bb[0][1], tb), (bb[1][0], m0), (bb[1][1], m1), (H, h)]
+        def mou(coef):
+            dx = min((x1 - x0) * coef, zb - za - 40)
+            return chemin(recale(P, [(za + 10, za + 10), (za + 10 + dx, za + 10)], ky)), dx
+        p, dx = mou(0.14); rP = self.chasse('P') - x1
+        pose(0x44C, p, self.chasse('P') - dx)
+        drap = round(wn * 0.13 + st * 0.3)                                   # le drapeau du ъ
+        pose(0x44A, transf(union(p, rect(x0 - drap, h - br, x0 + st, h)), dx=drap * 0.8), self.chasse('P') - dx + drap * 0.8)
+        p, dx = mou(0.30); wb = x1 - dx; esp = round(wn * 0.07 + st * 0.35)
+        pose(0x44B, union(p, rect(wb + esp, 0, wb + esp + st, h)), wb + esp + st + d)
+
+        # я : le R en miroir
+        R0 = self.brut('R'); pR = chemin(R0); x0, _, x1, H = bornes(pR)
+        za, zb = zone_x(R0, x0 + self.S, (x1 - x0) * 0.15); xc = (za + zb) / 2
+        bb = coupes_y(pR, xc)[-2:]
+        ky = [(0, 0), (bb[0][0], m0), (bb[0][1], m1), (bb[1][0], h - tt), (H, h)]
+        dx = min((x1 - x0) * 0.10, zb - za - 40)
+        R = recale(R0, [(za + 10, za + 10), (za + 10 + dx, za + 10)], ky)
+        p = chemin(bouge(R, lambda q: (x0 + x1 - q[0], q[1])))
+        rR = self.chasse('R') - x1
+        pose(0x44F, transf(p, dx=rR - x0 * 0 - bornes(p)[0]), bornes(p)[2] - bornes(p)[0] + rR + g)
+
+        # з : le 3 ramené à la hauteur des minuscules
+        T = self.brut('three'); pT = chemin(T); x0, y0, x1, y1 = bornes(pT)
+        bb = coupes_y(pT, x0 + (x1 - x0) * 0.62); bas, haut = bb[0], bb[-1]; mil = (bb[1][0], bb[-2][1])
+        ky = [(bas[0], -10), (bas[1], -10 + tb), (mil[0], m0), (mil[1], m1), (haut[0], h + 10 - tt), (haut[1], h + 10)]
+        pose(0x437, chemin(recale(T, None, ky)), self.chasse('three'))
+
+        # б : le 6, sa panse à la hauteur du o, sa tête à la hauteur des montantes
+        S6 = self.brut('six'); p6 = chemin(S6); x0, y0, x1, y1 = bornes(p6)
+        bb = coupes_y(p6, (x0 + x1) / 2)
+        ept = self.larg(bb[2]); jour = (bb[2][0] - bb[1][1]) * 0.6           # le blanc entre la panse et la tête
+        tete = min(self.ASC + 20, max(self.ASC - 60, h + 10 + jour + ept))
+        ept = min(ept, tete - (h + 10 + jour))                                # la tête s'affine si la place manque
+        ky = [(bb[0][0], -10), (bb[0][1], -10 + self.larg(bb[0])), (bb[1][0], h + 10 - self.larg(bb[1])), (bb[1][1], h + 10),
+              (bb[2][0], tete - ept), (bb[2][1], tete)]
+        pose(0x431, chemin(recale(S6, None, ky)), self.chasse('six'))
+
+        # ч : le h retourné, l'arche remontée
+        Hh = self.brut('h'); ph = chemin(Hh); x0, _, x1, _ = bornes(ph)
+        ya, yb = zone_y(Hh, h * 0.2)
+        dy = min(h * 0.40, yb - ya - 30)
+        Hh = recale(Hh, None, [(ya + 10, ya + 10), (ya + 10 + dy, ya + 10)])
+        p = chemin(bouge(Hh, lambda q: (x0 + x1 - q[0], h - q[1])))
+        fa, fb = coupes_x(p, bornes(p)[1] + 5)[-1]                 # le fût, tel qu'il est dans le h
+        p = inter(union(p, rect(fa, 0, fb, bornes(p)[1] + 40)), rect(-9000, 0, 9000, 9000))
+        ch = self.chasse('h')
+        pose(0x447, transf(p, dx=(ch - x1) - x0), ch)
+
+        # э : le c en miroir et sa barre
+        C = self.lat('c'); x0, _, x1, _ = bornes(C)
+        blanc = coupes_y(C, (x0 + x1) / 2); blanc = blanc[-1][0] - blanc[0][1]
+        ep = min(self.m1 - self.m0, blanc * 0.36); cy = (blanc_c := (coupes_y(C, (x0 + x1) / 2)[0][1] + coupes_y(C, (x0 + x1) / 2)[-1][0]) / 2)
+        cote = self.larg(coupes_x(C, cy)[0])
+        p = union(transf(C, sx=-1, dx=x0 + x1), rect(x0 + (x1 - x0) * 0.42, cy - ep / 2, x1 - cote / 2, cy + ep / 2))
+        rc = self.chasse('c') - x1
+        pose(0x44D, transf(p, dx=rc - x0), self.chasse('c'))
+
+        # ю : un fût, une barre, un o plus étroit
+        O = self.lat('o'); x0, y0, x1, y1 = bornes(O); wo = (x1 - x0) * 0.76
+        esp = round(wn * 0.07 + st * 0.3); xo = st + esp; c = self.cH * h
+        cote = self.larg(coupes_x(O, (y0 + y1) / 2)[0])
+        p = union(rect(0, 0, st, h), rect(0, c - self.tH / 2, xo + cote / 2, c + self.tH / 2),
+                  self.anneau('o', xo, y0, xo + wo, y1))
+        pose(0x44E, transf(p, dx=g), xo + wo + g + (self.chasse('o') - x1))
+
+        # й : le и et sa brève
+        comp = self.t['glyf']['abreve']
+        if comp.isComposite():
+            nomb, bx, by = [(k.glyphName, k.x, k.y) for k in comp.components][-1]
+            br_ = transf(self.lat(nomb), dx=bx, dy=by)
+            a = self.lat('a'); ca = (bornes(a)[0] + bornes(a)[2]) / 2; cb = (bornes(br_)[0] + bornes(br_)[2]) / 2
+            _, pi, chi = self.neufs['uni0438']; ci = (bornes(pi)[0] + bornes(pi)[2]) / 2
+            pose(0x439, union(pi, transf(br_, dx=ci - cb + (cb - ca))), chi)
+
+        # celles qui existent déjà en latin
+        for code, lat in ((0x430, 'a'), (0x435, 'e'), (0x451, 'edieresis'), (0x43E, 'o'), (0x440, 'p'), (0x441, 'c'),
+                          (0x443, 'y'), (0x445, 'x')):
+            pose(code, self.lat(lat), self.chasse(lat))
 
     def ecrit(self, sortie):
         t = self.t; glyf = t['glyf']; ordre = t.getGlyphOrder()
@@ -248,6 +417,6 @@ class Graisse:
 
 if __name__ == '__main__':
     g = Graisse(sys.argv[1])
-    g.dessine(sys.argv[3] if len(sys.argv) > 3 else 'A')
+    g.dessine(); g.minuscules()
     g.ecrit(sys.argv[2])
     print(sys.argv[2], len(g.neufs), 'signes')
