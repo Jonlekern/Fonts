@@ -58,6 +58,11 @@ def lisse(p):
             cur = [('moveTo', (R(a[0]),))]
         elif op == 'lineTo':
             q = R(a[0]); prev = cur[-1][1][-1]
+            dx, dy = abs(q[0] - prev[0]), abs(q[1] - prev[1])
+            if 0 < dy <= 2 and dx >= 10:                     # bord presque plat : on le met à plat
+                q = (q[0], prev[1])
+            elif 0 < dx <= 2 and dy >= 10:                   # bord presque droit : on le met droit
+                q = (prev[0], q[1])
             if abs(q[0] - prev[0]) + abs(q[1] - prev[1]) >= 2:
                 cur.append(('lineTo', (q,)))
         elif op == 'curveTo':
@@ -148,6 +153,22 @@ def accent_tonique(f, italique, k, dx):
     f['GDEF'] = gdef
 
 
+def par_alphabet(f):
+    """Le crénage et l'accent tonique déclarés aussi pour le cyrillique et le latin, pas seulement par défaut."""
+    import copy
+    from fontTools.ttLib.tables import otTables as ot
+    sl = f['GPOS'].table.ScriptList
+    dflt = next(sr for sr in sl.ScriptRecord if sr.ScriptTag == 'DFLT')
+    for tag in ('cyrl', 'latn'):
+        if any(sr.ScriptTag == tag for sr in sl.ScriptRecord):
+            continue
+        sr = ot.ScriptRecord(); sr.ScriptTag = tag; sr.Script = ot.Script()
+        sr.Script.DefaultLangSys = copy.deepcopy(dflt.Script.DefaultLangSys)
+        sr.Script.LangSysRecord = []; sr.Script.LangSysCount = 0
+        sl.ScriptRecord.append(sr)
+    sl.ScriptRecord.sort(key=lambda r: r.ScriptTag); sl.ScriptCount = len(sl.ScriptRecord)
+
+
 def construit(g, italique, sortie):
     nom = NOMS[GRAISSES.index(g)]; it = 'Italic' if italique else ''
     f = TTFont(chemin(g, italique))
@@ -233,6 +254,7 @@ def construit(g, italique, sortie):
     f['OS/2'].recalcUnicodeRanges(f); f['OS/2'].recalcCodePageRanges(f); f['OS/2'].recalcAvgCharWidth(f)
 
     accent_tonique(f, italique, k, dx)
+    par_alphabet(f)
 
     os.makedirs(os.path.join(sortie, 'otf'), exist_ok=True); os.makedirs(os.path.join(sortie, 'woff2'), exist_ok=True)
     out = os.path.join(sortie, 'otf', f'{ps}.otf'); f.save(out)
