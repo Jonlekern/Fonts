@@ -60,3 +60,8 @@ Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` r
 ```sh
 ./post102.sh dossier-ttf
 ```
+
+## fontbakery : laissé tel quel (décision de Johnny, novembre 2026)
+
+La 1.0.3 n'ajoute que le russe. Les erreurs et avertissements de `fontbakery check-universal` (52 erreurs, 117 avertissements) viennent tous de la partie latine d'origine : on ne les corrige pas, ne pas les reprendre.
+Pour mémoire, la loupe y a vu de vrais défauts latins, eux aussi laissés : le point des accents en croissant dans le Hairline et le Thin (ė ẹ ợ ự…), le fût doublé du þ dans le Hairline, le ľ avec un caron en V au lieu de la virgule.
