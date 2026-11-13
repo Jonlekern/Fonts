@@ -123,6 +123,7 @@
         <button class="chip" type="button" data-f="main" aria-pressed="false">Écrite à la main <small>7</small></button>
         <button class="chip" type="button" data-f="machine" aria-pressed="false">Machine à écrire <small>3</small></button>
         <button class="chip" type="button" data-f="experimental" aria-pressed="false">Expérimental <small>9</small></button>
+        <button class="chip" type="button" data-f="russe" aria-pressed="false">Russe <small>1</small></button>
       </div>
       <div class="catalogue">
         <a class="font-card" href="typefive/" data-fam="machine experimental">
@@ -174,7 +175,7 @@
           <div class="go">Voir la police →</div>
         </a>
 
-        <a class="font-card" href="calebard/" data-fam="sans">
+        <a class="font-card" href="calebard/" data-fam="sans russe">
           <div class="name" style="font-family:'Calebard Extreme','Calebard';font-weight:1000">CALEBARD</div>
           <div class="sample" style="--k:0.85;font-family:'Calebard';font-weight:400">Grotesque super étendue · contre-formes larges</div>
           <div class="meta"><span>11 graisses</span><span>Hairline → Extreme Black</span><span>+ Goofy</span><span>+ Russe</span><span>SIL OFL 1.1</span><span>2026</span></div>
@@ -335,7 +336,7 @@
 </footer>
 
 <script>
-/* filtre : une famille à la fois ; « Expérimental » montre les polices expérimentales, quelle que soit leur famille */
+/* filtre : une famille à la fois ; « Expérimental » et « Russe » montrent les polices expérimentales ou qui écrivent le russe, quelle que soit leur famille */
 (() => {
   const bar = document.querySelector('.filtre'); if (!bar) return;
   const cards = [...document.querySelectorAll('.catalogue .font-card')];
