@@ -2,9 +2,9 @@
 Les lettres russes du Black (déjà passé par cyrillique.py) sont penchées ou tournées comme les autres,
 avec leurs variantes, ajoutées aux variantes contextuelles (calt) et au crénage.
 usage : cyrillique_goofy.py Calebard-Goofy.ttf Calebard-Black-avec-cyrillique.ttf"""
-import sys, os, math
+import sys, os, math, copy
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cyrillique import JUMELLES, crenage, cyrl, Graisse
+from cyrillique import JUMELLES, crenage, cyrl, Graisse, accroches
 from fontTools.ttLib import TTFont
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
@@ -60,7 +60,15 @@ f['maxp'].numGlyphs = len(f.getGlyphOrder())
 
 # variantes contextuelles : on ajoute les lettres russes partout où se trouve le A et ses variantes
 gsub = f['GSUB'].table
-for lk in gsub.LookupList.Lookup:
+calt = set()                                # seulement les lookups des variantes contextuelles (et ceux qu'ils appellent)
+for fr in gsub.FeatureList.FeatureRecord:
+    if fr.FeatureTag == 'calt':
+        for i in fr.Feature.LookupListIndex:
+            calt.add(i)
+            for st in gsub.LookupList.Lookup[i].SubTable:
+                for r in getattr(st, 'SubstLookupRecord', []): calt.add(r.LookupListIndex)
+for i_lk, lk in enumerate(gsub.LookupList.Lookup):
+    if i_lk not in calt: continue
     for st in lk.SubTable:
         if lk.LookupType == 6 and st.Format == 3:
             for cv in st.InputCoverage + st.BacktrackCoverage:
@@ -78,6 +86,27 @@ for lk in gsub.LookupList.Lookup:
 cyrl(f, neufs)
 code = {n: c for c, n in cyr.items()}
 crenage(f, {n + suf: tuple(JUMELLES[code[n]]) for n in noms for suf in pas})
+# accroches des accents : celles du Black, penchées ou tournées comme chaque variante
+gid = f.getReverseGlyphMap(rebuild=True)
+def bases(t):
+    for lk in t['GPOS'].table.LookupList.Lookup:
+        for st in lk.SubTable:
+            st = st.ExtSubTable if lk.LookupType == 9 else st
+            if hasattr(st, 'BaseCoverage'): yield st
+for sb, sf in zip(bases(B), bases(f)):
+    rb = dict(zip(sb.BaseCoverage.glyphs, sb.BaseArray.BaseRecord)); rf = dict(zip(sf.BaseCoverage.glyphs, sf.BaseArray.BaseRecord))
+    for n in noms:
+        if n not in rb: continue
+        bp = BoundsPen(bgs); bgs[n].draw(bp)
+        for suf, v in pas.items():
+            m = mat(*bp.bounds, v); r = copy.deepcopy(rb[n])
+            for a in r.BaseAnchor:
+                if a is not None:
+                    x, y = a.XCoordinate, a.YCoordinate
+                    a.XCoordinate, a.YCoordinate = round(m[0] * x + m[2] * y + m[4]), round(m[1] * x + m[3] * y + m[5])
+            rf[n + suf] = r
+    ordre = sorted(rf, key=gid.get)
+    sf.BaseCoverage.glyphs = ordre; sf.BaseArray.BaseRecord = [rf[g] for g in ordre]; sf.BaseArray.BaseCount = len(ordre)
 os2 = f['OS/2']
 ymax = max(getattr(glyf[n], 'yMax', 0) for n in f.getGlyphOrder()); ymin = min(getattr(glyf[n], 'yMin', 0) for n in f.getGlyphOrder())
 if 'A.eg1' in order: os2.usWinAscent = max(os2.usWinAscent, ymax); os2.usWinDescent = max(os2.usWinDescent, -ymin)

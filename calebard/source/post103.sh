@@ -7,4 +7,5 @@ D=$1
 W="Hairline Thin Light Regular Medium Bold ExtraBold SuperBold Black ExtraBlack ExtremeBlack"
 for w in $W; do $PY cyrillique.py $D/Calebard-$w.ttf $D/Calebard-$w.ttf; done   # les 11 graisses
 for s in Goofy ExtraGoofy; do $PY cyrillique_goofy.py $D/Calebard-$s.ttf $D/Calebard-Black.ttf; done
+$PY anticollision.py $D/Calebard-*.ttf                                            # aucune paire russe ne se touche
 $PY set_version.py 1.003 $D/Calebard-*.ttf

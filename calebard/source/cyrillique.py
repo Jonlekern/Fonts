@@ -117,7 +117,7 @@ JUMELLES = {
     0x425: 'XX', 0x426: 'HH', 0x427: 'UH', 0x428: 'HH', 0x429: 'HH', 0x42A: 'TB', 0x42B: 'HH', 0x42C: 'HB',
     0x42D: 'OO', 0x42E: 'HO', 0x42F: 'HH',
     0x430: 'aa', 0x431: 'oo', 0x432: 'nb', 0x433: 'nr', 0x434: 'nn', 0x435: 'ee', 0x451: 'ee', 0x436: 'xx',
-    0x437: 'zo', 0x438: 'nn', 0x439: 'nn', 0x43A: 'kk', 0x43B: 'vn', 0x43C: 'nn', 0x43D: 'nn', 0x43E: 'oo',
+    0x437: 'zo', 0x438: 'nn', 0x439: 'nn', 0x43A: 'kk', 0x43B: 'nn', 0x43C: 'nn', 0x43D: 'nn', 0x43E: 'oo',
     0x43F: 'nn', 0x440: 'pp', 0x441: 'cc', 0x442: 'zz', 0x443: 'yy', 0x444: 'oo', 0x445: 'xx', 0x446: 'nn',
     0x447: 'un', 0x448: 'nn', 0x449: 'nn', 0x44A: 'zb', 0x44B: 'nn', 0x44C: 'nb', 0x44D: 'oo', 0x44E: 'no',
     0x44F: 'nn',
@@ -153,6 +153,32 @@ def crenage(t, jum):
                     if R in cov: cov.add(g)
                 st.Coverage.glyphs = sorted(cov, key=gid.get)
 
+# accroches des accents (accent tonique ◌́ et les autres) : prises sur une lettre latine de même hauteur
+ACCROCHES = {0x410: 'A', 0x412: 'B', 0x415: 'E', 0x401: 'E', 0x41A: 'K', 0x41C: 'M', 0x41E: 'O', 0x420: 'P', 0x421: 'C',
+             0x422: 'T', 0x423: 'Y', 0x424: 'O', 0x425: 'X', 0x42D: 'O', 0x42E: 'O',
+             0x430: 'a', 0x431: 'b', 0x435: 'e', 0x451: 'e', 0x43A: 'k', 0x43E: 'o', 0x440: 'p', 0x441: 'c', 0x443: 'y',
+             0x444: 'o', 0x445: 'x', 0x44D: 'o', 0x44E: 'o'}
+
+def accroches(t, noms):
+    """noms : {glyphe : code}. Chaque lettre russe reçoit les accroches de sa jumelle, recentrées sur sa propre encre."""
+    gs = t.getGlyphSet(); gid = t.getReverseGlyphMap(rebuild=True)
+    def cx(n):
+        bp = BoundsPen(gs); gs[n].draw(bp); b = bp.bounds; return (b[0] + b[2]) / 2
+    for lk in t['GPOS'].table.LookupList.Lookup:
+        for st in lk.SubTable:
+            st = st.ExtSubTable if lk.LookupType == 9 else st
+            if not hasattr(st, 'BaseCoverage'): continue
+            rec = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord))
+            for n, code in noms.items():
+                j = ACCROCHES.get(code, 'H' if code < 0x430 or code == 0x401 else 'n')
+                if j not in rec: continue
+                r = copy.deepcopy(rec[j]); dx = cx(n) - cx(j)
+                for a in r.BaseAnchor:
+                    if a is not None: a.XCoordinate = round(a.XCoordinate + dx)
+                rec[n] = r
+            ordre = sorted(rec, key=gid.get)
+            st.BaseCoverage.glyphs = ordre; st.BaseArray.BaseRecord = [rec[g] for g in ordre]; st.BaseArray.BaseCount = len(ordre)
+
 def cyrl(t, neufs):
     """Le script cyrillique dans GSUB et GPOS (les mêmes fonctions que DFLT), GDEF, OS/2."""
     for tag in ('GSUB', 'GPOS'):
@@ -165,6 +191,11 @@ def cyrl(t, neufs):
         sl.ScriptRecord = sorted(sl.ScriptRecord + [sr], key=lambda r: r.ScriptTag); sl.ScriptCount = len(sl.ScriptRecord)
     if 'GDEF' in t and t['GDEF'].table.GlyphClassDef:
         for g in neufs: t['GDEF'].table.GlyphClassDef.classDefs[g] = 1
+    cm = t.getBestCmap()                                                   # signes de la typo russe
+    for code, de in ((0x2010, 0x2D), (0x2011, 0x2D), (0x202F, 0x2009)):
+        if code not in cm and de in cm:
+            for tb in t['cmap'].tables:
+                if tb.isUnicode(): tb.cmap[code] = cm[de]
     os2 = t['OS/2']
     os2.ulUnicodeRange1 |= 1 << 9                                           # cyrillique
     os2.ulCodePageRange1 |= 1 << 2                                          # page de code 1251
@@ -560,6 +591,7 @@ class Graisse:
         for nom, (code, _, _) in self.neufs.items():
             L, R = JUMELLES[code]; jum[nom] = (L, R)
         crenage(t, jum)
+        accroches(t, {nom: code for nom, (code, _, _) in self.neufs.items()})
         t['OS/2'].recalcAvgCharWidth(t)
         t.save(sortie)
 

@@ -29,6 +29,7 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `post102.sh` | Version 1.0.2 : enchaîne les cinq scripts ci-dessus sur les 11 graisses de la 1.0.1, puis pose le numéro de version |
 | `cyrillique.py` | Version 1.0.3 : les 66 lettres russes d'une graisse, mesurées sur ses lettres latines (fût, barres, diagonales, approches), le script `cyrl` et le crénage repris des lettres latines jumelles |
 | `cyrillique_goofy.py` | Version 1.0.3 : les lettres russes du Black penchées (Goofy) ou tournées (Extra Goofy), avec leurs variantes contextuelles |
+| `anticollision.py` | Version 1.0.3 : compose toutes les paires qui contiennent une lettre russe (avec le latin, les chiffres, la ponctuation, dans tous les contextes de Goofy et Extra Goofy) et écarte celles où les encres se touchent |
 | `post103.sh` | Version 1.0.3 : le cyrillique dans les 13 fichiers de la 1.0.2, puis le numéro de version |
 
 ## Refaire la version 1.0.1
