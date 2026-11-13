@@ -77,7 +77,7 @@ Pour une police faite pour écrire le russe (comme ШКВАЛ) :
 - **Le testeur** démarre sur **« LAFLEURSTUDIO графический дизайн »** (au lieu de « LAFLEURSTUDIO création graphique »).
 - **Les mots d'exemple** sont des lieux russes, pas un canton suisse (voir `MOTS.md`).
 - **La carte de l'accueil** : sous-titre technique en français, écrit seulement avec des lettres que la police a (sans accents), puisqu'il s'affiche dans la police.
-- **Le filtre de l'accueil** : la carte porte aussi la famille `cyrillique` (`data-fam="sans cyrillique"`), et on met à jour le compteur du filtre « Кириллица ».
+- **Le filtre de l'accueil** : une police russe est **seulement** dans le filtre « Кириллица » (`data-fam="cyrillique"`), dans aucune autre famille. On met à jour le compteur de « Кириллица » (et de « Tout »).
 
 ## 7. La publication
 
