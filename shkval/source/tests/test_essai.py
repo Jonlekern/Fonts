@@ -43,4 +43,5 @@ def test_comme_le_latin():
             p, w = lettre(c, g)
             assert egaux(p, glyphe(f, n)) and w == f['hmtx'][n][0], (g, c)
         p, w = lettre('Я', g)
-        assert egaux(p, miroir(glyphe(f, 'R'), f['hmtx']['R'][0])) and w == f['hmtx']['R'][0]
+        from pieces import decale
+        assert egaux(p, decale(miroir(glyphe(f, 'R'), f['hmtx']['R'][0]), 20)) and w == f['hmtx']['R'][0] + 20

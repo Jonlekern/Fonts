@@ -4,7 +4,7 @@ Overshoot qui parle russe. Grotesque extra-large de LaFleurStudio : le latin d'O
 
 ## La recette
 
-- **Le latin** : celui d'Overshoot, sans rien changer (A–Z, a–z, chiffres, ponctuation, signes).
+- **Le latin** : celui d'Overshoot (A–Z, a–z, chiffres, ponctuation, signes). Seuls × < > ont pris la chasse du +, pour que tous les signes de maths aient la même largeur.
 - **Le russe** : construit graisse par graisse avec les fûts, les barres, les coins et les courbes d'Overshoot.
   - Les lettres qui ont la même forme qu'en latin sont reprises : А В Е К М Н О Р С Т Х, а е о р с у х.
   - **Я** : le R retourné. **И** : le N retourné. **Й** : И avec la brève. **Ё** : le Ë.
@@ -14,8 +14,9 @@ Overshoot qui parle russe. Grotesque extra-large de LaFleurStudio : le latin d'O
   - **Д Ц Щ** : jambages coupés à l'horizontale.
   - Les minuscules suivent celles d'Overshoot (к et ж avec les bras du k, б et ф avec le o et le b).
 - **L'italique** : penchée de 12°, comme celle d'Overshoot.
-- **Le crénage** : celui d'Overshoot ; chaque lettre russe prend celui de sa sœur latine (Г comme F, Т comme T…), aussi entre russe et latin.
-- **Les lettres** : le russe, le latin de base, les chiffres, la ponctuation et les signes. Pas d'accents latins : ШКВАЛ sert à écrire le russe.
+- **Le crénage** : celui d'Overshoot ; chaque lettre russe prend celui de sa sœur latine (Г comme F, Т comme T, н comme u à droite…), aussi entre russe et latin. т n'a pas de crénage ; б, я, Я, л, з et Э pas à gauche ; Я, я et л ont un peu plus d'approche à gauche, pour leur pied et leur crochet. Un test mesure le blanc entre les paires russes fréquentes : aucune ne se touche.
+- **Les lettres** : le russe, le latin de base, les chiffres, la ponctuation et les signes, avec **№** (le N et un petit o souligné) et **₽** (le Р et ses deux barres). Pas d'accents latins : ШКВАЛ sert à écrire le russe.
+- **L'accent tonique** : l'aigu combinant (U+0301) se pose tout seul, centré, sur les voyelles russes (за́мок, ЗА́МОК), en droit comme en italique.
 
 ## Les graisses
 

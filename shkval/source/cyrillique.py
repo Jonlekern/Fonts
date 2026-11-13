@@ -42,8 +42,9 @@ for c, n in (('А', 'A'), ('В', 'B'), ('Е', 'E'), ('К', 'K'), ('М', 'M'), ('
 
 @lettre_def('Я')
 def ya(g):
+    """Я : le R retourné, avec 20 unités d'approche en plus à gauche (le pied part vers la gauche)."""
     f = police(g); w = chasse(g, 'R')
-    return miroir(glyphe(f, 'R'), w), w
+    return decale(miroir(glyphe(f, 'R'), w), 20), w + 20
 
 
 @lettre_def('И')
@@ -306,7 +307,9 @@ def ve(g):
 
 @lettre_def('л')
 def el_min(g):
-    return petite_cap(g, 'Л')
+    """л : petite capitale du Л, avec 15 unités d'approche en plus à gauche (le crochet part vers la gauche)."""
+    p, w = petite_cap(g, 'Л')
+    return decale(p, 15), w + 15
 
 
 # ---- les autres minuscules ----
@@ -434,7 +437,7 @@ def i_bref_min(g):
     return union(p, decale(br, w / 2 - (bx0 + bx1) / 2)), w
 
 
-for _c, _cap in (('з', 'З'), ('и', 'И'), ('м', 'М'), ('ь', 'Ь'), ('ъ', 'Ъ'), ('ы', 'Ы'), ('я', 'Я')):
+for _c, _cap in (('з', 'З'), ('и', 'И'), ('м', 'М'), ('ь', 'Ь'), ('ъ', 'Ъ'), ('ы', 'Ы')):
     LETTRES[_c] = (lambda C: (lambda g: petite_cap(g, C)))(_cap)
 
 
@@ -449,3 +452,39 @@ def ef_min(g):
     forme = union(gauche, rect(a, bas, a + s, haut), boucle)
     dx = a - forme.bounds[0]
     return decale(forme, dx), round(2 * larg + s + 2 * a)
+
+
+@lettre_def('я')
+def ya_min(g):
+    """я : petite capitale du Я."""
+    return petite_cap(g, 'Я')          # le Я a déjà ses 20 unités d'approche en plus
+
+
+# ---- les signes russes ----
+@lettre_def('№')
+def numero(g):
+    """№ : le N d'Overshoot, puis le o des minuscules réduit de moitié, monté en haut et souligné."""
+    f = police(g); m = mesures(g)
+    n = glyphe(f, 'N'); wn = chasse(g, 'N'); a = m['approche_cap']
+    o = transforme(glyphe(f, 'o'), (0.5, 0, 0, 0.5, 0, 0)); ox0, oy0, ox1, oy1 = o.bounds
+    x0 = wn - a + round(a * 0.6)                          # le petit o, juste après le N
+    o = decale(o, x0 - ox0, m['cap'] - oy1)
+    _, oy0, _, _ = o.bounds
+    ep = max(round(m['barre_cap'] * 0.5), 12)             # le trait sous le o
+    gap = round(ep * 0.9)
+    trait = rect(x0, oy0 - gap - ep, x0 + (ox1 - ox0), oy0 - gap)
+    return union(n, o, trait), round(x0 + (ox1 - ox0) + a)
+
+
+@lettre_def('₽')
+def rouble(g):
+    """₽ : le Р d'Overshoot ; le bas de la boucle et une barre plus bas dépassent à gauche du fût."""
+    f = police(g); m = mesures(g); S, b, cap, a = m['fut_cap'], m['barre_cap'], m['cap'], m['approche_cap']
+    e = round(max(0.5 * S, 0.12 * m['contre_H']))         # combien les barres dépassent à gauche
+    p = decale(glyphe(f, 'P'), e)
+    xf = a + e                                           # bord gauche du fût, une fois décalé
+    y_bas = min(y for x, y in points(f, 'P') if y > 0 and x == a + S)      # bas de la boucle (292)
+    haut_boucle = rect(xf - e, y_bas, xf + 1, y_bas + b)
+    t = round(b * 0.7); yc = round(0.2 * cap)
+    barre = rect(xf - e, yc - t / 2, xf + S + e, yc + t / 2)
+    return union(p, haut_boucle, barre), chasse(g, 'P') + e

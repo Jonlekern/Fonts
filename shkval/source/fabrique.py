@@ -15,17 +15,20 @@ POIDS = dict(zip(GRAISSES, range(100, 1000, 100)))
 LICENCE = 'Free for personal use. Commercial use requires prior written permission from LaFleurStudio'
 
 # Pour le crénage : chaque lettre russe se comporte comme une lettre latine sœur, côté gauche et côté droit.
-SOEURS = {
+SOEURS = {   # (côté gauche, côté droit) ; None = pas de crénage de ce côté
     'Б': ('B', 'B'), 'Г': ('E', 'F'), 'Д': ('H', 'H'), 'Ж': ('X', 'K'), 'И': ('H', 'H'), 'Й': ('H', 'H'),
     'Л': ('J', 'H'), 'П': ('H', 'H'), 'У': ('Y', 'Y'), 'Ф': ('O', 'O'), 'Ц': ('H', 'H'), 'Ч': ('U', 'H'),
-    'Ш': ('H', 'H'), 'Щ': ('H', 'H'), 'Ъ': ('T', 'B'), 'Ы': ('H', 'H'), 'Ь': ('H', 'B'), 'Э': ('O', 'O'),
-    'Ю': ('H', 'O'), 'Я': ('H', 'H'),
-    'б': ('o', 'o'), 'в': ('n', 'o'), 'г': ('n', 'r'), 'д': ('n', 'n'), 'ж': ('x', 'x'), 'з': ('o', 'o'),
-    'и': ('n', 'n'), 'й': ('n', 'n'), 'к': ('k', 'k'), 'л': ('n', 'n'), 'м': ('n', 'n'), 'н': ('n', 'n'),
-    'п': ('n', 'n'), 'т': ('x', 'x'), 'ф': ('o', 'o'), 'ц': ('n', 'n'), 'ч': ('u', 'n'), 'ш': ('n', 'n'),
-    'щ': ('n', 'n'), 'ъ': ('x', 'o'), 'ы': ('n', 'n'), 'ь': ('n', 'o'), 'э': ('o', 'o'), 'ю': ('n', 'o'),
-    'я': ('n', 'n'),
+    'Ш': ('H', 'H'), 'Щ': ('H', 'H'), 'Ъ': ('T', 'B'), 'Ы': ('H', 'H'), 'Ь': ('H', 'B'), 'Э': (None, 'O'),
+    'Ю': ('H', 'O'), 'Я': (None, 'H'),
+    # minuscules à épaule carrée : côté droit du u (le n a une épaule ronde)
+    'б': (None, 'o'), 'в': ('n', 'o'), 'г': ('n', 'r'), 'д': ('n', 'u'), 'ж': ('x', 'x'), 'з': (None, None),
+    'и': ('n', 'u'), 'й': ('n', 'u'), 'к': ('k', 'k'), 'л': (None, 'u'), 'м': ('n', 'u'), 'н': ('n', 'u'),
+    'п': ('n', 'u'), 'т': (None, None), 'ф': ('o', 'o'), 'ц': ('n', 'u'), 'ч': ('u', 'u'), 'ш': ('n', 'u'),
+    'щ': ('n', 'u'), 'ъ': (None, 'o'), 'ы': ('n', 'u'), 'ь': ('n', 'o'), 'э': ('o', 'o'), 'ю': ('n', 'o'),
+    'я': (None, 'u'),
+    '№': ('N', None), '₽': (None, 'P'),
 }
+VOYELLES = 'аеёиоуыэюяАЕЁИОУЫЭЮЯ'     # celles qui peuvent porter l'accent tonique
 
 
 def gardes(cmap):
@@ -33,7 +36,7 @@ def gardes(cmap):
     out = []
     for u in cmap:
         c = chr(u); cat = unicodedata.category(c)
-        if 0x0400 <= u <= 0x04FF or u < 0x7F or not (cat.startswith('L') or cat in ('Mn', 'Sk')):
+        if 0x0400 <= u <= 0x04FF or u < 0x7F or u == 0x0301 or not (cat.startswith('L') or cat in ('Mn', 'Sk')):
             out.append(u)
     return sorted(out)
 
@@ -43,7 +46,7 @@ def nom_glyphe(c):
 
 
 def russes():
-    return [c for c in LETTRES if len(c) == 1 and (0x0410 <= ord(c) <= 0x044F or c in 'Ёё')]
+    return [c for c in LETTRES if len(c) == 1 and (0x0410 <= ord(c) <= 0x044F or c in 'Ёё№₽')]
 
 
 def lisse(p):
@@ -92,8 +95,11 @@ def ajoute_glyphe(font, nom, ops, w):
         cs.charStrings[nom] = t2
     if nom not in top.charset:
         top.charset.append(nom)
-    xs = [q[0] for op, a in ops for q in a]
-    font['hmtx'].metrics[nom] = (w, min(xs) if xs else 0)
+    from fontTools.pens.boundsPen import BoundsPen
+    bp = BoundsPen(None)
+    for op, a in ops:
+        getattr(bp, op)(*a)
+    font['hmtx'].metrics[nom] = (w, round(bp.bounds[0]) if bp.bounds else 0)     # approche = vrai bord gauche
 
 
 def hauteurs_windows():
@@ -103,6 +109,43 @@ def hauteurs_windows():
         for it in (False, True):
             h = TTFont(chemin(gg, it))['head']; haut = max(haut, h.yMax); bas = min(bas, h.yMin)
     return haut, -bas
+
+
+def accent_tonique(f, italique, k, dx):
+    """L'aigu combinant (U+0301) se pose centré sur les voyelles russes : points d'accroche (GPOS mark) + GDEF."""
+    from fontTools.ttLib import newTable
+    from fontTools.ttLib.tables import otTables as ot
+    from fontTools.otlLib.builder import buildMarkBasePos, buildAnchor
+    from fontTools.pens.recordingPen import RecordingPen
+    cm = f.getBestCmap(); acc = cm[0x0301]
+    rp = RecordingPen(); f.getGlyphSet()[acc].draw(rp)
+    pts = [q for op, a in rp.value for q in a]
+    yb = min(y for x, y in pts); bas = [x for x, y in pts if abs(y - yb) < 1]
+    marque = {acc: (0, buildAnchor(round((min(bas) + max(bas)) / 2), round(yb)))}
+    bases = {}
+    for v in VOYELLES:
+        n = cm[ord(v)]; w = f['hmtx'][n][0]
+        y = round(yb) if v.islower() else round(yb) + 110            # les capitales : 110 u plus haut, comme Ă
+        x = w / 2 + (k * y + dx if italique else 0)                    # le milieu de la lettre, à cette hauteur
+        bases[n] = {0: buildAnchor(round(x), y)}
+    st = buildMarkBasePos(marque, bases, f.getReverseGlyphMap())
+    lk = ot.Lookup(); lk.LookupType = 4; lk.LookupFlag = 0; lk.SubTable = st; lk.SubTableCount = len(st)
+    gp = f['GPOS'].table
+    gp.LookupList.Lookup.append(lk); gp.LookupList.LookupCount = len(gp.LookupList.Lookup)
+    fe = ot.Feature(); fe.FeatureParams = None; fe.LookupListIndex = [len(gp.LookupList.Lookup) - 1]; fe.LookupCount = 1
+    fr = ot.FeatureRecord(); fr.FeatureTag = 'mark'; fr.Feature = fe
+    gp.FeatureList.FeatureRecord.append(fr); gp.FeatureList.FeatureCount = len(gp.FeatureList.FeatureRecord)
+    i = len(gp.FeatureList.FeatureRecord) - 1
+    for sr in gp.ScriptList.ScriptRecord:
+        for ls in [sr.Script.DefaultLangSys] + [l.LangSys for l in sr.Script.LangSysRecord]:
+            if ls is not None:
+                ls.FeatureIndex.append(i); ls.FeatureCount = len(ls.FeatureIndex)
+    gdef = newTable('GDEF'); gdef.table = ot.GDEF(); gdef.table.Version = 0x00010000
+    cd = ot.GlyphClassDef(); cd.classDefs = {n: 1 for n in f.getGlyphOrder() if n != '.notdef'}; cd.classDefs[acc] = 3
+    gdef.table.GlyphClassDef = cd
+    for attr in ('AttachList', 'LigCaretList', 'MarkAttachClassDef'):
+        setattr(gdef.table, attr, None)
+    f['GDEF'] = gdef
 
 
 def construit(g, italique, sortie):
@@ -138,9 +181,9 @@ def construit(g, italique, sortie):
             cov = list(st.Coverage.glyphs)
             for c, n in neufs:
                 gauche, droite = soeurs[c]
-                if droite in cov:
+                if droite is not None and droite in cov:
                     cov.append(n); st.ClassDef1.classDefs[n] = st.ClassDef1.classDefs.get(droite, 0)
-                if gauche in st.ClassDef2.classDefs:
+                if gauche is not None and gauche in st.ClassDef2.classDefs:
                     st.ClassDef2.classDefs[n] = st.ClassDef2.classDefs[gauche]
             st.Coverage.glyphs = sorted(cov, key=f.getGlyphID)
 
@@ -188,6 +231,8 @@ def construit(g, italique, sortie):
     opt.notdef_outline = True; opt.glyph_names = True; opt.recalc_bounds = True; opt.drop_tables = []
     sub = subset.Subsetter(opt); sub.populate(unicodes=garde); sub.subset(f)
     f['OS/2'].recalcUnicodeRanges(f); f['OS/2'].recalcCodePageRanges(f); f['OS/2'].recalcAvgCharWidth(f)
+
+    accent_tonique(f, italique, k, dx)
 
     os.makedirs(os.path.join(sortie, 'otf'), exist_ok=True); os.makedirs(os.path.join(sortie, 'woff2'), exist_ok=True)
     out = os.path.join(sortie, 'otf', f'{ps}.otf'); f.save(out)

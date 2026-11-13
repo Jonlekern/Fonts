@@ -31,7 +31,7 @@ def test_contenu(g, n, it):
     import unicodedata
     for u in cm:                                                         # que du russe, de l'ASCII et des signes
         c = chr(u); cat = unicodedata.category(c)
-        assert u in CYR or u < 0x7F or not (cat.startswith('L') or cat in ('Mn', 'Sk')), hex(u)
+        assert u in CYR or u < 0x7F or u == 0x0301 or not (cat.startswith('L') or cat in ('Mn', 'Sk')), hex(u)   # 0301 : accent tonique
     assert all(cm[u] == v for u, v in cmo.items() if u < 0x7F)          # l'ASCII est là, mêmes noms
     assert 0xE9 not in cm and 0x0105 not in cm and 0xC5 not in cm       # é, ą, Å : partis
     assert all(u in cm for u in CYR)                                     # les 66 russes
