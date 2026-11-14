@@ -12,7 +12,7 @@ KARKAS est la version **Modern** d'un projet en trois temps. Deux autres sont pr
 - **Tout est fût.** Les fûts montent sur toute la hauteur (800 unités pour 160 à 220 de large). Ce qui distingue la lettre (barre, boucle, oblique) est serré dans une zone, avec une taille haute à 68 %.
 - **Même trait partout**, coins vifs, obliques courtes, aucune courbe.
 - **Les liaisons** (feature `liga`, active par défaut), un dessin par groupe de lettres :
-  - **fût partagé** : le fût droit d'une lettre est le fût gauche de la suivante (HE, AN, OU, UR…). Au joint, l'épaule du A devient carrée pour ne pas laisser de fente. Le D et le V ne partagent pas leur fût : leurs coins coupés et leur pointe disparaîtraient ;
+  - **fût partagé** : le fût droit d'une lettre est le fût gauche de la suivante (HE, AN, OU, UR…). En gras, l'épaule du A devient carrée au joint pour ne pas laisser de fente ; dans les graisses fines, le coin reste ouvert. Le D et le V ne partagent pas leur fût : leurs coins coupés et leur pointe disparaîtraient ;
   - **lettre logée** : une lettre rétrécie dans le creux d'une grande, après L, C, F et P ;
   - **sous la barre du T** : une lettre de chaque côté du T (TA, AT, ATE, STE, NTR…) ;
   - **lettres doubles** : empilées sur deux étages (EE, LL, SS, TT…) ;

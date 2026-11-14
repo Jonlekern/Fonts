@@ -16,20 +16,23 @@ LM |= set('БВГЕКМНОПРСИЛАШЩЫЬЮ')
 RM |= set('АЛИМНОПШЫЯЧ')
 
 def wedge(ch, w, y0, y1, side):
-    """A, Л : le coin entre la pente et le fût voisin, à remplir quand le fût est partagé (sinon il reste une fente)"""
+    """A, Л : le coin entre la pente et le fût voisin, à remplir en gras quand le fût est partagé (sinon il reste une fente)"""
     if ch not in 'AАЛ': return None
     S, CT, W = w.S, w.CT, w.W; h = y1 - y0
     da = min(1.5 * CT, 0.24 * h); ya = y1 - da; xm = W / 2; yt = y1 - 0.25 * S
     s = (ya - yt) / ((W - S / 2) - xm); tv = S * (1 + s * s) ** 0.5
     yu = lambda x: yt + (x - xm) * s + tv / 2
     x1 = xm + (y1 - yu(xm)) / s
+    if W - S - x1 >= 20: return None       # graisses fines : le coin est assez large, on le laisse ouvert (le remplir ferait une tache noire)
     p = poly([(x1, y1), (W, yu(W)), (W, y1)])
     return p if side == 'R' else mirror(p, W / 2)
 
-def letter(ch, w, y0=0, y1=CAP, nest=False):
+def letter(ch, w, y0=0, y1=CAP, nest=False, fw=None):
+    """fw : largeur imposée (KARKAS Display, mot-bloc : toutes les lettres remplissent la même colonne)"""
     if ch in TWIN:
-        g = letter(TWIN[ch], w, y0, y1, nest); return Gl(g.ink, g.w, ch in LM, ch in RM)
+        g = letter(TWIN[ch], w, y0, y1, nest, fw); return Gl(g.ink, g.w, ch in LM, ch in RM)
     S, B, CT, W = w.S, w.B, w.CT, w.W
+    if fw: W = fw; CT = fw - 2 * S
     h = y1 - y0
     yb = y0 + round((0.68 if h > 0.7 * CAP else 0.58) * h)   # taille haute ; un peu plus basse pour une petite lettre (logée, empilée)
     bar = lambda x0, x1, yc: rect(x0, yc - B / 2, x1, yc + B / 2)
@@ -41,6 +44,7 @@ def letter(ch, w, y0=0, y1=CAP, nest=False):
     tk = max(min(1.10 * CT, 0.15 * h), B + 0.55 * CT)   # petits retours (C G S J) : toujours plus longs que la barre
     tw = min(S, round(0.55 * CT))                  # largeur des retours : ils ne doivent pas boucher la lettre
     We = S + max(round(0.86 * CT), tw + 34)        # lettres ouvertes à droite
+    if fw: We = fw
     ww = W
     if ch == 'A':
         da = min(1.5 * CT, 0.24 * h); ya = y1 - da
@@ -69,15 +73,16 @@ def letter(ch, w, y0=0, y1=CAP, nest=False):
         p = U(mast(0), mast(W - S), bar(0, W, yb))
     elif ch == 'I':
         ww = S; p = mast(0)
+        if fw: ww = fw; p = U(mast((fw - S) / 2), top(0, fw), bot(0, fw))       # en colonne : un I à empattements, pour remplir
     elif ch == 'J':
-        ww = S + tw + max(round(0.30 * CT), 24); p = U(mast(ww - S), bot(0, ww), rect(0, y0, tw, y0 + max(tk, 0.22 * h)))
+        ww = fw or (S + tw + max(round(0.30 * CT), 24)); p = U(mast(ww - S), bot(0, ww), rect(0, y0, tw, y0 + max(tk, 0.22 * h)))
     elif ch == 'K':
         p = U(mast(0), mast(W - S, yb + dk, y1), mast(W - S, y0, yb - dk),
               link(S / 2, yb, W - S / 2, yb + dk, S, S, S), link(S / 2, yb, W - S / 2, yb - dk, S, S, S))
     elif ch == 'L':
-        ww = S + round(0.74 * CT); p = U(mast(0), bot(0, ww))
+        ww = fw or (S + round(0.74 * CT)); p = U(mast(0), bot(0, ww))
     elif ch == 'M':
-        ww = 2 * S + round(1.45 * CT); dm = min(1.9 * CT, 0.30 * h)
+        ww = fw or (2 * S + round(1.45 * CT)); dm = min(1.9 * CT, 0.30 * h)
         p = U(mast(0), mast(ww - S), chevron(0, ww, y1, y1 - dm, S, S))
     elif ch == 'N':
         zt, zb = y0 + 0.74 * h, y0 + 0.30 * h
@@ -105,7 +110,7 @@ def letter(ch, w, y0=0, y1=CAP, nest=False):
         dv = min(1.6 * CT, 0.26 * h); yv = y0 + dv
         p = U(mast(0, yv, y1), mast(W - S, yv, y1), chevron(0, W, yv, y0, S, S))
     elif ch == 'W':
-        ww = 2 * S + round(1.45 * CT); dm = min(1.9 * CT, 0.30 * h)
+        ww = fw or (2 * S + round(1.45 * CT)); dm = min(1.9 * CT, 0.30 * h)
         p = U(mast(0), mast(ww - S), chevron(0, ww, y0, y0 + dm, S, S))
     elif ch == 'X':
         ym = y0 + 0.5 * h

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KARKAS DISPLAY</title>
+<meta name="description" content="KARKAS DISPLAY : la version expérimentale de KARKAS, la vyaz en lettres latines. Des liaisons qui tournent, une bande de béton où les lettres sont creusées en blanc, et un mot-bloc en colonnes de trois étages. 3 graisses, 4 styles. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"KD M150";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M150.woff2) format("woff2")}
+@font-face{font-family:"KD M150 Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M150Italic.woff2) format("woff2")}
+@font-face{font-family:"KD M150 Bloc";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M150Bold.woff2) format("woff2")}
+@font-face{font-family:"KD M150 Bloc Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M150BoldItalic.woff2) format("woff2")}
+@font-face{font-family:"KD M300";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M300.woff2) format("woff2")}
+@font-face{font-family:"KD M300 Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M300Italic.woff2) format("woff2")}
+@font-face{font-family:"KD M300 Bloc";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M300Bold.woff2) format("woff2")}
+@font-face{font-family:"KD M300 Bloc Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M300BoldItalic.woff2) format("woff2")}
+@font-face{font-family:"KD M500";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M500.woff2) format("woff2")}
+@font-face{font-family:"KD M500 Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M500Italic.woff2) format("woff2")}
+@font-face{font-family:"KD M500 Bloc";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M500Bold.woff2) format("woff2")}
+@font-face{font-family:"KD M500 Bloc Bande";font-display:swap;src:url(fonts/woff2/KARKASDisplay-M500BoldItalic.woff2) format("woff2")}
+/* KARKAS DISPLAY partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"KD M300",var(--sans),sans-serif;font-weight:400}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-family:"KD M500 Bande";font-size:30px;line-height:1.25}
+section > .wrap > h2{font-size:clamp(56px,9vw,104px);line-height:1.15}
+.step h3{font-size:clamp(40px,4.6vw,56px);line-height:1.15}
+.card b{font-size:clamp(34px,7vw,48px);line-height:1.15;overflow-wrap:anywhere}
+.hero h1{font-family:"KD M500 Bande";font-weight:400;font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/3.4),230px);line-height:1.25}
+.titres{margin:10px 0 6px}
+.titres span{display:block;font-family:"KD M300 Bloc";font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/1.2),200px);line-height:1.2;white-space:nowrap}
+.wrow .sample{font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/1.6),130px);line-height:1.25;white-space:nowrap}
+@media (max-width:640px){.wrow .sample{font-size:min(calc((100vw - 2*var(--gutter))/1.6),130px)}}
+.demo .row span{line-height:1.25;white-space:pre}
+.glyphs div{font-size:52px}
+#tester-text{line-height:1.25}
+.how li{margin:6px 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">KARKAS</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Styles</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#styles">Bande et bloc</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">Les trois pistes</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Vyaz latine expérimentale</p>
+      <h1 style="margin-top:18px">KARKAS DISPLAY</h1>
+      <div class="titres" aria-label="Exemple"><span>Luzzone</span></div>
+      <div class="lede">
+        <p><strong>KARKAS, poussée plus loin.</strong> La même vyaz en lettres latines, avec trois expériences : <strong>des liaisons qui tournent</strong> (une sur deux passe en étages), <strong>une bande de béton</strong> où les lettres sont creusées en blanc, et <strong>un mot-bloc</strong> où les lettres se rangent par colonnes de trois. <strong>3 graisses, 4 styles chacune.</strong></p>
+      </div>
+      <div class="facts">
+        <span>Vyaz latine expérimentale</span><span>3 graisses</span><span>M150 → M500</span><span>4 styles : Tournant, Bande, Bloc, Bloc Bande</span><span>Italique = bande</span><span>Gras = bloc</span><span>Capitales seulement</span><span>Alphabet russe en bonus</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les styles</h2>
+      <p class="intro">Trois graisses, nommées comme les marques du béton russe. Chacune a quatre styles : le Tournant, la Bande derrière l'italique, le Bloc derrière le gras, et les deux ensemble.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Change de style pour voir la bande et le bloc.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Style <select id="tw" aria-label="Style"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">Dans la bande, le tiret bas _ relie deux mots : essaie LE_MUR.</p>
+    </div>
+  </section>
+
+  <section id="styles">
+    <div class="wrap">
+      <h2>Avoir la bande et le bloc</h2>
+      <p class="intro">La bande est rangée à la place de l'italique, le bloc à la place du gras.</p>
+      <ul class="how">
+        <li><strong>Word, PowerPoint, Pages, Keynote, Canva, LibreOffice :</strong> Italique (Ctrl+I ou ⌘I) pour la bande, Gras (Ctrl+B ou ⌘B) pour le bloc, les deux pour le bloc dans la bande.</li>
+        <li><strong>InDesign, Illustrator, Figma, Photoshop :</strong> choisis « Italic », « Bold » ou « Bold Italic » dans le menu des styles. N'utilise pas le faux gras ni le faux italique de Photoshop.</li>
+        <li><strong>Sur un site :</strong> <code>font-style: italic</code> et <code>font-weight: 700</code>.</li>
+      </ul>
+      <p class="intro">Le tournant et le bloc demandent un logiciel qui gère les alternates contextuelles : navigateurs, InDesign, Illustrator, Figma, Affinity, Pages, Keynote, Word récent. Ailleurs, tu obtiens les liaisons de KARKAS ou des lettres normales.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Les mêmes que KARKAS : capitales, chiffres, ponctuation, accents d'Europe, alphabet russe.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>Les trois pistes</h2>
+      <p class="intro"><strong>Trois façons de pousser la vyaz.</strong> Les scribes ne liaient jamais deux fois pareil, remplissaient toute la place, et empilaient les lettres quand la ligne manquait. KARKAS DISPLAY prend ces trois idées au pied de la lettre.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Les liaisons qui tournent</h3>
+            <p>Chaque liaison de KARKAS a un second dessin, <strong>en étages</strong> : les deux lettres l'une sur l'autre. La police alterne : <strong>une liaison sur deux tourne</strong>. Le même mot écrit deux fois de suite change souvent d'allure.</p>
+          </div>
+          <div class="demo" aria-label="Les liaisons qui tournent">
+            <div class="row"><small>M300</small><span style="font-family:'KD M300';font-size:min(calc(100cqw/2.6),150px)">LUZZONE LUZZONE</span></div>
+            <div class="row"><small>M500</small><span style="font-family:'KD M500';font-size:min(calc(100cqw/2.7),150px)">FLAMATT FLAMATT</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Tout en étages</h3>
+            <p>Avec <strong>ss03</strong>, toutes les liaisons passent en étages. Sans les ligatures, les lettres restent séparées. Entre les deux, le tournant.</p>
+          </div>
+          <div class="demo" aria-label="Tout en étages">
+            <div class="row"><small>sans</small><span style="font-family:'KD M300';font-size:min(calc(100cqw/2.4),150px);font-variant-ligatures:none">ZERVREILA</span></div>
+            <div class="row"><small>ss03</small><span style="font-family:'KD M300';font-size:min(calc(100cqw/2.4),150px);font-feature-settings:'ss03'">ZERVREILA</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>La bande de béton</h3>
+            <p>La ligne devient <strong>un bandeau noir</strong> et les lettres y sont <strong>creusées en blanc</strong>, comme la trace d'un coffrage. Chaque mot est sa propre dalle. C'est le style Italic.</p>
+          </div>
+          <div class="demo" aria-label="La bande de béton">
+            <div class="row"><small>M500</small><span style="font-family:'KD M500 Bande';font-size:min(calc(100cqw/2.4),150px)">MAUVOISIN</span></div>
+            <div class="row"><small>M150</small><span style="font-family:'KD M150 Bande';font-size:min(calc(100cqw/2.0),150px)">THYON 2000</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Relier les dalles</h3>
+            <p>Dans la bande, <strong>le tiret bas _ est un morceau de bandeau plein</strong>. Il relie deux mots en une seule dalle. Avec un interligne de 1,2, deux lignes se touchent presque : il reste un joint, comme entre deux banches.</p>
+          </div>
+          <div class="demo" aria-label="Relier les dalles">
+            <div class="row"><small>espace</small><span style="font-family:'KD M300 Bande';font-size:min(calc(100cqw/2.6),150px)">BÉTON BRUT</span></div>
+            <div class="row"><small>_</small><span style="font-family:'KD M300 Bande';font-size:min(calc(100cqw/2.6),150px)">BÉTON_BRUT</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le mot-bloc</h3>
+            <p>Les lettres se rangent <strong>par colonnes de trois étages</strong> : un mot court devient un pavé. On lit colonne par colonne, de haut en bas. S'il reste deux lettres, elles se partagent la hauteur ; s'il en reste une, elle la garde toute. C'est le style Bold.</p>
+          </div>
+          <div class="demo" aria-label="Le mot-bloc">
+            <div class="row"><small>M300</small><span style="font-family:'KD M300 Bloc';font-size:min(calc(100cqw/1.9),150px)">MOIRY CLEUSON</span></div>
+            <div class="row"><small>M500</small><span style="font-family:'KD M500 Bloc';font-size:min(calc(100cqw/1.9),150px)">TRIEMLI LUZZONE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le bloc dans la bande</h3>
+            <p>Les deux ensemble : <strong>des pavés de béton</strong> avec trois étages de lettres creusées. C'est le style Bold Italic.</p>
+          </div>
+          <div class="demo" aria-label="Le bloc dans la bande">
+            <div class="row"><small>M500</small><span style="font-family:'KD M500 Bloc Bande';font-size:min(calc(100cqw/1.1),150px)">ZERVREILA</span></div>
+            <div class="row"><small>M150</small><span style="font-family:'KD M150 Bloc Bande';font-size:min(calc(100cqw/1.7),150px)">SPITALLAMM</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="KARKASDisplay.zip" download><b>KARKASDisplay.zip</b><span>Les 12 fichiers (OTF) + licence + À LIRE</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas-display/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas-display/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "KARKAS Display M300";
+  src: url(KARKASDisplay-M300.woff2) format("woff2"); }
+@font-face { font-family: "KARKAS Display M300"; font-style: italic;
+  src: url(KARKASDisplay-M300Italic.woff2) format("woff2"); }
+@font-face { font-family: "KARKAS Display M300"; font-weight: 700;
+  src: url(KARKASDisplay-M300Bold.woff2) format("woff2"); }
+@font-face { font-family: "KARKAS Display M300";
+  font-weight: 700; font-style: italic;
+  src: url(KARKASDisplay-M300BoldItalic.woff2) format("woff2"); }
+/* … pareil pour M150 et M500.
+   &lt;em&gt; → la bande, &lt;strong&gt; → le bloc.
+   font-feature-settings: "ss03" → tout en étages. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>KARKAS DISPLAY © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "KD M300",
+  sample: "Luzzone",
+  styles: [
+    {n:"M150",w:400,fam:"KD M150",label:"tournant"},{n:"M150 Bande",w:400,fam:"KD M150 Bande",label:"italique"},{n:"M150 Bloc",w:400,fam:"KD M150 Bloc",label:"gras"},{n:"M150 Bloc Bande",w:400,fam:"KD M150 Bloc Bande",label:"gras italique"},
+    {n:"M300",w:400,fam:"KD M300",label:"tournant"},{n:"M300 Bande",w:400,fam:"KD M300 Bande",label:"italique"},{n:"M300 Bloc",w:400,fam:"KD M300 Bloc",label:"gras"},{n:"M300 Bloc Bande",w:400,fam:"KD M300 Bloc Bande",label:"gras italique"},
+    {n:"M500",w:400,fam:"KD M500",label:"tournant"},{n:"M500 Bande",w:400,fam:"KD M500 Bande",label:"italique"},{n:"M500 Bloc",w:400,fam:"KD M500 Bloc",label:"gras"},{n:"M500 Bloc Bande",w:400,fam:"KD M500 Bloc Bande",label:"gras italique"}
+  ],
+  testerDefault: 4,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞ" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%‰$€£¥¢©®™§¶†°+−×÷=<>~^¹²³¼½¾№" +
+    "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+  glyphChips: [4, 5, 6],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+</body>
+</html>

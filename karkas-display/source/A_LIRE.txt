@@ -1,0 +1,47 @@
+KARKAS DISPLAY — À LIRE
+
+KARKAS DISPLAY est la version expérimentale de KARKAS, la vyaz en lettres latines.
+Tout est en capitales : les minuscules donnent les mêmes lettres.
+
+Chaque graisse (M150, M300, M500) est une petite famille à quatre styles :
+  - Regular     : Tournant. Les liaisons de KARKAS, mais une liaison sur deux
+                  passe en étages (deux lettres l'une sur l'autre).
+  - Italic      : Bande. Le même, creusé en blanc dans un bandeau noir.
+  - Bold        : Bloc. Les lettres se rangent par colonnes de trois étages.
+  - Bold Italic : Bloc dans la bande.
+
+Comment avoir la bande et le bloc
+  - Word, PowerPoint, Pages, Keynote, Canva, LibreOffice :
+    Italique (Ctrl+I ou Cmd+I) pour la bande, Gras (Ctrl+B ou Cmd+B) pour le bloc.
+  - InDesign, Illustrator, Figma, Photoshop :
+    choisis « Italic », « Bold » ou « Bold Italic » dans le menu des styles.
+    N'utilise pas le faux gras ni le faux italique de Photoshop.
+  - Sur un site : font-style: italic, font-weight: 700.
+
+Le tournant et le bloc demandent un logiciel qui gère les alternates contextuelles
+(navigateurs, InDesign, Illustrator, Figma, Affinity, Pages, Keynote, Word récent).
+Ailleurs, tu obtiens les liaisons de KARKAS (Regular) ou des lettres normales (Bold).
+
+Dans la bande
+  - l'espace reste vide : chaque mot est sa propre dalle ;
+  - le tiret bas _ est un morceau de bandeau plein : LE_MUR fait une seule dalle ;
+  - avec un interligne de 1,2, les lignes se touchent presque : il reste un joint.
+
+Dans le bloc
+  - un mot se lit colonne par colonne, de haut en bas ;
+  - s'il reste deux lettres, elles se partagent la hauteur ; s'il en reste une,
+    elle garde toute la hauteur ;
+  - les lettres accentuées, les chiffres et le russe gardent toute la hauteur ;
+  - le trait est plus fin que dans les autres styles, pour que les lettres
+    tiennent sur un tiers de hauteur.
+
+Options du Tournant et de la Bande
+  ss01 : les lettres doubles partagent un fût
+  ss02 : des losanges dans les creux des lettres restées seules
+  ss03 : toutes les liaisons en étages
+  Couper les ligatures rend les lettres séparées.
+
+Licence : usage personnel gratuit, commercial sur autorisation écrite
+de LaFleurStudio (info@lafleurstudio.ch). Voir LICENCE.txt.
+
+© 2026 LaFleurStudio
