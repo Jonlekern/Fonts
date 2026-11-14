@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KARKAS</title>
+<meta name="description" content="KARKAS : la vyaz, l'écriture russe entrelacée des vieux manuscrits, réinterprétée en lettres latines et en béton brut. Capitales hautes et étroites, près de 1000 ligatures automatiques, 3 graisses M150, M300, M500. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"KARKAS";font-weight:300;font-display:swap;src:url(fonts/woff2/KARKAS-M150.woff2) format("woff2")}
+@font-face{font-family:"KARKAS";font-weight:500;font-display:swap;src:url(fonts/woff2/KARKAS-M300.woff2) format("woff2")}
+@font-face{font-family:"KARKAS";font-weight:800;font-display:swap;src:url(fonts/woff2/KARKAS-M500.woff2) format("woff2")}
+/* KARKAS partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"KARKAS",var(--sans),sans-serif}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:34px;font-weight:800;line-height:1}
+section > .wrap > h2{font-weight:500;font-size:clamp(56px,9vw,104px);line-height:1.15}
+.step h3{font-weight:500;font-size:clamp(40px,4.6vw,56px);line-height:1.15}
+.card b{font-weight:500;font-size:clamp(34px,7vw,48px);line-height:1.15;overflow-wrap:anywhere}
+.hero h1{font-family:"KARKAS";font-weight:800;font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/1.6),300px);line-height:1.1}
+.titres{margin:10px 0 6px}
+.titres span{display:block;font-weight:500;font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/2.7),190px);line-height:1.15;white-space:nowrap}
+.wrow .sample{font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/3.1),170px);line-height:1.2;white-space:nowrap}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/3.1)}}
+.demo .row span{line-height:1.2;white-space:pre}
+.glyphs div{font-size:52px}
+#tester-text{line-height:1.25}
+.how li{margin:6px 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">KARKAS</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#liaisons">Liaisons</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Vyaz latine</p>
+      <h1 style="margin-top:18px">KARKAS</h1>
+      <div class="titres" aria-label="Exemple"><span>Grande Dixence</span></div>
+      <div class="lede">
+        <p><strong>La vyaz en lettres latines, coulée dans le béton.</strong> La vyaz est l'écriture russe entrelacée des titres de manuscrits : des lettres très hautes, serrées, qui partagent leurs traits. KARKAS reprend ses gestes avec un dessin tout droit, sans une seule courbe. <strong>Les lettres se lient toutes seules pendant que tu écris.</strong> <strong>3 graisses</strong> : M150, M300, M500.</p>
+      </div>
+      <div class="facts">
+        <span>Vyaz latine</span><span>3 graisses</span><span>M150 → M500</span><span>Capitales seulement</span><span>948 ligatures automatiques</span><span>Aucune courbe</span><span>Alphabet russe en bonus</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">En Russie, le béton se classe par marque : plus le chiffre est haut, plus il résiste. M150 pour une dalle légère, M300 pour une ossature, M500 pour un barrage.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Majuscules ou minuscules, tu obtiens les mêmes capitales.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">Essaie THE, ATELIER, QUE, BELLE, ou du russe : БЕТОН.</p>
+    </div>
+  </section>
+
+  <section id="liaisons">
+    <div class="wrap">
+      <h2>Couper les liaisons</h2>
+      <p class="intro">Les liaisons sont des ligatures : elles sont actives partout par défaut. Pour retrouver les lettres séparées, il suffit de couper les ligatures.</p>
+      <ul class="how">
+        <li><strong>Word :</strong> Police, Paramètres avancés, Ligatures : Aucune.</li>
+        <li><strong>InDesign, Illustrator, Photoshop, Affinity :</strong> décoche « Ligatures » dans le panneau Caractère ou OpenType.</li>
+        <li><strong>Figma :</strong> panneau Texte, détails, décoche les ligatures.</li>
+        <li><strong>Sur un site :</strong> <code>font-variant-ligatures: none</code>.</li>
+      </ul>
+      <p class="intro">Deux options en plus, dans les logiciels qui gèrent les jeux stylistiques : <strong>ss01</strong> fait partager un fût aux lettres doubles au lieu de les empiler, <strong>ss02</strong> pose des losanges dans les creux des lettres restées seules.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Capitales, chiffres, ponctuation, accents d'Europe, et l'alphabet russe en bonus.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>D'un manuscrit russe et d'un chantier.</strong> La vyaz (вязь) habille les titres des livres russes depuis le XIVe siècle. Son style géométrique était celui de Moscou. KARKAS le transpose en latin avec le vocabulaire du béton brut : « каркас », c'est l'ossature d'un bâtiment, et le mot vient du français « carcasse ».</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Une bande continue</h3>
+            <p>Dans la vyaz, la ligne devient <strong>une bande régulière</strong>, comme un code-barres. Les lettres sont <strong>quatre à cinq fois plus hautes que larges</strong> et serrées les unes contre les autres.</p>
+          </div>
+          <div class="demo" aria-label="Une bande continue">
+            <div class="row"><small>M150</small><span style="font-weight:300;font-size:min(calc(100cqw/2.5),170px)">GRANDE DIXENCE</span></div>
+            <div class="row"><small>M500</small><span style="font-weight:800;font-size:min(calc(100cqw/3.2),170px)">GRANDE DIXENCE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Tout est fût</h3>
+            <p>Chaque lettre est faite de <strong>fûts droits sur toute la hauteur</strong>. Ce qui la distingue (une barre, une boucle, une oblique) est serré dans une petite zone, avec une taille haute. Pas une courbe : des coins vifs, comme un coffrage.</p>
+          </div>
+          <div class="demo" aria-label="Tout est fût">
+            <div class="row"><small>sans</small><span style="font-weight:500;font-size:min(calc(100cqw/2.1),170px);font-variant-ligatures:none">HÉRÉMENCE</span></div>
+            <div class="row"><small>avec</small><span style="font-weight:500;font-size:min(calc(100cqw/2.1),170px)">HÉRÉMENCE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le fût partagé</h3>
+            <p>C'est le geste principal de la vyaz : <strong>le fût droit d'une lettre sert de fût gauche à la suivante</strong>. OE, AN et UM n'ont plus que trois fûts au lieu de quatre.</p>
+          </div>
+          <div class="demo" aria-label="Le fût partagé">
+            <div class="row"><small>sans</small><span style="font-weight:500;font-size:min(calc(100cqw/2.5),170px);font-variant-ligatures:none">GOETHEANUM</span></div>
+            <div class="row"><small>avec</small><span style="font-weight:500;font-size:min(calc(100cqw/2.5),170px)">GOETHEANUM</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>La lettre logée</h3>
+            <p>Une lettre <strong>rétrécit et se glisse dans le creux d'une grande</strong> : sur le pied du L, dans la bouche du C, sous le bras du F, sous la boucle du P. Le trait garde la même épaisseur.</p>
+          </div>
+          <div class="demo" aria-label="La lettre logée">
+            <div class="row"><small>M300</small><span style="font-weight:500;font-size:min(calc(100cqw/1.5),170px)">CONTRA</span></div>
+            <div class="row"><small>M500</small><span style="font-weight:800;font-size:min(calc(100cqw/1.5),170px)">CONTRA</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Sous la barre du T</h3>
+            <p>La barre du T s'allonge et <strong>abrite une lettre de chaque côté</strong>. ATE, STE ou NTR tiennent sous un seul toit.</p>
+          </div>
+          <div class="demo" aria-label="Sous la barre du T">
+            <div class="row"><small>M300</small><span style="font-weight:500;font-size:min(calc(100cqw/3.1),170px)">ATELIER 5 · HALEN</span></div>
+            <div class="row"><small>M150</small><span style="font-weight:300;font-size:min(calc(100cqw/3.1),170px)">ATELIER 5 · HALEN</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les lettres doubles</h3>
+            <p>Deux lettres identiques <strong>s'empilent sur deux étages</strong>. Avec <strong>ss01</strong>, celles qui ont deux fûts en partagent un à la place.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres doubles">
+            <div class="row"><small>M300</small><span style="font-weight:500;font-size:min(calc(100cqw/1.6),170px)">ÉMOSSON</span></div>
+            <div class="row"><small>ss01</small><span style="font-weight:500;font-size:min(calc(100cqw/1.8),170px);font-feature-settings:'ss01'">OBERAAR</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les losanges</h3>
+            <p>Les scribes bouchaient les vides avec des ornements. Avec <strong>ss02</strong>, un losange se pose dans le creux des lettres restées seules : L, T, F, P, J et Y.</p>
+          </div>
+          <div class="demo" aria-label="Les losanges">
+            <div class="row"><small>sans</small><span style="font-weight:500;font-size:min(calc(100cqw/1.8),170px)">LE LIGNON</span></div>
+            <div class="row"><small>ss02</small><span style="font-weight:500;font-size:min(calc(100cqw/1.8),170px);font-feature-settings:'ss02'">LE LIGNON</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le russe, pour le délire</h3>
+            <p>La vyaz vient du cyrillique : KARKAS a donc aussi <strong>l'alphabet russe</strong>, dans le même dessin, avec ses fûts partagés, ses lettres logées sous le Г et le Т, et ses lettres doubles empilées.</p>
+          </div>
+          <div class="demo" aria-label="Le russe">
+            <div class="row"><small>M500</small><span lang="ru" style="font-weight:800;font-size:min(calc(100cqw/3.2),170px)">БЕТОН · КАРКАС</span></div>
+            <div class="row"><small>M150</small><span lang="ru" style="font-weight:300;font-size:min(calc(100cqw/1.3),170px)">ВЯЗЬ</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les chiffres</h3>
+            <p><strong>Tous de la même chasse</strong> : les nombres tombent en colonne. Le 0 a les quatre coins coupés pour ne jamais le confondre avec le O.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres">
+            <div class="row"><small>M500</small><span style="font-weight:800;font-size:min(calc(100cqw/3.2),170px)">285 M · 1961</span></div>
+            <div class="row"><small>M150</small><span style="font-weight:300;font-size:min(calc(100cqw/2.5),170px)">0123456789</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="KARKAS.zip" download><b>KARKAS.zip</b><span>Les 3 fichiers (OTF) + licence + À LIRE</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "KARKAS"; font-weight: 500;
+  src: url(KARKAS-M300.woff2) format("woff2"); }
+/* … pareil pour M150 (300) et M500 (800).
+   font-variant-ligatures: none → lettres séparées.
+   font-feature-settings: "ss01" → lettres doubles à fût partagé,
+   "ss02" → losanges dans les creux. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>KARKAS © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "KARKAS",
+  sample: "Grande Dixence",
+  styles: [
+    {n:"M150",w:300,label:"fin"},{n:"M300",w:500,label:"moyen"},{n:"M500",w:800,label:"gras"}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞ" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%‰$€£¥¢©®™§¶†°+−×÷=<>~^¹²³¼½¾№" +
+    "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+  glyphChips: [0, 1, 2],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+</body>
+</html>

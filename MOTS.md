@@ -47,6 +47,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | espresso-440 | Bienne (on ne touche pas) | Un espresso, s'il vous plaît | Café 4.20.- · Pain au chocolat 2.60.- · Bagel 6.50.- · abcdefghijklm nopqrstuvwxyz · ABCDEFGHIJKLM NOPQRSTUVWXYZ · 0123456789 Bagel 6.50.- · Caffè, così buono · S'il te plaît ☀ · Un café ☕ 4.40.- · Truffes, Lebkuchen · une tresse au beurre · CAFÉ, BAGEL · Tarte, Fondant |
 | shkval | Russie | Байкал | САРМА · ЭЛЬБРУС · ЮЖНО-САХАЛИНСК · Камчатка · Енисей, ёлка · Владивосток |
 | treniki | Russie (oblast de Samara) | ТОЛЬЯТТИ | ЖИГУЛИ · САМАРА · СЫЗРАНЬ · Волга · Жигулёвское море · Самарская Лука · моло́ко |
+| karkas | Suisse du béton (barrages et bâtiments brutalistes) | Grande Dixence | GRANDE DIXENCE · HÉRÉMENCE · GOETHEANUM · CONTRA · ATELIER 5 · HALEN · ÉMOSSON · OBERAAR · LE LIGNON · БЕТОН · КАРКАС · ВЯЗЬ · 285 M · 1961 · 0123456789 |
 | dotsignal | Bienne (on ne touche pas) | Prochain bus : 3' | 1 Stades 3' · 6 Centre hospitalier 5' · 9 Ecoles Tilleul 10' · 8 Fuchsenried 4' · 🚌 Départ · 17:10 · 17:12 · 18:41 · 19:08 |
 
 Les 26 cantons sont pris. Pour une nouvelle police : une ville, un lac, une montagne ou une chose suisse pas encore dans cette liste.

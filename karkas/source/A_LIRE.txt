@@ -1,0 +1,29 @@
+KARKAS — À LIRE
+
+KARKAS réinterprète la vyaz, l'écriture russe entrelacée des vieux manuscrits,
+en lettres latines. Tout est en capitales : les minuscules donnent les mêmes lettres.
+
+Trois graisses, nommées comme les marques de béton : M150 (fin), M300 (moyen), M500 (gras).
+
+Les liaisons se font toutes seules pendant que tu écris (ligatures) :
+  - fût partagé : deux lettres utilisent le même trait vertical (HE, AN, OU…)
+  - lettre logée : une lettre plus petite se glisse dans le creux d'une grande
+    (après L, C, F, P ; avant et après T)
+  - lettres doubles : elles s'empilent sur deux étages (EE, LL, SS, TT…)
+  - groupes de trois : ATE, STE, AND, OUR, QUE…
+
+Pour couper les liaisons
+  - Word : Police > Paramètres avancés > Ligatures : Aucune.
+  - InDesign, Illustrator, Photoshop, Affinity : décoche « Ligatures ».
+  - Sur un site : font-variant-ligatures: none.
+
+Les options (dans les logiciels qui les gèrent)
+  ss01 : les lettres doubles partagent un fût au lieu de s'empiler (HH, NN, OO…)
+  ss02 : des losanges dans les creux des lettres restées seules (L, T, F, P, J, Y)
+
+En bonus : l'alphabet russe, avec ses propres liaisons.
+
+Licence : usage personnel gratuit, commercial sur autorisation écrite
+de LaFleurStudio (info@lafleurstudio.ch). Voir LICENCE.txt.
+
+© 2026 LaFleurStudio

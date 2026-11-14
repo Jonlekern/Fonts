@@ -38,6 +38,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **SHEARLINE** | Fraktur dessinée à neuf, tracée à la plume large : rondes cassées, têtes en losange, capitales à trompe, croix dans les lettres (latines, patriarcales, pattées, en options) ; ſ long automatique, ligatures ch ck tz ſt ſſ, signes liturgiques ; derrière l'italique, les capitales deviennent des lettrines | 3 (Épreuve, Tirage, Aplat), chacune en regular et lettrines | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/shearline/) · [Zip](shearline/SHEARLINE.zip) · [Dossier](shearline/) |
 | **ШКВАЛ (SHKVAL)** | Overshoot qui parle russe : le latin d'Overshoot et un alphabet russe construit avec ses pièces | 9 (Shtil → Shtorm, le vent en russe) + 9 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/shkval/) · [Zip](shkval/SHKVAL.zip) · [Dossier](shkval/) |
 | **ТРЕНИКИ (TRENIKI)** | Calebard qui parle russe : le latin de base de Calebard et un alphabet russe construit avec ses traits ; « треники », le bas de jogging | 11 (Progulka → Chempion, de la balade au champion) + Shatun et Vrazvalku (lettres qui penchent et qui tournent) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/treniki/) · [Zip](treniki/TRENIKI.zip) · [Dossier](treniki/) |
+| **KARKAS (КАРКАС)** | Vyaz latine dessinée à neuf : l'écriture russe entrelacée des manuscrits réinterprétée en capitales latines, tout en fûts droits, sans une courbe ; les lettres se lient toutes seules (fût partagé, lettre logée, lettres empilées), 948 ligatures ; alphabet russe en bonus | 3 (M150 → M500, les marques du béton) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/karkas/) · [Zip](karkas/KARKAS.zip) · [Dossier](karkas/) |
 
 ## Organisation
 
@@ -53,7 +54,7 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/, treniki/
+drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/, treniki/, karkas/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BALLASTLINE, ANISOTROPE, ISOSLAB, ISOCIRCLE, LAMINAR, SHEARLINE et SHKVAL : LICENCE.txt)
