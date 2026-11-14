@@ -27,10 +27,6 @@ Scripts Python (fontTools, uharfbuzz, skia-pathops, numpy, scipy, Pillow) utilis
 | `j102.py` | Version 1.0.2 : bout du crochet du j coupé en biais |
 | `f102.py` | Version 1.0.2 : F à la largeur du logo |
 | `post102.sh` | Version 1.0.2 : enchaîne les cinq scripts ci-dessus sur les 11 graisses de la 1.0.1, puis pose le numéro de version |
-| `cyrillique.py` | Version 1.0.3 : les 66 lettres russes d'une graisse, mesurées sur ses lettres latines (fût, barres, diagonales, approches), le script `cyrl` et le crénage repris des lettres latines jumelles |
-| `cyrillique_goofy.py` | Version 1.0.3 : les lettres russes du Black penchées (Goofy) ou tournées (Extra Goofy), avec leurs variantes contextuelles |
-| `anticollision.py` | Version 1.0.3 : compose toutes les paires qui contiennent une lettre russe (avec le latin, les chiffres, la ponctuation, dans tous les contextes de Goofy et Extra Goofy) et écarte celles où les encres se touchent |
-| `post103.sh` | Version 1.0.3 : le cyrillique dans les 13 fichiers de la 1.0.2, puis le numéro de version |
 
 ## Refaire la version 1.0.1
 
@@ -46,14 +42,6 @@ Variables : `PY` (Python à utiliser), `VF` (chemin d'Anybody). La fleur lit `lo
 
 Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` redonnent la version 1.0.
 
-## Refaire la version 1.0.3
-
-À partir des 13 fichiers de la version 1.0.2 :
-
-```sh
-./post103.sh dossier-ttf
-```
-
 ## Refaire la version 1.0.2
 
 À partir des 11 graisses de la version 1.0.1 (Goofy et Extra Goofy ne changent pas) :
@@ -64,5 +52,9 @@ Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` r
 
 ## fontbakery : laissé tel quel (décision de Johnny, novembre 2026)
 
-La 1.0.3 n'ajoute que le russe. Les erreurs et avertissements de `fontbakery check-universal` (52 erreurs, 117 avertissements) viennent tous de la partie latine d'origine : on ne les corrige pas, ne pas les reprendre.
-Pour mémoire, la loupe y a vu de vrais défauts latins, eux aussi laissés : le point des accents en croissant dans le Hairline et le Thin (ė ẹ ợ ự…), le fût doublé du þ dans le Hairline, le ľ avec un caron en V au lieu de la virgule.
+Les erreurs et avertissements de `fontbakery check-universal` (52 erreurs, 117 avertissements) viennent de la partie latine d'origine : on ne les corrige pas, ne pas les reprendre.
+Pour mémoire, la loupe y a vu de vrais défauts, eux aussi laissés : le point des accents en croissant dans le Hairline et le Thin (ė ẹ ợ ự…), le fût doublé du þ dans le Hairline, le ľ avec un caron en V au lieu de la virgule.
+
+## Le russe
+
+Il n'est pas dans Calebard : il vit dans sa police sœur TRENIKI (`treniki/`), avec ses propres scripts.

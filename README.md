@@ -8,7 +8,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 
 | Police | Style | Graisses | Licence | Liens |
 | --- | --- | --- | --- | --- |
-| **Calebard** | Sans-serif super étendue, latin et cyrillique russe (Треники) | 11 (Hairline → Extreme Black) + Goofy, Extra Goofy | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
+| **Calebard** | Sans-serif super étendue | 11 (Hairline → Extreme Black) + Goofy, Extra Goofy | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/calebard/) · [Zip](calebard/Calebard.zip) · [Dossier](calebard/) |
 | **Falsard** | Display géométrique d'inspiration techno, au centre de gravité bas | 10 (XXXS → XXXXL) + 10 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/falsard/) · [Zip](falsard/Falsard.zip) · [Dossier](falsard/) |
 | **Clebard** | Néo-grotesque suisse en extra-large | 6 (Demi → Trenta) + 6 italiques | GUST Font License | [Page](https://jonlekern.github.io/Fonts/clebard/) · [Zip](clebard/Clebard.zip) · [Dossier](clebard/) |
 | **Malabard** | Display de course allongée | 7 (ExtraLight → ExtraBold) + 7 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/malabard/) · [Zip](malabard/Malabard.zip) · [Dossier](malabard/) |
@@ -37,6 +37,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **LAMINAR** | Art déco dessinée à neuf, haute et étroite : pleins et déliés, ronds au compas, barres hautes, coins profilés ; capitales et petites capitales (les minuscules donnent les petites capitales) ; derrière l'italique, une version vitesse traversée de trois lignes avec traîne et bout rond ; 16 ligatures | 3 (030 → 090), chacune en sobre et vitesse | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/laminar/) · [Zip](laminar/LAMINAR.zip) · [Dossier](laminar/) |
 | **SHEARLINE** | Fraktur dessinée à neuf, tracée à la plume large : rondes cassées, têtes en losange, capitales à trompe, croix dans les lettres (latines, patriarcales, pattées, en options) ; ſ long automatique, ligatures ch ck tz ſt ſſ, signes liturgiques ; derrière l'italique, les capitales deviennent des lettrines | 3 (Épreuve, Tirage, Aplat), chacune en regular et lettrines | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/shearline/) · [Zip](shearline/SHEARLINE.zip) · [Dossier](shearline/) |
 | **ШКВАЛ (SHKVAL)** | Overshoot qui parle russe : le latin d'Overshoot et un alphabet russe construit avec ses pièces | 9 (Shtil → Shtorm, le vent en russe) + 9 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/shkval/) · [Zip](shkval/SHKVAL.zip) · [Dossier](shkval/) |
+| **ТРЕНИКИ (TRENIKI)** | Calebard qui parle russe : le latin de base de Calebard et un alphabet russe construit avec ses traits ; « треники », le bas de jogging | 11 (Progulka → Chempion, de la balade au champion) + Shatun et Vrazvalku (lettres qui penchent et qui tournent) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/treniki/) · [Zip](treniki/TRENIKI.zip) · [Dossier](treniki/) |
 
 ## Organisation
 
@@ -52,7 +53,7 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/
+drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/, treniki/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BALLASTLINE, ANISOTROPE, ISOSLAB, ISOCIRCLE, LAMINAR, SHEARLINE et SHKVAL : LICENCE.txt)
