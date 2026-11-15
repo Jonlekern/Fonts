@@ -48,6 +48,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | espresso-440 | Bienne (on ne touche pas) | Un espresso, s'il vous plaît | Café 4.20.- · Pain au chocolat 2.60.- · Bagel 6.50.- · abcdefghijklm nopqrstuvwxyz · ABCDEFGHIJKLM NOPQRSTUVWXYZ · 0123456789 Bagel 6.50.- · Caffè, così buono · S'il te plaît ☀ · Un café ☕ 4.40.- · Truffes, Lebkuchen · une tresse au beurre · CAFÉ, BAGEL · Tarte, Fondant |
 | shkval | Russie | Байкал | САРМА · ЭЛЬБРУС · ЮЖНО-САХАЛИНСК · Камчатка · Енисей, ёлка · Владивосток |
 | treniki | Russie (oblast de Samara) | ТОЛЬЯТТИ | ЖИГУЛИ · САМАРА · СЫЗРАНЬ · Волга · Жигулёвское море · Самарская Лука · моло́ко |
+| kinovar | Russie (les villes les plus anciennes, autour de Novgorod) | Новгород | НОВГОРОД · СТАРАЯ ЛАДОГА · БЕЛООЗЕРО · ТИХВИН · ЧУДОВО · Великий Новгород · Псков, Изборск, Муром · Uncialis · KINOVAR · 1056—1057 · 0123456789 № ₽ : ; ! |
 | karkas | Russie (villes et barrages du béton soviétique), en lettres latines | Krasnoyarsk | KRASNOYARSK · MAGNITOGORSK · MURMANSK · CHELYABINSK · ROSTOV · TVER · ESSENTUKI · TOMMOT · LIPETSK · БЕТОН · КАРКАС · ВЯЗЬ · 1147 · 2026 · 0123456789 |
 | karkas-classic | Russie (monastères et villes des manuscrits), en lettres latines | Ferapontovo | TIKHVIN · VALAAM · BELOZERSK · KIRILLOV · ALEKSANDROV · ВЯЗЬ · МОСКВА · 0123456789 |
 | karkas-display | Russie (villes du Nord et de Sibérie), en lettres latines | Norilsk | MAGADAN · TOMSK · ARKHANGELSK · VORKUTA · YAKUTSK · NIZHNIY NOVGOROD · IRKUTSK · KAZAN · ANADYR · DUDINKA |
