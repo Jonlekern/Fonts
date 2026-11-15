@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'
 from kar_core import *
 from kar_letters import Gl
 
-LM = set('BDEFHIKLMNPRU') | set('БВГЕКМНПРЦШЩЫЬЮИ')     # fût entier à gauche
+LM = set('BDEFHKLMNPRU') | set('БВГЕКМНПРЦШЩЫЬЮИ')      # fût entier à gauche (pas le I : partagé, il disparaîtrait dans le fût voisin)
 RM = set('AHMNUJY') | set('АЛИМНПШЫЯЧУ')               # fût entier à droite
 TWIN = {'А': 'A', 'В': 'B', 'Е': 'E', 'К': 'K', 'М': 'M', 'Н': 'H', 'О': 'O', 'Р': 'P', 'С': 'C', 'Т': 'T', 'Х': 'X', 'У': 'Y'}
 

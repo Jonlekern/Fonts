@@ -12,7 +12,7 @@ La vyaz latine n'a jamais existé : ce n'est pas la copie d'un modèle, c'est la
 - **Le trait de plume.** Les fûts sont épais et s'évasent en coin en haut et en bas. Les barres et les obliques sont des traits fins, terminés par un petit coin.
 - **Les formes anciennes.** Le A a un fût droit et une oblique fine, comme le А de la vyaz. Le O, le C, le D, le G et le Q sont en amande pointue. Le B, le P et le R portent de petites boucles pointues. Le Y est un fût avec une oblique fine, comme le У.
 - **Les nœuds.** Un losange au milieu des longs fûts du I, du T, du L et du P.
-- **Les liaisons** (feature `liga`, active par défaut) : fût partagé, lettre logée sur le pied du L et sous les bras du F, lettres sous la barre du T, lettres doubles empilées. **658 ligatures** par graisse : 343 pour le latin (dont 46 avec une lettre accentuée) et 315 pour le russe.
+- **Les liaisons** (feature `liga`, active par défaut) : fût partagé, lettre logée sur le pied du L et sous les bras du F, lettres sous la barre du T, lettres doubles empilées. **651 ligatures** par graisse : 336 pour le latin (dont 46 avec une lettre accentuée) et 315 pour le russe.
 - **ss01** : les lettres doubles qui ont deux fûts en partagent un (HH, MM, NN, UU).
 - **Chiffres tabulaires**, avec les mêmes pleins et déliés. Le 0 a les coins coupés.
 - **Crénage** automatique par profils. Les chiffres ne se crénent jamais.
@@ -20,7 +20,7 @@ La vyaz latine n'a jamais existé : ce n'est pas la copie d'un modèle, c'est la
 
 ## Ce qui diffère de KARKAS
 
-- Le C et le P sont en courbes : ils ne logent pas de lettre. Le A n'a qu'un fût, à droite ; le O et le D n'en donnent pas. Il y a donc moins de liaisons (658 contre 948).
+- Le C et le P sont en courbes : ils ne logent pas de lettre. Le A n'a qu'un fût, à droite ; le O et le D n'en donnent pas. Il y a donc moins de liaisons (651 contre 948).
 - Pas de losanges dans les creux (`ss02`) : les fûts portent déjà des nœuds.
 - Les chiffres, la ponctuation et les signes reprennent le dessin de KARKAS avec les pleins et déliés de la Classic ; leurs fûts n'ont pas les bouts en coin.
 - C'est une police de titre : les traits fins disparaissent en petit.
