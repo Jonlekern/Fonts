@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KARKAS CLASSIC</title>
+<meta name="description" content="KARKAS CLASSIC : la version manuscrite de KARKAS, la vyaz en lettres latines. Lettres redessinées d'après les titres des manuscrits russes : fûts épais à bouts en coin, traits fins, boucles pointues, nœuds. 658 ligatures automatiques, 3 graisses. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"KARKAS Classic";font-weight:300;font-display:swap;src:url(fonts/woff2/KARKASClassic-Skoropis.woff2) format("woff2")}
+@font-face{font-family:"KARKAS Classic";font-weight:500;font-display:swap;src:url(fonts/woff2/KARKASClassic-Poluustav.woff2) format("woff2")}
+@font-face{font-family:"KARKAS Classic";font-weight:800;font-display:swap;src:url(fonts/woff2/KARKASClassic-Ustav.woff2) format("woff2")}
+/* KARKAS CLASSIC partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,#tester-text,.glyphs div,.demo .row span,.titres span{font-family:"KARKAS Classic",var(--sans),sans-serif}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:36px;font-weight:800;line-height:1}
+section > .wrap > h2{font-weight:500;font-size:clamp(64px,10vw,116px);line-height:1.15}
+.step h3{font-weight:500;font-size:clamp(48px,5.4vw,66px);line-height:1.15}
+.card b{font-weight:500;font-size:clamp(40px,8vw,56px);line-height:1.15;overflow-wrap:anywhere}
+.hero h1{font-family:"KARKAS Classic";font-weight:800;font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/2.0),300px);line-height:1.1}
+.titres{margin:10px 0 6px}
+.titres span{display:block;font-weight:500;font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter))/1.5),200px);line-height:1.2;white-space:nowrap}
+.wrow .sample{font-size:min(calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/1.9),170px);line-height:1.2;white-space:nowrap}
+@media (max-width:640px){.wrow .sample{font-size:min(calc((100vw - 2*var(--gutter))/1.9),170px)}}
+.demo .row span{line-height:1.2;white-space:pre}
+.glyphs div{font-size:56px}
+#tester-text{line-height:1.25}
+.how li{margin:6px 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">KARKAS</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#liaisons">Liaisons</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Vyaz latine manuscrite</p>
+      <h1 style="margin-top:18px">KARKAS CLASSIC</h1>
+      <div class="titres" aria-label="Exemple"><span>Romainmôtier</span></div>
+      <div class="lede">
+        <p><strong>La vyaz des scribes, en lettres latines.</strong> Les lettres de KARKAS sont redessinées d'après les titres des manuscrits russes : <strong>des fûts épais à bouts en coin</strong>, des traits fins, de petites boucles pointues, des nœuds sur les longs fûts. Elles sont six à huit fois plus hautes que larges et <strong>se lient toutes seules</strong>. <strong>3 graisses</strong> : Skoropis, Poluustav, Ustav.</p>
+      </div>
+      <div class="facts">
+        <span>Vyaz latine manuscrite</span><span>3 graisses</span><span>Skoropis → Ustav</span><span>Capitales seulement</span><span>658 ligatures automatiques</span><span>Pleins et déliés</span><span>Alphabet russe en bonus</span><span>Police de titre</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Les trois écritures des scribes russes. Skoropis, la cursive rapide. Poluustav, la demi-onciale des livres. Ustav, l'onciale solennelle.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Majuscules ou minuscules, tu obtiens les mêmes capitales.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="20" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">C'est une police de titre : les traits fins disparaissent en petit. Essaie aussi du russe : ВЯЗЬ.</p>
+    </div>
+  </section>
+
+  <section id="liaisons">
+    <div class="wrap">
+      <h2>Couper les liaisons</h2>
+      <p class="intro">Les liaisons sont des ligatures : elles sont actives partout par défaut. Pour retrouver les lettres séparées, il suffit de couper les ligatures.</p>
+      <ul class="how">
+        <li><strong>Word :</strong> Police, Paramètres avancés, Ligatures : Aucune.</li>
+        <li><strong>InDesign, Illustrator, Photoshop, Affinity :</strong> décoche « Ligatures » dans le panneau Caractère ou OpenType.</li>
+        <li><strong>Figma :</strong> panneau Texte, détails, décoche les ligatures.</li>
+        <li><strong>Sur un site :</strong> <code>font-variant-ligatures: none</code>.</li>
+      </ul>
+      <p class="intro">Une option en plus : <strong>ss01</strong> fait partager un fût aux lettres doubles (HH, MM, NN, UU) au lieu de les empiler.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Capitales, chiffres, ponctuation, accents d'Europe, et l'alphabet russe.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>Des titres des manuscrits russes.</strong> La vyaz (вязь) habille les titres des livres depuis la fin du XIVe siècle : une bande de lettres très hautes, écrites à la plume large, souvent en rouge. Elle n'a jamais existé en latin. KARKAS CLASSIC transpose ses gestes, lettre par lettre.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>Le trait de plume</h3>
+            <p>Les fûts sont <strong>épais et s'évasent en coin</strong> en haut et en bas, comme un trait de plume large. Les barres et les obliques sont <strong>des traits fins</strong>, terminés par un petit coin.</p>
+          </div>
+          <div class="demo" aria-label="Le trait de plume">
+            <div class="row"><small>Skoropis</small><span style="font-weight:300;font-size:min(calc(100cqw/1.1),170px)">HAUTERIVE</span></div>
+            <div class="row"><small>Ustav</small><span style="font-weight:800;font-size:min(calc(100cqw/1.45),170px)">HAUTERIVE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les formes anciennes</h3>
+            <p>Le A a <strong>un fût droit et une oblique fine</strong>, comme le А de la vyaz. Le O, le C, le D et le Q sont <strong>en amande pointue</strong>. Le B, le P et le R portent de petites boucles pointues.</p>
+          </div>
+          <div class="demo" aria-label="Les formes anciennes">
+            <div class="row"><small>Poluustav</small><span style="font-weight:500;font-size:min(calc(100cqw/1.0),170px)">PAYERNE</span></div>
+            <div class="row"><small>Ustav</small><span style="font-weight:800;font-size:min(calc(100cqw/1.2),170px)">BELLELAY</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les nœuds</h3>
+            <p>Un losange marque le milieu des longs fûts : sur le I, le T, le L et le P. C'est le « nœud » des scribes, qui casse la monotonie d'un long trait droit.</p>
+          </div>
+          <div class="demo" aria-label="Les nœuds">
+            <div class="row"><small>Poluustav</small><span style="font-weight:500;font-size:min(calc(100cqw/1.1),170px);font-variant-ligatures:none">DISENTIS</span></div>
+            <div class="row"><small>Ustav</small><span style="font-weight:800;font-size:min(calc(100cqw/1.4),170px);font-variant-ligatures:none">DISENTIS</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les liaisons</h3>
+            <p>Ce sont celles de KARKAS : <strong>le fût partagé</strong>, la lettre logée sur le pied du L ou sous les bras du F, la barre du T qui abrite ses voisines, les lettres doubles empilées. 658 en tout.</p>
+          </div>
+          <div class="demo" aria-label="Les liaisons">
+            <div class="row"><small>sans</small><span style="font-weight:500;font-size:min(calc(100cqw/1.8),170px);font-variant-ligatures:none">SAINT-MAURICE</span></div>
+            <div class="row"><small>avec</small><span style="font-weight:500;font-size:min(calc(100cqw/1.8),170px)">SAINT-MAURICE</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le russe</h3>
+            <p>La vyaz vient du cyrillique : l'alphabet russe est donc là, dans le même dessin, avec ses fûts partagés, ses lettres logées sous le Г et autour du Т.</p>
+          </div>
+          <div class="demo" aria-label="Le russe">
+            <div class="row"><small>Ustav</small><span lang="ru" style="font-weight:800;font-size:min(calc(100cqw/2.3),170px)">ВЯЗЬ · МОСКВА</span></div>
+            <div class="row"><small>Skoropis</small><span lang="ru" style="font-weight:300;font-size:min(calc(100cqw/1.7),170px)">ВЯЗЬ · МОСКВА</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les chiffres</h3>
+            <p><strong>Tous de la même chasse</strong>, avec les mêmes pleins et déliés. Le 0 a les coins coupés pour ne pas le confondre avec le O en amande.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres">
+            <div class="row"><small>Ustav</small><span style="font-weight:800;font-size:min(calc(100cqw/2.1),170px)">0123456789</span></div>
+            <div class="row"><small>Skoropis</small><span style="font-weight:300;font-size:min(calc(100cqw/1.5),170px)">0123456789</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="KARKASClassic.zip" download><b>KARKASClassic.zip</b><span>Les 3 fichiers (OTF) + licence + À LIRE</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas-classic/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/karkas-classic/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "KARKAS Classic";
+  font-weight: 500;
+  src: url(KARKASClassic-Poluustav.woff2)
+       format("woff2"); }
+/* … pareil pour Skoropis (300) et Ustav (800).
+   font-variant-ligatures: none → lettres séparées.
+   font-feature-settings: "ss01"
+   → lettres doubles à fût partagé. */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>KARKAS CLASSIC © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "KARKAS Classic",
+  sample: "Romainmôtier",
+  styles: [
+    {n:"Skoropis",w:300,label:"fin"},{n:"Poluustav",w:500,label:"moyen"},{n:"Ustav",w:800,label:"gras"}
+  ],
+  testerDefault: 1,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞ" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%‰$€£¥¢©®™§¶†°+−×÷=<>~^¹²³¼½¾№" +
+    "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+  glyphChips: [0, 1, 2],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+</body>
+</html>

@@ -24,6 +24,10 @@ def shared(w, s, y0=0, y1=CAP, inks=None):
         x += g.w - S
     return Gl(U(*parts), x + S, s[0] in LM, s[-1] in RM)
 
+# réglages que KARKAS Classic remplace : le dessin d'un fût dans une liaison, et les lettres qui en logent une autre
+MAST = lambda x, y0, y1, S: rect(x, y0, x + S, y1)
+NESTS = 'LCFP'
+
 def small(ch, w, y0, y1):
     return letter(ch, w, y0, y1, nest=True)
 
@@ -32,19 +36,19 @@ def nest(w, a, b, y0=0, y1=CAP):
     S, B, g, W = w.S, w.B, w.g, w.W; h = y1 - y0; yb = y0 + round(0.68 * h); x = S + g
     if a == 'L':
         s = small(b, w, y0 + B + g, y1)
-        return Gl(U(rect(0, y0, S, y1), rect(0, y0, x + s.w, y0 + B), mv(s.ink, x)), x + s.w, True, False)
+        return Gl(U(MAST(0, y0, y1, S), rect(0, y0, x + s.w, y0 + B), mv(s.ink, x)), x + s.w, True, False)
     if a == 'C':
         s = small(b, w, y0 + B + g, y1 - B - g)
-        return Gl(U(rect(0, y0, S, y1), rect(0, y0, x + s.w, y0 + B), rect(0, y1 - B, x + s.w, y1), mv(s.ink, x)), x + s.w, True, False)
+        return Gl(U(MAST(0, y0, y1, S), rect(0, y0, x + s.w, y0 + B), rect(0, y1 - B, x + s.w, y1), mv(s.ink, x)), x + s.w, True, False)
     if a == 'Г':
         s = small(b, w, y0, y1 - B - g)
-        return Gl(U(rect(0, y0, S, y1), rect(0, y1 - B, x + s.w, y1), mv(s.ink, x)), x + s.w, True, False)
+        return Gl(U(MAST(0, y0, y1, S), rect(0, y1 - B, x + s.w, y1), mv(s.ink, x)), x + s.w, True, False)
     if a == 'F':
         s = small(b, w, y0, yb - B / 2 - g)
-        return Gl(U(rect(0, y0, S, y1), rect(0, y1 - B, x + s.w, y1), rect(0, yb - B / 2, x + s.w, yb + B / 2), mv(s.ink, x)), x + s.w, True, False)
+        return Gl(U(MAST(0, y0, y1, S), rect(0, y1 - B, x + s.w, y1), rect(0, yb - B / 2, x + s.w, yb + B / 2), mv(s.ink, x)), x + s.w, True, False)
     if a == 'P':
         s = small(b, w, y0, yb - B / 2 - g); r = x + s.w
-        return Gl(U(rect(0, y0, S, y1), rect(0, y1 - B, r, y1), rect(0, yb - B / 2, r, yb + B / 2), rect(r - S, yb - B / 2, r, y1), mv(s.ink, x)), r, True, False)
+        return Gl(U(MAST(0, y0, y1, S), rect(0, y1 - B, r, y1), rect(0, yb - B / 2, r, yb + B / 2), rect(r - S, yb - B / 2, r, y1), mv(s.ink, x)), r, True, False)
     raise KeyError(a)
 
 def tee(w, a, b, y0=0, y1=CAP):
@@ -53,7 +57,7 @@ def tee(w, a, b, y0=0, y1=CAP):
     if a:
         s = small(a, w, y0, y1 - B - g); parts.append(s.ink); x = s.w + g
     else: x = (W - S) / 2
-    parts.append(rect(x, y0, x + S, y1)); xs = x; x += S
+    parts.append(MAST(x, y0, y1, S)); xs = x; x += S
     if b:
         s = small(b, w, y0, y1 - B - g); parts.append(mv(s.ink, x + g)); x += g + s.w
     else: x += (W - S) / 2
@@ -69,7 +73,7 @@ def stack(w, ch, y0=0, y1=CAP):
 def groups():
     """nom du groupe -> (sorte, lettres)"""
     L = {}
-    for alpha, tee_, nests in ((AZ, 'T', 'LCFP'), (RU.replace('Й', ''), 'Т', 'Г')):       # le Й garde sa brève : pas de liaison
+    for alpha, tee_, nests in ((AZ, 'T', NESTS), (RU.replace('Й', ''), 'Т', 'Г')):       # le Й garde sa brève : pas de liaison
         for a in alpha:
             for b in alpha:
                 if a in RM and b in LM and a != b: L[a + b] = ('share', a + b)

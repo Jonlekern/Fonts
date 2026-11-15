@@ -14,7 +14,7 @@ from kar_liga import groups, draw, shared, AZ
 from kar_signs import digits, signs, marks, accented, extras, TOP, BOT, SPACING, MGAP
 from kar_charset import CHARSET
 
-FAMILY = 'KARKAS'; SLUG = 'karkas'; VERSION = '1.000'
+FAMILY = 'KARKAS'; PSFAM = 'KARKAS'; SLUG = 'karkas'; VERSION = '1.000'
 TYPO_ASC, TYPO_DESC = 1000, -200
 WIN_ASC, WIN_DESC = 1000, 200
 ACC_R = [0xC9, 0xC8, 0xCA, 0xCB, 0xC0, 0xC2, 0xC4, 0xD4, 0xD6, 0xD9, 0xDB, 0xDC, 0xC7]     # lettres accentuées qui reçoivent un fût partagé
@@ -106,16 +106,26 @@ def build(w):
     return out, cmap, info
 
 def clean(p, amin=12):
+    """contours fusionnés, points arrondis, points alignés retirés ; les courbes (KARKAS Classic) sont gardées telles quelles"""
     try: p.simplify(fix_winding=True, clockwise=False)
     except Exception: return p
     rp = RecordingPen(); p.draw(rp); out = P(); pen = out.getPen(); cur = []; keep = []
     for op, a in rp.value:
-        if op == 'moveTo': cur = [a[0]]
-        elif op == 'lineTo': cur.append(a[0])
+        if op == 'moveTo': cur = [(op, a)]
         elif op in ('closePath', 'endPath'): keep.append(cur); cur = []
+        else: cur.append((op, a))
+    R = lambda q: (round(q[0]), round(q[1]))
     def area(pts): return abs(sum(pts[i][0] * pts[(i + 1) % len(pts)][1] - pts[(i + 1) % len(pts)][0] * pts[i][1] for i in range(len(pts))) / 2) if len(pts) > 2 else 0
-    for pts in keep:
-        pts = [(round(x), round(y)) for x, y in pts]
+    for c in keep:
+        if any(op in ('curveTo', 'qCurveTo') for op, a in c):
+            if area([q for op, a in c for q in a]) < amin: continue      # l'aire se compte avec les poignées : une amande n'a que deux points sur la courbe
+            last = None
+            for op, a in c:
+                a = tuple(R(q) for q in a)
+                if op == 'lineTo' and a[0] == last: continue
+                getattr(pen, op)(*a); last = a[-1]
+            pen.closePath(); continue
+        pts = [R(a[0]) for op, a in c]
         if len(pts) > 1 and pts[0] == pts[-1]: pts = pts[:-1]
         changed = True
         while changed and len(pts) > 3:
@@ -138,6 +148,11 @@ def profile(p, adv):
     for op, a in rp.value:
         if op == 'moveTo': cur = st = a[0]
         elif op == 'lineTo': segs.append((cur, a[0])); cur = a[0]
+        elif op == 'curveTo':
+            p0 = cur
+            for i in range(1, 9):
+                t = i / 8; m = 1 - t; q = tuple(m**3 * p0[j] + 3 * m * m * t * a[0][j] + 3 * m * t * t * a[1][j] + t**3 * a[2][j] for j in (0, 1))
+                segs.append((cur, q)); cur = q
         elif op == 'closePath':
             if cur != st: segs.append((cur, st))
     Lp, Rp = [], []
@@ -174,11 +189,11 @@ def features(order, info, anc):
     lig = sorted(info['liga'], key=lambda x: (-len(x[1]), x[0]))
     f.append('languagesystem DFLT dflt; languagesystem latn dflt; languagesystem cyrl dflt;')
     f.append('lookup LIGA {'); f += [f'  sub {" ".join(s)} by {n};' for n, s in lig if n in go and all(c in go for c in s)]; f.append('} LIGA;')
-    f.append('lookup SS01 {'); f += [f'  sub {a} by {b};' for a, b in info['ss01']]; f.append('} SS01;')
-    f.append('lookup SS02 {'); f += [f'  sub {a} by {b};' for a, b in info['ss02']]; f.append('} SS02;')
-    f += ['feature liga { lookup LIGA; } liga;',
-          'feature ss01 { featureNames { name "Lettres doubles : fût partagé"; }; lookup SS01; } ss01;',
-          'feature ss02 { featureNames { name "Losanges dans les creux"; }; lookup SS02; } ss02;']
+    f.append('feature liga { lookup LIGA; } liga;')
+    for tag, nom_ in (('ss01', 'Lettres doubles : fût partagé'), ('ss02', 'Losanges dans les creux')):
+        if info[tag]:                                    # KARKAS Classic n'a pas de losanges : ses fûts portent déjà des nœuds
+            f.append(f'lookup {tag.upper()} {{'); f += [f'  sub {a} by {b};' for a, b in info[tag]]; f.append(f'}} {tag.upper()};')
+            f.append(f'feature {tag} {{ featureNames {{ name "{nom_}"; }}; lookup {tag.upper()}; }} {tag};')
     tm = [f'uni{c:04X}' for c in TOP]; bm = [f'uni{c:04X}' for c in BOT]
     g = [f'markClass [{" ".join(tm)}] <anchor 0 {CAP + MGAP}> @TOP;', f'markClass [{" ".join(bm)}] <anchor 0 0> @BOT;', 'feature mark {']
     for n, (x, xb) in anc.items(): g.append(f'  pos base {n} <anchor {x} {CAP + MGAP}> mark @TOP <anchor {xb} 0> mark @BOT;')
@@ -193,7 +208,7 @@ def features(order, info, anc):
 
 def write(nom, outf):
     w = WEIGHTS[nom]; gl, cmap, info = build(w)
-    psn = f'{FAMILY}-{nom}'; fam = f'{FAMILY} {nom}'
+    psn = f'{PSFAM}-{nom}'; fam = f'{FAMILY} {nom}'
     uni = {n: min(c for c, m in cmap.items() if m == n) for n in set(cmap.values())}
     based = sorted(uni, key=lambda n: uni[n])
     order = ['.notdef'] + based + sorted(n for n in gl if n not in uni)

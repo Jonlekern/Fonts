@@ -8,7 +8,7 @@ Réinterpréter la **vyaz** (вязь), l'écriture russe entrelacée des titres
 
 Trois versions sont prévues, avec la même liste de liaisons : **Modern** (celle-ci, la première), puis Classic (dessin à la plume) et Display (expérimentale). Ce plan couvre la Modern.
 
-État : la **Modern** est dans `karkas/`. La **Display** est dans `karkas-display/` (liaisons qui tournent, bande de béton, mot-bloc). La Classic reste à faire.
+État : la **Modern** est dans `karkas/`. La **Display** est dans `karkas-display/` (liaisons qui tournent, bande de béton, mot-bloc). La **Classic** est dans `karkas-classic/` (direction « le manuscrit »).
 
 ## Ce que la vraie vyaz nous donne
 

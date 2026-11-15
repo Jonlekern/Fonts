@@ -48,6 +48,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | shkval | Russie | Байкал | САРМА · ЭЛЬБРУС · ЮЖНО-САХАЛИНСК · Камчатка · Енисей, ёлка · Владивосток |
 | treniki | Russie (oblast de Samara) | ТОЛЬЯТТИ | ЖИГУЛИ · САМАРА · СЫЗРАНЬ · Волга · Жигулёвское море · Самарская Лука · моло́ко |
 | karkas | Suisse du béton (barrages et bâtiments brutalistes) | Grande Dixence | GRANDE DIXENCE · HÉRÉMENCE · GOETHEANUM · CONTRA · ATELIER 5 · HALEN · ÉMOSSON · OBERAAR · LE LIGNON · БЕТОН · КАРКАС · ВЯЗЬ · 285 M · 1961 · 0123456789 |
+| karkas-classic | Abbayes de Suisse (les lieux des manuscrits) | Romainmôtier | HAUTERIVE · PAYERNE · BELLELAY · DISENTIS · SAINT-MAURICE · ВЯЗЬ · МОСКВА · 0123456789 |
 | karkas-display | Suisse du béton, suite (barrages et bâtiments brutalistes) | Luzzone | LUZZONE · FLAMATT · ZERVREILA · MAUVOISIN · THYON 2000 · BÉTON BRUT · MOIRY · CLEUSON · TRIEMLI · SPITALLAMM |
 | dotsignal | Bienne (on ne touche pas) | Prochain bus : 3' | 1 Stades 3' · 6 Centre hospitalier 5' · 9 Ecoles Tilleul 10' · 8 Fuchsenried 4' · 🚌 Départ · 17:10 · 17:12 · 18:41 · 19:08 |
 
