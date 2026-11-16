@@ -31,6 +31,7 @@ Page : **https://jonlekern.github.io/Fonts/malabard/**
 4. Sept graisses, traits amincis ou épaissis à partir de la Medium. En gras, les lettres s'élargissent un peu (jusqu'à 114 %).
 5. Points, accents et blancs gardés en gras ; jonctions gardées en fin.
 6. Une italique pour chaque graisse, penchée à 12°, avec un crénage qui empêche les lettres de se toucher.
+7. Le crénage est en format moderne (GPOS), lu par tous les logiciels.
 
 ## Fichiers
 
