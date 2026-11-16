@@ -6,7 +6,7 @@ from fontTools.otlLib.builder import buildStatTable
 from fontTools.misc.treeTools import build_n_ary_tree  # noqa: F401 (fontTools présent)
 from gp_base import charger_base
 from gp_tranches import decouper
-from gp_masters import master_band, vitesse, glyphe, BAND, ETIRE, PENTE
+from gp_masters import master_band, vitesse, glyphe, BAND, ETIRE, PENTE, PIVOT
 
 FAMILLE = "Guepard"
 CREDITS = "Afrotype, Seyi Olusanya, Eyiyemi Adegbite, David Udoh, Mirko Velimirović (Danfo) ; LaFleurStudio (Guépard)"
@@ -31,7 +31,7 @@ def _gpos_vitesse(f):
                     setattr(o, a, round(getattr(o, a) * ETIRE))
             return
         if cls == "Anchor":
-            o.XCoordinate = round(o.XCoordinate * ETIRE + PENTE * o.YCoordinate)
+            o.XCoordinate = round(o.XCoordinate * ETIRE + PENTE * (o.YCoordinate - PIVOT))
             return
         if isinstance(o, (list, tuple)):
             for x in o:
@@ -81,12 +81,12 @@ def _masters():
     gs = base.getGlyphSet()
     tranches = {n: decouper(gs, n) for n in base.getGlyphOrder()}
     out = {}
-    for b, (ouv, dec) in BAND.items():
+    for b, prm in BAND.items():
         for v in (0, 100):
             f = charger_base()
             glyf, hmtx = f["glyf"], f["hmtx"]
             for n, tr in tranches.items():
-                c = master_band(tr, ouv, dec)
+                c = master_band(tr, *prm)
                 if v:
                     c = vitesse(c)
                 g = glyphe(c)
@@ -135,6 +135,7 @@ def fabriquer(dossier):
     for rec in list(vf["name"].names):
         if rec.platformID == 1:
             vf["name"].names.remove(rec)
+    vf["name"].removeUnusedNames(vf)
     _prep(vf)
     sortie = dossier / f"{FAMILLE}[VITE,BAND].ttf"
     vf.save(sortie)

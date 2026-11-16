@@ -27,8 +27,6 @@ def fixes(vf_path):
         for rec in list(nt.names):
             if rec.nameID == 25:
                 nt.names.remove(rec)
-        if "STAT" in f:
-            del f["STAT"]
         nt.removeUnusedNames(f)
         s = dossier / f"{FAMILLE}-{ps}.ttf"
         f.save(s)

@@ -29,8 +29,8 @@ Pour les logiciels qui ne gèrent pas les polices variables : 6 fichiers TTF dan
 ## Ce qu'on a changé dans Danfo
 
 - **L'axe d'origine est retiré.** Danfo est figée à ELSH 0, sa forme lisse.
-- **Le bas noir est coupé en tranches** à 110, 220 et 330 unités. Fermées, les tranches se chevauchent de 4 unités. Ouvertes, elles laissent des bandes de 18 unités. Au glitch, elles glissent de 60 unités en alternance.
-- **La vitesse** est une pente (tan 12°) et un étirement horizontal de 15 %, appliqués aux contours, aux chasses, au crénage et aux ancres des accents.
+- **Le bas noir est coupé en tranches** à 110, 236 et 352 unités (hors des détails des lettres, comme l'encoche du Q). Fermées, les tranches se chevauchent de 4 unités. Ouvertes, elles laissent des bandes de 18 unités. Au glitch, elles glissent de 110 unités en alternance, et chacune penche fort à l'opposé de sa voisine : les bouts partent en lame. Les signes sans bas noir (guillemets, point, virgule, ©, exposants…) ne sont pas tranchés.
+- **La vitesse** est une pente (tan 12°) et un étirement horizontal de 15 %, autour de la mi-hauteur des capitales, appliqués aux contours, aux chasses, au crénage et aux ancres des accents.
 - Toutes les versions viennent du même découpage. Elles ont donc exactement les mêmes points, et l'interpolation est propre partout.
 - Le deux-points modificateur (U+A789), qui avait une chasse nulle dans Danfo, prend celle du deux-points.
 

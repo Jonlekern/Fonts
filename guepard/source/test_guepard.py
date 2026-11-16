@@ -134,3 +134,34 @@ def test_fixes():
         f = TTFont(p)
         assert "fvar" not in f
         assert f["name"].getDebugName(17) in {"Regular", "Course", "Bandes", "Course Bandes", "Glitch", "Course Glitch"}
+
+
+def _propre(contours):
+    """aire signée brute == aire après nettoyage pathops (pas de contour qui se touche ou se croise)"""
+    p = pathops.Path(); pen = p.getPen()
+    for c in contours:
+        pen.moveTo(c[0][:2])
+        for x, y, on in c[1:]:
+            pen.lineTo((x, y))
+        pen.closePath()
+    brut = abs(p.area)
+    q = pathops.Path(); p.draw(q.getPen()); q.simplify()
+    return brut, abs(q.area)
+
+
+def test_lettres_sans_accroc(base, gs):
+    cm = base.getBestCmap()
+    for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&":
+        tr = decouper(gs, cm[ord(ch)])
+        for b in (50, 100):
+            brut, net = _propre(master_band(tr, *BAND[b]))
+            assert abs(brut - net) / net < 0.01, (ch, b, brut, net)
+
+
+def test_signes_hauts_intacts(base, gs):
+    cm = base.getBestCmap()
+    for ch in "“‘.,©ªº•○":
+        tr = decouper(gs, cm[ord(ch)])
+        ref = [[(round(x), round(y)) for x, y, on in c] for c in master_band(tr, *BAND[0])]
+        for b in (50, 100):
+            assert [[(round(x), round(y)) for x, y, on in c] for c in master_band(tr, *BAND[b])] == ref, (ch, b)

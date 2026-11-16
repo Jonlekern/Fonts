@@ -6,7 +6,8 @@ Les 3 tranches basses (rangs 0, 1, 2) sont prises dans le bas noir ; le rang 3 e
 import pathops
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 
-COUPES = (110, 220, 330)
+COUPES = (110, 236, 352)   # placées hors des détails des lettres (encoche du Q à 217…)
+BAS_MAX, HAUT_MIN = 30, 450  # seuls les signes qui ont le bas noir (du sol à 450) sont tranchés
 RECOUVRE = 4
 INF = 10000
 
@@ -63,6 +64,9 @@ def decouper(glyphset, nom):
     """Liste de 4 tranches (rang 0..3), chacune une liste de contours [[x, y, on], ...]."""
     p = _chemin(glyphset, nom)
     tranches = []
+    if p.bounds is None or p.bounds[1] > BAS_MAX or p.bounds[3] < HAUT_MIN:
+        p2 = pathops.Path(); p.draw(p2.getPen()); p2.simplify(clockwise=True)
+        return [[], [], [], _points(p2)]
     for rang in range(len(COUPES) + 1):
         bas, haut = bornes_fermees(rang)
         t = pathops.op(p, _rect(bas, haut), pathops.PathOp.INTERSECTION, clockwise=True)
