@@ -87,6 +87,7 @@ Pour une police faite pour écrire le russe (comme ШКВАЛ) :
   - les mots d'exemple pris dans **`MOTS.md`** : un canton suisse par police, Bienne pour les polices biennoises, le même mot dans chaque boîte qui compare des graisses, jamais un mot déjà pris ;
   - les sous-titres ne changent pas une fois validés.
 - La carte sur l'accueil `index.html` : le nom, l'exemple, la famille pour le filtre (`data-fam`), à sa place dans l'ordre.
+- Puis `python3 outils/accueil.py` : l'accueil charge des versions réduites des polices (seulement les lettres des cartes, dans `shared/accueil/`). À relancer après chaque changement de carte, sinon une lettre nouvelle s'affiche dans la police du système.
 - Une ligne dans le tableau du `README.md`.
 - Rien ne déborde : on mesure sur ordi (1280 px) et sur téléphone (390 px). Si un mot ne rentre pas, on baisse la taille, on ne coupe pas le mot.
 - Pas d'emoji style Apple sur le site. Adresse publique : info@lafleurstudio.ch.

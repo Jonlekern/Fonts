@@ -51,6 +51,7 @@ index.html              Catalogue des polices (page d'accueil du site)
 shared/
   site.css              Styles communs à toutes les pages
   specimen.js           Spécimen commun : graisses, testeur, caractères
+  accueil/              Polices de l'accueil réduites aux lettres des cartes (outils/accueil.py)
 calebard/, falsard/,    Un dossier par police
 clebard/, malabard/,
 dihedron-008/, nexum/,
