@@ -11,7 +11,7 @@ RACINE = Path(__file__).parent.parent
 
 
 def fixes(vf_path):
-    dossier = RACINE / "fixes"
+    dossier = RACINE / "fonts" / "ttf"
     shutil.rmtree(dossier, ignore_errors=True)
     dossier.mkdir()
     sorties = []
@@ -37,10 +37,11 @@ def fixes(vf_path):
 
 
 def main():
-    vf = fabriquer(RACINE)
+    vf = fabriquer(RACINE / "fonts" / "variable")
     f = TTFont(vf)
     f.flavor = "woff2"
-    f.save(vf.with_suffix(".woff2"))
+    (RACINE / "fonts" / "woff2").mkdir(parents=True, exist_ok=True)
+    f.save(RACINE / "fonts" / "woff2" / vf.with_suffix(".woff2").name)
     fx = fixes(vf)
     ofl = (Path(__file__).parent / "danfo" / "OFL.txt").read_text()
     ofl = ofl.replace("(https://github.com/Afrotype/danfo)\n",

@@ -109,7 +109,7 @@ def test_aire_signee(base, gs):
         assert ref == coin, ch
 
 
-VF = Path(__file__).parent.parent / "Guepard[VITE,BAND].ttf"
+VF = Path(__file__).parent.parent / "fonts" / "variable" / "Guepard[VITE,BAND].ttf"
 
 
 def test_variable():
@@ -128,7 +128,7 @@ def test_variable():
 
 
 def test_fixes():
-    fx = sorted((VF.parent / "fixes").glob("Guepard-*.ttf"))
+    fx = sorted((VF.parent.parent / "ttf").glob("Guepard-*.ttf"))
     assert len(fx) == 6
     for p in fx:
         f = TTFont(p)

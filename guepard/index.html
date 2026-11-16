@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guépard</title>
+<meta name="description" content="GUÉPARD : capitale sport années 70, la première police variable de LaFleurStudio. Deux axes : Vitesse (droite → penchée et étirée) et Bandes (bandes de course dans le bas, puis glitch). Licence libre SIL OFL. Version modifiée de Danfo (Afrotype).">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Guepard";font-display:swap;src:url("fonts/woff2/Guepard[VITE,BAND].woff2") format("woff2")}
+/* Guépard partout sur sa propre page */
+.brand,section > .wrap > h2,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Guepard",var(--sans)}
+.brand{font-size:16px}
+section > .wrap > h2{font-size:clamp(22px,3.4vw,38px);font-variation-settings:"VITE" 100,"BAND" 50}
+.card b{font-size:16px}
+.hero h1{font-family:"Guepard";font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/5.6);line-height:1.05;
+  font-variation-settings:"VITE" 100,"BAND" 50;animation:fonce 3.2s ease-in-out infinite alternate}
+@keyframes fonce{0%{font-variation-settings:"VITE" 0,"BAND" 0}45%{font-variation-settings:"VITE" 100,"BAND" 50}100%{font-variation-settings:"VITE" 100,"BAND" 100}}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/8.2)}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/8.2)}}
+.glyphs div{font-size:26px}
+.axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;margin:0 0 12px}
+.axes label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.axes label b{color:var(--ink);font-weight:600}
+.axes input{width:100%}
+.demo{container-type:inline-size}
+.demo .row{display:flex;flex-direction:column;gap:2px;margin:10px 0}
+.demo .row small{color:var(--muted);font-size:13px}
+.demo .row span{font-size:calc(100cqw/7.4);line-height:1.1;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">GUÉPARD</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Sport années 70 · Police variable</p>
+      <h1 style="margin-top:18px">GUÉPARD</h1>
+      <div class="lede">
+        <p><strong>Capitale sport années 70.</strong> Notre première police variable : deux curseurs au lieu de graisses fixes. <strong>Vitesse</strong> penche et étire les lettres vers l'avant. <strong>Bandes</strong> ouvre trois bandes de course dans le bas noir, et au bout, ça glitche.</p>
+      </div>
+      <div class="facts">
+        <span>Police variable, 2 axes</span><span>6 styles fixes en plus</span><span>Capitales seulement</span><span>Latin étendu</span><span>Licence libre SIL OFL</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="styles">
+    <div class="wrap">
+      <h2>Styles</h2>
+      <p class="intro">Six arrêts sur les deux curseurs. Entre eux, toutes les valeurs existent.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Glisse les curseurs.</p>
+      <div class="tester">
+        <div class="axes">
+          <label><span><b>Vitesse</b> <output id="ov">0</output></span><input id="tv" type="range" min="0" max="100" value="100" aria-label="Vitesse"></label>
+          <label><span><b>Bandes</b> <output id="ob">0</output> <small id="eb"></small></span><input id="tb" type="range" min="0" max="100" value="50" aria-label="Bandes"></label>
+          <label><span><b>Taille</b></span><input id="tz" type="range" min="16" max="200" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">GRAND PRIX 1974 · LAFLEURSTUDIO</div>
+      </div>
+      <p class="hint">Bandes de 0 à 50 : les bandes s'ouvrent. De 50 à 100 : les tranches du bas glissent, ça glitche. Le haut des lettres ne bouge jamais.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Capitales seulement : les minuscules tapées donnent les capitales. Chiffres, accents (Europe centrale comprise), ponctuation, symboles.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Guépard part de Danfo (Afrotype), une capitale inspirée des lettres peintes des bus de Lagos. On l'a transformée avec des scripts Python.</p>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>On efface</h3>
+            <p>Danfo a un axe qui festonne le bas des lettres. On l'a figé à zéro : il reste la forme lisse, avec son gros bas noir.</p>
+          </div>
+          <div class="demo" aria-label="GUÉPARD lisse"><div class="row"><small>Danfo figée, lisse</small><span style="font-variation-settings:'VITE' 0,'BAND' 0">GUÉPARD</span></div></div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>On coupe en tranches</h3>
+            <p>Le bas noir est coupé en trois tranches horizontales, à 110, 220 et 330 unités. Fermées, les tranches se chevauchent de 4 unités : on ne voit aucun joint. Ouvertes, elles laissent trois bandes de 18 unités. Au glitch, elles glissent de 60 unités, une à droite, une à gauche.</p>
+          </div>
+          <div class="demo" aria-label="GUÉPARD avec Bandes à 0, 50 et 100">
+            <div class="row"><small>Bandes 0</small><span style="font-variation-settings:'VITE' 0,'BAND' 0">GUÉPARD</span></div>
+            <div class="row"><small>Bandes 50</small><span style="font-variation-settings:'VITE' 0,'BAND' 50">GUÉPARD</span></div>
+            <div class="row"><small>Bandes 100</small><span style="font-variation-settings:'VITE' 0,'BAND' 100">GUÉPARD</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>On met de la vitesse</h3>
+            <p>À fond, chaque lettre penche de 12° et s'étire de 15 %. Les chasses et le crénage suivent. Comme toutes les versions viennent des mêmes tranches, elles ont les mêmes points : la police peut glisser de l'une à l'autre sans accroc.</p>
+          </div>
+          <div class="demo" aria-label="GUÉPARD avec Vitesse à 0, 50 et 100">
+            <div class="row"><small>Vitesse 0</small><span style="font-variation-settings:'VITE' 0,'BAND' 50">GUÉPARD</span></div>
+            <div class="row"><small>Vitesse 50</small><span style="font-variation-settings:'VITE' 50,'BAND' 50">GUÉPARD</span></div>
+            <div class="row"><small>Vitesse 100</small><span style="font-variation-settings:'VITE' 100,'BAND' 50">GUÉPARD</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Libre et gratuite, même en commercial. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Guepard.zip" download><b>Guepard.zip</b><span>La variable + les 6 styles fixes en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/guepard/fonts/variable"><b>Variable</b><span>Pour Illustrator, InDesign, Figma, macOS</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/guepard/fonts/ttf"><b>Styles fixes</b><span>Pour les logiciels sans variable</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/guepard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Guepard";
+  src: url("Guepard[VITE,BAND].woff2") format("woff2"); }
+h1 { font-family: "Guepard";
+  /* VITE : vitesse 0–100, BAND : bandes 0–100 */
+  font-variation-settings: "VITE" 100, "BAND" 50; }</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Guépard © 2026 LaFleurStudio · version modifiée de Danfo (Afrotype, Seyi Olusanya, Eyiyemi Adegbite, David Udoh, Mirko Velimirović) · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    <span>Construite en Python (fontTools, skia-pathops, HarfBuzz).</span>
+  </div>
+</footer>
+
+<script>
+const fv = (v, b) => `'VITE' ${v}, 'BAND' ${b}`;
+window.SPECIMEN = {
+  family: "Guepard",
+  sample: "GOTTHARD",
+  styles: [
+    {n:"Regular",w:400,label:"Vitesse 0 · Bandes 0",fvs:fv(0,0)},
+    {n:"Course",w:400,label:"Vitesse 100 · Bandes 0",fvs:fv(100,0)},
+    {n:"Bandes",w:400,label:"Vitesse 0 · Bandes 50",fvs:fv(0,50)},
+    {n:"Course Bandes",w:400,label:"Vitesse 100 · Bandes 50",fvs:fv(100,50)},
+    {n:"Glitch",w:400,label:"Vitesse 0 · Bandes 100",fvs:fv(0,100)},
+    {n:"Course Glitch",w:400,label:"Vitesse 100 · Bandes 100",fvs:fv(100,100)}
+  ],
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜÝŸŠŽ" +
+    "ĄĆĘŁŃŚŹŻČĎĚŇŘŤŮĞİŞŐŰ" +
+    ".,:;!?¡¿…'\"‘’“”«»‹›()[]{}/\\|-–—_*•#%&@¶§°" + "$€£¥¢+−×÷=<>~©®™",
+  glyphChips: [0, 3, 5],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+<script>
+(() => {
+  const v = document.getElementById("tv"), b = document.getElementById("tb"), z = document.getElementById("tz");
+  const t = document.getElementById("tester-text");
+  const ov = document.getElementById("ov"), ob = document.getElementById("ob"), eb = document.getElementById("eb");
+  const apply = () => {
+    t.style.fontVariationSettings = fv(v.value, b.value);
+    t.style.fontSize = z.value + "px";
+    ov.textContent = v.value; ob.textContent = b.value;
+    eb.textContent = +b.value === 0 ? "pleine" : +b.value <= 50 ? "bandes" : "glitch";
+  };
+  z.value = Math.min(72, Math.max(16, Math.round((t.clientWidth || 340) / 12)));
+  [v, b, z].forEach(i => i.addEventListener("input", apply));
+  apply();
+})();
+</script>
+</body>
+</html>
