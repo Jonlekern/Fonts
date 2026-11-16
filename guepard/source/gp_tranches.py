@@ -42,6 +42,8 @@ def _points(chemin):
         elif op == "lineTo":
             cur.append([pts[0][0], pts[0][1], 1])
         elif op == "qCurveTo":
+            if cur is None:
+                cur = []
             for p in pts[:-1]:
                 cur.append([p[0], p[1], 0])
             if pts[-1] is not None:

@@ -30,4 +30,6 @@ def charger_base() -> TTFont:
         g = glyf[n]
         if hasattr(g, "program"):
             del g.program
+    # Danfo : le deux-points modificateur (U+A789) a une chasse nulle ; on lui donne celle du deux-points.
+    f["hmtx"]["uniA789"] = f["hmtx"]["colon"]
     return f

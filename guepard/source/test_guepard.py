@@ -107,3 +107,30 @@ def test_aire_signee(base, gs):
         ref = [sens(c) for c in master_band(tr, *BAND[0])]
         coin = [sens(c) for c in vitesse(master_band(tr, *BAND[100]))]
         assert ref == coin, ch
+
+
+VF = Path(__file__).parent.parent / "Guepard[VITE,BAND].ttf"
+
+
+def test_variable():
+    import uharfbuzz as hb
+    f = TTFont(VF)
+    ax = {a.axisTag: (a.minValue, a.defaultValue, a.maxValue) for a in f["fvar"].axes}
+    assert ax == {"VITE": (0, 0, 100), "BAND": (0, 0, 100)}
+    assert len(f["fvar"].instances) == 6
+    face = hb.Face(VF.read_bytes())
+    def larg(v, b):
+        font = hb.Font(face); font.set_variations({"VITE": v, "BAND": b})
+        buf = hb.Buffer(); buf.add_str("GUEPARD"); buf.guess_segment_properties(); hb.shape(font, buf)
+        return sum(p.x_advance for p in buf.glyph_positions)
+    r = larg(100, 100) / larg(0, 0)
+    assert 1.10 < r < 1.20
+
+
+def test_fixes():
+    fx = sorted((VF.parent / "fixes").glob("Guepard-*.ttf"))
+    assert len(fx) == 6
+    for p in fx:
+        f = TTFont(p)
+        assert "fvar" not in f
+        assert f["name"].getDebugName(17) in {"Regular", "Course", "Bandes", "Course Bandes", "Glitch", "Course Glitch"}
