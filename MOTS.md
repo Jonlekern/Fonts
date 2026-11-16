@@ -23,6 +23,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | the-forever-font | Berne | Bundeshaus | a c e h i m n o w y · bdfgjklpqrstuvxz · ABCDEFG 1234567890 · eeeeee oooooo · LAFLEURSTUDIO · Ça, c'est l'été sur l'Aar ! |
 | laminar | Lucerne | Luzern | PILATUS · Hofkirche · Kapellbrücke · Dampfschiff · MATTHÄUS · PILATUS · 1332 — 2026 · 20:45 · KKL · 12 CHF |
 | malabard | Uri | Gotthard | MALABARD |
+| shrikhard | Lauberhorn, Wengen (lieu, plus de canton libre) | Lauberhorn | Wengen · Männlichen · Hundschopf · „Ľubo“ ‚ok‘ · Start, Hundschopf, Kernen-S, Haneggschuss, Ziel-S, Ziel (les arrêts du curseur) |
 | shearline | Schwyz | Einsiedeln | Klosterkirche · Mythen · Messe in Einsiedeln · Schwyzer-Platz · † ✠ ℣ ℟ ☩ · MCCXCI · 1291 · 01.08.1291 |
 | psalter | Obwald | Engelberg | Titlis · Sachseln · Psalter |
 | trap | Nidwald | Stanserhorn | BÜRGENSTOCK · Stans · Hergiswil ? · STANSERHORN |

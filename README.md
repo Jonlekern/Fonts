@@ -13,6 +13,7 @@ Site : **https://jonlekern.github.io/Fonts/**
 | **Clebard** | Néo-grotesque suisse en extra-large | 6 (Demi → Trenta) + 6 italiques | GUST Font License | [Page](https://jonlekern.github.io/Fonts/clebard/) · [Zip](clebard/Clebard.zip) · [Dossier](clebard/) |
 | **Malabard** | Display de course allongée | 7 (ExtraLight → ExtraBold) + 7 italiques | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/malabard/) · [Zip](malabard/Malabard.zip) · [Dossier](malabard/) |
 | **Guépard** | Capitale sport années 70, première police variable : Vitesse (penche et étire) et Bandes (bandes de course dans le bas, puis glitch) ; version modifiée de Danfo | Variable 2 axes + 6 styles fixes (Regular → Course Glitch) | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/guepard/) · [Zip](guepard/Guepard.zip) · [Dossier](guepard/) |
+| **Shrikhard** | Shrikhand élargie à 129 % sans être déformée, en droite et en italique, avec un curseur Hauteur qui l'écrase jusqu'au trait ; version modifiée de Shrikhand | Variable 1 axe (Hauteur, Start → Ziel) en droite et en italique + 2 styles fixes | SIL OFL 1.1 | [Page](https://jonlekern.github.io/Fonts/shrikhard/) · [Zip](shrikhard/Shrikhard.zip) · [Dossier](shrikhard/) |
 | **DIHEDRON-008** | Display en pointes et en losanges, poids en haut | 9 (wa'vatlh → Hutvatlh, en klingon) + 9 italiques | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/dihedron-008/) · [Zip](dihedron-008/DIHEDRON008.zip) · [Dossier](dihedron-008/) |
 | **Nexum** | Techno gothique : géométrie stricte, croisements partout, bouts en pointe | 9 (Hairline → Black) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/nexum/) · [Zip](nexum/Nexum.zip) · [Dossier](nexum/) |
 | **Typefive** | Chasse fixe faite avec les vraies frappes d'une machine à écrire : le grain du ruban, 5 versions de chaque signe | 1 (Regular) | Usage personnel gratuit, commercial sur autorisation | [Page](https://jonlekern.github.io/Fonts/typefive/) · [Zip](typefive/Typefive.zip) · [Dossier](typefive/) |
@@ -60,7 +61,7 @@ jalousia/, espresso-440/, dotsignal/,
 the-forever-font/, typefive/,
 biel-bienne-wildstyle/, swift-rallye-01/, turbo-72/,
 overshoot/, trap/, cortisol/, small-hours/, contrepied/, last-call/, longhand/, psalter/,
-drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/, treniki/, kinovar/, karkas/, karkas-classic/, karkas-display/, escapement/
+drastic-sans/, ballastline/, anisotrope/, isoslab/, isocircle/, laminar/, shearline/, shkval/, treniki/, kinovar/, karkas/, karkas-classic/, karkas-display/, escapement/, shrikhard/
   index.html            Page de la police
   README.md             Graisses, fichiers, licence
   OFL.txt               Licence de la police (Clebard : LICENCE.txt + GUST ; DIHEDRON-008, Nexum, Jalousia, The Forever Font, Typefive, Biel/Bienne WildStyle, Swift Rallye 01, Turbo 72°, Overshoot, Trap, Cortisol, Small Hours, Contrepied, Last Call, Longhand, Psalter, Drastic Sans, BALLASTLINE, ANISOTROPE, ISOSLAB, ISOCIRCLE, LAMINAR, SHEARLINE, SHKVAL et Escapement : LICENCE.txt)

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shrikhard</title>
+<meta name="description" content="Shrikhard : Shrikhand élargie à 129 % sans être déformée. Un style droit, un italique, et un curseur Hauteur qui l'écrase jusqu'à ce qu'il ne reste qu'un trait. Licence libre SIL OFL. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Shrikhand";font-display:swap;src:url(original/Shrikhand-Regular.ttf) format("truetype")}
+@font-face{font-family:"Shrikhard";font-display:swap;src:url("fonts/woff2/Shrikhard[HAUT].woff2") format("woff2")}
+@font-face{font-family:"Shrikhard Italic";font-display:swap;src:url("fonts/woff2/Shrikhard-Italic[HAUT].woff2") format("woff2")}
+/* Shrikhard partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Shrikhard",var(--sans)}
+.brand{font-size:16px}
+section > .wrap > h2{font-size:clamp(24px,3.8vw,42px)}
+.step h3{font-size:clamp(18px,2.1vw,23px)}
+.card b{font-size:16px}
+.hero h1{font-family:"Shrikhard Italic","Shrikhard";font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/7.4);line-height:1.1;
+  animation:descente 5s ease-in-out infinite alternate}
+@keyframes descente{0%,25%{font-variation-settings:"HAUT" 20}75%,100%{font-variation-settings:"HAUT" -100}}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/8.4)}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/8.4)}}
+.glyphs div{font-size:28px}
+.axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 24px;margin:0 0 12px}
+.axes label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.axes label b{color:var(--ink);font-weight:600}
+.axes input,.axes select{width:100%}
+.demo{container-type:inline-size}
+.demo .row{display:flex;flex-direction:column;gap:2px;margin:10px 0}
+.demo .row small{color:var(--muted);font-size:13px}
+.demo .row span{font-size:calc(100cqw/8.8);line-height:1.15;white-space:nowrap}
+.demo .row span.orig{font-family:"Shrikhand",var(--sans)}
+.demo .row span.it{font-family:"Shrikhard Italic","Shrikhard"}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Shrikhard</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#descente">La descente</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#fabrication">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Sport années 70 · Police variable</p>
+      <h1 style="margin-top:18px">Shrikhard</h1>
+      <div class="lede">
+        <p><strong>Shrikhand, élargie à 129 % sans être déformée.</strong> Un style droit, un italique, et un <strong>curseur Hauteur</strong> : on l'étire vers le haut, ou on l'écrase jusqu'à ce qu'il ne reste qu'un trait.</p>
+      </div>
+      <div class="facts">
+        <span>Police variable, curseur Hauteur</span><span>Droite + italique</span><span>Élargie à 129 %</span><span>Majuscules, minuscules, chiffres, accents</span><span>Licence libre SIL OFL 1.1</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="descente">
+    <div class="wrap">
+      <h2>La descente</h2>
+      <p class="intro">Le curseur Hauteur va de +20 à −100. Ses arrêts portent les noms de la piste du Lauberhorn, à Wengen : on part du Start, on finit au Ziel, la ligne d'arrivée. Entre eux, toutes les valeurs existent.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Glisse les curseurs.</p>
+      <div class="tester">
+        <div class="axes">
+          <label><span><b>Style</b></span><select id="tst" aria-label="Style"><option value="Shrikhard">Droite</option><option value="Shrikhard Italic">Italique</option></select></label>
+          <label><span><b>Hauteur</b> <output id="oh">0</output> <small id="nh"></small></span><input id="th" type="range" min="-100" max="20" value="0" aria-label="Hauteur"></label>
+          <label><span><b>Taille</b></span><input id="tz" type="range" min="16" max="200" value="64" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="true" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">De 0 à −40, les lettres s'aplatissent et leurs traits horizontaux s'affinent un peu pour que les blancs restent ouverts. De −40 à −100, elles s'écrasent et s'élargissent jusqu'à se toucher : à −100, il ne reste qu'un trait.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, accents (Europe centrale comprise), ponctuation, symboles. Les ligatures fi, fl, ff, ffi et ffl se font toutes seules.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="fabrication">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro">Shrikhard part de Shrikhand, de Jonny Pinhorn. On l'a transformée avec des scripts Python.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>On a pris Shrikhand</h3>
+            <p><strong>Shrikhand</strong>, de Jonny Pinhorn : une display très grasse, penchée de 14°, faite pour le gujarati et le latin. On n'a gardé que le latin.</p>
+          </div>
+          <div class="demo" aria-label="Shrikhand et Shrikhard côte à côte">
+            <div class="row"><small>Shrikhand, l'originale</small><span class="orig">Wengen</span></div>
+            <div class="row"><small>Shrikhard Italic</small><span class="it">Wengen</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Élargir à 129 % sans déformer</h3>
+            <p>Étirer une lettre épaissit ses traits verticaux et laisse les horizontaux fins : le contraste change, la lettre devient molle. Le fût du n passerait de 251 à 324 unités.</p>
+            <p>Alors on redresse la lettre, on l'étire, et on <strong>rend à chaque trait son épaisseur</strong> en faisant glisser ses points. Les bouts arrondis, les boutons et les pointes restent comme ils sont.</p>
+          </div>
+          <figure class="fig"><img src="images/elargir.png" alt="Lauberhorn en Shrikhand, étiré brut à 129 %, puis élargi sans déformer"><figcaption>L'originale, l'étirement brut, puis la version corrigée.</figcaption></figure>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Un style droit, un italique</h3>
+            <p>Shrikhand n'existe qu'en italique. On l'a <strong>redressée de 14°</strong>, autour de la mi-hauteur des minuscules, pour en faire un style droit. L'italique, c'est le même dessin, repenché de 14°.</p>
+          </div>
+          <div class="demo" aria-label="Shrikhard droite et italique">
+            <div class="row"><small>Shrikhard</small><span>Männlichen</span></div>
+            <div class="row"><small>Shrikhard Italic</small><span class="it">Männlichen</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le curseur Hauteur</h3>
+            <p>Vers le haut, les lettres s'étirent et gardent leurs traits. Vers le bas, elles s'aplatissent. Si les traits horizontaux gardaient toute leur épaisseur, le a, le e et le R se boucheraient : on les laisse s'affiner un peu.</p>
+            <p>Au bout, à −100, <strong>chaque lettre n'est plus qu'un trait</strong> de l'épaisseur du _, qui remplit toute sa chasse. Les mots deviennent des lignes, les espaces restent.</p>
+          </div>
+          <div class="demo" aria-label="Shrikhard à plusieurs hauteurs">
+            <div class="row"><small>Hauteur 0</small><span style="font-variation-settings:'HAUT' 0">Hundschopf</span></div>
+            <div class="row"><small>Hauteur −40 · Kernen-S</small><span style="font-variation-settings:'HAUT' -40">Hundschopf</span></div>
+            <div class="row"><small>Hauteur −80 · Ziel-S</small><span style="font-variation-settings:'HAUT' -80">Hundschopf</span></div>
+            <div class="row"><small>Hauteur −100 · Ziel</small><span style="font-variation-settings:'HAUT' -100">Hundschopf</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les petites réparations</h3>
+            <p>Dans Shrikhand, le guillemet double bas „ n'avait qu'une virgule, et le simple ‚ laissait derrière lui le blanc d'un tiret. Maintenant, „ a ses deux virgules, et ‚ la chasse d'une virgule.</p>
+            <p>Le caron de ď ľ ť Ľ est une pièce à part, et les signes mathématiques ont tous la même chasse.</p>
+          </div>
+          <div class="demo" aria-label="Guillemets et carons">
+            <div class="row"><small>Shrikhand</small><span class="orig">„Ľubo“ ‚ok‘</span></div>
+            <div class="row"><small>Shrikhard</small><span>„Ľubo“ ‚ok‘</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Libre et gratuite, même en commercial. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Shrikhard.zip" download><b>Shrikhard.zip</b><span>Les 2 variables + les 2 styles fixes en TTF + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/shrikhard/fonts/variable"><b>Variable</b><span>Pour Illustrator, InDesign, Figma, macOS</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/shrikhard/fonts/ttf"><b>Styles fixes</b><span>Pour les logiciels sans variable</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/shrikhard/fonts/woff2"><b>WOFF2</b><span>Pour les sites web</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Shrikhard";
+  src: url("Shrikhard[HAUT].woff2") format("woff2"); }
+@font-face { font-family: "Shrikhard Italic";
+  src: url("Shrikhard-Italic[HAUT].woff2") format("woff2"); }
+h1 { font-family: "Shrikhard";
+  /* HAUT : hauteur de −100 (un trait) à 20 */
+  font-variation-settings: "HAUT" -40; }</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Shrikhard © 2026 LaFleurStudio · version modifiée de <a href="https://fonts.google.com/specimen/Shrikhand">Shrikhand</a> (Jonny Pinhorn) · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    <span>Construite en Python (fontTools, skia-pathops, HarfBuzz).</span>
+  </div>
+</footer>
+
+<script>
+const fh = h => `'HAUT' ${h}`;
+const ARRETS = [[20, "Start"], [0, "Regular"], [-20, "Hundschopf"], [-40, "Kernen-S"], [-60, "Haneggschuss"], [-80, "Ziel-S"], [-100, "Ziel"]];
+window.SPECIMEN = {
+  family: "Shrikhard",
+  sample: "Lauberhorn",
+  styles: ARRETS.map(([h, n]) => ({n, w: 400, label: "Hauteur " + (h > 0 ? "+" + h : String(h).replace("-", "−")), fvs: fh(h)}))
+    .concat([{n: "Italic", w: 400, label: "Hauteur 0", fam: "Shrikhard Italic", fvs: fh(0)}]),
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØŒÙÚÛÜÝŸŠŽàáâãäåæçèéêëìíîïñòóôõöøœùúûüýÿšžß" +
+    ".,:;!?¡¿…·'\"‘’“”„‚«»‹›()[]{}/\\|-–—_*•#%‰&@¶§°" + "$€£¥¢+−×÷=≠≤≥<>~©®™",
+  glyphChips: [1, 7, 3],
+  glyphDefault: 0
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+<script>
+(() => {
+  const st = document.getElementById("tst"), h = document.getElementById("th"), z = document.getElementById("tz");
+  const t = document.getElementById("tester-text"), oh = document.getElementById("oh"), nh = document.getElementById("nh");
+  const apply = () => {
+    t.style.fontFamily = `'${st.value}'`;
+    t.style.fontVariationSettings = fh(h.value);
+    t.style.fontSize = z.value + "px";
+    oh.textContent = +h.value > 0 ? "+" + h.value : String(h.value).replace("-", "−");
+    const a = ARRETS.find(([v]) => v === +h.value); nh.textContent = a ? a[1] : "";
+  };
+  z.value = Math.min(64, Math.max(16, Math.round((t.clientWidth || 340) / 15)));
+  [st, h, z].forEach(i => i.addEventListener("input", apply));
+  apply();
+})();
+</script>
+</body>
+</html>
