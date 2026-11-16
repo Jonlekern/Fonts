@@ -19,6 +19,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | Police | Canton | Graisses | Démos |
 | --- | --- | --- | --- |
 | overshoot | Zurich | Zürich | OCGQS · Limmat · Uetliberg · RGM QW7 · Zürichsee · «Bahnhofstrasse» · ‹ Bahnhofstrasse › |
+| escapement | Vallée de Joux (lieu, plus de canton libre) | Vallée de Joux | Le Brassus · Le Sentier · lac de Joux · L’Abbaye · Dent de Vaulion · GQR aj 7 |
 | the-forever-font | Berne | Bundeshaus | a c e h i m n o w y · bdfgjklpqrstuvxz · ABCDEFG 1234567890 · eeeeee oooooo · LAFLEURSTUDIO · Ça, c'est l'été sur l'Aar ! |
 | laminar | Lucerne | Luzern | PILATUS · Hofkirche · Kapellbrücke · Dampfschiff · MATTHÄUS · PILATUS · 1332 — 2026 · 20:45 · KKL · 12 CHF |
 | malabard | Uri | Gotthard | MALABARD |

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escapement</title>
+<meta name="description" content="Escapement : grotesque de lecture, la petite sœur d'Overshoot. La première lettre de chaque phrase passe toute seule en version Overshoot. 5 graisses + italiques. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Escapement";font-weight:300;font-display:swap;src:url(fonts/woff2/Escapement-Gotthard.woff2) format("woff2")}
+@font-face{font-family:"Escapement";font-weight:400;font-display:swap;src:url(fonts/woff2/Escapement-Albula.woff2) format("woff2")}
+@font-face{font-family:"Escapement";font-weight:500;font-display:swap;src:url(fonts/woff2/Escapement-Bernina.woff2) format("woff2")}
+@font-face{font-family:"Escapement";font-weight:600;font-display:swap;src:url(fonts/woff2/Escapement-Rigi.woff2) format("woff2")}
+@font-face{font-family:"Escapement";font-weight:700;font-display:swap;src:url(fonts/woff2/Escapement-Pilatus.woff2) format("woff2")}
+@font-face{font-family:"Escapement Italic";font-weight:300;font-display:swap;src:url(fonts/woff2/Escapement-GotthardItalic.woff2) format("woff2")}
+@font-face{font-family:"Escapement Italic";font-weight:400;font-display:swap;src:url(fonts/woff2/Escapement-AlbulaItalic.woff2) format("woff2")}
+@font-face{font-family:"Escapement Italic";font-weight:500;font-display:swap;src:url(fonts/woff2/Escapement-BerninaItalic.woff2) format("woff2")}
+@font-face{font-family:"Escapement Italic";font-weight:600;font-display:swap;src:url(fonts/woff2/Escapement-RigiItalic.woff2) format("woff2")}
+@font-face{font-family:"Escapement Italic";font-weight:700;font-display:swap;src:url(fonts/woff2/Escapement-PilatusItalic.woff2) format("woff2")}
+@font-face{font-family:"Overshoot";font-weight:400;font-display:swap;src:url(../overshoot/fonts/woff2/Overshoot-GentleBreeze.woff2) format("woff2")}
+/* Escapement partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span,.lire{font-family:"Escapement",var(--sans)}
+.label{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.06em}
+.brand{font-size:18px;font-weight:700;letter-spacing:.02em}
+section > .wrap > h2{font-weight:700;font-size:clamp(22px,4.4vw,50px)}
+.step h3{font-weight:600;font-size:clamp(20px,2.4vw,28px)}
+.card b{font-weight:700;font-size:clamp(15px,4.2vw,22px);overflow-wrap:anywhere}
+.hero h1{font-family:"Escapement";font-weight:700;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/7.8);line-height:1.1}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/9);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/10)}}
+.demo .row span{font-size:calc(100cqw/8);line-height:1.35}
+.demo .row span.ov{font-family:"Overshoot",var(--sans)}
+.demo .lire{font-size:17px;line-height:1.5;margin:0}
+.demo .lire.petit{font-size:13px}
+.demo .tab{font-family:"Escapement",var(--sans);font-size:22px;line-height:1.35;display:flex;gap:40px}
+.demo .tab div{text-align:right}
+.glyphs div{font-size:34px;font-feature-settings:"calt" 0}   /* une case = une lettre : pas de version de début de phrase */
+#tester-text{line-height:1.3}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">ESCAPEMENT</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">D'où elle vient</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Grotesque de lecture</p>
+      <h1 style="margin-top:18px">ESCAPEMENT</h1>
+      <div class="lede">
+        <p><strong>La petite sœur d'Overshoot, faite pour lire.</strong> Dessinée à neuf. <strong>5 graisses</strong> et leurs italiques. La première lettre de chaque phrase passe toute seule en version Overshoot.</p>
+      </div>
+      <div class="facts">
+        <span>Grotesque de lecture</span><span>5 graisses</span><span>+ italiques</span><span>Gotthard → Pilatus</span><span>Début de phrase automatique</span><span>Chiffres tabulaires</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Les lignes de train suisses, de la moins raide à la plus raide : Gotthard (27 ‰), Albula (35 ‰), Bernina (70 ‰), Rigi (250 ‰), Pilatus (480 ‰). Chaque graisse a son <strong>italique</strong>, penchée de 10°.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Mets un point, une espace et une capitale : elle passe en version Overshoot.</p>
+      <div class="tester">
+        <div class="controls">
+          <label>Graisse <select id="tw" aria-label="Graisse"></select></label>
+          <label>Taille <input id="ts" type="range" min="12" max="180" value="72" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">Les 5 graisses : une seule famille « Escapement », de 300 à 700.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes, accents d'Europe.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>D'où elle vient</h2>
+      <p class="intro"><strong>D'Overshoot, en plus calme.</strong> La même recette suisse, mesurée pour le texte : plus étroite, des minuscules plus petites, un espacement aéré. Le nom vient de l'horlogerie : l'échappement, c'est la pièce qui donne à une montre son tic-tac régulier. Une bonne lecture, c'est pareil.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>La petite sœur</h3>
+            <p>Overshoot est une grotesque extra-large pour l'affiche. Escapement reprend ses <strong>rondes entre l'ovale et le carré</strong> et ses <strong>bouts coupés à plat</strong>, mais elle est bien plus étroite et plus calme, pour tenir sur des pages entières.</p>
+          </div>
+          <div class="demo" aria-label="Overshoot et Escapement">
+            <div class="row"><small>Overshoot</small><span class="ov" style="font-size:calc(100cqw/10.5)">Le Brassus</span></div>
+            <div class="row"><small>Escapement Albula (400)</small><span style="font-weight:400">Le Brassus</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>La lettre de début de phrase</h3>
+            <p>Au début de chaque phrase, la capitale passe <strong>toute seule</strong> en version Overshoot : plus large, les rondes plus carrées, la même épaisseur que le texte. Elle reste normale en plein milieu d'une phrase, après une abréviation (M., z. B., Mr.), une initiale ou un sigle. En français, en allemand, en anglais et en italien.</p>
+          </div>
+          <div class="demo" aria-label="La lettre de début de phrase">
+            <p class="lire">Le Sentier dort encore. Au bord du lac de Joux, la brume se lève. Dans l’atelier, M. Golay règle un échappement. À midi, tout s’arrête. « On mange ? » demande Léa.</p>
+            <p class="lire petit" style="margin-top:12px">Am 1. August feiert man, z. B. in L’Abbaye. Dann geht es weiter.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Les lettres qui la signent</h3>
+            <p>Les lettres rares gardent la signature d'Overshoot. <strong>G</strong> : éperon en coin net. <strong>Q</strong> : la queue, une dalle au sol. <strong>R</strong> et <strong>a</strong> : le petit pied qui botte. <strong>j</strong> : crochet coupé en biais, glissé sous la lettre d'avant. <strong>7</strong> : jambe un peu creusée.</p>
+          </div>
+          <div class="demo" aria-label="Les lettres signature">
+            <div class="row"><small>Rigi (600)</small><span style="font-weight:600">GQR aj 7</span></div>
+            <div class="row"><small>Pilatus (700)</small><span style="font-weight:700;font-size:calc(100cqw/11)">Dent de Vaulion</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des chiffres qui s'alignent</h3>
+            <p>Dans le texte, les chiffres sont proportionnels. Pour les prix et les tableaux, les <strong>chiffres tabulaires</strong> (<code>tnum</code>) ont tous la même chasse : les colonnes tombent juste.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres tabulaires">
+            <div class="tab">
+              <div><small class="label" style="display:block;text-align:left">Normaux</small>12.50<br>4.80<br>117.00<br>1291</div>
+              <div style="font-feature-settings:'tnum'"><small class="label" style="display:block;text-align:left">Tabulaires</small>12.50<br>4.80<br>117.00<br>1291</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Escapement.zip" download><b>ESCAPEMENT.ZIP</b><span>Les 5 graisses et leurs italiques (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/escapement/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/escapement/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Escapement"; font-weight: 400;
+  src: url(Escapement-Albula.woff2) format("woff2"); }
+/* … une règle par graisse : Gotthard 300, Albula 400, Bernina 500,
+   Rigi 600, Pilatus 700. */
+/* Italiques : famille « Escapement Italic », mêmes graisses, fichiers en …Italic.woff2. */
+/* La lettre de début de phrase marche toute seule (calt).
+   Toutes les capitales en version Overshoot : font-feature-settings: "ss01";
+   Chiffres tabulaires : font-feature-settings: "tnum"; */</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Escapement © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+window.SPECIMEN = {
+  family: "Escapement",
+  sample: "Vallée de Joux",
+  styles: [
+    {n:"Gotthard",w:300},{n:"Gotthard Italic",w:300,fam:"Escapement Italic"},{n:"Albula",w:400},{n:"Albula Italic",w:400,fam:"Escapement Italic"},
+    {n:"Bernina",w:500},{n:"Bernina Italic",w:500,fam:"Escapement Italic"},{n:"Rigi",w:600},{n:"Rigi Italic",w:600,fam:"Escapement Italic"},
+    {n:"Pilatus",w:700},{n:"Pilatus Italic",w:700,fam:"Escapement Italic"}
+  ],
+  testerDefault: 2,
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 2, 4, 6, 8, 3],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+</body>
+</html>

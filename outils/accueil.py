@@ -12,7 +12,9 @@ toujours = set(' 0123456789.,:;·–—-?!’\'"«»()')           # une marge :
 def textes():
     """lance un petit serveur et le navigateur, rend {pile de polices|graisse|style: caractères}"""
     s = socket.socket(); s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]; s.close()
-    h = functools.partial(http.server.SimpleHTTPRequestHandler, directory=ROOT); h.log_message = lambda *a: None
+    class Silence(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *a): pass
+    h = functools.partial(Silence, directory=ROOT)
     srv = http.server.ThreadingHTTPServer(('127.0.0.1', port), h); threading.Thread(target=srv.serve_forever, daemon=True).start()
     with tempfile.TemporaryDirectory() as td:
         f = os.path.join(td, 't.json')
