@@ -4,6 +4,8 @@ Sans-serif super étendue en **11 graisses**, du Hairline à l'Extreme Black, pl
 
 Page : **https://jonlekern.github.io/Fonts/calebard/**
 
+En russe, Calebard a une police sœur : **TRENIKI (ТРЕНИКИ)**, dans `treniki/`.
+
 ## Graisses
 
 | Nom | Poids | Fichier |

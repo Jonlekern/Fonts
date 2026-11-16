@@ -8,6 +8,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 - Les polices inspirées de Bienne gardent Bienne et des lieux de Bienne (Biel/Bienne WildStyle, Espresso 4.40.-, DotSignal).
 - On ne touche pas à Espresso 4.40.- ni à DotSignal.
 - Polices russes (ШКВАЛ) : les mots sont des lieux russes, la page est entièrement en russe, et le testeur démarre sur « LAFLEURSTUDIO графический дизайн ». Voir « Les polices russes » dans MARCHE-A-SUIVRE.md.
+- KARKAS, KARKAS CLASSIC et KARKAS DISPLAY (la vyaz en lettres latines) : les mots sont des lieux russes, écrits en lettres latines. La page reste en français.
 - Les sous-titres ne changent pas, le testeur non plus (« LAFLEURSTUDIO création graphique »).
 - Section Graisses : un seul mot par police, le même sur toutes les graisses.
 - Dans une boîte qui compare des graisses : le même mot partout.
@@ -47,6 +48,11 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | biel-bienne-wildstyle | Bienne | BIENNE coupole | LAFLEURSTUDIO · BIEL/BIENNE · rotonde · fête über naïve · ÄÊË ÉÈ · PLACE GUISAN · FIZZ FAZ · BIEL provi |
 | espresso-440 | Bienne (on ne touche pas) | Un espresso, s'il vous plaît | Café 4.20.- · Pain au chocolat 2.60.- · Bagel 6.50.- · abcdefghijklm nopqrstuvwxyz · ABCDEFGHIJKLM NOPQRSTUVWXYZ · 0123456789 Bagel 6.50.- · Caffè, così buono · S'il te plaît ☀ · Un café ☕ 4.40.- · Truffes, Lebkuchen · une tresse au beurre · CAFÉ, BAGEL · Tarte, Fondant |
 | shkval | Russie | Байкал | САРМА · ЭЛЬБРУС · ЮЖНО-САХАЛИНСК · Камчатка · Енисей, ёлка · Владивосток |
+| treniki | Russie (oblast de Samara) | ТОЛЬЯТТИ | ЖИГУЛИ · САМАРА · СЫЗРАНЬ · Волга · Жигулёвское море · Самарская Лука · моло́ко |
+| kinovar | Russie (les villes les plus anciennes, autour de Novgorod) | Новгород | НОВГОРОД · СТАРАЯ ЛАДОГА · БЕЛООЗЕРО · ТИХВИН · ЧУДОВО · Великий Новгород · Псков, Изборск, Муром · Uncialis · KINOVAR · 1056—1057 · 0123456789 № ₽ : ; ! |
+| karkas | Russie (villes et barrages du béton soviétique), en lettres latines | Krasnoyarsk | KRASNOYARSK · MAGNITOGORSK · MURMANSK · CHELYABINSK · ROSTOV · TVER · ESSENTUKI · TOMMOT · LIPETSK · БЕТОН · КАРКАС · ВЯЗЬ · 1147 · 2026 · 0123456789 |
+| karkas-classic | Russie (monastères et villes des manuscrits), en lettres latines | Ferapontovo | TIKHVIN · VALAAM · BELOZERSK · KIRILLOV · ALEKSANDROV · ВЯЗЬ · МОСКВА · 0123456789 |
+| karkas-display | Russie (villes du Nord et de Sibérie), en lettres latines | Norilsk | MAGADAN · TOMSK · ARKHANGELSK · VORKUTA · YAKUTSK · NIZHNIY NOVGOROD · IRKUTSK · KAZAN · ANADYR · DUDINKA |
 | dotsignal | Bienne (on ne touche pas) | Prochain bus : 3' | 1 Stades 3' · 6 Centre hospitalier 5' · 9 Ecoles Tilleul 10' · 8 Fuchsenried 4' · 🚌 Départ · 17:10 · 17:12 · 18:41 · 19:08 |
 
 Les 26 cantons sont pris. Pour une nouvelle police : une ville, un lac, une montagne ou une chose suisse pas encore dans cette liste.

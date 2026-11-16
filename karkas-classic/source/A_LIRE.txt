@@ -1,0 +1,34 @@
+KARKAS CLASSIC — À LIRE
+
+KARKAS CLASSIC est la version manuscrite de KARKAS, la vyaz en lettres latines.
+Les lettres sont redessinées d'après l'écriture des titres de manuscrits russes :
+fûts épais à bouts en coin, traits fins, petites boucles pointues, nœuds sur les longs fûts.
+Tout est en capitales : les minuscules donnent les mêmes lettres.
+
+Trois graisses, nommées comme les trois écritures des scribes russes :
+  Skoropis  (fin)   : la cursive rapide
+  Poluustav (moyen) : la demi-onciale des livres
+  Ustav     (gras)  : l'onciale solennelle
+
+Les liaisons se font toutes seules pendant que tu écris (ligatures) :
+  - fût partagé : deux lettres utilisent le même trait vertical (HE, AN, NE…)
+  - lettre logée : une lettre plus petite sur le pied du L ou sous les bras du F
+  - sous la barre du T : une lettre de chaque côté (ATE, STE…)
+  - lettres doubles : elles s'empilent sur deux étages (EE, LL, SS…)
+
+Pour couper les liaisons
+  - Word : Police > Paramètres avancés > Ligatures : Aucune.
+  - InDesign, Illustrator, Photoshop, Affinity : décoche « Ligatures ».
+  - Sur un site : font-variant-ligatures: none.
+
+Option (dans les logiciels qui la gèrent)
+  ss01 : les lettres doubles partagent un fût au lieu de s'empiler
+
+Une police de titre : les traits fins disparaissent en petit. À partir de 40 points.
+
+En bonus : l'alphabet russe, avec ses propres liaisons.
+
+Licence : usage personnel gratuit, commercial sur autorisation écrite
+de LaFleurStudio (info@lafleurstudio.ch). Voir LICENCE.txt.
+
+© 2026 LaFleurStudio

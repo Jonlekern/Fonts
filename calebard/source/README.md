@@ -49,3 +49,12 @@ Avec `STRETCH=1.30` et les overrides d'origine, `pipeline.sh` puis `finish.sh` r
 ```sh
 ./post102.sh dossier-ttf
 ```
+
+## fontbakery : laissé tel quel (décision de Johnny, novembre 2026)
+
+Les erreurs et avertissements de `fontbakery check-universal` (52 erreurs, 117 avertissements) viennent de la partie latine d'origine : on ne les corrige pas, ne pas les reprendre.
+Pour mémoire, la loupe y a vu de vrais défauts, eux aussi laissés : le point des accents en croissant dans le Hairline et le Thin (ė ẹ ợ ự…), le fût doublé du þ dans le Hairline, le ľ avec un caron en V au lieu de la virgule.
+
+## Le russe
+
+Il n'est pas dans Calebard : il vit dans sa police sœur TRENIKI (`treniki/`), avec ses propres scripts.
