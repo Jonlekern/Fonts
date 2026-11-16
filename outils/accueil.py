@@ -24,7 +24,7 @@ def textes():
 def source(url):
     """le fichier complet derrière une url de l'accueil (complet ou déjà réduit)"""
     if url.startswith('shared/accueil/'):
-        c = glob.glob(os.path.join(ROOT, '*', 'fonts', 'woff2', os.path.basename(url)))
+        c = glob.glob(os.path.join(glob.escape(ROOT), '*', 'fonts', 'woff2', glob.escape(os.path.basename(url))))
         assert len(c) == 1, ('source introuvable', url, c); return os.path.relpath(c[0], ROOT)
     return url
 
