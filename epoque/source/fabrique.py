@@ -118,7 +118,7 @@ NOTDEF = [[(50, 0), (50, 700), (450, 700), (450, 0)], [(100, 50), (400, 50), (40
 def fixe(poids, italique, sortie, kern_fea):
     """Une police fixe : contours fusionnés, OTF + WOFF2."""
     style = NOMS[poids]
-    g = tous(poids, 1.0 if italique else 0.0)
+    g = {k: v for k, v in tous(poids, 1.0 if italique else 0.0).items() if k != 'caron.alt'}     # le caron à part ne sert qu'à la variable
     ordre = ['.notdef'] + list(g)
     cmap = {code: n for n, (_, _, code) in g.items() if code}
     cs, larg = {}, {}

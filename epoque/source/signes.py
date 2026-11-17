@@ -41,13 +41,13 @@ def virgule(d, y=0.0):
 
 def deux_points(d):
     s = _pt(d)
-    return [point(d.L + s / 2, s / 2, s), point(d.L + s / 2, d.x - s / 2, s)], 2 * d.L + s
+    return [point(d.L + s / 2, s / 2, s), point(d.L + s / 2, max(d.x - s / 2, s * 1.5 + 60), s)], 2 * d.L + s
 
 
 def point_virgule(d):
     t, ch = virgule(d)
     s = _pt(d)
-    return t + [point(d.L + s / 2 + 10, d.x - s / 2, s)], ch
+    return t + [point(d.L + s / 2 + 10, max(d.x - s / 2, s * 1.5 + 60), s)], ch
 
 
 def exclam(d, inv=False):
@@ -59,9 +59,9 @@ def exclam(d, inv=False):
 
 def question(d, inv=False):
     s = _pt(d); W = 400 + d.g * 0.6; xl = d.Lr + 20; xr = d.Lr + W - eg(d) / 2; xc = (xl + xr) / 2 + 10
-    top = d.haut(d.cap, True); ym = d.cap * 0.44; R = d.R(xr - xl, d.cap, 0.3)
+    top = d.haut(d.cap, True); ym = max(d.cap * 0.44, s + 120); R = d.R(xr - xl, d.cap, 0.3)
     t = [T([(xl, top - R - 10), (xl, top), (xr, top), (xr, ym), (xc, ym), (xc, s + 60)], r=[R, R, min(R, (top - ym) / 2 - 1), d.c * 0.5],
-           ep=(eg(d), ef(d)), plein=True, debut='h', k=[0.3, 1, 1, 1, 1, 0.5]),
+           ep=(eg(d), ef(d)), plein=True, debut='h', k=[0.3, 1, 1, 1, 1, 1]),
          point(xc, s / 2, s)]
     if inv:
         for u in t:
@@ -373,9 +373,9 @@ def yen(d):
 
 
 def section(d):
-    a, ch = _petit(d, 's', 0.9, d.Lr, d.cap - d.x * 0.9 + 6)
-    b, _ = _petit(d, 's', 0.9, d.Lr, d.desc * 0.5)
-    return a + b, d.Lr + ch
+    a, ch = _petit(d, 's', 1.0, 0, -40 + d.x / 2)          # deux s décalés d'une demi-hauteur : la boucle du milieu se ferme
+    b, _ = _petit(d, 's', 1.0, 0, -40)
+    return a + b, ch
 
 
 def paragraph(d):

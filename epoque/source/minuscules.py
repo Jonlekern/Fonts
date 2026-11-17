@@ -19,11 +19,11 @@ def _rond(d, W=None, L=None):
 
 
 def a(d):
-    """Signature : le fût dépasse en haut d'un ergot, vers la gauche."""
+    """Signature : une queue en pointe sort du pied du fût, vers la droite."""
     W, xl, xr, top, bas, R = _rond(d)
     return [fut(xr, 0, d.x),
             T([(xr - d.Fd / 2 + J, top), (xl, top), (xl, bas), (xr - d.Fd / 2 + J, bas)], r=R),
-            _signe(T([(xr - d.Fd / 2 - 70, d.x + 46), (xr - d.Fd / 2 + 10, d.x - d.B)], k=[0, 1.3], ep=d.B * 1.2, fin='v'))], d.Lr + W + d.L
+            _signe(T([(xr, d.B * 1.1), (xr + d.Fd * 0.75 + 56, d.B * 0.2)], k=[1, 0], ep=d.B * 2.2, plein=True))], d.Lr + W + d.L
 
 
 def b(d, h=None):
@@ -147,10 +147,10 @@ def m(d):
 
 
 def n(d):
-    """Signature : une attaque en pointe, en haut à gauche."""
+    """Signature : le fût fin monte en pointe au-dessus de l'arche."""
     W = 456 + d.g * 0.8; xl, xr = d.gd(W); top = d.haut(d.x, True)
     return [T([(xl, 0), (xl, top), (xr, top), (xr, 0)], r=d.R(xr - xl)),
-            _signe(T([(xl - d.Fg / 2 - 60, top + 30), (xl + 20, top)], k=[0, 1.4], fin='v'))], d.L + W + d.L
+            _signe(T([(xl, top - d.R(xr - xl) - 30), (xl, d.x + 78)], k=[1, 0]))], d.L + W + d.L
 
 
 def o(d):
@@ -206,10 +206,10 @@ def t(d):
 
 
 def u(d):
-    """Signature : une sortie en pointe, en bas à droite."""
+    """Signature : le bras gauche monte plus haut, coupé en biais."""
     W = 456 + d.g * 0.8; xl, xr = d.gd(W); bas = d.bas(True)
-    return [T([(xl, d.x), (xl, bas), (xr, bas), (xr, d.x)], r=d.R(xr - xl)),
-            _signe(T([(xr + d.Fd / 2 - J, d.bas()), (xr + d.Fd / 2 + 60, d.bas())], k=[1.6, 0]))], d.L + W + d.L
+    return [T([(xl, d.x + 60), (xl, bas), (xr, bas), (xr, d.x)], r=d.R(xr - xl),
+              debut=((xl, d.x + 60), (1, -1.3)))], d.L + W + d.L
 
 
 def _v(d, h, W, L):
@@ -302,7 +302,7 @@ def eth(d):
     W, xl, xr, top, bas, R = _rond(d, 480 + d.g * 0.85)
     h = d.x * 0.94; top = d.haut(h, True)
     return [T([(xl, bas), (xl, top), (xr, top), (xr, bas)], r=d.R(xr - xl, h), ferme=True),
-            T([(xr, h * 0.6), (xr, d.asc - 170), (xl + 60, d.asc)], r=d.c * 2, fin='h', k=[1, 1, 0.25]),
+            T([(xr, h * 0.3), (xr, d.asc - 170), (xl + 60, d.asc)], r=d.c * 2, fin='h', k=[0, 1, 0.25]),
             _signe(T([(xl + 90, d.asc - 150), (xr + d.Fd * 0.5 + 20, d.asc - 60)], plein=True, ep=d.B * 1.3, debut='v', fin='v'))], d.Lr + W + d.Lr
 
 

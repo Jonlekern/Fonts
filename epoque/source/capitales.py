@@ -66,8 +66,8 @@ def G(d):
     W = 660 + d.g; xl, xr, top, bas = _rep(d, W, True)
     xe = d.Lr + W - 10; ym = max(d.taille() * 1.1, bas + 120)
     R = d.R(xr - xl, d.cap, 0.42)
-    return [T([(xe, top), (xl, top), (xl, bas), (xr, bas), (xr, ym)], r=[R, R, min(R, ym - bas - 4)], fin='h'),
-            _signe(T([(xr - (xr - xl) * 0.42, ym), (xr + d.Fd / 2 + 60, ym)], k=[1.5, 0]))], d.Lr + W + d.Lr * 0.9
+    return [T([(xe, top), (xl, top), (xl, bas), (xr, bas), (xr, ym - d.B * 0.4)], r=[R, R, min(R, ym - bas - 4 - d.B * 0.4)], fin='h'),
+            _signe(T([(xr - (xr - xl) * 0.42, ym), (xr, ym), (xr + d.Fd / 2 + 60, ym)], k=[1.5, 1.5, 0]))], d.Lr + W + d.Lr * 0.9
 
 
 def H(d):

@@ -5,13 +5,13 @@ import unicodedata
 import numpy as np
 from functools import lru_cache
 from formes import coupe
-from glyphes import corps as tous, nom, CAPS_ACC, ESSAI_MIN, PLUS_MIN, CAPS_TOUTES
+from glyphes import corps as tous, tous as entiers, nom, CAPS_ACC, ESSAI_MIN, PLUS_MIN, CAPS_TOUTES
 from accents import ACCENTUEES
 from mesures import mesures
 
 BANDES = np.arange(-260, 960, 10)
 OUVERTES = set('AFJKLPRTVWXYZfkrtvwxyz.,:;-–—\'"‘’“”‚„«»‹›/') | set('ÆŁĽ')
-MIN_BLANC = 30          # deux lettres ne s'approchent jamais plus près
+MIN_BLANC = 44          # deux lettres ne s'approchent jamais plus près
 CHIFFRES_NOMS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
 
@@ -64,6 +64,38 @@ def blancs(poids, a, b, etale=False):
     return (cha - da) + gb
 
 
+@lru_cache(None)
+def _entiers(poids):
+    return entiers(poids)
+
+
+@lru_cache(None)
+def profil_entier(poids, g):
+    """Le bord gauche et le bord droit de la lettre entière, signatures comprises."""
+    p, ch, _ = _entiers(poids)[g]
+    gch = np.full(len(BANDES), np.nan); dr = np.full(len(BANDES), np.nan)
+    if list(p.contours):
+        x0, y0, x1, y1 = p.bounds
+        for i, y in enumerate(BANDES):
+            if y + 10 < y0 or y > y1:
+                continue
+            cs = list(coupe(p, -5000, y, 5000, y + 10).contours)
+            if cs:
+                gch[i] = min(c.bounds[0] for c in cs); dr[i] = max(c.bounds[2] for c in cs)
+    return gch, dr, ch
+
+
+def garde(poids, a, b, k):
+    """Les signatures passent chez la voisine dans les maigres (un cheveu croise un cheveu).
+    Plus la lettre est grasse, moins elles ont le droit d'entrer : à 900 elles ne touchent plus rien."""
+    _, da, cha = profil_entier(poids, a); gb, _, _ = profil_entier(poids, b)
+    bl = (cha - da) + gb
+    if np.isnan(bl).all():
+        return k
+    besoin = -200 + min(1.0, max(0.0, (poids - 400) / 500)) * 280
+    return max(k, besoin - float(np.nanmin(bl)))
+
+
 def zone(poids, a, b):
     """Les bandes qui comptent : la hauteur d'x si une minuscule est en jeu, sinon la hauteur des capitales."""
     m = mesures(poids)
@@ -106,6 +138,7 @@ def valeur(poids, a, b, ref=None):
         k = max(k, min(0, round(0.55 * rn - mn0)))
     if mn0 + k < MIN_BLANC:                       # jamais collé
         k = MIN_BLANC - mn0
+    k = garde(poids, a, b, k)
     return int(round(k / 5) * 5)
 
 
@@ -200,6 +233,7 @@ def table(poids):
                     continue
                 mn = np.nanmin(vrai)
                 v = int(round((MIN_BLANC - mn) / 5 + 0.5) * 5) if mn < MIN_BLANC else 0
+                v = int(round(garde(poids, a, b, v) / 5) * 5)
             if (abs(v) >= 10 or v > 0) and a not in CHIFFRES_NOMS and b not in CHIFFRES_NOMS:     # les chiffres gardent leur chasse fixe
                 out[(a, b)] = v
     return out, gauche, droite

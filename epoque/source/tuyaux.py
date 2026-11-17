@@ -102,10 +102,13 @@ class Tuyau:
         def virage(i_in, i_out, R):
             u1, u2 = Ue[i_in], Ue[i_out]
             a = math.atan2(u1[0] * u2[1] - u1[1] * u2[0], u1[0] * u2[0] + u1[1] * u2[1])    # > 0 : virage à gauche
-            if abs(a) > 1e-4:                    # un virage ne mange jamais plus que la moitié de ses deux tronçons
-                dispo = min(L[i_in] * (1.0 if (not self.ferme and i_in == 0) else 0.5),
-                            L[i_out] * (1.0 if (not self.ferme and i_out == len(segs) - 1) else 0.5))
-                R = min(R, dispo / math.tan(abs(a) / 2))
+            d_in = d_out = 1e9
+            if abs(a) > 1e-4 and not self.disque:                    # un virage ne mange jamais plus que la moitié de ses deux tronçons
+                d_in = L[i_in] * (1.0 if (not self.ferme and i_in == 0) else 0.5)
+                d_out = L[i_out] * (1.0 if (not self.ferme and i_out == len(segs) - 1) else 0.5)
+                R = min(R, min(d_in, d_out) / math.tan(abs(a) / 2))
+            elif abs(a) > 1e-4:
+                R = min(R, min(L[i_in], L[i_out]) * 0.5 / math.tan(abs(a) / 2))
             X = _croise(pb[i_in], u1, pa[i_out], u2)
             if X is None or abs(a) < 1e-4:
                 X = pa[i_out] if X is None else X
@@ -113,8 +116,9 @@ class Tuyau:
             s = 1 if a > 0 else -1
             kv = K[segs[i_out][0]]
             # un angle vif garde un chanfrein de 2 unités : jamais de courbe de longueur nulle (elle gêne certains logiciels)
-            t1 = max(max(R - s * dec[i_in] * kv, 0) * math.tan(abs(a) / 2), MINI)
-            t2 = max(max(R - s * dec[i_out] * kv, 0) * math.tan(abs(a) / 2), MINI)
+            # le bord extérieur d'un trait gras non plus : sinon deux virages voisins se croisent en bec
+            t1 = max(min(max(R - s * dec[i_in] * kv, 0) * math.tan(abs(a) / 2), d_in), MINI)
+            t2 = max(min(max(R - s * dec[i_out] * kv, 0) * math.tan(abs(a) / 2), d_out), MINI)
             h = min(0.98, (4 / 3) * math.tan(abs(a) / 4) / math.tan(abs(a) / 2) * tension)
             A = X - u1 * t1; D = X + u2 * t2
             return [A, A + u1 * h * t1, D - u2 * h * t2, D]

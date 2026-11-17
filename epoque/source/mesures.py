@@ -26,8 +26,8 @@ def mesures(p, taille=0.36, vitesse=0.0):
         tension=1.2,                              # virages superelliptiques (1 = arc de cercle)
         taille=taille,                             # hauteur des barres (taille basse)
         coude=30,                     # petit rayon : les coudes
-        app=_entre(p, 70, 52),                     # approche d'un fût
-        appr=_entre(p, 56, 40),                    # approche d'une ronde
+        app=_entre(p, 70, 112),                     # approche d'un fût
+        appr=_entre(p, 56, 88),                    # approche d'une ronde
         large=_entre(p, 0, 150),
         vitesse=vitesse,                           # 0 à 1 : le curseur Vitesse
         air=36 * vitesse,                          # à pleine vitesse, chaque lettre prend de l'air à gauche
