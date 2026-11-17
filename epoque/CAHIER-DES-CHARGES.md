@@ -12,7 +12,7 @@ Le lettrage profilé des années 30 : les carrosseries des Flèches d'argent, le
 | --- | --- | --- | --- |
 | Graisse | `wght` | 300–900 | Du tube fin au tube lourd. 7 arrêts, les sections du circuit du Bremgarten. |
 | Vitesse | `VITE` | 0–100 | La lettre penche vers l'avant, jusqu'à 14°. |
-| Chrome | `CHRM` | 0–100 | Chaque trait s'ouvre en trois filets qui suivent la courbe : une bande pleine et deux filets fins, comme les joncs chromés d'une carrosserie. |
+| Chrome | `CHRM` | 0–100 | Chaque trait s'ouvre en trois bandes qui suivent la courbe. **La gauche est légère, la droite lourde** : deux filets fins à gauche, la bande pleine à droite, comme la lumière sur un jonc chromé. |
 
 Les trois se combinent librement. À 0 partout, c'est une capitale Art déco pleine et posée.
 
@@ -45,7 +45,7 @@ Les traits qu'on retient :
 - **Virages** : superelliptiques (plus tendus qu'un arc de cercle), rayon extérieur = rayon de l'axe + demi-épaisseur, rayon intérieur = rayon de l'axe − demi-épaisseur.
 - **Contraste** : horizontales à 90 % des verticales en maigre, 84 % en gras.
 - **Jonctions** : un tuyau qui en rejoint un autre s'arrête contre lui (ses filets butent sur la première bande de l'autre). Aux pointes (A, V, W, M), les deux tuyaux sont coupés sur l'axe de la pointe : les filets font un chevron.
-- **Chrome** : le trait est divisé dans son épaisseur en bande pleine (côté extérieur/avant) + blanc + filet + blanc + filet. Blancs et filets : jamais moins de 10 unités à la graisse la plus fine, 22 à la plus grasse. À Chrome 0 les bandes se recouvrent de 2 unités : aucune couture.
+- **Chrome** : le trait est divisé dans son épaisseur en filet + blanc + filet + blanc + bande pleine, de gauche à droite. Sur un trait qui monte ou qui descend, les filets sont toujours du côté gauche de la lettre ; dans les virages et sur les barres, les trois bandes s'égalisent en douceur (elles enflent et s'affinent avec la courbe). Blancs et filets : jamais moins de 10 unités à la graisse la plus fine, 22 à la plus grasse. À Chrome 0 les bandes se recouvrent de 2 unités : aucune couture.
 - **Graisses** (fût en unités) : 300 → 72, 400 → 96, 500 → 118, 600 → 140, 700 → 162, 800 → 184, 900 → 206 (à régler à l'œil).
 
 | Arrêt | Poids | Section du Bremgarten |

@@ -51,14 +51,24 @@ class Tuyau:
         s = abs(u[1])               # 1 : vertical, 0 : horizontal
         return eh + (ev - eh) * s * s
 
-    def _bandes(self, w, m, chrome):
-        """Les bandes dans l'épaisseur, en décalages (gauche positif) : filet, cœur, filet."""
+    def _bandes(self, w, m, chrome, monte=0.0):
+        """Les bandes dans l'épaisseur, en décalages (gauche du trajet positif).
+        La gauche de la lettre est légère, la droite lourde : deux filets à gauche, la bande pleine à droite.
+        monte = +1 quand le tronçon monte (sa gauche est la gauche de la lettre), −1 quand il descend ;
+        entre les deux (barres, haut et bas des rondes), les trois bandes s'égalisent en douceur."""
         if self.plein:
             return [(-w / 2, w / 2)]
         t, g = m['filet'], m['blanc']
-        b = w / 2 - t - g / 2                         # le milieu du blanc
-        o = RECOUVRE * (1 - chrome) + (-g / 2) * chrome    # où s'arrête chaque bande par rapport au milieu du blanc
-        return [(b - o, w / 2), (-(b + o), b + o), (-w / 2, -(b - o))]
+        coeur = w - 2 * t - 2 * g
+        A = [w / 2, w / 2 - t, w / 2 - t - g, w / 2 - 2 * t - g, w / 2 - 2 * t - 2 * g, -w / 2]      # filets du côté positif
+        B = [w / 2, w / 2 - coeur, w / 2 - coeur - g, w / 2 - coeur - g - t, w / 2 - coeur - 2 * g - t, -w / 2]
+        k = (1 + monte) / 2
+        e = [k * x + (1 - k) * y for x, y in zip(A, B)]
+        m1, m2 = (e[1] + e[2]) / 2, (e[3] + e[4]) / 2
+        c = chrome; r = RECOUVRE
+        return [(m1 - r + (e[1] - m1 + r) * c, e[0]),
+                (m2 - r + (e[3] - m2 + r) * c, m1 + r + (e[2] - m1 - r) * c),
+                (e[5], m2 + r + (e[4] - m2 - r) * c)]
 
     def _trajet(self, k, cote, m, chrome):
         """Le bord n° cote (0 ou 1) de la bande k : départ, virages (4 points chacun), arrivée."""
@@ -66,7 +76,7 @@ class Tuyau:
         segs = [(i, (i + 1) % n) for i in range(n if self.ferme else n - 1)]
         U = [_u(P[b] - P[a]) for a, b in segs]
         W = [self._ep(u, m) for u in U]
-        dec = [self._bandes(w, m, chrome)[k][cote] for w in W]
+        dec = [self._bandes(w, m, chrome, u[1])[k][cote] for w, u in zip(W, U)]
         base = [P[a] + _gauche(U[i]) * dec[i] for i, (a, b) in enumerate(segs)]      # un point de chaque bord décalé
         tension = self.tension if self.tension is not None else m['tension']
 
