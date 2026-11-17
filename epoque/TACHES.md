@@ -7,6 +7,11 @@ images du lettrage profilé, l'essence est ailleurs :
 - **le noir domine** : fûts lourds, barres fines, vides réduits à des fentes ;
 - une **grande amplitude de largeur** : du très étroit, haut et élégant, au très large et massif ;
 - des **arches** à la place des pointes (A, M, N en arches), une hauteur d'x très haute, un air de capitales partout.
+Vu sur les pièces de 1930 (couverture de Marinetti en Motor, réclames en Kabel noir) : des capitales géométriques
+très noires, et **chaque lettre signée légèrement** par un petit éclat (quelques traits blancs courts, un reflet de chrome).
+Notre version, à valider par Johnny : **la griffe** — trois petites entailles horizontales dans le flanc gauche de chaque
+lettre, à la taille ; quand la Vitesse monte, elles sortent et deviennent le sillage. Maquette : `GRIFFE=1 python3 source/planche.py …`
+(les entailles y sont peintes sur l'image, pas encore dans le moteur).
 À faire : redessiner les lettres sur cette base, avec le même moteur (il sait déjà le faire : petits rayons, traits
 lourds, axes resserrés). Ajouter un curseur Largeur. Garder la gauche légère/droite lourde, le Chrome et le sillage
 seulement s'ils servent cette essence. Premier pas : une image d'essai propre, étroit / normal / large.

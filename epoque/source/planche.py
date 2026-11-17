@@ -35,6 +35,18 @@ def ligne(img, texte, m, chrome, pente, x0, ybase, s):
                 dr = ImageDraw.Draw(img)
                 for c in cs:
                     dr.polygon([(x + px * s, ybase - py * s) for px, py in aplatis(c)], fill=0)
+        if os.environ.get('GRIFFE') and ch != ' ':
+            # maquette de la griffe : trois petites entailles dans le flanc gauche, à la taille
+            px = img.load(); F = m['fut']; pas = F * 0.20; prof = F * 0.50; haut = max(2, int(F * 0.075 * s))
+            ym = m['cap'] * 0.36 if ch.isupper() else m['x'] * 0.42
+            for k in (-1, 0, 1):
+                yy = int(ybase - (ym + k * pas) * s)
+                x0 = None
+                for xx in range(int(x), int(x + ch_w * s)):
+                    if px[xx + int(pente * (ym + k * pas - 350) * s), yy] < 128:
+                        x0 = xx + int(pente * (ym + k * pas - 350) * s); break
+                if x0 is not None:
+                    ImageDraw.Draw(img).rectangle([x0 - 2, yy - haut // 2, x0 + int(prof * s) + k * int(prof * s * 0.25), yy + haut // 2], fill=255)
         ImageDraw.Draw(img).line([(x, ybase + 8), (x, ybase + 22)], fill=150)
         x += ((ch_w - 2 * m['app']) * m.get('serre', 1) + 2 * m['app'] + m['air']) * s
 
