@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Époque</title>
+<meta name="description" content="Époque : le lettrage de course des années 30, signé comme un emblème chromé des années 50. La droite grasse, la gauche en filet, une signature par lettre. Variable : Graisse et Vitesse. Gratuit en perso. Par LaFleurStudio.">
+<link rel="stylesheet" href="../shared/site.css">
+<style>
+@font-face{font-family:"Epoque";font-weight:300 900;font-display:swap;src:url("fonts/woff2/Epoque[VITE,wght].woff2") format("woff2")}
+/* Époque partout sur sa propre page */
+.brand,section > .wrap > h2,.step h3,.card b,.wrow .sample,#tester-text,.glyphs div,.demo .row span{font-family:"Epoque",var(--sans)}
+.brand{font-size:18px;font-weight:700;letter-spacing:.04em}
+section > .wrap > h2{font-weight:600;font-size:clamp(24px,4.4vw,50px)}
+.step h3{font-weight:600;font-size:clamp(20px,2.4vw,28px)}
+.card b{font-weight:700;font-size:clamp(15px,4.2vw,22px);overflow-wrap:anywhere}
+.hero h1{font-family:"Epoque";font-weight:400;font-size:calc((min(100vw,var(--max)) - 2*var(--gutter))/5.2);line-height:1.15;
+  animation:depart 6s ease-in-out infinite alternate}
+@keyframes depart{0%,20%{font-variation-settings:"VITE" 0;font-weight:400}80%,100%{font-variation-settings:"VITE" 100;font-weight:700}}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+.wrow .sample{font-size:calc((min(100vw,var(--max)) - 2*var(--gutter) - 170px)/8.6);line-height:1.3}
+@media (max-width:640px){.wrow .sample{font-size:calc((100vw - 2*var(--gutter))/8.6)}}
+.glyphs div{font-size:32px}
+.axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 24px;margin:0 0 12px}
+.axes label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.axes label b{color:var(--ink);font-weight:600}
+.axes input{width:100%}
+.demo{container-type:inline-size}
+.demo .row span{font-size:calc(100cqw/7.5);line-height:1.3}
+.demo .row span.gros{font-size:calc(100cqw/4.2)}
+#tester-text{line-height:1.3}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">ÉPOQUE</a>
+    <a class="back" href="../">← Toutes les polices</a>
+    <ul>
+      <li><a href="#graisses">Graisses</a></li>
+      <li><a href="#testeur">Testeur</a></li>
+      <li><a href="#caracteres">Caractères</a></li>
+      <li><a href="#origine">Comment on l'a faite</a></li>
+      <li><a href="#telecharger">Télécharger</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">LaFleurStudio · 2026 · Lettrage de course</p>
+      <h1 style="margin-top:18px">Époque</h1>
+      <div class="lede">
+        <p><strong>La course des années 30, signée comme un chrome des années 50.</strong> Dessinée à neuf. La droite de chaque lettre est grasse, la gauche est un filet. Et chaque lettre a <strong>sa signature</strong>.</p>
+      </div>
+      <div class="facts">
+        <span>Art déco</span><span>Variable</span><span>Graisse 300 → 900</span><span>Vitesse 0 → 100</span><span>7 graisses + 7 Course</span><span>Forsthaus → Glasbrunnen</span><span>Une signature par lettre</span><span>Langues d'Europe en alphabet latin</span><span>Usage personnel gratuit</span><span>Version 1.000</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="graisses">
+    <div class="wrap">
+      <h2>Les graisses</h2>
+      <p class="intro">Sept arrêts, sept endroits du circuit du Bremgarten, à Berne, où se courait le Grand Prix de Suisse. Seul le fût de droite grossit : les filets restent fins. Chaque graisse a sa version <strong>Course</strong>, penchée de 14°.</p>
+      <div class="weights" id="weights"></div>
+    </div>
+  </section>
+
+  <section id="testeur">
+    <div class="wrap">
+      <h2>Testeur</h2>
+      <p class="intro">Clique et écris. Glisse les curseurs.</p>
+      <div class="tester">
+        <div class="axes">
+          <label><span><b>Graisse</b> <output id="og">400</output> <small id="ng"></small></span><input id="tg" type="range" min="300" max="900" value="400" aria-label="Graisse"></label>
+          <label><span><b>Vitesse</b> <output id="ov">0</output></span><input id="tv" type="range" min="0" max="100" value="0" aria-label="Vitesse"></label>
+          <label><span><b>Taille</b></span><input id="tz" type="range" min="16" max="200" value="64" aria-label="Taille"></label>
+        </div>
+        <div id="tester-text" contenteditable="plaintext-only" spellcheck="false">LAFLEURSTUDIO création graphique</div>
+      </div>
+      <p class="hint">Vitesse : la lettre penche vers l'avant et prend un peu d'air. À 100, c'est le style Course.</p>
+    </div>
+  </section>
+
+  <section id="caracteres">
+    <div class="wrap">
+      <h2>Caractères</h2>
+      <p class="intro">Majuscules, minuscules, chiffres, ponctuation, signes, accents d'Europe. 319 glyphes.</p>
+      <div class="glyph-controls" id="gw"></div>
+      <div class="glyphs" id="glyphs"></div>
+    </div>
+  </section>
+
+  <section id="origine">
+    <div class="wrap">
+      <h2>Comment on l'a faite</h2>
+      <p class="intro"><strong>Deux époques dans une lettre.</strong> Les années 30 font le corps : le lettrage des affiches de Grand Prix. Les années 50 font la signature : les noms chromés posés sur les carrosseries.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>
+            <h3>La droite grasse, la gauche en filet</h3>
+            <p>C'est le contraste Art déco. Dans chaque lettre, le trait de droite porte tout le poids. Le trait de gauche et toutes les barres sont des <strong>filets</strong>. Quand la graisse monte, seule la droite grossit.</p>
+          </div>
+          <div class="demo" aria-label="Le contraste">
+            <div class="row"><small>Forsthaus (300)</small><span style="font-weight:300">HOND</span></div>
+            <div class="row"><small>Bethlehem (400)</small><span style="font-weight:400">HOND</span></div>
+            <div class="row"><small>Glasbrunnen (900)</small><span style="font-weight:900">HOND</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Une signature par lettre</h3>
+            <p>Comme sur un emblème chromé, chaque lettre a un petit geste à elle, jamais deux fois le même. <strong>A</strong> : une aile à gauche. <strong>Q</strong> : la queue file à l'horizontale. <strong>R</strong> : la jambe se détache. <strong>T</strong> : la barre finit en pointe. <strong>g</strong> : la queue part loin à gauche. <strong>i</strong> : le point est un trait de vitesse.</p>
+          </div>
+          <div class="demo" aria-label="Les signatures">
+            <div class="row"><small>Capitales</small><span>AQRTEK</span></div>
+            <div class="row"><small>Minuscules</small><span>gihftp</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Le curseur Vitesse</h3>
+            <p>À 0, la lettre est droite, comme sur le flanc d'un train. À 100, elle penche de <strong>14°</strong> vers l'avant et prend un peu d'air, comme sur une affiche de course.</p>
+          </div>
+          <div class="demo" aria-label="La vitesse">
+            <div class="row"><small>Vitesse 0</small><span>Bremgarten</span></div>
+            <div class="row"><small>Vitesse 50</small><span style="font-variation-settings:'VITE' 50">Bremgarten</span></div>
+            <div class="row"><small>Vitesse 100 · Course</small><span style="font-variation-settings:'VITE' 100">Bremgarten</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Des tuyaux, pas des découpes</h3>
+            <p>Chaque lettre est une suite de traits avec une épaisseur. Rien n'est découpé après coup : toutes les versions d'une lettre ont <strong>les mêmes points</strong>. C'est pour ça qu'elle glisse sans accroc d'une graisse et d'une pente à l'autre.</p>
+          </div>
+          <div class="demo" aria-label="Les chiffres">
+            <div class="row"><small>Chiffres de chasse fixe</small><span>1934–39</span></div>
+            <div class="row"><small>Wohlenrampe (700) · Course</small><span style="font-weight:700;font-variation-settings:'VITE' 100">7,280 km</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="telecharger">
+    <div class="wrap">
+      <h2>Télécharger</h2>
+      <p class="intro">Gratuite en perso. En commercial, demande d'abord : <a href="mailto:info@lafleurstudio.ch">info@lafleurstudio.ch</a>. Garde la licence avec la police.</p>
+      <div class="dl">
+        <a class="card" href="Epoque.zip" download><b>EPOQUE.ZIP</b><span>La variable, les 7 graisses et leurs Course (OTF) + licence</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/epoque/fonts/variable"><b>VARIABLE</b><span>Un seul fichier, deux curseurs</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/epoque/fonts/otf"><b>OTF</b><span>Pour installer sur ton ordi</span></a>
+        <a class="card" href="https://github.com/Jonlekern/Fonts/tree/main/epoque/fonts/woff2"><b>WOFF2</b><span>Pour un site perso</span></a>
+      </div>
+      <details class="code-web">
+<summary class="label">Installation sur un site web</summary>
+<pre><code>@font-face { font-family: "Epoque"; font-weight: 300 900;
+  src: url("Epoque[VITE,wght].woff2") format("woff2"); }
+h1 { font-family: "Epoque"; font-weight: 700;
+  /* VITE : vitesse de 0 (droite) à 100 (Course, penchée de 14°) */
+  font-variation-settings: "VITE" 100; }</code></pre>
+</details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Époque © 2026 LaFleurStudio · Jonathan Kern · <a href="LICENCE.txt">Licence : usage personnel gratuit, commercial sur autorisation</a></span>
+    <span>Construite en Python (fontTools, skia-pathops).</span>
+  </div>
+</footer>
+
+<script>
+const ARRETS = [[300, "Forsthaus"], [400, "Bethlehem"], [500, "Eichholz"], [600, "Eymatt"], [700, "Wohlenrampe"], [800, "Jordenrampe"], [900, "Glasbrunnen"]];
+window.SPECIMEN = {
+  family: "Epoque",
+  sample: "Bremgarten",
+  styles: ARRETS.flatMap(([w, n]) => [{n, w, fvs: "'VITE' 0"}, {n: n + " Course", w, fvs: "'VITE' 100"}]),
+  glyphs: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" +
+    "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŒŸẞàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþœÿß" +
+    ".,:;!?¡¿'\"‘’‚“”„«»‹›()[]{}/\\|-–—_…·•*#@&%$€£¥¢©®™§¶°+−×÷=<>~^",
+  glyphChips: [0, 2, 8, 12, 3],
+  glyphDefault: 1
+};
+</script>
+<script src="../shared/specimen.js"></script>
+<script src="../shared/titres.js"></script>
+<script>
+(() => {
+  const g = document.getElementById("tg"), v = document.getElementById("tv"), z = document.getElementById("tz");
+  const t = document.getElementById("tester-text"), og = document.getElementById("og"), ng = document.getElementById("ng"), ov = document.getElementById("ov");
+  const apply = () => {
+    t.style.fontWeight = g.value;
+    t.style.fontVariationSettings = `'VITE' ${v.value}`;
+    t.style.fontSize = z.value + "px";
+    og.textContent = g.value; ov.textContent = v.value;
+    const a = ARRETS.find(([w]) => w === +g.value); ng.textContent = a ? a[1] : "";
+  };
+  z.value = Math.min(64, Math.max(16, Math.round((t.clientWidth || 340) / 15)));
+  [g, v, z].forEach(i => i.addEventListener("input", apply));
+  apply();
+})();
+</script>
+</body>
+</html>

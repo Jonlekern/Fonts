@@ -24,6 +24,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | laminar | Lucerne | Luzern | PILATUS · Hofkirche · Kapellbrücke · Dampfschiff · MATTHÄUS · PILATUS · 1332 — 2026 · 20:45 · KKL · 12 CHF |
 | malabard | Uri | Gotthard | MALABARD |
 | shrikhard | Lauberhorn, Wengen (lieu, plus de canton libre) | Lauberhorn | Wengen · Männlichen · Hundschopf · „Ľubo“ ‚ok‘ · Start, Hundschopf, Kernen-S, Haneggschuss, Ziel-S, Ziel (les arrêts du curseur) |
+| epoque | Circuit du Bremgarten, Berne (lieu, plus de canton libre) | Bremgarten | Forsthaus · Bethlehem · Eichholz · Eymatt · Wohlenrampe · Jordenrampe · Glasbrunnen (les 7 graisses) · HOND · AQRTEK · gihftp · 1934–39 · 7,280 km |
 | shearline | Schwyz | Einsiedeln | Klosterkirche · Mythen · Messe in Einsiedeln · Schwyzer-Platz · † ✠ ℣ ℟ ☩ · MCCXCI · 1291 · 01.08.1291 |
 | psalter | Obwald | Engelberg | Titlis · Sachseln · Psalter |
 | trap | Nidwald | Stanserhorn | BÜRGENSTOCK · Stans · Hergiswil ? · STANSERHORN |
