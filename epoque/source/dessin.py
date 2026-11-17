@@ -15,6 +15,14 @@ class D:
         self.cap, self.x, self.asc, self.desc = m['cap'], m['x'], m['asc'], m['desc']
         self.L, self.Lr, self.g = m['app'], m['appr'], m['large']
         self.c = m['coude']
+        self.Fg = self.F * (1 - m['ecart'])        # le fût de gauche : un filet
+        self.Fd = self.F * (1 + m['ecart'])        # le fût de droite : le gras
+        self.Fm = self.F * (1 + 0.5 * m['ecart'])  # un fût seul
+
+    def gd(self, W, L=None):
+        """Les axes du fût de gauche et du fût de droite d'une lettre de largeur W (bords extérieurs à L et L + W)."""
+        L = self.L if L is None else L
+        return L + self.Fg / 2, L + W - self.Fd / 2
 
     # axe d'une barre en haut / en bas d'une hauteur
     def haut(self, h, rond=False):
@@ -70,7 +78,7 @@ def lettre(tuyaux, m):
     bo = (min(xs), max(xs))
     for t in tuyaux:
         t.boite = bo
-    nominal = m['fut'] / 2 - JOINT
+    nominaux = [m['fut'] * f / 2 - JOINT for f in (1, 1 - m['ecart'], 1 + m['ecart'], 1 + 0.5 * m['ecart'])]
     for t in tuyaux:
         if t.ferme:
             continue
@@ -85,7 +93,7 @@ def lettre(tuyaux, m):
                     if abs(A[0] - B[0]) > 1e-6 or not (min(A[1], B[1]) - 1 <= p[1] <= max(A[1], B[1]) + 1):
                         continue
                     ecart = p[0] - A[0]
-                    if abs(abs(ecart) - nominal) < 0.75:
+                    if min(abs(abs(ecart) - n_) for n_ in nominaux) < 0.75:
                         w = q._ep(np.array([0.0, 1.0]), m, A[0])
                         p[0] = A[0] + (1 if ecart > 0 else -1) * (w / 2 - JOINT)
     return tuyaux

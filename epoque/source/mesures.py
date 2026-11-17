@@ -14,20 +14,20 @@ def _entre(p, a, b):
 
 
 def mesures(p, taille=0.36, vitesse=0.0):
-    fut = _entre(p, 70, 186)
+    fut = _entre(p, 46, 184)                   # l'épaisseur moyenne ; le fût de droite fait fut × (1 + écart)
     m = dict(
         poids=p, cap=CAP, x=X, asc=ASC, desc=DESC,
         fut=fut,                                   # trait vertical
-        barre=fut * 0.20,                          # le contraste Art déco : les barres et les jonctions sont des filets
+        barre=11 + fut * 0.10,                          # le contraste Art déco : les barres et les jonctions sont des filets
         dep=10,                                    # dépassement des rondes
         filet=_entre(p, 11, 24),                   # chrome : les deux filets
         blanc=_entre(p, 10, 22),                    # chrome : les blancs
-        ecart=0.74,               # la gauche légère, la droite lourde : fût gauche = fût × (1 − écart), fût droit × (1 + écart)
+        ecart=_entre(p, 0.62, 0.76),               # la gauche légère, la droite lourde : fût gauche = fût × (1 − écart), fût droit × (1 + écart)
         tension=1.2,                              # virages superelliptiques (1 = arc de cercle)
         taille=taille,                             # hauteur des barres (taille basse)
         coude=30,                     # petit rayon : les coudes
-        app=_entre(p, 62, 40),                     # approche d'un fût
-        appr=_entre(p, 44, 26),                    # approche d'une ronde
+        app=_entre(p, 70, 52),                     # approche d'un fût
+        appr=_entre(p, 56, 40),                    # approche d'une ronde
         large=_entre(p, 0, 150),
         vitesse=vitesse,                           # 0 à 1 : le curseur Vitesse
         air=36 * vitesse,                          # à pleine vitesse, chaque lettre prend de l'air à gauche

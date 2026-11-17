@@ -55,6 +55,8 @@ class Tuyau:
             if self.boite is not None and x is not None and self.boite[1] - self.boite[0] > 1:
                 k = min(1.0, max(0.0, (x - self.boite[0]) / (self.boite[1] - self.boite[0])))
                 ev = ev * (1 - m['ecart'] + 2 * m['ecart'] * k)
+            else:
+                ev = ev * (1 + 0.5 * m['ecart'])         # un fût seul (I, l) : entre le moyen et le gras
         s = abs(u[1])               # 1 : vertical, 0 : horizontal
         return eh + (ev - eh) * s * s
 
@@ -63,7 +65,7 @@ class Tuyau:
         La gauche de la lettre est légère, la droite lourde : deux filets à gauche, la bande pleine à droite.
         monte = +1 quand le tronçon monte (sa gauche est la gauche de la lettre), −1 quand il descend ;
         entre les deux (barres, haut et bas des rondes), les trois bandes s'égalisent en douceur."""
-        if self.plein:
+        if True:                                   # le Chrome en trois bandes est retiré : une seule bande, le trait plein
             return [(-w / 2, w / 2)]
         f = min(1.15, max(0.55, w / m['fut'])) ** 0.5       # un trait fin a des filets plus fins
         t, g = m['filet'] * f, m['blanc'] * f
@@ -140,7 +142,7 @@ class Tuyau:
         """Les contours du tuyau : une liste de contours, chacun une liste de ('l', p) et ('c', p1, p2, p3).
         Le premier élément est toujours ('l', départ)."""
         out = []
-        nb = 1 if self.plein else 3
+        nb = 1
         for k in range(nb):
             if self.ferme:
                 boucles = []
