@@ -42,12 +42,18 @@ class Tuyau:
         self.debut, self.fin, self.ferme, self.plein, self.ep, self.disque = debut, fin, ferme, plein or disque, ep, disque
         self.tension = tension
 
-    # --- l'épaisseur d'un tronçon selon sa direction : verticales pleines, horizontales un peu plus fines
-    def _ep(self, u, m):
+    boite = None        # (gauche, droite) de la lettre : posé par dessin.lettre()
+
+    # --- l'épaisseur d'un tronçon : selon sa direction (verticales pleines, horizontales un peu plus fines)
+    # --- et selon sa place dans la lettre : la gauche est légère, la droite lourde
+    def _ep(self, u, m, x=None):
         if self.ep is not None:
             ev, eh = (self.ep if isinstance(self.ep, (tuple, list)) else (self.ep, self.ep))
         else:
             ev, eh = m['fut'], m['barre']
+            if self.boite is not None and x is not None and self.boite[1] - self.boite[0] > 1:
+                k = min(1.0, max(0.0, (x - self.boite[0]) / (self.boite[1] - self.boite[0])))
+                ev = ev * (1 - m['ecart'] + 2 * m['ecart'] * k)
         s = abs(u[1])               # 1 : vertical, 0 : horizontal
         return eh + (ev - eh) * s * s
 
@@ -58,7 +64,8 @@ class Tuyau:
         entre les deux (barres, haut et bas des rondes), les trois bandes s'égalisent en douceur."""
         if self.plein:
             return [(-w / 2, w / 2)]
-        t, g = m['filet'], m['blanc']
+        f = min(1.15, max(0.55, w / m['fut'])) ** 0.5       # un trait fin a des filets plus fins
+        t, g = m['filet'] * f, m['blanc'] * f
         coeur = w - 2 * t - 2 * g
         A = [w / 2, w / 2 - t, w / 2 - t - g, w / 2 - 2 * t - g, w / 2 - 2 * t - 2 * g, -w / 2]      # filets du côté positif
         B = [w / 2, w / 2 - coeur, w / 2 - coeur - g, w / 2 - coeur - g - t, w / 2 - coeur - 2 * g - t, -w / 2]
@@ -75,7 +82,7 @@ class Tuyau:
         P = self.pts; n = len(P)
         segs = [(i, (i + 1) % n) for i in range(n if self.ferme else n - 1)]
         U = [_u(P[b] - P[a]) for a, b in segs]
-        W = [self._ep(u, m) for u in U]
+        W = [self._ep(u, m, (P[a][0] + P[b][0]) / 2) for u, (a, b) in zip(U, segs)]
         dec = [self._bandes(w, m, chrome, u[1])[k][cote] for w, u in zip(W, U)]
         base = [P[a] + _gauche(U[i]) * dec[i] for i, (a, b) in enumerate(segs)]      # un point de chaque bord décalé
         tension = self.tension if self.tension is not None else m['tension']
@@ -104,6 +111,11 @@ class Tuyau:
                 q, d = p, np.array([1.0, 0.0])
             elif coupe == 'v':
                 q, d = p, np.array([0.0, 1.0])
+            elif isinstance(coupe[0], str):          # ('contre', p0, p1, cote) : bute contre le bord d'un autre tronçon
+                _, a0, a1, cote = coupe
+                uu = _u(np.subtract(a1, a0))
+                ww = self._ep(uu, m, (a0[0] + a1[0]) / 2)
+                q, d = np.asarray(a0, float) + _gauche(uu) * cote * (ww / 2 - 2), uu
             else:
                 q, d = np.asarray(coupe[0], float), np.asarray(coupe[1], float)
             x = _croise(base[i], U[i], q, d)

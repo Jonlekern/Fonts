@@ -22,6 +22,7 @@ def mesures(p, taille=0.36):
         dep=10,                                    # dépassement des rondes
         filet=_entre(p, 11, 24),                   # chrome : les deux filets
         blanc=_entre(p, 10, 22),                    # chrome : les blancs
+        ecart=_entre(p, 0.24, 0.30),               # la gauche légère, la droite lourde : fût gauche = fût × (1 − écart), fût droit × (1 + écart)
         tension=1.16,                              # virages superelliptiques (1 = arc de cercle)
         taille=taille,                             # hauteur des barres (taille basse)
         coude=fut * 0.62 + 14,                     # petit rayon : les coudes

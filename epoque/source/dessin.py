@@ -39,8 +39,37 @@ class D:
 
     def contre(self, p0, p1, cote):
         """La coupe d'un tuyau qui bute contre le bord du tronçon p0→p1 (cote = +1 : son bord gauche)."""
-        u = _u(np.subtract(p1, p0)); n = _gauche(u)
-        return (np.asarray(p0, float) + n * cote * (self.ep(p0, p1) / 2 - JOINT), u)
+        return ('contre', tuple(p0), tuple(p1), cote)
+
+
+def lettre(tuyaux, m):
+    """Finit une lettre : la gauche légère, la droite lourde. Chaque tuyau apprend où il est dans la lettre,
+    et les bouts qui butent contre un fût se recalent sur son vrai bord (un fût de gauche est plus fin)."""
+    xs = [p[0] for t in tuyaux if not t.plein for p in t.pts] or [p[0] for t in tuyaux for p in t.pts]
+    if not xs:
+        return tuyaux
+    bo = (min(xs), max(xs))
+    for t in tuyaux:
+        t.boite = bo
+    nominal = m['fut'] / 2 - JOINT
+    for t in tuyaux:
+        if t.ferme:
+            continue
+        for i_bout, i_vois, coupe in ((0, 1, t.debut), (-1, -2, t.fin)):
+            p, v = t.pts[i_bout], t.pts[i_vois]
+            if coupe is not None or abs(p[1] - v[1]) > 1e-6:
+                continue                                   # seulement les bouts horizontaux coupés d'équerre
+            for q in tuyaux:
+                n = len(q.pts)
+                for a in range(n if q.ferme else n - 1):
+                    A, B = q.pts[a], q.pts[(a + 1) % n]
+                    if abs(A[0] - B[0]) > 1e-6 or not (min(A[1], B[1]) - 1 <= p[1] <= max(A[1], B[1]) + 1):
+                        continue
+                    ecart = p[0] - A[0]
+                    if abs(abs(ecart) - nominal) < 0.75:
+                        w = q._ep(np.array([0.0, 1.0]), m, A[0])
+                        p[0] = A[0] + (1 if ecart > 0 else -1) * (w / 2 - JOINT)
+    return tuyaux
 
 
 def fut(x, y0, y1, **k):

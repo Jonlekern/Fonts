@@ -3,7 +3,7 @@ import sys, math; sys.path.insert(0, __import__('os').path.dirname(__import__('o
 from PIL import Image, ImageDraw, ImageChops
 from tuyaux import aplatis, penche
 from mesures import mesures
-from dessin import D
+from dessin import D, lettre
 import importlib
 G = {}
 for mod, nom in (('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chiffres', 'CHIFFRES'), ('signes', 'SIGNES')):
@@ -17,7 +17,7 @@ def ligne(img, texte, m, chrome, pente, x0, ybase, s):
     for ch in texte:
         if ch == ' ':
             x += 240 * s; continue
-        tuy, ch_w = G[ch](d)
+        tuy, ch_w = G[ch](d); lettre(tuy, m)
         for tu in tuy:
             cs = penche(tu.contours(m, chrome), pente, 350)
             if tu.ferme and not tu.disque:
