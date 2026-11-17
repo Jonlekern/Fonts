@@ -37,6 +37,20 @@ class D:
         u = _u(np.subtract(p1, p0)); s = abs(u[1])
         return self.B + (self.F - self.B) * s * s
 
+    def sillage(self, xs, y, contre=None):
+        """Le trait de vitesse : la barre du milieu file derrière la lettre, à gauche du fût d'axe xs.
+        À Vitesse 0 il a une longueur nulle. contre : (p0, p1) du tronçon penché contre lequel il bute (A)."""
+        n = self.m['sillage']
+        if contre is not None:
+            t = T([(xs - self.F / 2 - n, y), (xs, y)], fin=self.contre(contre[0], contre[1], 1))
+            if n == 0:
+                t.pts[0][0] = xs - self.F / 2      # longueur nulle (au bord près)
+        else:
+            x1 = xs - self.F / 2 + JOINT
+            t = T([(x1 - n, y), (x1, y)])
+        t.hors = True                              # ne compte pas dans la largeur de la lettre
+        return t
+
     def contre(self, p0, p1, cote):
         """La coupe d'un tuyau qui bute contre le bord du tronçon p0→p1 (cote = +1 : son bord gauche)."""
         return ('contre', tuple(p0), tuple(p1), cote)
@@ -45,7 +59,7 @@ class D:
 def lettre(tuyaux, m):
     """Finit une lettre : la gauche légère, la droite lourde. Chaque tuyau apprend où il est dans la lettre,
     et les bouts qui butent contre un fût se recalent sur son vrai bord (un fût de gauche est plus fin)."""
-    xs = [p[0] for t in tuyaux if not t.plein for p in t.pts] or [p[0] for t in tuyaux for p in t.pts]
+    xs = [p[0] for t in tuyaux if not t.plein and not getattr(t, 'hors', False) for p in t.pts] or [p[0] for t in tuyaux for p in t.pts]
     if not xs:
         return tuyaux
     bo = (min(xs), max(xs))

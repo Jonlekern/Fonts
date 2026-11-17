@@ -13,7 +13,7 @@ def _entre(p, a, b):
     return a + (b - a) * (p - 300) / 600
 
 
-def mesures(p, taille=0.36):
+def mesures(p, taille=0.36, vitesse=0.0):
     fut = _entre(p, 70, 186)
     m = dict(
         poids=p, cap=CAP, x=X, asc=ASC, desc=DESC,
@@ -28,6 +28,9 @@ def mesures(p, taille=0.36):
         coude=fut * 0.62 + 14,                     # petit rayon : les coudes
         app=_entre(p, 62, 40),                     # approche d'un fût
         appr=_entre(p, 44, 26),                    # approche d'une ronde
-        large=_entre(p, 0, 150),                    # les lettres s'élargissent avec la graisse
+        large=_entre(p, 0, 150),
+        vitesse=vitesse,                           # 0 à 1 : le curseur Vitesse
+        air=36 * vitesse,                          # à pleine vitesse, chaque lettre prend de l'air à gauche
+        sillage=(0.62 * (_entre(p, 62, 40) + _entre(p, 44, 26)) + 36) * vitesse,   # longueur des traits de vitesse                    # les lettres s'élargissent avec la graisse
     )
     return m

@@ -40,13 +40,14 @@ def e(d):
     ym = max(d.x * 0.47, 2.0 * d.B)
     r2 = max(min(R, (top - ym) / 2 - 1), 1)
     return [T([(xl + d.F / 2 - J, ym), (xr, ym), (xr, top), (xl, top), (xl, bas), (d.Lr + W - 8, bas)],
-              r=[min(d.c * 0.6, r2), min(R, 2 * r2 - min(d.c * 0.6, r2)), R, R], fin='v')], d.Lr + W + d.Lr * 0.7
+              r=[min(d.c * 0.6, r2), min(R, 2 * r2 - min(d.c * 0.6, r2)), R, R], fin='v'),
+            d.sillage(xl, ym)], d.Lr + W + d.Lr * 0.7
 
 
 def f(d):
     W = 300 + d.g * 0.45; xs = d.Lr + 62 + d.F / 2; xr = d.Lr + W; yb = d.haut(d.x)
     return [T([(xr, d.haut(d.asc, True)), (xs, d.haut(d.asc, True)), (xs, 0)], r=min(d.R(2 * (xr - xs)), xr - xs - 6), debut='v'),
-            barre(d.Lr, xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 4
+            barre(d.Lr - d.m['sillage'], xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 4
 
 
 def g(d):
@@ -163,7 +164,7 @@ def s(d, h=None, W=None):
 def t(d):
     W = 300 + d.g * 0.45; xs = d.Lr + 62 + d.F / 2; xr = d.Lr + W; bas = d.bas(True); yb = d.haut(d.x)
     return [T([(xs, d.x + 150), (xs, bas), (xr, bas)], r=min(d.R(2 * (xr - xs)), xr - xs - 6), fin='v'),
-            barre(d.Lr, xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 6
+            barre(d.Lr - d.m['sillage'], xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 6
 
 
 def u(d):

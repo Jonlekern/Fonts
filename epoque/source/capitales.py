@@ -17,7 +17,8 @@ def A(d):
     k = ym / yh
     a0, a1, a2 = (xl, 0), (xc, yh), (xr, 0)
     return [T([a0, a1, a2], r=d.c * 0.5, debut='h', fin='h'),
-            T([(xl + (xc - xl) * k, ym), (xr - (xr - xc) * k, ym)], debut=d.contre(a0, a1, -1), fin=d.contre(a1, a2, -1))], L + W + L
+            T([(xl + (xc - xl) * k, ym), (xr - (xr - xc) * k, ym)], debut=d.contre(a0, a1, -1), fin=d.contre(a1, a2, -1)),
+            d.sillage(xl + (xc - xl) * k, ym, (a0, a1))], L + W + L
 
 
 def B(d):
@@ -28,7 +29,7 @@ def B(d):
     r1 = max(min((top - yj) / 2 - 1, xb1 - xa - 2), 1); r2 = max(min((yj - bas) / 2 - 1, xb - xa - 2), 1)
     return [T([(xa + 4, top), (xs, top), (xs, bas), (xa + 4, bas)], r=d.c),
             T([(xa, top), (xb1, top), (xb1, yj), (xs + d.F / 2 - J, yj)], r=r1),
-            T([(xa, bas), (xb, bas), (xb, yj), (xb1 - r1, yj)], r=r2)], d.L + W + d.Lr
+            T([(xa, bas), (xb, bas), (xb, yj), (xb1 - r1, yj)], r=r2), d.sillage(xs, yj)], d.L + W + d.Lr
 
 
 def C(d):
@@ -48,13 +49,14 @@ def E(d, barre_mi=True):
     t = [T([(xr, top), (xs, top), (xs, bas), (xr, bas)], r=d.c)]
     if barre_mi:
         t.append(barre(xs + d.F / 2 - J, xr - 54, d.taille()))
+        t.append(d.sillage(xs, d.taille()))
     return t, d.L + W + d.Lr * 0.7
 
 
 def F(d):
     W = 480 + d.g * 0.8; xs, _, top, bas = _rep(d, W); xr = d.L + W
     return [T([(xr, top), (xs, top), (xs, 0)], r=d.c),
-            barre(xs + d.F / 2 - J, xr - 54, d.taille())], d.L + W + d.Lr * 0.5
+            barre(xs + d.F / 2 - J, xr - 54, d.taille()), d.sillage(xs, d.taille())], d.L + W + d.Lr * 0.5
 
 
 def G(d):
@@ -67,7 +69,7 @@ def G(d):
 
 def H(d):
     W = 620 + d.g; xl, xr, top, bas = _rep(d, W)
-    return [fut(xl, 0, d.cap), fut(xr, 0, d.cap), barre(xl + d.F / 2 - J, xr - d.F / 2 + J, d.taille())], d.L + W + d.L
+    return [fut(xl, 0, d.cap), fut(xr, 0, d.cap), barre(xl + d.F / 2 - J, xr - d.F / 2 + J, d.taille()), d.sillage(xl, d.taille())], d.L + W + d.L
 
 
 def I(d):
@@ -107,7 +109,7 @@ def O(d):
 def P(d):
     W = 540 + d.g * 0.9; xs, xb, top, bas = _rep(d, W)
     yj = d.taille(); R = max(min((top - yj) / 2 - 1, xb - xs - d.c - 4), 1)
-    return [T([(xs, 0), (xs, top), (xb, top), (xb, yj), (xs + d.F / 2 - J, yj)], r=[d.c, R, R])], d.L + W + d.Lr * 0.6
+    return [T([(xs, 0), (xs, top), (xb, top), (xb, yj), (xs + d.F / 2 - J, yj)], r=[d.c, R, R]), d.sillage(xs, yj)], d.L + W + d.Lr * 0.6
 
 
 def Q(d):

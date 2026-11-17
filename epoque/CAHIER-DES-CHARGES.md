@@ -11,7 +11,7 @@ Le lettrage profilé des années 30 : les carrosseries des Flèches d'argent, le
 | Curseur | Tag | Plage | Ce que ça fait |
 | --- | --- | --- | --- |
 | Graisse | `wght` | 300–900 | Du tube fin au tube lourd. 7 arrêts, les sections du circuit du Bremgarten. |
-| Vitesse | `VITE` | 0–100 | La lettre penche vers l'avant, jusqu'à 14°. |
+| Vitesse | `VITE` | 0–100 | La lettre penche vers l'avant, jusqu'à 14°, et **le sillage** sort : la barre du milieu de A, B, E, F, H, P, R, e, f, t file derrière la lettre, à gauche. Chaque lettre prend aussi un peu d'air. En Chrome, le sillage fait trois filets. |
 | Chrome | `CHRM` | 0–100 | Chaque trait s'ouvre en trois bandes qui suivent la courbe. **La gauche est légère, la droite lourde** : deux filets fins à gauche, la bande pleine à droite, comme la lumière sur un jonc chromé. |
 
 Les trois se combinent librement. À 0 partout, c'est une capitale Art déco pleine et posée.

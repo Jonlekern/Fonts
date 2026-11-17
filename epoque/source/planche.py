@@ -16,7 +16,7 @@ def ligne(img, texte, m, chrome, pente, x0, ybase, s):
     x = x0; d = D(m)
     for ch in texte:
         if ch == ' ':
-            x += 240 * s; continue
+            x += (240 + m['air']) * s; continue
         tuy, ch_w = G[ch](d); lettre(tuy, m)
         for tu in tuy:
             cs = penche(tu.contours(m, chrome), pente, 350)
@@ -31,7 +31,7 @@ def ligne(img, texte, m, chrome, pente, x0, ybase, s):
                 for c in cs:
                     dr.polygon([(x + px * s, ybase - py * s) for px, py in aplatis(c)], fill=0)
         ImageDraw.Draw(img).line([(x, ybase + 8), (x, ybase + 22)], fill=150)
-        x += ch_w * s
+        x += (ch_w + m['air']) * s
 
 sortie = sys.argv[1]; textes = sys.argv[2].split('|')
 reglages = [tuple(float(v) for v in a.split(',')) for a in sys.argv[3:]] or [(500, 0, 0)]
@@ -40,5 +40,5 @@ img = Image.new('L', (2600, H * len(textes) * len(reglages) + 30), 255)
 k = 0
 for p, c, v in reglages:
     for t in textes:
-        ligne(img, t, mesures(int(p)), c, math.tan(math.radians(14)) * v, 30, int(H * k + 830 * s), s); k += 1
+        ligne(img, t, mesures(int(p), vitesse=v), c, math.tan(math.radians(14)) * v, 30, int(H * k + 830 * s), s); k += 1
 img.save(sortie)
