@@ -12,7 +12,12 @@ for mod, nom in (('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chi
     except ModuleNotFoundError:
         pass
 
+import os, json
+SURCHARGE = json.loads(os.environ.get('M', '{}'))
+
 def ligne(img, texte, m, chrome, pente, x0, ybase, s):
+    m.update(SURCHARGE)
+    if 'fut' in SURCHARGE: m['barre'] = m['fut'] * SURCHARGE.get('rapport', 0.8); m['coude'] = SURCHARGE.get('coude', m['coude'])
     x = x0; d = D(m)
     for ch in texte:
         if ch == ' ':
@@ -31,7 +36,7 @@ def ligne(img, texte, m, chrome, pente, x0, ybase, s):
                 for c in cs:
                     dr.polygon([(x + px * s, ybase - py * s) for px, py in aplatis(c)], fill=0)
         ImageDraw.Draw(img).line([(x, ybase + 8), (x, ybase + 22)], fill=150)
-        x += (ch_w + m['air']) * s
+        x += ((ch_w - 2 * m['app']) * m.get('serre', 1) + 2 * m['app'] + m['air']) * s
 
 sortie = sys.argv[1]; textes = sys.argv[2].split('|')
 reglages = [tuple(float(v) for v in a.split(',')) for a in sys.argv[3:]] or [(500, 0, 0)]

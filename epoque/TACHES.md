@@ -1,5 +1,16 @@
 # Époque — où on en est
 
+## CHANGEMENT DE CAP (Johnny : « tu es passé à côté, tu n'as pas analysé son essence »)
+Le premier jet (tuyaux aux grandes rondes, chasses moyennes) fait police techno des années 70. En regardant les vraies
+images du lettrage profilé, l'essence est ailleurs :
+- des lettres en **blocs carénés** : coins doux à petit rayon, côtés et dessus droits (un rectangle adouci, pas un stade) ;
+- **le noir domine** : fûts lourds, barres fines, vides réduits à des fentes ;
+- une **grande amplitude de largeur** : du très étroit, haut et élégant, au très large et massif ;
+- des **arches** à la place des pointes (A, M, N en arches), une hauteur d'x très haute, un air de capitales partout.
+À faire : redessiner les lettres sur cette base, avec le même moteur (il sait déjà le faire : petits rayons, traits
+lourds, axes resserrés). Ajouter un curseur Largeur. Garder la gauche légère/droite lourde, le Chrome et le sillage
+seulement s'ils servent cette essence. Premier pas : une image d'essai propre, étroit / normal / large.
+
 ## Fait (session 1)
 - Recherche, cahier des charges, plan.
 - Moteur à tuyaux (`source/tuyaux.py`) : mêmes points à toute graisse, tout chrome, toute pente.

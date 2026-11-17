@@ -31,7 +31,7 @@ class D:
     def R(self, larg, h=None, k=0.44):
         """Le grand rayon d'une ronde : large, mais qui laisse un peu de droit."""
         h = self.x if h is None else h
-        return max(min(k * h, larg / 2 - 4), 1)
+        return max(min(k * h, larg / 2 - 4, self.m.get('rayon', 1e9)), 1)
 
     def ep(self, p0, p1):
         u = _u(np.subtract(p1, p0)); s = abs(u[1])
@@ -62,6 +62,11 @@ def lettre(tuyaux, m):
     xs = [p[0] for t in tuyaux if not t.plein and not getattr(t, 'hors', False) for p in t.pts] or [p[0] for t in tuyaux for p in t.pts]
     if not xs:
         return tuyaux
+    if m.get('serre', 1) != 1:                 # lettres plus étroites ou plus larges : les axes se resserrent, pas les traits
+        for t in tuyaux:
+            for p in t.pts:
+                p[0] = m['app'] + (p[0] - m['app']) * m['serre']
+        xs = [x_ for x_ in (m['app'] + (x - m['app']) * m['serre'] for x in xs)]
     bo = (min(xs), max(xs))
     for t in tuyaux:
         t.boite = bo

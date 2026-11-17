@@ -87,9 +87,15 @@ class Tuyau:
         base = [P[a] + _gauche(U[i]) * dec[i] for i, (a, b) in enumerate(segs)]      # un point de chaque bord décalé
         tension = self.tension if self.tension is not None else m['tension']
 
+        L = [math.hypot(*(P[b] - P[a])) for a, b in segs]
+
         def virage(i_in, i_out, R):
             u1, u2 = U[i_in], U[i_out]
             a = math.atan2(u1[0] * u2[1] - u1[1] * u2[0], u1[0] * u2[0] + u1[1] * u2[1])    # > 0 : virage à gauche
+            if abs(a) > 1e-4:                    # un virage ne mange jamais plus que la moitié de ses deux tronçons
+                dispo = min(L[i_in] * (1.0 if (not self.ferme and i_in == 0) else 0.5),
+                            L[i_out] * (1.0 if (not self.ferme and i_out == len(segs) - 1) else 0.5))
+                R = min(R, dispo / math.tan(abs(a) / 2))
             X = _croise(base[i_in], u1, base[i_out], u2)
             if X is None or abs(a) < 1e-4:
                 X = base[i_out] if X is None else X
