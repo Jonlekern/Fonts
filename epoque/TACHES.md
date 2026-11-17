@@ -1,5 +1,13 @@
 # Époque — où on en est
 
+## LA RÈGLE (Johnny) : « mes réf signent, tes réf constituent, chaque lettre a un truc unique »
+- La structure vient des années 30 : blocs carénés, noirs, vides en fente (`source/blocs.py`, essai sur EPOQUE SKYLARK).
+- La signature vient des emblèmes chromés des années 50 (logodesignlove.com/vintage-vehicle-logotypes) : aile, pointe
+  effilée, bras détaché, queue qui file. **Une signature différente par lettre**, jamais un motif répété.
+- Le moteur sait effiler un trait : `Tuyau(..., k=[1, 0])` (épaisseur à chaque point, 0 = en pointe).
+- Essai : `BLOCS=1 M='{"fut":150,"rapport":0.58,"coude":18,"ecart":0.14,"app":46,"appr":46,"tension":1.25}' python3 source/planche.py …`
+- Les fichiers `minuscules.py` et `capitales.py` sont le premier jet (tuyaux années 70) : à remplacer.
+
 ## CHANGEMENT DE CAP (Johnny : « tu es passé à côté, tu n'as pas analysé son essence »)
 Le premier jet (tuyaux aux grandes rondes, chasses moyennes) fait police techno des années 70. En regardant les vraies
 images du lettrage profilé, l'essence est ailleurs :

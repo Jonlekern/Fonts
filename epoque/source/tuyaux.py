@@ -33,7 +33,7 @@ class Tuyau:
     plein : jamais de filets (accents, ponctuation). ep : épaisseur imposée (sinon celle de la graisse).
     disque : tracé fermé rempli (points). tension : virages plus ou moins tendus."""
 
-    def __init__(self, pts, r=0, debut=None, fin=None, ferme=False, plein=False, ep=None, disque=False, tension=None):
+    def __init__(self, pts, r=0, debut=None, fin=None, ferme=False, plein=False, ep=None, disque=False, tension=None, k=None):
         self.pts = [np.asarray(p, float) for p in pts]
         n = len(self.pts)
         nb = n if ferme else n - 2
@@ -41,6 +41,7 @@ class Tuyau:
         assert len(self.r) == max(nb, 0), (len(self.r), nb)
         self.debut, self.fin, self.ferme, self.plein, self.ep, self.disque = debut, fin, ferme, plein or disque, ep, disque
         self.tension = tension
+        self.k = list(k) if k is not None else [1.0] * n       # l'épaisseur à chaque point (1 = pleine, 0 = en pointe) : les traits effilés
 
     boite = None        # (gauche, droite) de la lettre : posé par dessin.lettre()
 
@@ -84,25 +85,30 @@ class Tuyau:
         U = [_u(P[b] - P[a]) for a, b in segs]
         W = [self._ep(u, m, (P[a][0] + P[b][0]) / 2) for u, (a, b) in zip(U, segs)]
         dec = [self._bandes(w, m, chrome, u[1])[k][cote] for w, u in zip(W, U)]
-        base = [P[a] + _gauche(U[i]) * dec[i] for i, (a, b) in enumerate(segs)]      # un point de chaque bord décalé
+        K = self.k
+        # chaque bord va du décalage au départ du tronçon au décalage à son arrivée (un trait effilé n'a pas des bords parallèles)
+        pa = [P[a] + _gauche(U[i]) * dec[i] * K[a] for i, (a, b) in enumerate(segs)]
+        pb = [P[b] + _gauche(U[i]) * dec[i] * K[b] for i, (a, b) in enumerate(segs)]
+        Ue = [_u(pb[i] - pa[i]) if math.hypot(*(pb[i] - pa[i])) > 1e-6 else U[i] for i in range(len(segs))]
+        base = pa
         tension = self.tension if self.tension is not None else m['tension']
-
         L = [math.hypot(*(P[b] - P[a])) for a, b in segs]
 
         def virage(i_in, i_out, R):
-            u1, u2 = U[i_in], U[i_out]
+            u1, u2 = Ue[i_in], Ue[i_out]
             a = math.atan2(u1[0] * u2[1] - u1[1] * u2[0], u1[0] * u2[0] + u1[1] * u2[1])    # > 0 : virage à gauche
             if abs(a) > 1e-4:                    # un virage ne mange jamais plus que la moitié de ses deux tronçons
                 dispo = min(L[i_in] * (1.0 if (not self.ferme and i_in == 0) else 0.5),
                             L[i_out] * (1.0 if (not self.ferme and i_out == len(segs) - 1) else 0.5))
                 R = min(R, dispo / math.tan(abs(a) / 2))
-            X = _croise(base[i_in], u1, base[i_out], u2)
+            X = _croise(pb[i_in], u1, pa[i_out], u2)
             if X is None or abs(a) < 1e-4:
-                X = base[i_out] if X is None else X
+                X = pa[i_out] if X is None else X
                 return [X, X, X, X]
             s = 1 if a > 0 else -1
-            t1 = max(R - s * dec[i_in], 0) * math.tan(abs(a) / 2)
-            t2 = max(R - s * dec[i_out], 0) * math.tan(abs(a) / 2)
+            kv = K[segs[i_out][0]]
+            t1 = max(R - s * dec[i_in] * kv, 0) * math.tan(abs(a) / 2)
+            t2 = max(R - s * dec[i_out] * kv, 0) * math.tan(abs(a) / 2)
             h = min(0.98, (4 / 3) * math.tan(abs(a) / 4) / math.tan(abs(a) / 2) * tension)
             A = X - u1 * t1; D = X + u2 * t2
             return [A, A + u1 * h * t1, D - u2 * h * t2, D]
@@ -124,8 +130,8 @@ class Tuyau:
                 q, d = np.asarray(a0, float) + _gauche(uu) * cote * (ww / 2 - 2), uu
             else:
                 q, d = np.asarray(coupe[0], float), np.asarray(coupe[1], float)
-            x = _croise(base[i], U[i], q, d)
-            return x if x is not None else base[i]
+            x = _croise(pa[i], Ue[i], q, d)
+            return x if x is not None else pa[i]
 
         vir = [virage(j - 1, j, self.r[j - 1]) for j in range(1, n - 1)]
         return bout(self.debut, 0, P[0]), vir, bout(self.fin, len(segs) - 1, P[-1])

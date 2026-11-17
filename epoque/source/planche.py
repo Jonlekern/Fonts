@@ -1,12 +1,12 @@
 # python3 ep_planche.py sortie.png "texte|texte2" [poids,chrome,vitesse ...]
-import sys, math; sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+import os, sys, math; sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
 from PIL import Image, ImageDraw, ImageChops
 from tuyaux import aplatis, penche
 from mesures import mesures
 from dessin import D, lettre
 import importlib
 G = {}
-for mod, nom in (('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chiffres', 'CHIFFRES'), ('signes', 'SIGNES')):
+for mod, nom in ((('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chiffres', 'CHIFFRES'), ('signes', 'SIGNES')) if not os.environ.get('BLOCS') else (('blocs', 'BLOCS'),)):
     try:
         G.update(getattr(importlib.import_module(mod), nom))
     except ModuleNotFoundError:
