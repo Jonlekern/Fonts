@@ -25,6 +25,7 @@ Les mots déjà pris sur les pages des polices, pour ne pas se répéter.
 | malabard | Uri | Gotthard | MALABARD |
 | shrikhard | Lauberhorn, Wengen (lieu, plus de canton libre) | Lauberhorn | Wengen · Männlichen · Hundschopf · „Ľubo“ ‚ok‘ · Start, Hundschopf, Kernen-S, Haneggschuss, Ziel-S, Ziel (les arrêts du curseur) |
 | epoque | Circuit du Bremgarten, Berne (lieu, plus de canton libre) | Bremgarten | Forsthaus · Bethlehem · Eichholz · Eymatt · Wohlenrampe · Jordenrampe · Glasbrunnen (les 7 graisses) · HOND · AQRTEK · gihftp · 1934–39 · 7,280 km |
+| sibard | La Brévine, la Sibérie de la Suisse (lieu, plus de canton libre) | La Brévine | Frais · Froid · Gel · Givre · Glace · Bise · Banquise · Brevine (les 8 graisses) · HOND · AQRTEK · gihftp · EFFET · −41,8 °C |
 | shearline | Schwyz | Einsiedeln | Klosterkirche · Mythen · Messe in Einsiedeln · Schwyzer-Platz · † ✠ ℣ ℟ ☩ · MCCXCI · 1291 · 01.08.1291 |
 | psalter | Obwald | Engelberg | Titlis · Sachseln · Psalter |
 | trap | Nidwald | Stanserhorn | BÜRGENSTOCK · Stans · Hergiswil ? · STANSERHORN |
