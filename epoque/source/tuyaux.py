@@ -5,7 +5,8 @@
 import math
 import numpy as np
 
-RECOUVRE = 1.0          # à Chrome 0, les bandes se recouvrent : aucune couture
+RECOUVRE = 1.0
+MINI = 2.4              # le plus petit chanfrein d'un angle vif
 
 
 def _u(v):
@@ -44,6 +45,8 @@ class Tuyau:
         self.k = list(k) if k is not None else [1.0] * n       # l'épaisseur à chaque point (1 = pleine, 0 = en pointe) : les traits effilés
 
     boite = None        # (gauche, droite) de la lettre : posé par dessin.lettre()
+    ech = 1.0           # un tuyau réduit (exposants, © ® ™) : ses épaisseurs se réduisent avec lui
+    groupe = 0          # les tuyaux d'un même groupe partagent leur gauche et leur droite
 
     # --- l'épaisseur d'un tronçon : selon sa direction (verticales pleines, horizontales un peu plus fines)
     # --- et selon sa place dans la lettre : la gauche est légère, la droite lourde
@@ -58,7 +61,7 @@ class Tuyau:
             else:
                 ev = ev * (1 + 0.5 * m['ecart'])         # un fût seul (I, l) : entre le moyen et le gras
         s = abs(u[1])               # 1 : vertical, 0 : horizontal
-        return eh + (ev - eh) * s * s
+        return (eh + (ev - eh) * s * s) * self.ech
 
     def _bandes(self, w, m, chrome, monte=0.0):
         """Les bandes dans l'épaisseur, en décalages (gauche du trajet positif).
@@ -109,8 +112,9 @@ class Tuyau:
                 return [X, X, X, X]
             s = 1 if a > 0 else -1
             kv = K[segs[i_out][0]]
-            t1 = max(R - s * dec[i_in] * kv, 0) * math.tan(abs(a) / 2)
-            t2 = max(R - s * dec[i_out] * kv, 0) * math.tan(abs(a) / 2)
+            # un angle vif garde un chanfrein de 2 unités : jamais de courbe de longueur nulle (elle gêne certains logiciels)
+            t1 = max(max(R - s * dec[i_in] * kv, 0) * math.tan(abs(a) / 2), MINI)
+            t2 = max(max(R - s * dec[i_out] * kv, 0) * math.tan(abs(a) / 2), MINI)
             h = min(0.98, (4 / 3) * math.tan(abs(a) / 4) / math.tan(abs(a) / 2) * tension)
             A = X - u1 * t1; D = X + u2 * t2
             return [A, A + u1 * h * t1, D - u2 * h * t2, D]

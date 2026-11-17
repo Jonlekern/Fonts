@@ -15,7 +15,7 @@ def _rep(d, W, rond=False):
 def A(d):
     """Signature : la barre sort à gauche, en aile."""
     W = 640 + d.g; L = d.Lr * 0.5
-    xl, xr = d.gd(W, L); xc = (xl + xr) / 2 - d.F * 0.2; yh = d.cap + d.d
+    xl, xr = d.gd(W, L); xc = (xl + xr) / 2 - d.F * 0.2; yh = d.cap + d.d - d.F * 0.5
     ym = d.taille() * 0.92; k = ym / yh
     a0, a1, a2 = (xl, 0), (xc, yh), (xr, 0)
     return [T([a0, a1, a2], r=d.c * 0.4, debut='h', fin='h'),
@@ -104,8 +104,7 @@ def Ll(d):
 def M(d):
     """Signature : le creux du milieu est une arche ronde."""
     W = 780 + d.g * 1.3; xl, xr, top, bas = _rep(d, W); xc = (xl + xr) / 2 - d.F * 0.15
-    yh = d.cap - d.B * 0.42
-    return [T([(xl, 0), (xl, yh), (xc, d.cap * 0.20), (xr, yh), (xr, 0)], r=[d.c * 0.4, 120, d.c * 0.4])], d.L + W + d.L
+    return [T([(xl, 0), (xl, d.cap - d.B * 0.42), (xc, d.cap * 0.20), (xr, d.cap - d.Fd * 0.40 + 4), (xr, 0)], r=[d.c * 0.4, 120, d.c * 0.4])], d.L + W + d.L
 
 
 def N(d):

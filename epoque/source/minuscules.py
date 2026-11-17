@@ -189,8 +189,7 @@ def _s(d, h=None, W=None):
     mid = (top + bas) / 2 + h * 0.012
     ra = (top - mid) / 2; rb = (mid - bas) / 2
     return [T([(d.Lr + W - 6, top), (xl, top), (xl, mid), (xr, mid), (xr, bas), (d.Lr + 4, bas)],
-              r=[ra, ra, rb, rb], debut=((d.Lr + W - 6, top), (0.3, 1)), fin=((d.Lr + 4, bas), (0.3, 1)),
-              k=[1, 1, 2.3, 2.3, 1, 1])], d.Lr + W + d.Lr
+              r=[ra, ra, rb, rb], debut=((d.Lr + W - 6, top), (0.45, 1)), fin=((d.Lr + 4, bas), (0.45, 1)))], d.Lr + W + d.Lr
 
 
 def s(d):
@@ -216,7 +215,7 @@ def u(d):
 def _v(d, h, W, L):
     """Signature : la branche fine monte plus haut."""
     xl, xr = d.gd(W, L); xc = (xl + xr) / 2 + d.F * 0.2
-    return [T([(xl - 10, h + 44), (xc, d.B * 0.42 - d.d), (xr, h)], r=d.c * 0.4, debut='h', fin='h')], L + W + L
+    return [T([(xl - 10, h + 44), (xc, d.Fd * 0.29 - 20), (xr, h)], r=d.c * 0.4, debut='h', fin='h')], L + W + L
 
 
 def v(d):
@@ -225,7 +224,7 @@ def v(d):
 
 def _w(d, h, W, L):
     """Signature : les deux V se croisent au milieu."""
-    xl, xr = d.gd(W, L); q = (xr - xl) / 4; y0 = d.B * 0.42 - d.d; cx = (xl + xr) / 2
+    xl, xr = d.gd(W, L); q = (xr - xl) / 4; y0 = d.Fd * 0.32 - 18; cx = (xl + xr) / 2
     return [T([(xl, h), (xl + q, y0), (cx + q * 0.36, h)], r=d.c * 0.4, debut='h', fin='h'),
             T([(cx - q * 0.36, h), (xl + 3 * q, y0), (xr, h)], r=d.c * 0.4, debut='h', fin='h')], L + W + L
 

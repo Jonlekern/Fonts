@@ -67,18 +67,16 @@ class D:
 def lettre(tuyaux, m):
     """Finit une lettre : la gauche légère, la droite lourde. Chaque tuyau apprend où il est dans la lettre,
     et les bouts qui butent contre un fût se recalent sur son vrai bord (un fût de gauche est plus fin)."""
-    xs = [p[0] for t in tuyaux if not t.plein and not getattr(t, 'hors', False) for p in t.pts] or [p[0] for t in tuyaux for p in t.pts]
-    if not xs:
+    if not tuyaux:
         return tuyaux
-    if m.get('serre', 1) != 1:                 # lettres plus étroites ou plus larges : les axes se resserrent, pas les traits
-        for t in tuyaux:
-            for p in t.pts:
-                p[0] = m['app'] + (p[0] - m['app']) * m['serre']
-        xs = [x_ for x_ in (m['app'] + (x - m['app']) * m['serre'] for x in xs)]
-    bo = (min(xs), max(xs))
-    for t in tuyaux:
-        t.boite = bo
+    for g in set(t.groupe for t in tuyaux):
+        membres = [t for t in tuyaux if t.groupe == g]
+        xs = [p[0] for t in membres if not t.plein and not getattr(t, 'hors', False) for p in t.pts] or [p[0] for t in membres for p in t.pts]
+        bo = (min(xs), max(xs))
+        for t in membres:
+            t.boite = bo
     nominaux = [m['fut'] * f / 2 - JOINT for f in (1, 1 - m['ecart'], 1 + m['ecart'], 1 + 0.5 * m['ecart'])]
+    nominaux += [n_ * e_ for n_ in list(nominaux) for e_ in set(t.ech for t in tuyaux) if e_ != 1]
     for t in tuyaux:
         if t.ferme:
             continue
@@ -94,6 +92,8 @@ def lettre(tuyaux, m):
                         continue
                     ecart = p[0] - A[0]
                     if min(abs(abs(ecart) - n_) for n_ in nominaux) < 0.75:
+                        if q.groupe != t.groupe:
+                            continue
                         w = q._ep(np.array([0.0, 1.0]), m, A[0])
                         p[0] = A[0] + (1 if ecart > 0 else -1) * (w / 2 - JOINT)
     return tuyaux
@@ -117,3 +117,45 @@ def boite(tuyaux, m, chrome=0):
     xs = [p[0] for t in tuyaux for c in t.contours(m, chrome) for s in c for p in s[1:]]
     ys = [p[1] for t in tuyaux for c in t.contours(m, chrome) for s in c for p in s[1:]]
     return min(xs), min(ys), max(xs), max(ys)
+
+
+_GROUPE = [0]
+
+
+def reduit(tuyaux, s, dx=0.0, dy=0.0):
+    """Les mêmes tuyaux en plus petit (exposants, © ® ™, %), posés en (dx, dy). Ils forment un groupe à part."""
+    _GROUPE[0] += 1
+    for t in tuyaux:
+        t.pts = [np.array([p[0] * s + dx, p[1] * s + dy]) for p in t.pts]
+        t.r = [r * s for r in t.r]
+        t.ech *= s
+        if t.ep is not None:
+            t.ep = tuple(e * s for e in t.ep) if isinstance(t.ep, (tuple, list)) else t.ep * s
+        for nom in ('debut', 'fin'):
+            c = getattr(t, nom)
+            if isinstance(c, tuple) and isinstance(c[0], str):
+                setattr(t, nom, ('contre', tuple(np.array(c[1]) * s + (dx, dy)), tuple(np.array(c[2]) * s + (dx, dy)), c[3]))
+            elif isinstance(c, tuple):
+                setattr(t, nom, (tuple(np.array(c[0], float) * s + (dx, dy)), c[1]))
+        t.groupe = _GROUPE[0]
+    return tuyaux
+
+
+def decale(tuyaux, dx=0.0, dy=0.0):
+    """Les mêmes tuyaux, déplacés (sans changer de groupe)."""
+    g = [t.groupe for t in tuyaux]
+    reduit(tuyaux, 1.0, dx, dy)
+    for t, gg in zip(tuyaux, g):
+        t.groupe = gg
+    return tuyaux
+
+
+def retourne(tuyaux, cx, cy):
+    """Les mêmes tuyaux, tournés d'un demi-tour autour de (cx, cy) : le 9 est un 6 retourné."""
+    for t in tuyaux:
+        t.pts = [np.array([2 * cx - p[0], 2 * cy - p[1]]) for p in t.pts]
+        for nom in ('debut', 'fin'):
+            c = getattr(t, nom)
+            if isinstance(c, tuple) and not isinstance(c[0], str):
+                setattr(t, nom, ((2 * cx - c[0][0], 2 * cy - c[0][1]), c[1]))
+    return tuyaux

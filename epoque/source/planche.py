@@ -6,7 +6,7 @@ from mesures import mesures
 from dessin import D, lettre
 import importlib
 G = {}
-for mod, nom in ((('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chiffres', 'CHIFFRES'), ('signes', 'SIGNES')) if not os.environ.get('BLOCS') else (('blocs', 'BLOCS'),)):
+for mod, nom in (('minuscules', 'MINUSCULES'), ('capitales', 'CAPITALES'), ('chiffres', 'CHIFFRES'), ('signes', 'SIGNES')):
     try:
         G.update(getattr(importlib.import_module(mod), nom))
     except ModuleNotFoundError:
