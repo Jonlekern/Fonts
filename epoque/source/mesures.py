@@ -18,14 +18,14 @@ def mesures(p, taille=0.36, vitesse=0.0):
     m = dict(
         poids=p, cap=CAP, x=X, asc=ASC, desc=DESC,
         fut=fut,                                   # trait vertical
-        barre=fut * _entre(p, 0.90, 0.74),         # trait horizontal, un peu plus fin pour l'œil
+        barre=fut * 0.20,                          # le contraste Art déco : les barres et les jonctions sont des filets
         dep=10,                                    # dépassement des rondes
         filet=_entre(p, 11, 24),                   # chrome : les deux filets
         blanc=_entre(p, 10, 22),                    # chrome : les blancs
-        ecart=_entre(p, 0.24, 0.30),               # la gauche légère, la droite lourde : fût gauche = fût × (1 − écart), fût droit × (1 + écart)
-        tension=1.16,                              # virages superelliptiques (1 = arc de cercle)
+        ecart=0.74,               # la gauche légère, la droite lourde : fût gauche = fût × (1 − écart), fût droit × (1 + écart)
+        tension=1.2,                              # virages superelliptiques (1 = arc de cercle)
         taille=taille,                             # hauteur des barres (taille basse)
-        coude=fut * 0.62 + 14,                     # petit rayon : les coudes
+        coude=30,                     # petit rayon : les coudes
         app=_entre(p, 62, 40),                     # approche d'un fût
         appr=_entre(p, 44, 26),                    # approche d'une ronde
         large=_entre(p, 0, 150),

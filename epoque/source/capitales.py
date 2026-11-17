@@ -4,6 +4,12 @@ from dessin import D, fut, barre, JOINT as J
 from minuscules import _k, _v, _w, _x, _z, s as _s
 
 
+def _signe(t):
+    """Une signature : elle ne compte pas dans la largeur de la lettre."""
+    t.hors = True
+    return t
+
+
 def _rep(d, W, rond=False):
     """Gauche, droite (axes des fûts), haut, bas (axes des barres)."""
     L = d.Lr if rond else d.L
@@ -17,8 +23,7 @@ def A(d):
     k = ym / yh
     a0, a1, a2 = (xl, 0), (xc, yh), (xr, 0)
     return [T([a0, a1, a2], r=d.c * 0.5, debut='h', fin='h'),
-            T([(xl + (xc - xl) * k, ym), (xr - (xr - xc) * k, ym)], debut=d.contre(a0, a1, -1), fin=d.contre(a1, a2, -1)),
-            d.sillage(xl + (xc - xl) * k, ym, (a0, a1))], L + W + L
+            _signe(T([(xl + (xc - xl) * k - 150, ym), (xr - (xr - xc) * k, ym)], k=[0, 1], fin=d.contre(a1, a2, -1)))], L + W + L
 
 
 def B(d):
@@ -48,7 +53,7 @@ def E(d, barre_mi=True):
     W = 500 + d.g * 0.8; xs, _, top, bas = _rep(d, W); xr = d.L + W
     t = [T([(xr, top), (xs, top), (xs, bas), (xr, bas)], r=d.c)]
     if barre_mi:
-        t.append(barre(xs + d.F / 2 - J, xr - 54, d.taille()))
+        t.append(_signe(T([(xs + d.F / 2 - J, d.taille()), (xr + 40, d.taille())], k=[1.6, 0])))
         t.append(d.sillage(xs, d.taille()))
     return t, d.L + W + d.Lr * 0.7
 
@@ -115,7 +120,8 @@ def P(d):
 def Q(d):
     t, ch = O(d)
     W = ch - 2 * d.Lr; cx = d.Lr + W * 0.60
-    t.append(T([(cx, d.bas(True) - d.B / 2 + J), (cx + 150, -150)], debut='h', fin='h'))
+    e = d.F * 0.42
+    t.append(_signe(T([(cx - 60, d.bas(True) - d.B / 2 - e / 2 + J), (d.Lr + W + 230, d.bas(True) - d.B / 2 - e / 2 + J)], ep=e, k=[1, 0], debut='v')))
     return t, ch
 
 
@@ -123,7 +129,7 @@ def R(d):
     t, ch = P(d)
     W = 540 + d.g * 0.9; xs, xb, top, bas = _rep(d, W)
     yj = d.taille(); x0 = xs + (xb - xs) * 0.42
-    t.append(T([(x0, yj - d.B / 2 + J), (d.L + W - d.F * 0.5, 0)], debut='h', fin='h'))
+    t.append(T([(x0, yj - d.B / 2 - 22), (d.L + W + 34, 0)], debut='h', fin='h', k=[0.45, 1.15]))
     return t, d.L + W + d.Lr * 0.5
 
 
@@ -133,7 +139,7 @@ def S(d):
 
 def Tt(d):
     W = 560 + d.g * 0.8; L = d.Lr * 0.6; xc = L + W / 2; top = d.haut(d.cap)
-    return [barre(L, L + W, top), fut(xc, 0, top - d.B / 2 + J)], L + W + L
+    return [_signe(T([(L - 130, top), (L + W, top)], k=[0, 1.5])), fut(xc, 0, top - d.B / 2 + J)], L + W + L
 
 
 def U(d):

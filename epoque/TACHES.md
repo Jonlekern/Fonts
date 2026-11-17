@@ -1,5 +1,13 @@
 # Époque — où on en est
 
+## VALIDÉ PAR JOHNNY : le contraste Art déco (« Voilà ! »)
+- Fût de droite très gras, fût de gauche et barres en filet : `mesures.py` (barre = fût × 0,20, écart = 0,74, coude = 30).
+- La base, ce sont `capitales.py` et `minuscules.py` (pas `blocs.py`, essai abandonné).
+- Ensuite : des signatures, une différente par lettre, discrètes (gestes d'emblèmes chromés des années 50).
+  Posées pour l'instant : A (aile à gauche), E (flèche), Q (queue qui file), R (jambe détachée), T (barre en pointe à gauche),
+  K k (bras détachés), f (aile), t (flèche), g (queue qui file à gauche). Les autres lettres restent à signer.
+- À régler : espacement (trop serré), fûts seuls (I l i), m, et tout passer à la loupe.
+
 ## LA RÈGLE (Johnny) : « mes réf signent, tes réf constituent, chaque lettre a un truc unique »
 - La structure vient des années 30 : blocs carénés, noirs, vides en fente (`source/blocs.py`, essai sur EPOQUE SKYLARK).
 - La signature vient des emblèmes chromés des années 50 (logodesignlove.com/vintage-vehicle-logotypes) : aile, pointe

@@ -47,13 +47,13 @@ def e(d):
 def f(d):
     W = 300 + d.g * 0.45; xs = d.Lr + 62 + d.F / 2; xr = d.Lr + W; yb = d.haut(d.x)
     return [T([(xr, d.haut(d.asc, True)), (xs, d.haut(d.asc, True)), (xs, 0)], r=min(d.R(2 * (xr - xs)), xr - xs - 6), debut='v'),
-            barre(d.Lr - d.m['sillage'], xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 4
+            T([(d.Lr - 90 - d.m['sillage'], yb), (xs - d.F / 2 + J, yb)], k=[0, 1.4]), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 4
 
 
 def g(d):
     W, xl, xr, top, bas, R = _rond(d)
     yd = d.bas(True, d.desc)
-    return [T([(xr, d.x), (xr, yd), (xl - d.F / 2 + 26, yd)], r=min(R, (0 - d.desc) * 0.62), fin='v'),
+    return [T([(xr, d.x), (xr, yd), (xl - d.F / 2 - 150, yd)], r=min(R, (0 - d.desc) * 0.62), fin='v', k=[1, 1, 0]),
             T([(xr - d.F / 2 + J, top), (xl, top), (xl, bas), (xr - d.F / 2 + J, bas)], r=R)], d.Lr + W + d.L
 
 
@@ -98,7 +98,7 @@ def _k(d, h, xh):
     """Le k et le K : un fût, un bras qui bute contre lui, une jambe qui bute sous le bras."""
     W = (430 if xh == d.x else 560) + d.g * 0.8; xl = d.L + d.F / 2; xr = d.L + W
     ym = xh * 0.40 if xh == d.x else d.taille()
-    a0 = (xl + d.F / 2 - J, ym); a1 = (xr - d.F * 0.55, xh)
+    a0 = (xl + d.F / 2 + 20, ym); a1 = (xr - d.F * 0.55, xh)
     ep = d.ep(a0, a1)
     # la jambe part du bras, à un tiers de sa longueur
     k = 0.30
@@ -164,7 +164,7 @@ def s(d, h=None, W=None):
 def t(d):
     W = 300 + d.g * 0.45; xs = d.Lr + 62 + d.F / 2; xr = d.Lr + W; bas = d.bas(True); yb = d.haut(d.x)
     return [T([(xs, d.x + 150), (xs, bas), (xr, bas)], r=min(d.R(2 * (xr - xs)), xr - xs - 6), fin='v'),
-            barre(d.Lr - d.m['sillage'], xs - d.F / 2 + J, yb), barre(xs + d.F / 2 - J, xr - 6, yb)], d.Lr + W + 6
+            barre(d.Lr - d.m['sillage'], xs - d.F / 2 + J, yb), T([(xs + d.F / 2 - J, yb), (xr + 70, yb)], k=[1.4, 0])], d.Lr + W + 6
 
 
 def u(d):
