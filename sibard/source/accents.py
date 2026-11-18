@@ -36,13 +36,14 @@ def accent(nom, d, cx, y):
     if nom == 'breve':
         return [P([(cx - 90, y + 125), (cx - 90, y + 25), (cx + 90, y + 25), (cx + 90, y + 125)], d, f, r=80)]
     if nom == 'dotaccent':
-        s = d.Fm * 0.85
+        s = min(d.Fm * 0.85, 190)
         return [point(cx, y + s / 2 + 10, s)]
     if nom == 'dieresis':
-        s = d.Fm * 0.8
+        s = min(d.Fm * 0.8, 175)
         return [point(cx - s * 0.5 - 40, y + s / 2 + 10, s), point(cx + s * 0.5 + 40, y + s / 2 + 10, s)]
     if nom == 'ring':
-        return [P([(cx - 55, y + 20), (cx - 55, y + 130), (cx + 55, y + 130), (cx + 55, y + 20)], d, f, r=55, ferme=True)]
+        a = 55 + f * 0.45                      # l'anneau grandit avec son trait : le trou reste ouvert
+        return [P([(cx - a, y + 20), (cx - a, y + 20 + 2 * a), (cx + a, y + 20 + 2 * a), (cx + a, y + 20)], d, f, r=a, ferme=True)]
     if nom == 'cedilla':
         return [P([(cx + 10, y + 6), (cx + 10, y - 60), (cx + 70, y - 60), (cx + 70, y - 150), (cx - 50, y - 150)], d, f, r=38, k=[1, 1, 1, 1, 0.2], fin='v')]
     if nom == 'ogonek':

@@ -38,15 +38,16 @@ def trois(d):
     W, xl, xr, top, bas = _rep(d)
     ym = d.cap * 0.54; xr1 = xr - (xr - xl) * 0.08
     r1 = max((top - ym) / 2 - 1, 1); r2 = max((ym - bas) / 2 - 1, 1)
-    return [T([(xl + 30, top), (xr1, top), (xr1, ym), (xl + (xr - xl) * 0.42, ym)], r=r1, debut='v'),
-            T([(xr1 - r1 - 2, ym), (xr, ym), (xr, bas), (xl - 10, bas)], r=r2, k=[1, 1, 1, 0], fin='v')], _chasse(d)
+    xm = min(xl + (xr - xl) * 0.42, xr1 - d.Fd / 2 - 60)          # la barre du milieu dépasse toujours du gras
+    return [T([(xl + 30, top), (xr1, top), (xr1, ym), (xm, ym)], r=r1, debut='v', fin='v'),
+            T([(xm + 8, ym), (xr, ym), (xr, bas), (xl, bas)], r=r2, debut='v', fin='v')], _chasse(d)
 
 
 def quatre(d):
     W, xl, xr, top, bas = _rep(d)
     xs = xr - (xr - xl) * 0.10; y4 = d.cap * 0.30
     return [fut(xs, 0, d.cap, ep=(d.Fd, d.B)),
-            T([(xs - d.Fd / 2 + J, d.cap - 10), (xl - 10, y4), (d.Lr + W + 20, y4)], r=d.c * 0.3, debut='v', ep=(d.B * 1.4, d.B), plein=True)], _chasse(d)
+            T([(xs - d.Fd / 2 + J + d.B, d.cap), (xl - 10, y4), (d.Lr + W + 20, y4)], r=d.c * 0.3, debut='h', ep=(d.B * 1.4, d.B), plein=True)], _chasse(d)
 
 
 def cinq(d):

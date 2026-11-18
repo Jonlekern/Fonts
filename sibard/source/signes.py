@@ -359,10 +359,10 @@ def euro(d):
 
 
 def sterling(d):
-    W = 520; xs = d.Lr + 150; top = d.haut(d.cap, True); xr = d.Lr + W
-    return [T([(xr - 10, top - 120), (xr - 10, top), (xs, top), (xs, d.bas())], r=[140, 140], ep=(d.Fm, d.B), debut='h', k=[0.3, 1, 1, 1]),
+    W = 520 + d.g * 0.9; xs = d.Lr + 110 + d.Fm / 2; top = d.haut(d.cap, True); xr = d.Lr + W
+    return [T([(xr - 10, top - 120), (xr - 10, top), (xs, top), (xs, d.bas())], r=[min(140, (xr - xs) / 2), min(140, (xr - xs) / 2)], ep=(d.Fm, d.B), debut='h', k=[0.3, 1, 1, 1]),
             P([(d.Lr, d.bas()), (xr + 20, d.bas())], d, d.B, k=[1.3, 0]),
-            P([(d.Lr + 20, d.cap * 0.45), (xs + 190, d.cap * 0.45)], d, ef(d) * 1.2)], 2 * d.Lr + W
+            P([(d.Lr + 20, d.cap * 0.45), (xs + d.Fm / 2 + 110, d.cap * 0.45)], d, ef(d) * 1.2)], 2 * d.Lr + W
 
 
 def yen(d):
@@ -379,9 +379,9 @@ def section(d):
 
 
 def paragraph(d):
-    W = 520; xl, xr = d.gd(W, d.Lr); xm = xr - d.Fd / 2 - 110; top = d.haut(d.cap); ym = d.cap * 0.44
+    W = 520 + d.g; xl, xr = d.gd(W, d.Lr); xm = xr - d.Fd / 2 - 110; top = d.haut(d.cap); ym = d.cap * 0.44
     return [fut(xr, d.desc * 0.6, d.cap), P([(xm, d.desc * 0.6), (xm, d.cap)], d, ef(d) * 1.2),
-            T([(xr, top), (xl + 40, top), (xl + 40, ym), (xm, ym)], r=max((top - ym) / 2 - 1, 1), ep=(d.Fd * 1.2, d.B))], 2 * d.Lr + W
+            T([(xr, top), (xl + 40, top), (xl + 40, ym), (xm, ym)], r=max((top - ym) / 2 - 1, 1), ep=(min(d.Fd * 1.2, 300), d.B))], 2 * d.Lr + W
 
 
 def ampersand(d):
